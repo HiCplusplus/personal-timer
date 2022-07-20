@@ -19,6 +19,7 @@ Window
     {
         id:root;
         anchors.fill: parent;
+        color:colorBackgrounds;
     }
 
 
@@ -30,65 +31,65 @@ Window
 
     property color colorLines: "black";
     property color colorTitles: "black";
+    property color colorTextes: "black";
+
     property color colorBackgroundIcons: "transparent";
     property color colorBackgrounds: "white";
+    property color colorButtons: "orange";
+    property color colorButtonsInactive: "transparent";
+    property color colorBackgroundMenu: "#f7ea9e";
 
-    //button go to settings starts
+
+    //icons bar starts
     Rectangle
     {
-        id:iconSettings;
-        width:iconWidthAndHeight;
-        height:iconWidthAndHeight;
-        visible: true;
-        color:colorBackgroundIcons;
-        anchors
+        id:iconsBar;
+        width: root.width;
+        height:root.height/15;
+        anchors.top:root.top;
+        color:colorBackgroundMenu;
+        Text
         {
-            left:root.left;
-            top:root.top;
-            topMargin: mainWindow.height/50;
-            leftMargin:mainWindow.width/50;
-        }
-
-        Image
-        {
-            anchors.fill: parent;
-            source: directory_Icons + fileIcon_Settings;
-        }
-        MouseArea
-        {
-            anchors.fill: iconSettings;
-            onPressed:
+            text: "Timer1";
+            font.bold: true;
+            anchors
             {
-                settingsPage.visible = true;
-                iconBackToHome.visible = true;
+                left:parent.left;
+                leftMargin:15;
+                verticalCenter: parent.verticalCenter;
             }
+
         }
     }
-    //button go to settings ends
+    //icons bar ends
+
 
 
 
     //swipe base Timer starts
-
     Rectangle
     {
-
         id:baseTimers;
         visible: true;
         clip: true;
         anchors
         {
-            left:iconSettings.right;
+            top:iconsBar.bottom;
+            left:root.left;
             right:root.right;
-            top:root.top;
             bottom:root.bottom;
-            leftMargin:mainWindow.width/50;
+            bottomMargin: parent.height/15;
+
+//            left:iconSettings.right;
+//            right:root.right;
+//            top:root.top;
+//            leftMargin:mainWindow.width/50;
         }
 
         Item
         {
             id:itemBaseViewTimers
-            property int swipeViewIndex: 0;
+            property int swipeViewIndex: 1;
 
             onSwipeViewIndexChanged:
             {
@@ -101,32 +102,34 @@ Window
 
                 currentIndex: itemBaseViewTimers.swipeViewIndex;
                 width: baseTimers.width;
-                height:baseTimers.height/100*40;
-
+                height:baseTimers.height/100*99;
                 onCurrentIndexChanged:
                 {
                     itemBaseViewTimers.swipeViewIndex = viewTimers.currentIndex ;
                 }
 
-                Item {
+                Item
+                {
                     id: firstPage
                     Rectangle
                     {
                         width:100;
                         height:100;
-                        color:"Red"
+                        color:"Red";
                     }
                 }
-                Item {
+                Item
+                {
                     id: secondPage
-                    Rectangle
+                    CountUp
                     {
-                        width:100;
-                        height:100;
-                        color:"yellow"
+
                     }
+
+
                 }
-                Item {
+                Item
+                {
                     id: thirdPage
                     Rectangle
                     {
@@ -144,19 +147,22 @@ Window
     //swipe base timer ends
 
 
+
+    //timer indicator starts
     MyTimerIndicator
     {
         id:myIndicator;
         myIndicatorIndex: itemBaseViewTimers.swipeViewIndex;
         myIndicatorIndexAText: "Alarm";
-        myIndicatorIndexBText: "Count Up";
-        myIndicatorIndexCText: "Count Down";
-
-        anchors
-        {
-            bottom:root.bottom;
-        }
+        myIndicatorIndexBText: "StopWatch";
+        myIndicatorIndexCText: "Timer";
+        colorBG: colorBackgrounds;
+        colorTxt: colorTextes;
+        colorBtn: colorButtons;
+        colorBtnInactive: colorButtonsInactive;
+        anchors.bottom:root.bottom;
     }
+    //timer indicator ends
 
 
 
@@ -164,6 +170,7 @@ Window
 
 
 
+    //settings start
     Settings
     {
         id:settingsPage;
@@ -173,9 +180,44 @@ Window
         cTitle: colorTitles;
         cLine: colorLines;
     }
+    //settings ends
 
 
 
+    //button go to settings starts
+    Rectangle
+    {
+        id:iconSettings;
+        width:iconWidthAndHeight;
+        height:iconWidthAndHeight;
+        visible: true;
+        color:colorBackgroundIcons;
+        anchors
+        {
+            right:root.right;
+//            top:root.top;
+//            topMargin: mainWindow.height/50;
+            rightMargin:mainWindow.width/50;
+            verticalCenter: iconsBar.verticalCenter;
+        }
+
+        Image
+        {
+            anchors.fill: parent;
+            source: directory_Icons + fileIcon_Settings;
+        }
+        MouseArea
+        {
+            anchors.fill: iconSettings;
+            onPressed:
+            {
+                iconSettings.visible = false;
+                settingsPage.visible = true;
+                iconBackToHome.visible = true;
+            }
+        }
+    }
+    //button go to settings ends
 
 
     //button back to home starts
@@ -206,6 +248,7 @@ Window
             {
                 settingsPage.visible = false;
                 iconBackToHome.visible = false;
+                iconSettings.visible = true;
             }
         }
     }

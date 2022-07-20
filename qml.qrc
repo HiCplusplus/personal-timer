@@ -6,6 +6,8 @@
         <file>thePictures/icon-back.png</file>
         <file>theControls/MyButton.qml</file>
         <file>theControls/MyTimerIndicator.qml</file>
+        <file>CountUp.qml</file>
+        <file>theScripts/updateCountUp.js</file>
     </qresource>
     <qresource prefix="/thePictures"/>
 </RCC>

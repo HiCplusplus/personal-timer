@@ -4,23 +4,27 @@ Item
 {
     id:itemRoot;
     width:parent.width;
-    height:parent.height/20;
+    height:parent.height/15;
 
     property int myIndicatorIndex: -1;
-    property string myIndicatorIndexAText: "First";
-    property string myIndicatorIndexBText: "Second";
-    property string myIndicatorIndexCText: "Third";
+    property string myIndicatorIndexAText: "A";
+    property string myIndicatorIndexBText: "B";
+    property string myIndicatorIndexCText: "C";
     property int indexesWidth: rowArea.width/3.5;
     property int indexesHeight: rowArea.height;
     property int indexesRadius: 20;
+    property color colorBG: "white";
+    property color colorTxt: "black";
+    property color colorBtn: "lime";
+    property color colorBtnInactive: "transparent";
 
     onMyIndicatorIndexChanged:
     {
         function setIndexActive(a_Active,b_Diactive,c_Diactive)
         {
-            a_Active.color = "orange";
-            b_Diactive.color = "transparent";
-            c_Diactive.color = "transparent";
+            a_Active.color = colorBtn;
+            b_Diactive.color = colorBtnInactive;
+            c_Diactive.color = colorBtnInactive;
         }
         switch(myIndicatorIndex)
         {
@@ -35,7 +39,7 @@ Item
     {
         id:root;
         anchors.fill: parent;
-        color:"red";
+        color:colorBG;
         Row
         {
             id:rowArea;
@@ -58,6 +62,7 @@ Item
                     anchors.horizontalCenter: indexA.horizontalCenter;
                     anchors.verticalCenter: indexA.verticalCenter;
                     text:myIndicatorIndexAText;
+                    color:colorTxt;
 
                 }
                 MouseArea
@@ -84,6 +89,7 @@ Item
                     anchors.horizontalCenter: indexB.horizontalCenter;
                     anchors.verticalCenter: indexB.verticalCenter;
                     text:myIndicatorIndexBText;
+                    color: colorTxt;
                 }
                 MouseArea
                 {
@@ -108,6 +114,7 @@ Item
                     anchors.horizontalCenter: indexC.horizontalCenter;
                     anchors.verticalCenter: indexC.verticalCenter;
                     text:myIndicatorIndexCText;
+                    color:colorTxt;
                 }
                 MouseArea
                 {
