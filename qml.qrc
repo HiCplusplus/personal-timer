@@ -8,6 +8,7 @@
         <file>theControls/MyTimerIndicator.qml</file>
         <file>CountUp.qml</file>
         <file>theScripts/updateCountUp.js</file>
+        <file>CountDown.qml</file>
     </qresource>
     <qresource prefix="/thePictures"/>
 </RCC>

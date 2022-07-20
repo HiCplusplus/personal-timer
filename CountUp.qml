@@ -1,5 +1,4 @@
 import QtQuick
-import "theScripts"
 import "theScripts/updateCountUp.js" as UCUP
 
 Item
@@ -64,6 +63,7 @@ Item
         height:root.height/5.5;
         anchors.verticalCenter: root.verticalCenter;
         anchors.horizontalCenter: root.horizontalCenter;
+
         color:"white";
         Text
         {
@@ -74,6 +74,7 @@ Item
             {
                 verticalCenter:parent.verticalCenter;
                 horizontalCenter:parent.horizontalCenter;
+
             }
         }
 

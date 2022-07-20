@@ -37,7 +37,7 @@ Window
     property color colorBackgrounds: "white";
     property color colorButtons: "orange";
     property color colorButtonsInactive: "transparent";
-    property color colorBackgroundMenu: "#f7ea9e";
+    property color colorBackgroundMenu: "#f7ea9e";//
 
 
     //icons bar starts
@@ -82,7 +82,6 @@ Window
 
 //            left:iconSettings.right;
 //            right:root.right;
-//            top:root.top;
 //            leftMargin:mainWindow.width/50;
         }
 
@@ -131,11 +130,9 @@ Window
                 Item
                 {
                     id: thirdPage
-                    Rectangle
+                    CountDown
                     {
-                        width:100;
-                        height:100;
-                        color:"purple"
+
                     }
                 }
             }
