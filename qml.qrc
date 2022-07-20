@@ -1,0 +1,11 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>Settings.qml</file>
+        <file>thePictures/icon-settings.png</file>
+        <file>thePictures/icon-back.png</file>
+        <file>theControls/MyButton.qml</file>
+        <file>theControls/MyTimerIndicator.qml</file>
+    </qresource>
+    <qresource prefix="/thePictures"/>
+</RCC>
