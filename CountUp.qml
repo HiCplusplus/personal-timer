@@ -3,6 +3,7 @@ import "theScripts/updateCountUp.js" as UCUP
 
 Item
 {
+    clip:true;
     property int theDay: 0;
     property int theHour: 0;
     property int theMinute: 0;

@@ -12,6 +12,7 @@ Rectangle
     property color cLine: "black";
     property color cBG: "white";
 
+    clip:true;
     id:root;
     anchors.fill: parent;
     color:cBG;

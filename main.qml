@@ -88,7 +88,7 @@ Window
         Item
         {
             id:itemBaseViewTimers
-            property int swipeViewIndex: 1;
+            property int swipeViewIndex: 2;
 
             onSwipeViewIndexChanged:
             {

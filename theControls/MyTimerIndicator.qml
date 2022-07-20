@@ -5,7 +5,7 @@ Item
     id:itemRoot;
     width:parent.width;
     height:parent.height/15;
-
+    clip:true;
     property int myIndicatorIndex: -1;
     property string myIndicatorIndexAText: "A";
     property string myIndicatorIndexBText: "B";
