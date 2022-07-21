@@ -1,6 +1,7 @@
 import QtQuick
 import QtQuick.Controls
 
+
 Item
 {
     property color colorBG: "white";
@@ -31,82 +32,136 @@ Item
         anchors
         {
             horizontalCenter:parent.horizontalCenter;
-            top:parent.top;
-            topMargin:parent.height/5.5;
+            verticalCenter:parent.verticalCenter;
+//            top:parent.top;
+//            topMargin:parent.height/2;
         }
 
-        color:"red";
+//        color:"red";
 
-        Rectangle
-        {
-            id:baseSetLabel;
-            width: parent.width;
-            height: parent.height/6;
-            anchors.top: parent.top;
-            color:"gray";
-            TextInput{
-                 id: input
-                 anchors.fill: parent;
-//                 anchors.horizontalCenter: parent.horizontalCenter;
-                    width: parent.width;
-                    height: parent.height;
-                    clip:true;
-                x:200;
-                 color: "black";
-
-             }
-        }
 
         Rectangle
         {
             id:baseSetTimer;
             width: parent.width;
             height: parent.height/3;
-            anchors.top: baseSetLabel.bottom;
-
+//            anchors.top: parent.bottom;
             Row
             {
                 anchors.fill: parent;
                 Rectangle
                 {
                     id:setHour;
-                    width: parent.width/3;
+                    width: parent.width/3.2;
                     height:parent.height;
-                    color:"yellow";
                     Text
                     {
                         text:"Hours";
                         color:"black";
                         anchors.horizontalCenter:parent.horizontalCenter;
                     }
+                    Text
+                    {
+                        text:"01";
+                        color:"black";
+                        anchors.horizontalCenter:parent.horizontalCenter;
+                        anchors.verticalCenter: parent.verticalCenter;
+                        font.pointSize: 40;
+                        font.bold:true;
+                    }
+                    SpinBox
+                    {
+                        id: spinbox
+                        font.pointSize: 40;
+                        width: parent.width;
+                    }
+
+                }
+                Text
+                {
+                    text:":";
+                    color:"black";
+                    anchors.verticalCenter: parent.verticalCenter;
+                    font.pointSize: 40;
+                    font.bold:true;
                 }
                 Rectangle
                 {
                     id:setMinute;
-                    width: parent.width/3;
+                    width: parent.width/3.2;
                     height:parent.height;
-                    color:"pink";
                     Text
                     {
                         text:"Minutes";
                         color:"black";
                         anchors.horizontalCenter:parent.horizontalCenter;
                     }
+                    Text
+                    {
+                        text:"23";
+                        color:"black";
+                        anchors.horizontalCenter:parent.horizontalCenter;
+                        anchors.verticalCenter: parent.verticalCenter;
+                        font.pointSize: 40;
+                        font.bold:true;
+                    }
+                }
+                Text
+                {
+                    text:":";
+                    color:"black";
+                    anchors.verticalCenter: parent.verticalCenter;
+                    font.pointSize: 40;
+                    font.bold:true;
                 }
                 Rectangle
                 {
                     id:setSecond;
-                    width: parent.width/3;
+                    width: parent.width/3.2;
                     height:parent.height;
-                    color:"yellow";
                     Text
                     {
                         text:"Seconds";
                         color:"black";
                         anchors.horizontalCenter:parent.horizontalCenter;
                     }
+                    Text
+                    {
+                        text:"00";
+                        color:"black";
+                        anchors.horizontalCenter:parent.horizontalCenter;
+                        anchors.verticalCenter: parent.verticalCenter;
+                        font.pointSize: 40;
+                        font.bold:true;
+                    }
                 }
 
+            }
+
+        }
+        Rectangle
+        {
+            width: parent.width/2.5;
+            height: parent.height/6;
+            color:"black";
+            anchors.top:  baseSetTimer.bottom;
+            anchors.horizontalCenter: parent.horizontalCenter;
+            anchors.topMargin: 10;
+            radius:50;
+            Text
+            {
+                text:"Add";
+                anchors.centerIn: parent;
+                color:"white";
+            }
+            MouseArea
+            {
+                anchors.fill: parent;
+                onClicked:
+                {
+                    console.log("button add new timer added");
+                    InputContext.priv.inputItem.text = InputContext.priv.inputItem.textBeforeEditing
+                }
             }
         }
     }
