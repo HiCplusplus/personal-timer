@@ -74,6 +74,7 @@ Item
                         id: spinbox
                         font.pointSize: 40;
                         width: parent.width;
+
                     }
 
                 }
