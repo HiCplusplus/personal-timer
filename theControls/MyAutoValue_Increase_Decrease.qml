@@ -10,6 +10,8 @@ Item
     property int setInputIntValue:0;
     property string outputResultString: "";
     property int outputResultInt:0;
+    property int vSpeedCounter: 0;
+    property int vSpeedLevel: 1;
 
     /*
       use like this for outputResult when use component (example for txtMinute)
@@ -21,9 +23,6 @@ Item
     {
         width: 35;
         height:35;
-//        anchors.top: setLocalStatusIncreaseOrDecrease? parent.top: parent;
-//        anchors.bottom: setLocalStatusIncreaseOrDecrease? false: parent.bottom;
-//        anchors.horizontalCenter: parent.horizontalCenter;
         Text
         {
             text:setLocalStatusIncreaseOrDecrease? "+":"-";
@@ -40,14 +39,26 @@ Item
 
             onTriggered:
             {
+                vSpeedCounter++;
+
+                if(vSpeedCounter/6>2)
+                    vSpeedLevel = 10;
+                else if(vSpeedCounter/6>5)
+                    vSpeedLevel = 50;
+                else if(vSpeedCounter/6>8)
+                    vSpeedLevel = 100;
+                else
+                    vSpeedLevel = 1;
+
+
                 if(setLocalStatusIncreaseOrDecrease)
                 {
-                    outputResultString = CSBC.plusValue(setInputIntValue+1);
+                    outputResultString = CSBC.plusValue(setInputIntValue+vSpeedLevel);
                     outputResultInt = outputResultString;
                 }
                 else
                 {
-                    outputResultString = CSBC.minusValue(setInputIntValue-1);
+                    outputResultString = CSBC.minusValue(setInputIntValue-vSpeedLevel);
                     outputResultInt = outputResultString;
                 }
             }
@@ -57,6 +68,7 @@ Item
             anchors.fill: parent;
             onPressed:
             {
+                vSpeedCounter=0;
                 theAutoValue_Timer_Increase_Decrease.running = true;
             }
 

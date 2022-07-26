@@ -2,6 +2,7 @@ import QtQuick
 import QtQuick.Controls
 import "theControls"
 import "theScripts/controllerSpingBoxCountDown.js" as CSBC
+import "theScripts/updateCountDown.js" as UCD
 
 Item
 {
@@ -10,8 +11,8 @@ Item
 
 
     property int theHour: 10;
-    property int theMinute:994;
-    property int theSecond:502;
+    property int theMinute:1;
+    property int theSecond:30;
 
 
 
@@ -20,6 +21,7 @@ Item
     property int mavFontSizes: 30;
     property int mavTimerIntervalValue: 150;
 
+    property bool increaseDecreaseControllerStatusEnabled: false;
 
 
 
@@ -32,26 +34,72 @@ Item
         color:colorBG;
     }
 
+
+    Timer
+    {
+        id: globaTimer;
+        interval: 1000;
+        repeat: true;
+        running: false;
+
+        onTriggered:
+        {
+            var allObject = JSON.parse(UCD.updateCountDown(theHour,theMinute,theSecond));
+            theHour = allObject.h;
+            theMinute = allObject.m;
+            theSecond = allObject.s;
+
+            if(theHour<10)
+                txtHour.text = "0"+theHour;
+            else
+                txtHour.text = theHour;
+
+
+            if(theMinute<10)
+                txtMinute.text = "0"+theMinute;
+            else
+                txtMinute.text = theMinute;
+
+
+            if(theSecond<10)
+                txtSecond.text = "0"+theSecond;
+            else
+                txtSecond.text = theSecond;
+
+            if(theHour<=0&&theMinute<=0&&theSecond<=0)
+            {
+
+                increaseDecreaseControllerStatusEnabled=true;
+                idMyThreeBottomButtons.setCenterButtonText = "Start";
+
+                globaTimer.running=!increaseDecreaseControllerStatusEnabled;
+                hourIncrease.visible=increaseDecreaseControllerStatusEnabled;
+                hourDecrease.visible=increaseDecreaseControllerStatusEnabled;
+                minuteIncrease.visible=increaseDecreaseControllerStatusEnabled;
+                minuteDecrease.visible=increaseDecreaseControllerStatusEnabled;
+                secondIncrease.visible=increaseDecreaseControllerStatusEnabled;
+                secondDecrease.visible=increaseDecreaseControllerStatusEnabled;
+            }
+        }
+    }
+
     Rectangle
     {
         id:addNewTimer;
         width: parent.width/1.2;
-        height:parent.height/2;
-        color:"yellow"
+        height:parent.height/4;
         anchors
         {
             horizontalCenter:parent.horizontalCenter;
             verticalCenter:parent.verticalCenter;
-
         }
-
-
 
         Rectangle
         {
             id:baseSetTimer;
             width: parent.width;
-            height: parent.height/2;
+            height: parent.height;
+            anchors.centerIn: parent;
             Row
             {
                 anchors.fill: parent;
@@ -302,44 +350,85 @@ Item
                         }
                     }
 
-
-
-
                 }
 
+            }//end of row
 
-            }
+        }//end of base Set Timer
 
-        }
-        Rectangle
+    }//end of add new timer
+
+
+    MyThreeBottomButtons
+    {
+        id:idMyThreeBottomButtons
+        width: parent.width;
+        height:root.height/10.5;
+        setCenterButtonText: "Start";
+        setLeftButtonText: "Reset";
+        setRightButtonText: "Nothing";
+        anchors
         {
-            width: parent.width/2.5;
-            height: parent.height/6;
-            color:"black";
-            anchors.top:  baseSetTimer.bottom;
-            anchors.horizontalCenter: parent.horizontalCenter;
-            anchors.topMargin: 10;
-            radius:50;
-            Text
-            {
-                text:"Start";
-                anchors.centerIn: parent;
-                color:"white";
-            }
-            MouseArea
-            {
-                anchors.fill: parent;
-                onClicked:
-                {
-                    console.log("button add new timer added");
-                    InputContext.priv.inputItem.text = InputContext.priv.inputItem.textBeforeEditing
-                }
-            }
+            bottom:root.bottom;
+            bottomMargin:15;
         }
+        onCenterButtonPressed:
+        {
+            console.log("button pressed");
+            if((!(theHour<=0&&theMinute<=0&&theSecond<=0)) && idMyThreeBottomButtons.setCenterButtonText == "Start")
+            {
+                increaseDecreaseControllerStatusEnabled=false;
+                idMyThreeBottomButtons.setCenterButtonText = "Pause";
+
+                globaTimer.running=!increaseDecreaseControllerStatusEnabled;
+                hourIncrease.visible=increaseDecreaseControllerStatusEnabled;
+                hourDecrease.visible=increaseDecreaseControllerStatusEnabled;
+                minuteIncrease.visible=increaseDecreaseControllerStatusEnabled;
+                minuteDecrease.visible=increaseDecreaseControllerStatusEnabled;
+                secondIncrease.visible=increaseDecreaseControllerStatusEnabled;
+                secondDecrease.visible=increaseDecreaseControllerStatusEnabled;
+            }
+            else
+            {
+                console.log("button 22");
+                //button pause pressed
+                increaseDecreaseControllerStatusEnabled=true;
+                idMyThreeBottomButtons.setCenterButtonText = "Start";
+
+                globaTimer.running=!increaseDecreaseControllerStatusEnabled;
+                hourIncrease.visible=increaseDecreaseControllerStatusEnabled;
+                hourDecrease.visible=increaseDecreaseControllerStatusEnabled;
+                minuteIncrease.visible=increaseDecreaseControllerStatusEnabled;
+                minuteDecrease.visible=increaseDecreaseControllerStatusEnabled;
+                secondIncrease.visible=increaseDecreaseControllerStatusEnabled;
+                secondDecrease.visible=increaseDecreaseControllerStatusEnabled;
+            }
+
+        }
+        onLeftButtonPressed:
+        {
+            if(theHour>0&&theMinute>0&&theSecond>0)
+            {
+                increaseDecreaseControllerStatusEnabled=true;
+                txtHour.text = txtMinute.text = txtSecond.text = "00";
+                theHour = theMinute = theSecond = 0;
+
+                idMyThreeBottomButtons.setCenterButtonText = "Start";
+
+                globaTimer.running=!increaseDecreaseControllerStatusEnabled;
+                hourIncrease.visible=increaseDecreaseControllerStatusEnabled;
+                hourDecrease.visible=increaseDecreaseControllerStatusEnabled;
+                minuteIncrease.visible=increaseDecreaseControllerStatusEnabled;
+                minuteDecrease.visible=increaseDecreaseControllerStatusEnabled;
+                secondIncrease.visible=increaseDecreaseControllerStatusEnabled;
+                secondDecrease.visible=increaseDecreaseControllerStatusEnabled;
+            }
 
 
+        }
     }
 
 
 
-}
+}//end of item
+

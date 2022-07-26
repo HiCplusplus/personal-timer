@@ -11,6 +11,8 @@
         <file>CountDown.qml</file>
         <file>theScripts/controllerSpingBoxCountDown.js</file>
         <file>theControls/MyAutoValue_Increase_Decrease.qml</file>
+        <file>theControls/MyThreeBottomButtons.qml</file>
+        <file>theScripts/updateCountDown.js</file>
     </qresource>
     <qresource prefix="/thePictures"/>
 </RCC>
