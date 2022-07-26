@@ -9,6 +9,8 @@
         <file>CountUp.qml</file>
         <file>theScripts/updateCountUp.js</file>
         <file>CountDown.qml</file>
+        <file>theScripts/controllerSpingBoxCountDown.js</file>
+        <file>theControls/MyAutoValue_Increase_Decrease.qml</file>
     </qresource>
     <qresource prefix="/thePictures"/>
 </RCC>
