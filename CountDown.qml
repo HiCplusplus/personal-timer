@@ -11,9 +11,17 @@ Item
 
     property int theHour: 10;
     property int theMinute:994;
-    property int theSecond:0;
+    property int theSecond:502;
 
-    property int theTimerTriggered: 0;
+
+
+    //for MyAutoValue Increase Decrease.qml
+    property color mavColorTexts: "black";
+    property int mavFontSizes: 30;
+    property int mavTimerIntervalValue: 150;
+
+
+
 
     anchors.fill: parent;
     clip:true;
@@ -74,90 +82,54 @@ Item
                         height:35;
                         anchors.bottom: txtHour.top;
                         anchors.horizontalCenter: parent.horizontalCenter;
-                        Text
+                        MyAutoValue_Increase_Decrease
                         {
-                            text:"+";
-                            color:"black";
-                            font.pointSize: 30;
-                            anchors.centerIn: parent;
-                        }
-                        Timer
-                        {
-                            id: timerPlusHour;
-
-                            interval: 150;
-                            repeat: true;
-                            running: false;
-
-                            onTriggered:
-                            {
-                                txtHour.text = CSBC.plusValue(theHour+1);
-                                theHour = txtHour.text;
-                            }
-                        }
-                        MouseArea
-                        {
+                            id:hourIncrease;
                             anchors.fill: parent;
-                            onPressed:
-                            {
-                                timerPlusHour.running=true;
-                            }
 
-                            onReleased:
+                            setLocalStatusIncreaseOrDecrease: true;//false means decrease, true means  increase
+                            setColorTexts: mavColorTexts;
+                            setTextFontSize: mavFontSizes;
+                            setTimerIntervalValue: mavTimerIntervalValue;
+                            setInputIntValue: theHour;
+                            onOutputResultStringChanged:
                             {
-                                timerPlusHour.running=false;
-                                txtHour.text = CSBC.plusValue(theHour+1);
-                                theHour = txtHour.text;
+                                txtHour.text = outputResultString;
+                            }
+                            onOutputResultIntChanged:
+                            {
+                                theHour = outputResultInt;
                             }
                         }
                     }
+
                     Rectangle
                     {
                         width: 35;
                         height:35;
                         anchors.top: txtHour.bottom;
                         anchors.horizontalCenter: parent.horizontalCenter;
-                        Text
+                        MyAutoValue_Increase_Decrease
                         {
-                            text:"-";
-                            color:"black";
-                            font.pointSize: 30;
-                            anchors.centerIn: parent;
-                        }
-
-                        Timer
-                        {
-                            id: timerMinusHour;
-
-                            interval: 150;
-                            repeat: true;
-                            running: false;
-
-                            onTriggered:
-                            {
-                                txtHour.text = CSBC.minusValue(theHour-1);
-                                theHour = txtHour.text;
-                            }
-                        }
-
-                        MouseArea
-                        {
-                            id:mbyn;
+                            id:hourDecrease;
                             anchors.fill: parent;
 
-                            onPressed:
+                            setLocalStatusIncreaseOrDecrease: false;//false means decrease, true means  increase
+                            setColorTexts: mavColorTexts;
+                            setTextFontSize: mavFontSizes;
+                            setTimerIntervalValue: mavTimerIntervalValue;
+                            setInputIntValue: theHour;
+                            onOutputResultStringChanged:
                             {
-
-                                timerMinusHour.running=true;
+                                txtHour.text = outputResultString;
                             }
-                            onReleased:
+                            onOutputResultIntChanged:
                             {
-                                 timerMinusHour.running = false;
-                                 txtHour.text = CSBC.minusValue(theHour-1);
-                                 theHour = txtHour.text;
+                                theHour = outputResultInt;
                             }
                         }
                     }
+
 
                 }
                 Text
@@ -189,45 +161,30 @@ Item
                         font.pointSize: 40;
                         font.bold:true;
                     }
+
                     Rectangle
                     {
                         width: 35;
                         height:35;
                         anchors.bottom: txtMinute.top;
                         anchors.horizontalCenter: parent.horizontalCenter;
-                        Text
+                        MyAutoValue_Increase_Decrease
                         {
-                            text:"+";
-                            color:"black";
-                            font.pointSize: 30;
-                            anchors.centerIn: parent;
-                        }
-                        Timer
-                        {
-                            id: timerPlusMinute;
-                            interval: 150;
-                            repeat: true;
-                            running: false;
-
-                            onTriggered:
-                            {
-                                txtMinute.text = CSBC.plusValue(theMinute+1);
-                                theMinute = txtMinute.text;
-                            }
-                        }
-                        MouseArea
-                        {
+                            id:minuteIncrease;
                             anchors.fill: parent;
-                            onPressed:
-                            {
-                                timerPlusMinute.running = true;
-                            }
 
-                            onReleased:
+                            setLocalStatusIncreaseOrDecrease: true;//false means decrease, true means  increase
+                            setColorTexts: mavColorTexts;
+                            setTextFontSize: mavFontSizes;
+                            setTimerIntervalValue: mavTimerIntervalValue;
+                            setInputIntValue: theMinute;
+                            onOutputResultStringChanged:
                             {
-                                timerPlusMinute.running = false;
-                                txtMinute.text = CSBC.plusValue(theMinute+1);
-                                theMinute = txtMinute.text;
+                                txtMinute.text = outputResultString;
+                            }
+                            onOutputResultIntChanged:
+                            {
+                                theMinute = outputResultInt;
                             }
                         }
                     }
@@ -237,42 +194,27 @@ Item
                         height:35;
                         anchors.top: txtMinute.bottom;
                         anchors.horizontalCenter: parent.horizontalCenter;
-                        Text
+                        MyAutoValue_Increase_Decrease
                         {
-                            text:"-";
-                            color:"black";
-                            font.pointSize: 30;
-                            anchors.centerIn: parent;
-                        }
-                        Timer
-                        {
-                            id: timerMinusMinute;
-                            interval: 150;
-                            repeat: true;
-                            running: false;
-
-                            onTriggered:
-                            {
-                                txtMinute.text = CSBC.minusValue(theMinute-1);
-                                theMinute = txtMinute.text;
-                            }
-                        }
-                        MouseArea
-                        {
+                            id:minuteDecrease;
                             anchors.fill: parent;
-                            onPressed:
-                            {
-                                timerMinusMinute.running = true;
-                            }
 
-                            onReleased:
+                            setLocalStatusIncreaseOrDecrease: false;//false means decrease, true means  increase
+                            setColorTexts: mavColorTexts;
+                            setTextFontSize: mavFontSizes;
+                            setTimerIntervalValue: mavTimerIntervalValue;
+                            setInputIntValue: theMinute;
+                            onOutputResultStringChanged:
                             {
-                                timerMinusMinute.running = false;
-                                txtMinute.text = CSBC.minusValue(theMinute-1);
-                                theMinute = txtMinute.text;
+                                txtMinute.text = outputResultString;
+                            }
+                            onOutputResultIntChanged:
+                            {
+                                theMinute = outputResultInt;
                             }
                         }
                     }
+
                 }
                 Text
                 {
@@ -289,6 +231,7 @@ Item
                     height:parent.height;
                     Text
                     {
+                        id:labelSeconds;
                         text:"Seconds";
                         color:"black";
                         anchors.horizontalCenter:parent.horizontalCenter;
@@ -309,46 +252,59 @@ Item
                         height:35;
                         anchors.bottom: txtSecond.top;
                         anchors.horizontalCenter: parent.horizontalCenter;
-                        Text
+                        MyAutoValue_Increase_Decrease
                         {
-                            text:"+";
-                            color:"black";
-                            font.pointSize: 30;
-                            anchors.centerIn: parent;
-                        }
-                        MouseArea
-                        {
+                            id:secondIncrease;
                             anchors.fill: parent;
-                            onClicked:
+
+                            setLocalStatusIncreaseOrDecrease: true;//false means decrease, true means  increase
+                            setColorTexts: mavColorTexts;
+                            setTextFontSize: mavFontSizes;
+                            setTimerIntervalValue: mavTimerIntervalValue;
+                            setInputIntValue: theSecond;
+                            onOutputResultStringChanged:
                             {
-                                txtSecond.text = CSBC.plusValue(theSecond+1);
-                                theSecond = txtSecond.text;
+                                txtSecond.text = outputResultString;
+                            }
+                            onOutputResultIntChanged:
+                            {
+                                theSecond = outputResultInt;
                             }
                         }
                     }
+
+
+
                     Rectangle
                     {
                         width: 35;
                         height:35;
                         anchors.top: txtSecond.bottom;
                         anchors.horizontalCenter: parent.horizontalCenter;
-                        Text
+                        MyAutoValue_Increase_Decrease
                         {
-                            text:"-";
-                            color:"black";
-                            font.pointSize: 30;
-                            anchors.centerIn: parent;
-                        }
-                        MouseArea
-                        {
+                            id:secondDecrease;
                             anchors.fill: parent;
-                            onClicked:
+
+                            setLocalStatusIncreaseOrDecrease: false;//false means decrease, true means  increase
+                            setColorTexts: mavColorTexts;
+                            setTextFontSize: mavFontSizes;
+                            setTimerIntervalValue: mavTimerIntervalValue;
+                            setInputIntValue: theSecond;
+                            onOutputResultStringChanged:
                             {
-                                txtSecond.text = CSBC.minusValue(theSecond-1);
-                                theSecond = txtSecond.text;
+                                txtSecond.text = outputResultString;
+                            }
+                            onOutputResultIntChanged:
+                            {
+                                theSecond = outputResultInt;
                             }
                         }
                     }
+
+
+
+
                 }
 
 
