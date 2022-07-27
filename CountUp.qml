@@ -1,14 +1,17 @@
 import QtQuick
 import "theScripts/updateCountUp.js" as UCUP
 import "theControls"
+import QtQuick.Controls
+
+
 Item
 {
     clip:true;
-    property int theDay: 0;
-    property int theHour: 0;
-    property int theMinute: 0;
-    property int theSecond: 0;
-
+    property int theDay: 999 ;
+    property int theHour: 999;
+    property int theMinute: 999;
+    property int theSecond: 999;
+    property int theLapIndex:0;
 
     property color colorButtons: "orange";
     property color colorButtonTexts: "white";
@@ -103,8 +106,152 @@ Item
 
     }//end of baseCountup
 
+    Rectangle
+    {
+        id:baseLapList;
+        width: baseCountUp.width;
+        height:parent.height/2.1;
+        visible: false;
+        color:"white";
+        anchors
+        {
+            top:baseCountUp.bottom;
+            topMargin:baseCountUp.height/2.7;
+            horizontalCenter:parent.horizontalCenter;
+        }
+
+        Rectangle
+        {
+            id:titleLapList;
+            width: parent.width;
+            height:50;
+            color:"transparent";
+            Rectangle
+            {
+                id:laplabell;
+                width: parent.width/3;
+                height: parent.height;
+                anchors.left: parent.left;
+                color:"transparent";
+                Text
+                {
+
+                    text:"Lap No.";
+                    font.pointSize: 12;
+                    anchors.centerIn:parent;
+                }
+            }
+            Rectangle
+            {
+                id:laptimeslabel;
+                width: parent.width/3;
+                height: parent.height;
+                anchors.horizontalCenter: parent.horizontalCenter;
+                color:"transparent";
+                Text
+                {
+
+                    text:"Lap times";
+                    font.pointSize: 12;
+                    anchors.centerIn:parent;
+                }
+            }
+            Rectangle
+            {
+                id:overalltimelabel;
+                width: parent.width/3;
+                height: parent.height;
+                anchors.right: parent.right;
+                color:"transparent";
+                Text
+                {
+                    text:"Overall time";
+                    font.pointSize: 12;
+                    anchors.centerIn:parent;
+                }
+            }
+
+        }
 
 
+
+
+
+
+
+        ListView
+        {
+            id:listviewLaps
+            anchors
+            {
+                top:titleLapList.bottom;
+                left:parent.left;
+                right:parent.right;
+                bottom:parent.bottom;
+            }
+            clip:true;
+            model: ListModel
+            {
+                id:listModelData;
+            }
+            delegate: Item
+            {
+                id:something
+                width: 100;
+                height: 50;
+                Rectangle
+                {
+                    id:some1;
+                    width: laplabell.width;
+                    height: laplabell.height;
+//                    anchors.left:laplabell.left;
+                    color:"transparent";
+                    Text
+                    {
+                        anchors.centerIn: some1;
+                        text:lapId;
+                    }
+                }
+                Rectangle
+                {
+                    id:some2;
+                    width: some1.width;
+                    height: laplabell.height;
+                    anchors.left:some1.right;
+                    color:"transparent";
+                    Text
+                    {
+                        anchors.centerIn: some2;
+                        text:timee;
+                    }
+                }
+                Rectangle
+                {
+                    id:some3;
+                    width: some2.width;
+                    height: laplabell.height;
+                    anchors.left:some2.right;
+                    color:"transparent";
+                    Text
+                    {
+                        anchors.centerIn: some3;
+                        text:timee;
+                    }
+                }
+
+
+            }
+
+//            Component.onCompleted:
+//            {
+//                listModelData.append({
+//                    timee: "1010",
+//                    lapId: 4
+//                });
+//            }
+        }
+
+    }
 
 
 
@@ -143,11 +290,38 @@ Item
             setCenterButtonText= "Start";
             theDay = theHour = theMinute = theSecond = 0;
             txtNumbers.text = "00:00:00:00";
-            baseCountUp.anchors.topMargin= parent.height/5.5;
+            baseCountUp.anchors.topMargin= parent.height/2.7;
+            if(baseLapList.visible)
+                baseLapList.visible=false;
+            while(theLapIndex>0)
+            {
+                theLapIndex--;
+                listModelData.remove(theLapIndex);
+            }
+
+
         }
         onRightButtonPressed:
         {
-             baseCountUp.anchors.topMargin= parent.height/8;
+            if(idMyThreeBottomButtons.setCenterButtonText != "Start" && idMyThreeBottomButtons.setCenterButtonText != "Resume")
+            {
+                baseCountUp.anchors.topMargin = parent.height/8;
+                baseLapList.visible=true;
+                var temp_value;
+                if(theDay<=0 && theHour<=0)
+                     temp_value = txtNumbers.text.slice(6);
+                else if(theDay<=0)
+                    temp_value = txtNumbers.text.slice(3);
+                else
+                    temp_value = txtNumbers.text;
+
+
+                listModelData.append
+                ({
+                    timee: temp_value,
+                    lapId: ++theLapIndex
+                }); //error QML Rectangle: Cannot anchor to an item that isn't a parent or sibling.
+            }
         }
     }
 
