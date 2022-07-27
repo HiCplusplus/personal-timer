@@ -1,6 +1,6 @@
 import QtQuick
 import "theScripts/updateCountUp.js" as UCUP
-
+import "theControls"
 Item
 {
     clip:true;
@@ -15,7 +15,7 @@ Item
 
 
     property color colorButtonSecond: "pink";
-    property color colorButtonSecondTexts: "black";
+    property color  colorButtonSecondTexts: "black";
 
     anchors.fill: parent;
     Rectangle
@@ -71,10 +71,11 @@ Item
         id:baseCountUp;
         width: root.width/1.2;
         height:root.height/5.5;
-        anchors.verticalCenter: root.verticalCenter;
+//        anchors.verticalCenter: root.verticalCenter;
+        anchors.top: root.top;
+        anchors.topMargin: parent.height/2.7;
         anchors.horizontalCenter: root.horizontalCenter;
 
-        color:"white";
         Text
         {
             id:txtNumbers;
@@ -84,7 +85,6 @@ Item
             {
                 verticalCenter:parent.verticalCenter;
                 horizontalCenter:parent.horizontalCenter;
-
             }
         }
 
@@ -101,200 +101,56 @@ Item
             }
         }
 
-    }
+    }//end of baseCountup
 
-    Rectangle
+
+
+
+
+
+
+    MyThreeBottomButtons
     {
-        id:baseButtonStartStop;
-        width: root.width/1.25;
-        height:root.height/15;
-//        anchors.verticalCenter: root.verticalCenter;
-        anchors.horizontalCenter: root.horizontalCenter;
-        anchors
-        {
-            top:baseCountUp.bottom;
-            topMargin:50;
-//            bottom:root.bottom;
-//            bottomMargin: root.height/5;
-        }
-
-
-        Rectangle
-        {
-            id:btnStart;
-            width:parent.width/2.2;
-            height:parent.height;
-            color:"pink";
-            radius:20;
-            anchors.left: parent.left;
-            anchors.rightMargin: 10;
-            Text
-            {
-                text:"Start";
-                font.pointSize: 20;
-                font.bold: true;
-                anchors
-                {
-                    verticalCenter:parent.verticalCenter;
-                    horizontalCenter:parent.horizontalCenter;
-                }
-            }
-            MouseArea
-            {
-                anchors.fill: parent;
-                onClicked:
-                {
-                    theCountUpTimer.start();
-                }
-            }
-        }
-        Rectangle
-        {
-            id:btnStop;
-            width:parent.width/2.2;
-            height:parent.height;
-            color:"pink";
-            radius:20;
-            anchors.right: parent.right;
-            Text
-            {
-                text:"Stop";
-                font.pointSize: 20;
-                font.bold: true;
-                anchors
-                {
-                    verticalCenter:parent.verticalCenter;
-                    horizontalCenter:parent.horizontalCenter;
-                }
-            }
-            MouseArea
-            {
-                anchors.fill: parent;
-                onClicked:
-                {
-                    theCountUpTimer.stop();
-                }
-            }
-        }
-    }
-
-    Rectangle
-    {
-        id:baseButtons;
+        id:idMyThreeBottomButtons;
         width: root.width;
         height:root.height/10.5;
+        setCenterButtonText: "Start";
+        setLeftButtonText: "Reset";
+        setRightButtonText: "Lap";
         anchors
         {
             bottom:root.bottom;
             bottomMargin:15;
         }
-
-        Rectangle
+        onCenterButtonPressed:
         {
-            id:btnAddNew;
-            width:parent.height;
-            height:parent.height;
-            anchors
+            if(!theCountUpTimer.running && (setCenterButtonText == "Start"||setCenterButtonText=="Resume"))
             {
-                horizontalCenter:parent.horizontalCenter;
-                verticalCenter:parent.verticalCenter;
+                theCountUpTimer.start();
+                setCenterButtonText= "Pause";
             }
-            color:colorButtons;
-            radius:50;
-            Text
+            else
             {
-                font.pointSize: 30;
-                text: "+";
-                color:colorButtonTexts;
-                font.bold: true;
-                anchors
-                {
-                    centerIn:parent;
-                }
-            }
-
-            MouseArea
-            {
-                anchors.fill: parent;
-                onClicked:
-                {
-                    console.log("add button clicked");
-                }
+                setCenterButtonText= "Resume";
+                theCountUpTimer.stop();
             }
         }
-
-        Rectangle
+        onLeftButtonPressed:
         {
-            id:btnClearAll;
-            width:parent.width/1.7;
-            height:parent.height/1.7;
-            anchors
-            {
-                verticalCenter:parent.verticalCenter;
-                right:btnAddNew.left;
-                rightMargin:20;
-                left:baseButtons.left;
-                leftMargin:-25;
-            }
-            color:colorButtonSecond;
-            radius:50;
-            Text
-            {
-                text:"Clear All";
-                color:colorButtonSecondTexts;
-                anchors
-                {
-                    horizontalCenter:parent.horizontalCenter;
-                    verticalCenter:parent.verticalCenter;
-                }
-            }
-            MouseArea
-            {
-                anchors.fill: parent;
-                onClicked:
-                {
-                    console.log("clearall button clicked");
-                }
-            }
+            if(theCountUpTimer.running)
+                theCountUpTimer.stop();
+
+            setCenterButtonText= "Start";
+            theDay = theHour = theMinute = theSecond = 0;
+            txtNumbers.text = "00:00:00:00";
+            baseCountUp.anchors.topMargin= parent.height/5.5;
         }
-
-
-        Rectangle
+        onRightButtonPressed:
         {
-            id:btnIdk;
-            width:parent.width/1.7;
-            height:parent.height/1.7;
-            anchors
-            {
-                verticalCenter:parent.verticalCenter;
-                left:btnAddNew.right;
-                leftMargin:20;
-                right:baseButtons.right;
-                rightMargin:-25;
-            }
-            color:colorButtonSecond
-            radius:50;
-            Text
-            {
-                text:"2 Button";
-                color:colorButtonSecondTexts;
-                anchors
-                {
-                    horizontalCenter:parent.horizontalCenter;
-                    verticalCenter:parent.verticalCenter;
-                }
-            }
-            MouseArea
-            {
-                anchors.fill: parent;
-                onClicked:
-                {
-                    console.log("idkAll button clicked");
-                }
-            }
+             baseCountUp.anchors.topMargin= parent.height/8;
         }
-
-
     }
+
+
 
 }

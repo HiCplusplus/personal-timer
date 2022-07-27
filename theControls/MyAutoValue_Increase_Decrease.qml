@@ -41,7 +41,7 @@ Item
             {
                 vSpeedCounter++;
 
-                if(vSpeedCounter/6>2)
+                if(vSpeedCounter/6>3)
                     vSpeedLevel = 10;
                 else if(vSpeedCounter/6>5)
                     vSpeedLevel = 50;

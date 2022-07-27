@@ -19,7 +19,7 @@ Item
     //for MyAutoValue Increase Decrease.qml
     property color mavColorTexts: "black";
     property int mavFontSizes: 30;
-    property int mavTimerIntervalValue: 150;
+    property int mavTimerIntervalValue: 200;
 
     property bool increaseDecreaseControllerStatusEnabled: false;
 
@@ -366,7 +366,7 @@ Item
         height:root.height/10.5;
         setCenterButtonText: "Start";
         setLeftButtonText: "Reset";
-        setRightButtonText: "Nothing";
+        setRightButtonText: "";
         anchors
         {
             bottom:root.bottom;

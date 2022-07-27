@@ -12,7 +12,7 @@ Item
     property string myIndicatorIndexCText: "C";
     property int indexesWidth: rowArea.width/3.5;
     property int indexesHeight: rowArea.height;
-    property int indexesRadius: 20;
+    property int indexesRadius: 50;
     property color colorBG: "white";
     property color colorTxt: "black";
     property color colorBtn: "lime";
