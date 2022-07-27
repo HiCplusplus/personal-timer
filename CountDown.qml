@@ -374,7 +374,6 @@ Item
         }
         onCenterButtonPressed:
         {
-            console.log("button pressed");
             if((!(theHour<=0&&theMinute<=0&&theSecond<=0)) && idMyThreeBottomButtons.setCenterButtonText == "Start")
             {
                 increaseDecreaseControllerStatusEnabled=false;
@@ -390,7 +389,6 @@ Item
             }
             else
             {
-                console.log("button 22");
                 //button pause pressed
                 increaseDecreaseControllerStatusEnabled=true;
                 idMyThreeBottomButtons.setCenterButtonText = "Start";
@@ -407,7 +405,7 @@ Item
         }
         onLeftButtonPressed:
         {
-            if(theHour>0&&theMinute>0&&theSecond>0)
+            if(theHour>0 || theMinute>0 || theSecond>0)
             {
                 increaseDecreaseControllerStatusEnabled=true;
                 txtHour.text = txtMinute.text = txtSecond.text = "00";
