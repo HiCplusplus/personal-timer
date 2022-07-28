@@ -13,6 +13,9 @@
         <file>theControls/MyAutoValue_Increase_Decrease.qml</file>
         <file>theControls/MyThreeBottomButtons.qml</file>
         <file>theScripts/updateCountDown.js</file>
+        <file>TimerDown.qml</file>
+        <file>theControls/MyMenu.qml</file>
+        <file>theControls/MySwitch.qml</file>
     </qresource>
     <qresource prefix="/thePictures"/>
 </RCC>

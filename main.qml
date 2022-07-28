@@ -40,31 +40,19 @@ Window
     property color colorBackgroundMenu: "#f7ea9e";//
 
 
-    //icons bar starts
-    Rectangle
-    {
-        id:iconsBar;
-        width: root.width;
-        height:root.height/15;
-        anchors.top:root.top;
-        color:colorBackgroundMenu;
-        Text
-        {
-            text: "Timer1";
-            font.bold: true;
-            anchors
-            {
-                left:parent.left;
-                leftMargin:15;
-                verticalCenter: parent.verticalCenter;
-            }
-
-        }
-    }
-    //icons bar ends
-
-
-
+   Rectangle
+   {
+       id:iconsBar;
+       width: root.width;
+       height:root.height/15;
+       anchors.top:root.top;
+       MyMenu
+       {
+            cBGMenu: colorBackgroundMenu;
+            colorTextMenu:colorTitles;
+            textTitleMenu:"Mein Timer 1, v0.5";
+       }
+   }
 
     //swipe base Timer starts
     Rectangle
@@ -88,7 +76,7 @@ Window
         Item
         {
             id:itemBaseViewTimers
-            property int swipeViewIndex: 1;
+            property int swipeViewIndex: 0;
 
             onSwipeViewIndexChanged:
             {
@@ -110,11 +98,9 @@ Window
                 Item
                 {
                     id: firstPage
-                    Rectangle
+                    TimerDown
                     {
-                        width:100;
-                        height:100;
-                        color:"Red";
+
                     }
                 }
                 Item

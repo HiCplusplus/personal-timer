@@ -11,7 +11,7 @@ Item
     property string myIndicatorIndexBText: "B";
     property string myIndicatorIndexCText: "C";
     property int indexesWidth: rowArea.width/3.5;
-    property int indexesHeight: rowArea.height;
+    property int indexesHeight: 50; //rowArea.height
     property int indexesRadius: 50;
     property color colorBG: "white";
     property color colorTxt: "black";

@@ -27,7 +27,8 @@ Item
         {
             id:btnAddNew;
             width: parent.width/3.5;
-            height:parent.height/1.3;
+            height: 50; //parent.height/1.3
+            visible: setCenterButtonText==""? false:true;
             anchors
             {
                 horizontalCenter:parent.horizontalCenter;
@@ -58,7 +59,8 @@ Item
         {
             id:btnClearAll;
             width:parent.width/1.7;
-            height:parent.height/1.7;
+            height: 40; //parent.height/1.7
+            visible: setLeftButtonText==""? false:true;
             anchors
             {
                 verticalCenter:parent.verticalCenter;
@@ -91,7 +93,8 @@ Item
         {
             id:btnIdk;
             width:parent.width/1.7;
-            height:parent.height/1.7;
+            height: 40; //parent.height/1.7;
+            visible: setRightButtonText==""? false:true;
             anchors
             {
                 verticalCenter:parent.verticalCenter;
@@ -104,6 +107,7 @@ Item
             radius:50;
             Text
             {
+
                 text:setRightButtonText;
                 color:colorButtonSecondTexts;
                 anchors
