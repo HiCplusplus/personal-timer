@@ -3,6 +3,7 @@ import QtQuick.Controls
 import "theControls"
 import "theScripts/controllerSpingBoxCountDown.js" as CSBC
 import "theScripts/updateCountDown.js" as UCD
+import QtMultimedia
 
 Item
 {
@@ -10,9 +11,9 @@ Item
     property color colorTexts: "black";
 
 
-    property int theHour: 10;
-    property int theMinute:1;
-    property int theSecond:30;
+    property int theHour: 0;
+    property int theMinute:0;
+    property int theSecond:2;
 
 
 
@@ -33,6 +34,13 @@ Item
         anchors.fill: parent;
         color:colorBG;
     }
+
+    SoundEffect
+    {
+        id:theSoundEffectTimesUp;
+        source: "./theSounds/mixkit-elevator-tone-2863.wav"; //from https://mixkit.co/free-sound-effects/
+    }
+
 
 
     Timer
@@ -68,17 +76,8 @@ Item
 
             if(theHour<=0&&theMinute<=0&&theSecond<=0)
             {
-
-                increaseDecreaseControllerStatusEnabled=true;
-                idMyThreeBottomButtons.setCenterButtonText = "Start";
-
-                globaTimer.running=!increaseDecreaseControllerStatusEnabled;
-                hourIncrease.visible=increaseDecreaseControllerStatusEnabled;
-                hourDecrease.visible=increaseDecreaseControllerStatusEnabled;
-                minuteIncrease.visible=increaseDecreaseControllerStatusEnabled;
-                minuteDecrease.visible=increaseDecreaseControllerStatusEnabled;
-                secondIncrease.visible=increaseDecreaseControllerStatusEnabled;
-                secondDecrease.visible=increaseDecreaseControllerStatusEnabled;
+                theSoundEffectTimesUp.play();
+                myDismiss.visible=true;
             }
         }
     }
@@ -423,6 +422,27 @@ Item
             }
 
 
+        }
+    }//end of three buttons
+
+    DismissPage
+    {
+        //idDropArea.x+(idDropArea.width/4)
+        id:myDismiss;
+        visible: false;
+        onStatusDismiss:
+        {
+            theSoundEffectTimesUp.stop();
+            myDismiss.visible=false;
+            increaseDecreaseControllerStatusEnabled=true;
+            idMyThreeBottomButtons.setCenterButtonText = "Start";
+            globaTimer.running=!increaseDecreaseControllerStatusEnabled;
+            hourIncrease.visible=increaseDecreaseControllerStatusEnabled;
+            hourDecrease.visible=increaseDecreaseControllerStatusEnabled;
+            minuteIncrease.visible=increaseDecreaseControllerStatusEnabled;
+            minuteDecrease.visible=increaseDecreaseControllerStatusEnabled;
+            secondIncrease.visible=increaseDecreaseControllerStatusEnabled;
+            secondDecrease.visible=increaseDecreaseControllerStatusEnabled;
         }
     }
 

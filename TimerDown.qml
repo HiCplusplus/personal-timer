@@ -57,7 +57,7 @@ Item
 
                 Text
                 {
-                    anchors.centerIn: some2;
+                    anchors.centerIn: baseAlarm;
                     text:name;
                 }
 
@@ -78,7 +78,7 @@ Item
                         setBorderWidth: 4;
                         onStatusSwitch:
                         {
-
+                            //HERE LEAVE NOTHING =-=================================================================================s
                         }
                     }
                 }
