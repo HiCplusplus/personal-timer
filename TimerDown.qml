@@ -27,43 +27,46 @@ Item
             id:listModelMain;
             ListElement
             {
-                name: "ss";
-                cost: 2.45
+                name: "00:20";
+                cost: 2.45;
             }
         }
         delegate:
         Item
         {
             id:baseItemDelegate;
-            width: parent.width;
-            height: parent.height;
-            anchors
-            {
-
-            }
-
+            anchors.fill: parent;
             Rectangle
             {
                 id:baseAlarm;
                 width: root.width/1.10;
                 height: 100;
-                color:"purple";
+                border.width: 3;
+                border.color:"gray";
+
+                radius:15;
                 anchors
                 {
                     horizontalCenter: baseItemDelegate.horizontalCenter;
-                    topMargin: 10;
+                    topMargin: 15;
                     top:baseItemDelegate.top;
                 }
 
                 Text
                 {
-                    anchors.centerIn: baseAlarm;
+                    anchors
+                    {
+                        verticalCenter:parent.verticalCenter;
+                        left:parent.left;
+                        leftMargin: 30;
+                    }
+                    font.pointSize: 30;
                     text:name;
                 }
 
                 Rectangle
                 {
-                    width: 60;
+                    width: 65;
                     height: width/2;
                     color:"transparent";
                     anchors
@@ -76,6 +79,7 @@ Item
                     MySwitch
                     {
                         setBorderWidth: 4;
+                        setStatusSwitch:false;
                         onStatusSwitch:
                         {
                             //HERE LEAVE NOTHING =-=================================================================================s

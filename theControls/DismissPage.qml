@@ -15,24 +15,25 @@ Item
             height: 100;
             border.color: "gray";
             border.width: 4;
-
             radius:100;
             anchors.centerIn: parent;
         }
 
         anchors.fill: parent;
-        color:"white";
+        color:"yellow";
         DropArea
         {
             id:idDropArea;
             anchors.centerIn: parent;
-            width: 100;
+            width: parent.width;
             height: 100;
+
 
             Rectangle
             {
                 anchors.fill: parent;
-                color:"transparent";
+
+                color:"red";
             }
             onContainsDragChanged: //has Error  QML Rectangle (parent or ancestor of QQuickDragAttached): active cannot be changed from within a drag event handler
             {
@@ -44,12 +45,12 @@ Item
         Rectangle
         {
             anchors.centerIn: idDropArea;
-            width: idDropArea.width;
+            width: 100;
             height: width;
             color: "black";
-            radius: 50;
+            radius: 100;
             Drag.active: dragArea.drag.active
-//            Drag.hotSpot.x: 10;Drag.hotSpot.y: 10
+            Drag.hotSpot.x: 10;Drag.hotSpot.y: 10
             Text
             {
                 text: "✖";

@@ -12,7 +12,8 @@ Window
     width:720/2+10;
     height:1339/1.7;
     visible: true;
-    title: qsTr("Timer 1");
+    property string appTitle: "Mein Timer 1, v0.5";
+    title: qsTr(appTitle);
 
 
     Rectangle
@@ -50,7 +51,7 @@ Window
        {
             cBGMenu: colorBackgroundMenu;
             colorTextMenu:colorTitles;
-            textTitleMenu:"Mein Timer 1, v0.5";
+            textTitleMenu:appTitle;
        }
    }
 

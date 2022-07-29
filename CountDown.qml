@@ -13,7 +13,7 @@ Item
 
     property int theHour: 0;
     property int theMinute:0;
-    property int theSecond:2;
+    property int theSecond:0;
 
 
 
@@ -427,7 +427,7 @@ Item
 
     DismissPage
     {
-        //idDropArea.x+(idDropArea.width/4)
+
         id:myDismiss;
         visible: false;
         onStatusDismiss:

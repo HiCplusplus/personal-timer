@@ -9,15 +9,16 @@ Item
     property int setAnimationDuration:150;
     property int setBorderWidth: 6;
     signal statusSwitch;
+    property bool setStatusSwitch:false;
 
     anchors.fill: parent;
     Rectangle
     {
         id:mySwitsch;
         width:  setSwitchWidth;
-        height: width/2;
+        height: width/1.80;
         radius:50;
-        color:setColorActived;
+        color:setStatusSwitch<=0? setColorDeactived: setColorActived;
         Rectangle
         {
             id:switchCircle;
@@ -25,8 +26,8 @@ Item
             height: width;
             color:setTotalColor;
             radius:50;
-            x:mySwitsch.width/5;
-            y:setSwitchWidth/8;
+            x:setStatusSwitch<=0? mySwitsch.width/5: mySwitsch.width/1.90;
+            y:setSwitchWidth/7;
         }
         border.width:setBorderWidth;
         border.color: setTotalColor;
@@ -38,10 +39,12 @@ Item
                 if(switchCircle.x>mySwitsch.width/5)
                 {
                     animactionDeactive.running=true;
+                    mySwitsch.color = setColorDeactived;
                 }
                 else
                 {
                     animationAcvite.running=true;
+                    mySwitsch.color = setColorActived;
                 }
 
 
