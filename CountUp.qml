@@ -16,7 +16,7 @@ Item
     property color colorButtons: "orange";
     property color colorButtonTexts: "white";
 
-
+    property color setColorBG: "white";
     property color colorButtonSecond: "pink";
     property color  colorButtonSecondTexts: "black";
 
@@ -25,6 +25,7 @@ Item
     {
         id:root;
         anchors.fill: parent;
+        color:setColorBG;
     }
 
     Timer
@@ -78,7 +79,7 @@ Item
         anchors.top: root.top;
         anchors.topMargin: parent.height/2.7;
         anchors.horizontalCenter: root.horizontalCenter;
-
+        color:"transparent";
         Text
         {
             id:txtNumbers;
@@ -112,7 +113,7 @@ Item
         width: baseCountUp.width;
         height:parent.height/2.1;
         visible: false;
-        color:"white";
+        color:"transparent";
         anchors
         {
             top:baseCountUp.bottom;
@@ -303,7 +304,7 @@ Item
         }
         onRightButtonPressed:
         {
-            if(idMyThreeBottomButtons.setCenterButtonText != "Start" && idMyThreeBottomButtons.setCenterButtonText != "Resume")
+            if(idMyThreeBottomButtons.setCenterButtonText != "Start") //&& idMyThreeBottomButtons.setCenterButtonText != "Resume"
             {
                 baseCountUp.anchors.topMargin = parent.height/8;
                 baseLapList.visible=true;

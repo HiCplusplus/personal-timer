@@ -12,6 +12,7 @@ Item
     property int outputResultInt:0;
     property int vSpeedCounter: 0;
     property int vSpeedLevel: 1;
+    property color setColorBG: "transparent";
 
     /*
       use like this for outputResult when use component (example for txtMinute)
@@ -23,6 +24,7 @@ Item
     {
         width: 35;
         height:35;
+        color:setColorBG;
         Text
         {
             text:setLocalStatusIncreaseOrDecrease? "+":"-";

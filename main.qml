@@ -12,7 +12,7 @@ Window
     width:720/2+10;
     height:1339/1.7;
     visible: true;
-    property string appTitle: "Mein Timer 1, v0.5";
+    property string appTitle: "MeinAlarm v.5";
     title: qsTr(appTitle);
 
 
@@ -30,15 +30,15 @@ Window
     property string directory_Icons: "thePictures/";
     property int fontSizeTitles: mainWindow.width<700 ? 45:65;
 
-    property color colorLines: "black";
-    property color colorTitles: "black";
-    property color colorTextes: "black";
+    property color colorLines: "#3E386C";
+    property color colorTitles: "#3E386C";
+    property color colorTextes: "#3E386C";
 
     property color colorBackgroundIcons: "transparent";
-    property color colorBackgrounds: "white";
+    property color colorBackgrounds: "#F6F6F6";
     property color colorButtons: "orange";
     property color colorButtonsInactive: "transparent";
-    property color colorBackgroundMenu: "#f7ea9e";//
+    property color colorBackgroundMenu: "#F6F6F6";//
 
 
    Rectangle
@@ -47,6 +47,7 @@ Window
        width: root.width;
        height:root.height/15;
        anchors.top:root.top;
+       color:colorBackgrounds;
        MyMenu
        {
             cBGMenu: colorBackgroundMenu;
@@ -61,6 +62,7 @@ Window
         id:baseTimers;
         visible: true;
         clip: true;
+        color:colorBackgrounds;
         anchors
         {
             top:iconsBar.bottom;
@@ -101,7 +103,7 @@ Window
                     id: firstPage
                     TimerDown
                     {
-
+                        setColorBG: colorBackgrounds;
                     }
                 }
                 Item
@@ -109,7 +111,7 @@ Window
                     id: secondPage
                     CountUp
                     {
-
+                        setColorBG: colorBackgrounds;
                     }
 
 
@@ -119,7 +121,7 @@ Window
                     id: thirdPage
                     CountDown
                     {
-
+                        setColorBG: colorBackgrounds;
                     }
                 }
             }
@@ -140,108 +142,11 @@ Window
         myIndicatorIndexAText: "Alarm";
         myIndicatorIndexBText: "StopWatch";
         myIndicatorIndexCText: "Timer";
-        colorBG: colorBackgrounds;
+        colorBG: "white";//colorBackgrounds
         colorTxt: colorTextes;
         colorBtn: colorButtons;
         colorBtnInactive: colorButtonsInactive;
         anchors.bottom:root.bottom;
     }
     //timer indicator ends
-
-
-
-
-
-
-
-    //settings start
-    Settings
-    {
-        id:settingsPage;
-        visible: false;
-        fontSize: fontSizeTitles;
-        cBG: colorBackgrounds;
-        cTitle: colorTitles;
-        cLine: colorLines;
-    }
-    //settings ends
-
-
-
-    //button go to settings starts
-    Rectangle
-    {
-        id:iconSettings;
-        width:iconWidthAndHeight;
-        height:iconWidthAndHeight;
-        visible: true;
-        color:colorBackgroundIcons;
-        anchors
-        {
-            right:root.right;
-//            top:root.top;
-//            topMargin: mainWindow.height/50;
-            rightMargin:mainWindow.width/50;
-            verticalCenter: iconsBar.verticalCenter;
-        }
-
-        Image
-        {
-            anchors.fill: parent;
-            source: directory_Icons + fileIcon_Settings;
-        }
-        MouseArea
-        {
-            anchors.fill: iconSettings;
-            onPressed:
-            {
-                iconSettings.visible = false;
-                settingsPage.visible = true;
-                iconBackToHome.visible = true;
-            }
-        }
-    }
-    //button go to settings ends
-
-
-    //button back to home starts
-    Rectangle
-    {
-        id:iconBackToHome;
-        width: iconWidthAndHeight;
-        height: iconWidthAndHeight;
-        visible:false;
-        color: colorBackgroundIcons;
-        anchors
-        {
-            left:root.left;
-            top:root.top;
-            topMargin: mainWindow.height/50;
-            leftMargin:mainWindow.width/50;
-        }
-
-        Image
-        {
-            anchors.fill: parent;
-            source: directory_Icons+fileIcon_backToHome;
-        }
-        MouseArea
-        {
-            anchors.fill: iconBackToHome;
-            onPressed:
-            {
-                settingsPage.visible = false;
-                iconBackToHome.visible = false;
-                iconSettings.visible = true;
-            }
-        }
-    }
-    //button back to home ends
-
-
-
-
-
-
-
-}
+}//end of window

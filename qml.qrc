@@ -1,9 +1,6 @@
 <RCC>
     <qresource prefix="/">
         <file>main.qml</file>
-        <file>Settings.qml</file>
-        <file>thePictures/icon-settings.png</file>
-        <file>thePictures/icon-back.png</file>
         <file>theControls/MyButton.qml</file>
         <file>theControls/MyTimerIndicator.qml</file>
         <file>CountUp.qml</file>
@@ -17,7 +14,10 @@
         <file>theControls/MyMenu.qml</file>
         <file>theControls/MySwitch.qml</file>
         <file>theSounds/mixkit-elevator-tone-2863.wav</file>
-        <file>theControls/DismissPage.qml</file>
+        <file>thePictures/icon-moon.png</file>
+        <file>thePictures/icon-sun.png</file>
+        <file>thePages/DismissPage.qml</file>
+        <file>thePages/AlarmSetPage.qml</file>
     </qresource>
     <qresource prefix="/thePictures"/>
 </RCC>

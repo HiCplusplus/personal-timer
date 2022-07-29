@@ -4,10 +4,11 @@ import "theControls"
 import "theScripts/controllerSpingBoxCountDown.js" as CSBC
 import "theScripts/updateCountDown.js" as UCD
 import QtMultimedia
+import "thePages"
 
 Item
 {
-    property color colorBG: "white";
+    property color setColorBG: "white";
     property color colorTexts: "black";
 
 
@@ -32,7 +33,7 @@ Item
     {
         id:root;
         anchors.fill: parent;
-        color:colorBG;
+        color:setColorBG;
     }
 
     SoundEffect
@@ -87,6 +88,7 @@ Item
         id:addNewTimer;
         width: parent.width/1.2;
         height:parent.height/4;
+        color:"transparent";
         anchors
         {
             horizontalCenter:parent.horizontalCenter;
@@ -99,6 +101,7 @@ Item
             width: parent.width;
             height: parent.height;
             anchors.centerIn: parent;
+            color:"transparent";
             Row
             {
                 anchors.fill: parent;
@@ -107,6 +110,7 @@ Item
                     id:setHour;
                     width: parent.width/3.2;
                     height:parent.height;
+                    color:"transparent";
                     Text
                     {
                         text:"Hours";
@@ -129,6 +133,7 @@ Item
                         height:35;
                         anchors.bottom: txtHour.top;
                         anchors.horizontalCenter: parent.horizontalCenter;
+                        color:"transparent";
                         MyAutoValue_Increase_Decrease
                         {
                             id:hourIncrease;
@@ -156,6 +161,7 @@ Item
                         height:35;
                         anchors.top: txtHour.bottom;
                         anchors.horizontalCenter: parent.horizontalCenter;
+                        color:"transparent";
                         MyAutoValue_Increase_Decrease
                         {
                             id:hourDecrease;
@@ -192,6 +198,7 @@ Item
                     id:setMinute;
                     width: parent.width/3.2;
                     height:parent.height;
+                    color:"transparent";
                     Text
                     {
                         text:"Minutes";
@@ -215,6 +222,7 @@ Item
                         height:35;
                         anchors.bottom: txtMinute.top;
                         anchors.horizontalCenter: parent.horizontalCenter;
+                        color:"transparent";
                         MyAutoValue_Increase_Decrease
                         {
                             id:minuteIncrease;
@@ -241,6 +249,7 @@ Item
                         height:35;
                         anchors.top: txtMinute.bottom;
                         anchors.horizontalCenter: parent.horizontalCenter;
+                        color:"transparent";
                         MyAutoValue_Increase_Decrease
                         {
                             id:minuteDecrease;
@@ -276,6 +285,7 @@ Item
                     id:setSecond;
                     width: parent.width/3.2;
                     height:parent.height;
+                    color:"transparent";
                     Text
                     {
                         id:labelSeconds;
@@ -299,6 +309,7 @@ Item
                         height:35;
                         anchors.bottom: txtSecond.top;
                         anchors.horizontalCenter: parent.horizontalCenter;
+                        color:"transparent";
                         MyAutoValue_Increase_Decrease
                         {
                             id:secondIncrease;
@@ -328,6 +339,7 @@ Item
                         height:35;
                         anchors.top: txtSecond.bottom;
                         anchors.horizontalCenter: parent.horizontalCenter;
+                        color:"transparent";
                         MyAutoValue_Increase_Decrease
                         {
                             id:secondDecrease;
