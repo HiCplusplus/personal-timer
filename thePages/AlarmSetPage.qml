@@ -230,7 +230,10 @@ Item
             anchors.bottom: parent.bottom;
             MySlider
             {
+                onOutPutVolumeChanged:
+                {
 
+                }
             }
         }
     }//end of basealarmvolume

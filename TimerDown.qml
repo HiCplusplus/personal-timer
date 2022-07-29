@@ -105,9 +105,11 @@ Item
 
                 Rectangle
                 {
-//                    iconsfrom https://icons8.com/icon/set/weather/stickers
+//
                     /*
+                      iconsfrom https://icons8.com/icon/set/weather/stickers
                       https://icons8.com/icon/VzDK0G3Z5kLF/night
+                      some design from https://dribbble.com/shots/10918806-Smart-Alarm-app/attachments/2552348?mode=media
                       */
                     width: 25;
                     height: 25;
@@ -218,8 +220,8 @@ Item
     Rectangle
     {
         anchors.fill: parent;
-        color:"white";
-        visible: true;
+        color:"transparent";
+        visible: false;
         AlarmSetPage
         {
             onButtonSave:

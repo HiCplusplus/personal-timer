@@ -4,9 +4,11 @@ Item
 {
     property color setColorSelected: "#B178FF";
     property color setColorNotSelected: "#EBDDFF";//
-    property int setMinValue: 0;
+    property int setMinValue: 5;
     property int setMaxValue: 100;
-    property double currentValue:50;
+    property int setCurrentValue:50;
+    property int outPutVolume:setCurrentValue; //use this for
+
     id:itemBase;
     anchors.fill: parent;
     Rectangle
@@ -15,7 +17,9 @@ Item
         anchors.verticalCenter:  parent.verticalCenter;
         height:parent.height/2;
         width: parent.width;
+        color:"transparent";
         clip:true;
+
         DropArea
         {
             anchors.fill: parent;
@@ -32,7 +36,7 @@ Item
         Rectangle
         {
             id:selectedSlider;
-            width: (baseSlider.width/100)*currentValue;
+            width: setCurrentValue;//(baseSlider.width/100)*setCurrentValue
             height:parent.height;
             color:setColorSelected;
             radius:15;
@@ -46,21 +50,23 @@ Item
         anchors.verticalCenter: parent.verticalCenter;
         color:setColorSelected;
         radius:100;
-        x:((baseSlider.width/100)*currentValue)-height;
+        x:((baseSlider.width/100)*setCurrentValue)-height;
 
         Drag.active: dragArea.drag.active;
-//        Drag.hotSpot.x: 10;
-//        Drag.hotSpot.y: 10;
         onXChanged:
         {
-            if(x>=baseSlider.width)
-                x=baseSlider.width-height;
+            selectedSlider.width=x+height;
+            outPutVolume= (x/(baseSlider.width-height))*100;
+            textVolume.text=outPutVolume;
+        }
 
-//            if(x<00.00)
-//                x=baseSlider.width/100;
-
-                console.log(sliderCircle.x);
-                selectedSlider.width=x+height;
+        Text
+        {
+            id:textVolume;
+            text:"";
+            anchors.centerIn: parent;
+            color:"white";
+            font.pointSize: 9;
         }
 
         MouseArea
@@ -68,6 +74,8 @@ Item
             id: dragArea;
             anchors.fill: parent;
             drag.target: parent;
+            drag.maximumX: baseSlider.width-sliderCircle.height;
+            drag.minimumX: 0;
         }
     }
 
