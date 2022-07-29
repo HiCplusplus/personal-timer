@@ -1,12 +1,16 @@
 import QtQuick 2.0
 import "../theControls"
-import QtQuick.Shapes
+//import QtQuick.Shapes
+import QtQuick.Controls
+
 Item
 {
     anchors.fill: parent;
     signal buttonSave;
     signal buttonCancel;
+    signal buttonAlarmSound;
     property string setFontFamily: "Courier";
+    property int setMaxCharAlarmName:25;
     Rectangle
     {
         id:root;
@@ -98,11 +102,187 @@ Item
         id:basePickWeekdays;
         width: parent.width/1.20;
         height:70;
-        color:"red";
+        color:"transparent";
         anchors.top:baseLabelRepeat.bottom;
         anchors.topMargin: 10;
         anchors.horizontalCenter: parent.horizontalCenter;
+        clip:true;
+        MyWeekDayPicker
+        {
+            onAPick: {}
+            onBPick: {}
+            onCPick: {}
+            onDPick: {}
+            onEPick: {}
+            onFPick: {}
+            onGPick: {}
+        }
     }
+    Rectangle
+    {
+        id:baseAlarmName;
+        width: parent.width/1.20;
+        height:40;
+        color:"transparent";
+        anchors.top:basePickWeekdays.bottom;
+        anchors.horizontalCenter: parent.horizontalCenter;
+        anchors.topMargin: 15;
+        clip:true;
+        Text
+        {
+            id:labelAlarmName;
+            text:"Alarm name";
+            font.family: setFontFamily;
+            font.bold: true;
+        }
+        TextEdit
+        {
+            id:alarmName;
+            width: parent.width;
+            height:parent.height/1.5;
+            anchors.top:labelAlarmName.bottom;
+            font.family: setFontFamily;
+            font.pointSize: 12.50;
+
+            color: "black";
+            enabled: true;
+
+            Text
+            {
+                text: "Enter alarm name here...";
+                color: "#aaa";
+                visible: !alarmName.text
+            }
+            onTextChanged:
+            {
+                if(alarmName.length >= setMaxCharAlarmName)
+                {
+                    alarmName.text = alarmName.text.slice(0,setMaxCharAlarmName);
+                    alarmName.cursorPosition=setMaxCharAlarmName;
+                }
+            }
+        }
+
+    }
+
+    Rectangle
+    {
+        id:baseAlarmSound;
+        width: parent.width/1.20;
+        height:30;
+        color:"transparent";
+        anchors
+        {
+            horizontalCenter:parent.horizontalCenter;
+            top:baseAlarmName.bottom;
+            topMargin:20;
+        }
+        Text
+        {
+            text:"Alarm sound";
+            font.family: setFontFamily;
+            anchors.left: parent.left;
+            font.bold: true;
+        }
+        Text
+        {
+            text:"default";
+            font.family: setFontFamily;
+            anchors.right: parent.right;
+            color:"#787499";
+        }
+        MouseArea
+        {
+            anchors.fill: parent;
+            onClicked:
+            {
+                buttonAlarmSound();
+            }
+        }
+
+
+    }//endof base alarmsound
+
+
+    Rectangle
+    {
+        id:baseAlarmVolume;
+        width: parent.width/1.20;
+        height:40;
+        color:"transparent";
+        anchors
+        {
+            top:baseAlarmSound.bottom;
+            horizontalCenter:parent.horizontalCenter;
+            topMargin:15;
+        }
+        Text
+        {
+            text:"Alarm volume";
+            font.family: setFontFamily;
+            anchors.left: parent.left;
+            font.bold: true;
+        }
+        Rectangle
+        {
+            width: parent.width;
+            height:20;
+            anchors.bottom: parent.bottom;
+            MySlider
+            {
+
+            }
+        }
+    }//end of basealarmvolume
+
+
+    Rectangle
+    {
+        id:baseAlarmWithVibration;
+        width: parent.width/1.20;
+        height:35;
+        color:"transparent";
+        anchors
+        {
+            top:baseAlarmVolume.bottom;
+            horizontalCenter:parent.horizontalCenter;
+            topMargin:15;
+        }
+        Text
+        {
+            text:"Alarm with vibration";
+            font.family: setFontFamily;
+            anchors.left: parent.left;
+            font.bold: true;
+        }
+
+        Rectangle
+        {
+            width: 50;
+            height: width/2;
+            color:"transparent";
+            anchors
+            {
+                right:baseAlarmWithVibration.right;
+                rightMargin:10;
+            }
+
+            MySwitch
+            {
+                setBorderWidth: 4;
+                setStatusSwitch:false;
+                setColorActived: "#B178FF";
+                setColorDeactived: "#EBDDFF";
+                setStatusBorder:false;
+                setSizeSwitchCircle: 2.80;
+                onStatusSwitch:
+                {
+                    //HERE LEAVE NOTHING =-=================================================================================s
+                }
+            }
+        }
+    }//end of base alarm mit vibration
+
 
 
 

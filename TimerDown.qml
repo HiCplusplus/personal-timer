@@ -181,11 +181,11 @@ Item
                             //HERE LEAVE NOTHING =-=================================================================================s
                         }
                     }
-                }
+                }//end of
 
 
             }
-        }
+        }//end of item delegate
 
     }//end of list view
 

@@ -19,6 +19,8 @@
         <file>thePages/DismissPage.qml</file>
         <file>thePages/AlarmSetPage.qml</file>
         <file>theControls/MyCancelSaveButton.qml</file>
+        <file>theControls/MyWeekDayPicker.qml</file>
+        <file>theControls/MySlider.qml</file>
     </qresource>
     <qresource prefix="/thePictures"/>
 </RCC>
