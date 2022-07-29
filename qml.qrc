@@ -21,6 +21,7 @@
         <file>theControls/MyCancelSaveButton.qml</file>
         <file>theControls/MyWeekDayPicker.qml</file>
         <file>theControls/MySlider.qml</file>
+        <file>theControls/MyAlarmContentStyle.qml</file>
     </qresource>
     <qresource prefix="/thePictures"/>
 </RCC>

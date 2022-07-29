@@ -20,7 +20,7 @@ Item
         }
 
         anchors.fill: parent;
-        color:"yellow";
+        color:"white";
         DropArea
         {
             id:idDropArea;
@@ -33,7 +33,7 @@ Item
             {
                 anchors.fill: parent;
 
-                color:"red";
+                color:"transparent";
             }
             onContainsDragChanged: //has Error  QML Rectangle (parent or ancestor of QQuickDragAttached): active cannot be changed from within a drag event handler
             {
@@ -64,7 +64,7 @@ Item
                 id: dragArea;
                 anchors.fill: parent;
                 drag.target: parent;
-                onClicked:
+                onDoubleClicked:
                 {
                     statusDismiss();
                 }

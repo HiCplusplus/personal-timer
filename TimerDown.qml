@@ -18,10 +18,11 @@ Item
         id:listViewMain;
         anchors
         {
-            top:root.top;
-            left:root.left;
-            right:root.right;
-            bottom:idMyThreeBottomButtons.top;
+            fill:parent;
+//            top:root.top;
+//            left:root.left;
+//            right:root.right;
+//            bottom:idMyThreeBottomButtons.top;
         }
         clip:true;
         model:
@@ -30,163 +31,59 @@ Item
             id:listModelMain;
             ListElement
             {
-                name: "04:00";
-                cost: 2.45;
+                clock:"02:12";
+                am:false;
             }
+            ListElement
+            {
+                clock:"11:21";
+                am:true;
+            }
+            ListElement
+            {
+                clock:"02:12";
+                am:false;
+            }
+            ListElement
+            {
+                clock:"11:21";
+                am:true;
+            }
+            ListElement
+            {
+                clock:"02:12";
+                am:false;
+            }
+            ListElement
+            {
+                clock:"11:21";
+                am:true;
+            }
+
         }
         delegate:
         Item
         {
-            id:baseItemDelegate;
-            anchors.fill: parent;
+            width: listViewMain.width;
+            height: 160;
             Rectangle
             {
-                id:baseAlarm;
-                width: root.width/1.10;
-                height: 145;
-                color: "white";
-
-                radius:15;
-                anchors
+                anchors.fill: parent;
+                color:"transparent";
+                MyAlarmContentStyle
                 {
-                    horizontalCenter: baseItemDelegate.horizontalCenter;
-                    topMargin: 15;
-                    top:baseItemDelegate.top;
-                }
-
-                Rectangle
-                {
-                    width: 8;
-                    height: 8;
-                    color:"#B178FF";
-                    radius: 50;
-                    anchors
+                    setClock: clock;
+                    setStatusAm: am;
+                    onSignalEditAlarm:
                     {
-                        top:parent.top;
-                        topMargin:16;
-                        left:parent.left;
-                        leftMargin:18;
+                        console.log("clicked on "+clock);
                     }
                 }
-
-
-
-                Text
-                {
-                    text:"Mon,Fri,Sam";
-                    font.family: "Courier";
-                    anchors
-                    {
-                        top:parent.top;
-                        topMargin:10;
-                        left:parent.left;
-                        leftMargin:30;
-                    }
-                }
-
-
-
-
-                Text
-                {
-                    id:textClock;
-                    anchors
-                    {
-                        verticalCenter:parent.verticalCenter;
-                        left:parent.left;
-                        leftMargin: 30;
-                    }
-                    font.pointSize: 30;
-                    font.family: "Courier";
-                    text:name;
-                }
-
-
-
-                Rectangle
-                {
-//
-                    /*
-                      iconsfrom https://icons8.com/icon/set/weather/stickers
-                      https://icons8.com/icon/VzDK0G3Z5kLF/night
-                      some design from https://dribbble.com/shots/10918806-Smart-Alarm-app/attachments/2552348?mode=media
-                      */
-                    width: 25;
-                    height: 25;
-                    color:"transparent";
-                    Image
-                    {
-                        anchors.fill: parent;
-                        source: "./thePictures/icon-moon.png";
-                    }
-                    anchors
-                    {
-                        bottom:textAmPm.top;
-                        left:textAmPm.left;
-                        leftMargin:3;
-                    }
-                }
-
-                Text
-                {
-                    id:textAmPm
-                    text:"AM";
-                    font.family: "Courier";
-                    anchors.bottom: textClock.bottom;
-//                    anchors.bottomMargin: ;
-                    anchors.leftMargin: 10;
-                    anchors.left: textClock.right;
-                    font.pointSize: 20;
-                }
-
-
-
-
-
-
-                Text
-                {
-                    id:textLabel;
-                    text:"Team meeting";
-                    font.family: "Courier";
-                    anchors
-                    {
-                        verticalCenter:parent.verticalCenter;
-                        left:parent.left;
-                        leftMargin: 30;
-                        top:textClock.bottom;
-                    }
-                }
-
-                Rectangle
-                {
-                    width: 50;
-                    height: width/2;
-                    color:"transparent";
-                    anchors
-                    {
-                        right:baseAlarm.right;
-                        verticalCenter:baseAlarm.verticalCenter;
-                        rightMargin:30;
-                    }
-
-                    MySwitch
-                    {
-                        setBorderWidth: 4;
-                        setStatusSwitch:false;
-                        setColorActived: "#B178FF";
-                        setColorDeactived: "#EBDDFF";
-                        setStatusBorder:false;
-                        setSizeSwitchCircle: 2.80;
-                        onStatusSwitch:
-                        {
-                            //HERE LEAVE NOTHING =-=================================================================================s
-                        }
-                    }
-                }//end of
-
-
             }
+
+
+
+
         }//end of item delegate
 
     }//end of list view
@@ -203,7 +100,7 @@ Item
         setCenterButtonText: "Add";
         setLeftButtonText: "";
         setRightButtonText: ""; //null string make em invisible
-
+        setBackGroundColor: "transparent";
         anchors
         {
             bottom:root.bottom;
@@ -211,7 +108,7 @@ Item
         }
         onCenterButtonPressed:
         {
-
+            baseAlarmSet.visible=true;
         }
     }//end of mytheebuttons
 
@@ -219,6 +116,7 @@ Item
 
     Rectangle
     {
+        id:baseAlarmSet;
         anchors.fill: parent;
         color:"transparent";
         visible: false;
@@ -230,7 +128,7 @@ Item
             }
             onButtonCancel:
             {
-                console.log("cancel");
+                visible=false;
             }
         }
 
