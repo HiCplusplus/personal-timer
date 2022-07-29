@@ -7,6 +7,7 @@ Item
     property color colorButtonSecond: "pink";
     property color colorButtonSecondTexts: "black";
     property color setBackGroundColor: "transparent";
+    property bool setCenterButtonCircleStyled: false;
     signal leftButtonPressed;
     signal centerButtonPressed;
     signal rightButtonPressed;
@@ -26,7 +27,7 @@ Item
         Rectangle
         {
             id:btnAddNew;
-            width: parent.width/3.5;
+            width: setCenterButtonCircleStyled<1 ? parent.width/3.5 : 50;
             height: 50; //parent.height/1.3
             visible: setCenterButtonText==""? false:true;
             anchors
@@ -38,7 +39,7 @@ Item
             radius:50;
             Text
             {
-                font.pointSize: 15;
+                font.pointSize: setCenterButtonCircleStyled<1? 15 : 25;
                 text:setCenterButtonText;
                 color:colorButtonTexts;
                 font.bold: true;

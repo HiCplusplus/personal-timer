@@ -97,10 +97,11 @@ Item
         id:idMyThreeBottomButtons;
         width: root.width;
         height:root.height/10.5;
-        setCenterButtonText: "Add";
+        setCenterButtonText: "+";
         setLeftButtonText: "";
         setRightButtonText: ""; //null string make em invisible
         setBackGroundColor: "transparent";
+        setCenterButtonCircleStyled: true;
         anchors
         {
             bottom:root.bottom;
