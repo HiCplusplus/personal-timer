@@ -50,7 +50,7 @@ Window
        color:colorBackgrounds;
        MyMenu
        {
-            cBGMenu: colorBackgroundMenu;
+            cBGMenu: "white";//colorBackgroundMenu;
             colorTextMenu:colorTitles;
             textTitleMenu:appTitle;
        }

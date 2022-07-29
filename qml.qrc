@@ -18,6 +18,7 @@
         <file>thePictures/icon-sun.png</file>
         <file>thePages/DismissPage.qml</file>
         <file>thePages/AlarmSetPage.qml</file>
+        <file>theControls/MyCancelSaveButton.qml</file>
     </qresource>
     <qresource prefix="/thePictures"/>
 </RCC>

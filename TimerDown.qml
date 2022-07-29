@@ -122,7 +122,6 @@ Item
                         bottom:textAmPm.top;
                         left:textAmPm.left;
                         leftMargin:3;
-                        horizontalCenter:textAmPm.horizontalAlignment;
                     }
                 }
 
@@ -223,7 +222,14 @@ Item
         visible: true;
         AlarmSetPage
         {
-
+            onButtonSave:
+            {
+                console.log("save");
+            }
+            onButtonCancel:
+            {
+                console.log("cancel");
+            }
         }
 
     }
