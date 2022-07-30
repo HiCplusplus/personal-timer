@@ -114,14 +114,14 @@ Item
                     Text
                     {
                         text:"Hours";
-                        color:cTxt_title;
+                        color:cTxt_button;
                         anchors.horizontalCenter:parent.horizontalCenter;
                     }
                     Text
                     {
                         id:txtHour;
                         text:theHour<10? "0"+theHour: theHour;
-                        color:cTxt_title;
+                        color:cTxt_button;
                         anchors.horizontalCenter:parent.horizontalCenter;
                         anchors.verticalCenter: parent.verticalCenter;
                         font.pointSize: 40;
@@ -185,7 +185,7 @@ Item
                 Text
                 {
                     text:":";
-                    color:cTxt_title;
+                    color:cTxt_button;
                     anchors.verticalCenter: parent.verticalCenter;
                     font.pointSize: 40;
                     font.bold:true;
@@ -199,14 +199,14 @@ Item
                     Text
                     {
                         text:"Minutes";
-                        color:cTxt_title;
+                        color:cTxt_button;
                         anchors.horizontalCenter:parent.horizontalCenter;
                     }
                     Text
                     {
                         id:txtMinute;
                         text:theMinute<10? "0"+theMinute: theMinute;
-                        color:cTxt_title;
+                        color:cTxt_button;
                         anchors.horizontalCenter:parent.horizontalCenter;
                         anchors.verticalCenter: parent.verticalCenter;
                         font.pointSize: 40;
@@ -270,7 +270,7 @@ Item
                 Text
                 {
                     text:":";
-                    color:cTxt_title;
+                    color:cTxt_button;
                     anchors.verticalCenter: parent.verticalCenter;
                     font.pointSize: 40;
                     font.bold:true;
@@ -285,14 +285,14 @@ Item
                     {
                         id:labelSeconds;
                         text:"Seconds";
-                        color:cTxt_title;
+                        color:cTxt_button;
                         anchors.horizontalCenter:parent.horizontalCenter;
                     }
                     Text
                     {
                         id:txtSecond;
                         text:theSecond<10? "0"+theSecond:theSecond;
-                        color:cTxt_title;
+                        color:cTxt_button;
                         anchors.horizontalCenter:parent.horizontalCenter;
                         anchors.verticalCenter: parent.verticalCenter;
                         font.pointSize: 40;

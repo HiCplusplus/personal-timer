@@ -59,6 +59,7 @@ Item
         {
             text:setWeekDays;
             font.family: gFontFamily;
+            color:cTxt_button;
             anchors
             {
                 top:parent.top;
@@ -82,6 +83,7 @@ Item
             }
             font.pointSize: 30;
             font.family: gFontFamily;
+            color:cTxt_button;
             text:setClock;
         }
 
@@ -119,6 +121,7 @@ Item
             anchors.bottom: textClock.bottom;
             anchors.leftMargin: 10;
             anchors.left: textClock.right;
+            color:cTxt_button;
             font.pointSize: 20;
         }
 
@@ -132,6 +135,7 @@ Item
             id:textLabel;
             text:setAlarmName;
             font.family: gFontFamily;
+            color:cTxt_button;
             anchors
             {
                 verticalCenter:parent.verticalCenter;

@@ -109,7 +109,11 @@ Item
         }
         onCenterButtonPressed:
         {
-            baseAlarmSet.visible=true;
+            if(!baseAlarmSet.visible)
+            {
+                baseAlarmSet.visible=true;
+                listViewMain.visible=false;
+            }
         }
     }//end of mytheebuttons
 
@@ -129,7 +133,8 @@ Item
             }
             onButtonCancel:
             {
-                visible=false;
+                baseAlarmSet.visible=false;
+                listViewMain.visible=true;
             }
         }
 

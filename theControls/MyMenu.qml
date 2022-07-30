@@ -5,7 +5,7 @@ Item
     signal signalDarkModeTest;
     property color cBGMenu: cUnknown;
     property color colorTextMenu: cTxt_title;
-    property color colorMenuLines: "#3E386C";//color exception 4
+//    property color colorMenuLines: "#3E386C";//color exception 4
     property string textTitleMenu: "Timer";
     anchors.fill: parent;
 
@@ -47,14 +47,14 @@ Item
                 width: parent.width/2;
                 anchors.left: parent.left;
                 height: 5;
-                color:colorMenuLines;
+                color:cTxt_button;
                 radius:10;
             }
             Rectangle
             {
                 width: parent.width;
                 height: 5;
-                color:colorMenuLines;
+                color:cTxt_button;
                 radius:10;
                 anchors.centerIn: parent;
             }
@@ -64,7 +64,7 @@ Item
                 anchors.right: parent.right;
                 anchors.bottom: parent.bottom;
                 height: 5;
-                color:colorMenuLines;
+                color:cTxt_button;
                 radius:10;
             }
 

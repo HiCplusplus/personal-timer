@@ -46,18 +46,17 @@ Window
 
 
     //new for dark mode
+    property bool themeDarkMode:false;
     property color cTxt_normal : "black";
     property color cTxt_title : "#3E386C";
     property color cBG : "#F6F6F6";
     property color cBG_menu : "#F6F6F6";
     property color cBG_element: "white";
-
     property color cTxt_button : "black";
     property color cBG_button : "#B178FF";
     property color cBG_button_activated: "#B178FF";
     property color cBG_button_deactivated: "#EBDDFF";
     property string gFontFamily:"Courier";
-
     property color cBG_Unknown: "transparent";
     property color cUnknown: "white";
 
@@ -71,24 +70,49 @@ Window
        MyMenu
        {
             cBGMenu: cBG_menu;
-            colorTextMenu:cTxt_title;
+            colorTextMenu:cTxt_button;
             textTitleMenu:appTitle;
             onSignalDarkModeTest:
             {
-                cTxt_normal = "black";
-                cTxt_title = "#3E386C";
-                cBG = "#23272A";//darked
-                cBG_menu = "#2C2F33";//darked bad
-                cBG_element= "#565578";//darked
+                console.log(themeDarkMode);
 
-                cTxt_button = "white";//darked
-                cBG_button = "#7289DA";//darked
-                cBG_button_activated= "#7289DA";//darked
-                cBG_button_deactivated= "gray";//darked
-                gFontFamily="Courier";//ok
+                if(!themeDarkMode)
+                {
+                    console.log("darkmod");
+                    themeDarkMode = true;
+                    cTxt_normal = "black";
+                    cTxt_title = "#3E386C";
+                    cBG = "#23272A";//darked
+                    cBG_menu = "#2C2F33";//darked bad
+                    cBG_element= "#565578";//darked
+                    cTxt_button = "white";//darked
+                    cBG_button = "#7289DA";//darked
+                    cBG_button_activated= "#7289DA";//darked
+                    cBG_button_deactivated= "gray";//darked
+                    gFontFamily="Courier";//ok
+                    cBG_Unknown= "transparent";
+                    cUnknown = "white";//o99AAB5k
+                }
+                else
+                {
+                    console.log("lightmode");
+                    themeDarkMode = false;
+                    cTxt_normal = "black";
+                    cTxt_title = "#3E386C";
+                    cBG = "#F6F6F6";
+                    cBG_menu = "#F6F6F6";
+                    cBG_element= "white";
+                    cTxt_button = "black";
+                    cBG_button = "#B178FF";
+                    cBG_button_activated= "#B178FF";
+                    cBG_button_deactivated= "#EBDDFF";
+                    gFontFamily="Courier";
+                    cBG_Unknown= "transparent";
+                    cUnknown= "white";
+                    themeDarkMode = false;
+                }
 
-                cBG_Unknown= "transparent";
-                cUnknown = "white";//o99AAB5k
+
             }
        }
    }

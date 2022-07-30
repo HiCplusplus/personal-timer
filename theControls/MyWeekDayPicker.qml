@@ -20,7 +20,7 @@ Item
 
     property color setColorPicked: cBG_button;
     property color setColorNotPicked: cBG_element;
-    property color setColorTextPicked: "black";
+    property color setColorTextPicked: "white";
     property color setColorTextNotPicked: "black";//color exception 5
 
 

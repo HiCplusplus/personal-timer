@@ -28,7 +28,7 @@ Item
         Text
         {
             text:setLocalStatusIncreaseOrDecrease? "+":"-";
-            color:cTxt_normal;
+            color:cTxt_button;
             font.pointSize: setTextFontSize;
             anchors.centerIn: parent;
         }
