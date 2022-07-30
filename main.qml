@@ -20,7 +20,7 @@ Window
     {
         id:root;
         anchors.fill: parent;
-        color:colorBackgrounds;
+        color:cBG;
     }
 
 
@@ -30,16 +30,36 @@ Window
     property string directory_Icons: "thePictures/";
     property int fontSizeTitles: mainWindow.width<700 ? 45:65;
 
-    property color colorLines: "#3E386C";
-    property color colorTitles: "#3E386C";
-    property color colorTextes: "#3E386C";
 
-    property color colorBackgroundIcons: "transparent";
-    property color colorBackgrounds: "#F6F6F6";
-    property color colorButtons: "orange";
-    property color colorButtonsInactive: "transparent";
-    property color colorBackgroundMenu: "#F6F6F6";//
 
+    //old theme color
+//    property color colorLines: "#3E386C";
+//    property color colorTitles: "#3E386C";
+//    property color colorTextes: "#3E386C";
+
+//    property color colorBackgroundIcons: "transparent";
+//    property color colorBackgrounds: "#F6F6F6";
+//    property color colorButtons: "orange";
+//    property color colorButtonsInactive: "transparent";
+//    property color colorBackgroundMenu: "#F6F6F6";//
+
+
+
+    //new for dark mode
+    property color cTxt_normal : "black";
+    property color cTxt_title : "#3E386C";
+    property color cBG : "#F6F6F6";
+    property color cBG_menu : "#F6F6F6";
+    property color cBG_element: "white";
+
+    property color cTxt_button : "black";
+    property color cBG_button : "#B178FF";
+    property color cBG_button_activated: "#B178FF";
+    property color cBG_button_deactivated: "#EBDDFF";
+    property string gFontFamily:"Courier";
+
+    property color cBG_Unknown: "transparent";
+    property color cUnknown: "white";
 
    Rectangle
    {
@@ -47,12 +67,29 @@ Window
        width: root.width;
        height:root.height/15;
        anchors.top:root.top;
-       color:colorBackgrounds;
+       color:cBG;
        MyMenu
        {
-            cBGMenu: "white";//colorBackgroundMenu;
-            colorTextMenu:colorTitles;
+            cBGMenu: cBG_menu;
+            colorTextMenu:cTxt_title;
             textTitleMenu:appTitle;
+            onSignalDarkModeTest:
+            {
+                cTxt_normal = "black";
+                cTxt_title = "#3E386C";
+                cBG = "#23272A";//darked
+                cBG_menu = "#2C2F33";//darked bad
+                cBG_element= "#565578";//darked
+
+                cTxt_button = "white";//darked
+                cBG_button = "#7289DA";//darked
+                cBG_button_activated= "#7289DA";//darked
+                cBG_button_deactivated= "gray";//darked
+                gFontFamily="Courier";//ok
+
+                cBG_Unknown= "transparent";
+                cUnknown = "white";//o99AAB5k
+            }
        }
    }
 
@@ -62,7 +99,7 @@ Window
         id:baseTimers;
         visible: true;
         clip: true;
-        color:colorBackgrounds;
+        color:cBG;
         anchors
         {
             top:iconsBar.bottom;
@@ -103,7 +140,7 @@ Window
                     id: firstPage
                     TimerDown
                     {
-                        setColorBG: colorBackgrounds;
+
                     }
                 }
                 Item
@@ -111,7 +148,7 @@ Window
                     id: secondPage
                     CountUp
                     {
-                        setColorBG: colorBackgrounds;
+
                     }
 
 
@@ -121,7 +158,7 @@ Window
                     id: thirdPage
                     CountDown
                     {
-                        setColorBG: colorBackgrounds;
+
                     }
                 }
             }
@@ -142,10 +179,10 @@ Window
         myIndicatorIndexAText: "Alarm";
         myIndicatorIndexBText: "StopWatch";
         myIndicatorIndexCText: "Timer";
-        colorBG: "white";//colorBackgrounds
-        colorTxt: colorTextes;
-        colorBtn: colorButtons;
-        colorBtnInactive: colorButtonsInactive;
+        colorBG: cBG;//colorBackgrounds
+        colorTxt: cTxt_normal;
+        colorBtn: cBG_button;
+        colorBtnInactive: cBG_button_deactivated;
         anchors.bottom:root.bottom;
     }
     //timer indicator ends

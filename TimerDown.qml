@@ -3,14 +3,13 @@ import "theControls"
 import "thePages"
 Item
 {
-    property color setColorBG: "white";
 
     anchors.fill: parent;
     Rectangle
     {
         id:root;
         anchors.fill: parent;
-        color:"#F6F6F6";
+        color:cBG;
     }//end of root
 
     ListView
@@ -69,11 +68,12 @@ Item
             Rectangle
             {
                 anchors.fill: parent;
-                color:"transparent";
+                color:cBG;
                 MyAlarmContentStyle
                 {
                     setClock: clock;
                     setStatusAm: am;
+
                     onSignalEditAlarm:
                     {
                         console.log("clicked on "+clock);
@@ -100,8 +100,8 @@ Item
         setCenterButtonText: "+";
         setLeftButtonText: "";
         setRightButtonText: ""; //null string make em invisible
-        setBackGroundColor: "transparent";
         setCenterButtonCircleStyled: true;
+
         anchors
         {
             bottom:root.bottom;

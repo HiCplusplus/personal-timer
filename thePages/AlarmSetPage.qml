@@ -9,15 +9,14 @@ Item
     signal buttonSave;
     signal buttonCancel;
     signal buttonAlarmSound;
-    property string setFontFamily: "Courier";
     property int setMaxCharAlarmName:25;
     Rectangle
     {
         id:root;
         anchors.fill: parent;
-        color:"#F6F6F6";
+        color:cBG;//"#F6F6F6";
     }
-    MyCancelSaveButton
+    MyCancelSaveButton//1380
     {
         id:myCancelSaveButtons;
         onButtonSaveClicked: { buttonSave(); }
@@ -30,7 +29,7 @@ Item
         id:alarmSetValue
         width:parent.width/1.20;
         height:250;
-        color:"white";
+        color:cBG_element;
         anchors.horizontalCenter: root.horizontalCenter;
         anchors.top:myCancelSaveButtons.bottom;
         anchors.topMargin: 45;
@@ -41,7 +40,7 @@ Item
         id:tabAlarmSetValue;
         width:parent.width/3.50;
         height:25;
-        color:"white";
+        color:cBG_element;
         anchors
         {
             left:alarmSetValue.left;
@@ -52,16 +51,17 @@ Item
         Text
         {
             text: "Alarm Set";
-            font.family: setFontFamily;
+            font.family: gFontFamily;
             anchors.centerIn: parent;
             font.pointSize: 10;
+            color:cTxt_button;
         }
     }
     Rectangle
     {
         width:45;
         height:30;
-        color:"white";
+        color:cBG_element;
         rotation: 55;
         anchors
         {
@@ -79,22 +79,24 @@ Item
         id:baseLabelRepeat;
         width: parent.width/1.20;
         height:15;
-        color:"transparent";
+        color:cBG_Unknown;
         anchors.top:alarmSetValue.bottom;
         anchors.topMargin: 20;
         anchors.horizontalCenter: parent.horizontalCenter;
         Text
         {
             text:"Repeat";
-            font.family: setFontFamily;
+            font.family: gFontFamily;
             anchors.verticalCenter: parent.verticalCenter;
+            color:cTxt_button;
         }
         Text
         {
             text:"Weekdays";
-            font.family: setFontFamily;
+            font.family: gFontFamily;
             anchors.verticalCenter: parent.verticalCenter;
             anchors.right:parent.right;
+            color:cTxt_button;
         }
     }
     Rectangle
@@ -102,7 +104,7 @@ Item
         id:basePickWeekdays;
         width: parent.width/1.20;
         height:70;
-        color:"transparent";
+        color:cBG_Unknown;
         anchors.top:baseLabelRepeat.bottom;
         anchors.topMargin: 10;
         anchors.horizontalCenter: parent.horizontalCenter;
@@ -123,7 +125,7 @@ Item
         id:baseAlarmName;
         width: parent.width/1.20;
         height:40;
-        color:"transparent";
+        color:cBG_Unknown;
         anchors.top:basePickWeekdays.bottom;
         anchors.horizontalCenter: parent.horizontalCenter;
         anchors.topMargin: 15;
@@ -132,8 +134,9 @@ Item
         {
             id:labelAlarmName;
             text:"Alarm name";
-            font.family: setFontFamily;
+            font.family: gFontFamily;
             font.bold: true;
+            color:cTxt_button;
         }
         TextEdit
         {
@@ -141,17 +144,17 @@ Item
             width: parent.width;
             height:parent.height/1.5;
             anchors.top:labelAlarmName.bottom;
-            font.family: setFontFamily;
+            font.family: gFontFamily;
             font.pointSize: 12.50;
 
-            color: "black";
+            color:cTxt_button;
             enabled: true;
 
             Text
             {
                 text: "Enter alarm name here...";
                 color: "#aaa";
-                visible: !alarmName.text
+                visible: !alarmName.text;
             }
             onTextChanged:
             {
@@ -170,7 +173,7 @@ Item
         id:baseAlarmSound;
         width: parent.width/1.20;
         height:30;
-        color:"transparent";
+        color:cBG_Unknown;
         anchors
         {
             horizontalCenter:parent.horizontalCenter;
@@ -180,16 +183,18 @@ Item
         Text
         {
             text:"Alarm sound";
-            font.family: setFontFamily;
+            font.family: gFontFamily;
             anchors.left: parent.left;
             font.bold: true;
+            color:cTxt_button;
         }
         Text
         {
             text:"default";
-            font.family: setFontFamily;
+            font.family: gFontFamily;
             anchors.right: parent.right;
-            color:"#787499";
+            //color:"#787499";
+            color:cTxt_button;
         }
         MouseArea
         {
@@ -209,7 +214,7 @@ Item
         id:baseAlarmVolume;
         width: parent.width/1.20;
         height:40;
-        color:"transparent";
+        color:cBG_Unknown;
         anchors
         {
             top:baseAlarmSound.bottom;
@@ -219,15 +224,17 @@ Item
         Text
         {
             text:"Alarm volume";
-            font.family: setFontFamily;
+            font.family: gFontFamily;
             anchors.left: parent.left;
             font.bold: true;
+            color:cTxt_button;
         }
         Rectangle
         {
             width: parent.width;
             height:20;
             anchors.bottom: parent.bottom;
+            color:cBG_Unknown;
             MySlider
             {
                 onOutPutVolumeChanged:
@@ -244,7 +251,7 @@ Item
         id:baseAlarmWithVibration;
         width: parent.width/1.20;
         height:35;
-        color:"transparent";
+        color:cBG_Unknown;
         anchors
         {
             top:baseAlarmVolume.bottom;
@@ -254,16 +261,17 @@ Item
         Text
         {
             text:"Alarm with vibration";
-            font.family: setFontFamily;
+            font.family: gFontFamily;
             anchors.left: parent.left;
             font.bold: true;
+            color:cTxt_button;
         }
 
         Rectangle
         {
             width: 50;
             height: width/2;
-            color:"transparent";
+            color:cBG_Unknown;
             anchors
             {
                 right:baseAlarmWithVibration.right;
@@ -274,8 +282,6 @@ Item
             {
                 setBorderWidth: 4;
                 setStatusSwitch:false;
-                setColorActived: "#B178FF";
-                setColorDeactived: "#EBDDFF";
                 setStatusBorder:false;
                 setSizeSwitchCircle: 2.80;
                 onStatusSwitch:

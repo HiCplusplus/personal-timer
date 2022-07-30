@@ -2,8 +2,8 @@ import QtQuick 2.0
 
 Item
 {
-    property color setColorSelected: "#B178FF";
-    property color setColorNotSelected: "#EBDDFF";//
+//    property color setColorSelected: "#B178FF";
+//    property color setColorNotSelected: "#EBDDFF";//
     property int setMinValue: 5;
     property int setMaxValue: 100;
     property int setCurrentValue:50;
@@ -17,7 +17,7 @@ Item
         anchors.verticalCenter:  parent.verticalCenter;
         height:parent.height/2;
         width: parent.width;
-        color:"transparent";
+        color:cBG_Unknown;
         clip:true;
 
         DropArea
@@ -27,7 +27,7 @@ Item
             {
                 id:baseSlider;
                 anchors.fill: parent;
-                color:setColorNotSelected;
+                color:"#EBDDFF";//color exception 3
                 radius:15;
             }
 
@@ -38,7 +38,7 @@ Item
             id:selectedSlider;
             width: setCurrentValue;//(baseSlider.width/100)*setCurrentValue
             height:parent.height;
-            color:setColorSelected;
+            color:cBG_button;
             radius:15;
         }
     }
@@ -48,7 +48,7 @@ Item
         width: itemBase.height;
         height: itemBase.height;
         anchors.verticalCenter: parent.verticalCenter;
-        color:setColorSelected;
+        color:cBG_button;
         radius:100;
         x:((baseSlider.width/100)*setCurrentValue)-height;
 
@@ -65,7 +65,7 @@ Item
             id:textVolume;
             text:"";
             anchors.centerIn: parent;
-            color:"white";
+            color:cTxt_button;
             font.pointSize: 9;
         }
 

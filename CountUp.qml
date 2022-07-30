@@ -7,31 +7,31 @@ import QtQuick.Controls
 Item
 {
     clip:true;
-    property int theDay: 999 ;
-    property int theHour: 999;
-    property int theMinute: 999;
-    property int theSecond: 999;
+    property int theDay: 0;
+    property int theHour: 0;
+    property int theMinute: 0;
+    property int theSecond: 0;
     property int theLapIndex:0;
 
-    property color colorButtons: "orange";
-    property color colorButtonTexts: "white";
+//    property color colorButtons: "orange";
+//    property color colorButtonTexts: "white";
 
-    property color setColorBG: "white";
-    property color colorButtonSecond: "pink";
-    property color  colorButtonSecondTexts: "black";
+//    property color setColorBG: "white";
+//    property color colorButtonSecond: "pink";
+//    property color  colorButtonSecondTexts: "black";
 
     anchors.fill: parent;
     Rectangle
     {
         id:root;
         anchors.fill: parent;
-        color:setColorBG;
+        color:cBG;
     }
 
     Timer
     {
         id:theCountUpTimer;
-        interval: 1000; running: false; repeat: true
+        interval: 1000; running: false; repeat: true;
         onTriggered:
         {
             var allObject = JSON.parse(UCUP.updateCountUp(theDay,theHour,theMinute,theSecond));
@@ -79,12 +79,13 @@ Item
         anchors.top: root.top;
         anchors.topMargin: parent.height/2.7;
         anchors.horizontalCenter: root.horizontalCenter;
-        color:"transparent";
+        color:cBG_Unknown;
         Text
         {
             id:txtNumbers;
             text:"00:00:00:00";
             font.pointSize: 40;
+            color:cTxt_button;
             anchors
             {
                 verticalCenter:parent.verticalCenter;
@@ -95,6 +96,7 @@ Item
         Text
         {
             text:" Day   Hour   Min    Sec";
+            color:cTxt_button;
             font.pointSize: 20;
             anchors
             {
@@ -113,7 +115,7 @@ Item
         width: baseCountUp.width;
         height:parent.height/2.1;
         visible: false;
-        color:"transparent";
+        color:cBG_Unknown;
         anchors
         {
             top:baseCountUp.bottom;
@@ -126,19 +128,19 @@ Item
             id:titleLapList;
             width: parent.width;
             height:50;
-            color:"transparent";
+            color:cBG_Unknown;
             Rectangle
             {
                 id:laplabell;
                 width: parent.width/3;
                 height: parent.height;
                 anchors.left: parent.left;
-                color:"transparent";
+                color:cBG_Unknown;
                 Text
                 {
-
                     text:"Lap No.";
                     font.pointSize: 12;
+                    color:cTxt_button;
                     anchors.centerIn:parent;
                 }
             }
@@ -148,12 +150,12 @@ Item
                 width: parent.width/3;
                 height: parent.height;
                 anchors.horizontalCenter: parent.horizontalCenter;
-                color:"transparent";
+                color:cBG_Unknown;
                 Text
                 {
-
                     text:"Lap times";
                     font.pointSize: 12;
+                    color:cTxt_button;
                     anchors.centerIn:parent;
                 }
             }
@@ -163,11 +165,12 @@ Item
                 width: parent.width/3;
                 height: parent.height;
                 anchors.right: parent.right;
-                color:"transparent";
+                color:cBG_Unknown;
                 Text
                 {
                     text:"Overall time";
                     font.pointSize: 12;
+                    color:cTxt_button;
                     anchors.centerIn:parent;
                 }
             }
@@ -206,11 +209,12 @@ Item
                     width: laplabell.width;
                     height: laplabell.height;
 //                    anchors.left:laplabell.left;
-                    color:"transparent";
+                    color:cBG_Unknown;
                     Text
                     {
                         anchors.centerIn: some1;
                         text:lapId;
+                        color:cTxt_button;
                     }
                 }
                 Rectangle
@@ -219,11 +223,12 @@ Item
                     width: some1.width;
                     height: laplabell.height;
                     anchors.left:some1.right;
-                    color:"transparent";
+                    color:cBG_Unknown;
                     Text
                     {
                         anchors.centerIn: some2;
                         text:timee;
+                        color:cTxt_button;
                     }
                 }
                 Rectangle
@@ -232,11 +237,12 @@ Item
                     width: some2.width;
                     height: laplabell.height;
                     anchors.left:some2.right;
-                    color:"transparent";
+                    color:cBG_Unknown;
                     Text
                     {
                         anchors.centerIn: some3;
                         text:timee;
+                        color:cTxt_button;
                     }
                 }
 

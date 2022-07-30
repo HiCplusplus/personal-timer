@@ -2,8 +2,10 @@ import QtQuick 2.0
 
 Item
 {
-    property color cBGMenu: "white";
-    property color colorTextMenu: "#3E386C";
+    signal signalDarkModeTest;
+    property color cBGMenu: cUnknown;
+    property color colorTextMenu: cTxt_title;
+    property color colorMenuLines: "#3E386C";//color exception 4
     property string textTitleMenu: "Timer";
     anchors.fill: parent;
 
@@ -19,7 +21,7 @@ Item
             color:colorTextMenu;
             font.bold: true;
             font.pointSize: 20;
-            font.family: "Courier";
+            font.family: gFontFamily;
             anchors
             {
                 left:parent.left;
@@ -33,7 +35,7 @@ Item
             id:baseOpenMenuIcon;
             width:25;
             height:25;
-            color:"transparent";
+            color:cBG_Unknown;
             anchors
             {
                 right:parent.right;
@@ -45,14 +47,14 @@ Item
                 width: parent.width/2;
                 anchors.left: parent.left;
                 height: 5;
-                color:"#3E386C";
+                color:colorMenuLines;
                 radius:10;
             }
             Rectangle
             {
                 width: parent.width;
                 height: 5;
-                color:"#3E386C";
+                color:colorMenuLines;
                 radius:10;
                 anchors.centerIn: parent;
             }
@@ -62,11 +64,18 @@ Item
                 anchors.right: parent.right;
                 anchors.bottom: parent.bottom;
                 height: 5;
-                color:"#3E386C";
+                color:colorMenuLines;
                 radius:10;
             }
 
-
+        MouseArea
+        {
+            anchors.fill: parent;
+            onClicked:
+            {
+                signalDarkModeTest();
+            }
+        }
         }
     }
     //icons bar ends

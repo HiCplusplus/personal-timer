@@ -18,10 +18,10 @@ Item
     property bool setFPicked: false;
     property bool setGPicked: false;
 
-    property color setColorPicked: "#B178FF";
-    property color setColorNotPicked: "white";
-    property color setColorTextPicked: "white";
-    property color setColorTextNotPicked: "black";
+    property color setColorPicked: cBG_button;
+    property color setColorNotPicked: cBG_element;
+    property color setColorTextPicked: "black";
+    property color setColorTextNotPicked: "black";//color exception 5
 
 
     property int setTextFontSize: 9;

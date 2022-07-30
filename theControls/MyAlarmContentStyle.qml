@@ -9,8 +9,6 @@ Item
     property string setClock: "00:00";
     property string setAlarmName: "Simple name";
     property string setWeekDays:"Mon";
-    property color setColorBG: "white";
-    property string setFontFamily: "Courier";
     property string setPathIconMoon: "../thePictures/icon-moon.png";
     property string setPathIconSun : "../thePictures/icon-sun.png";
 
@@ -21,7 +19,7 @@ Item
         id:baseAlarm;
         width: parent.width/1.10;
         height: 145;
-        color: setColorBG;
+        color: cBG_element;
 
         radius:15;
         anchors
@@ -44,7 +42,7 @@ Item
         {
             width: 8;
             height: 8;
-            color:"#B178FF";
+            color:cBG_button;
             radius: 50;
             anchors
             {
@@ -60,7 +58,7 @@ Item
         Text
         {
             text:setWeekDays;
-            font.family: setFontFamily;
+            font.family: gFontFamily;
             anchors
             {
                 top:parent.top;
@@ -83,7 +81,7 @@ Item
                 leftMargin: 30;
             }
             font.pointSize: 30;
-            font.family: setFontFamily;
+            font.family: gFontFamily;
             text:setClock;
         }
 
@@ -99,7 +97,7 @@ Item
               */
             width: 25;
             height: 25;
-            color:"transparent";
+            color:cBG_Unknown;
             Image
             {
                 anchors.fill: parent;
@@ -117,7 +115,7 @@ Item
         {
             id:textAmPm;
             text:setStatusAm>0 ? "AM" : "PM";
-            font.family: setFontFamily;
+            font.family: gFontFamily;
             anchors.bottom: textClock.bottom;
             anchors.leftMargin: 10;
             anchors.left: textClock.right;
@@ -133,7 +131,7 @@ Item
         {
             id:textLabel;
             text:setAlarmName;
-            font.family: setFontFamily;
+            font.family: gFontFamily;
             anchors
             {
                 verticalCenter:parent.verticalCenter;
@@ -147,7 +145,7 @@ Item
         {
             width: 50;
             height: width/2;
-            color:"transparent";
+            color:cBG_Unknown;
             anchors
             {
                 right:baseAlarm.right;
@@ -159,8 +157,6 @@ Item
             {
                 setBorderWidth: 4;
                 setStatusSwitch:setStatusSwitch;
-                setColorActived: "#B178FF";
-                setColorDeactived: "#EBDDFF";
                 setStatusBorder:false;
                 setSizeSwitchCircle: 2.80;
                 onStatusSwitch:

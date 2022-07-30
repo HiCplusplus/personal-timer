@@ -2,11 +2,11 @@ import QtQuick 2.0
 
 Item
 {
-    property color colorButtons: "orange";
-    property color colorButtonTexts: "white";
-    property color colorButtonSecond: "pink";
-    property color colorButtonSecondTexts: "black";
-    property color setBackGroundColor: "transparent";
+//    property color colorButtons: "orange";
+//    property color colorButtonTexts: "white";
+//    property color colorButtonSecond: "pink";
+//    property color colorButtonSecondTexts: "black";
+//    property color setBackGroundColor: "transparent";
     property bool setCenterButtonCircleStyled: false;
     signal leftButtonPressed;
     signal centerButtonPressed;
@@ -22,7 +22,7 @@ Item
         id:baseButtons;
         width: root.width;
         height:root.height/10.5;
-        color:setBackGroundColor;
+        color:cBG_Unknown;
 
         Rectangle
         {
@@ -35,13 +35,13 @@ Item
                 horizontalCenter:parent.horizontalCenter;
                 verticalCenter:parent.verticalCenter;
             }
-            color:colorButtons;
+            color:cBG_button;
             radius:50;
             Text
             {
                 font.pointSize: setCenterButtonCircleStyled<1? 15 : 25;
                 text:setCenterButtonText;
-                color:colorButtonTexts;
+                color:cTxt_button;
                 font.bold: true;
                 anchors
                 {
@@ -70,12 +70,12 @@ Item
                 left:baseButtons.left;
                 leftMargin:-25;
             }
-            color:colorButtonSecond;
+            color:cBG_button;
             radius:50;
             Text
             {
                 text:setLeftButtonText;
-                color:colorButtonSecondTexts;
+                color:cTxt_button;
                 anchors
                 {
                     horizontalCenter:parent.horizontalCenter;
@@ -104,13 +104,13 @@ Item
                 right:baseButtons.right;
                 rightMargin:-25;
             }
-            color:colorButtonSecond
+            color:cBG_button
             radius:50;
             Text
             {
 
                 text:setRightButtonText;
-                color:colorButtonSecondTexts;
+                color:cTxt_button;
                 anchors
                 {
                     horizontalCenter:parent.horizontalCenter;

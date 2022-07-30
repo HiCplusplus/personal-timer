@@ -4,7 +4,7 @@ import "../theScripts/controllerSpingBoxCountDown.js" as CSBC
 Item
 {
     property bool setLocalStatusIncreaseOrDecrease: false; //0means decrease(minus), 1means increase(plus)
-    property color setColorTexts: "black";
+//    property color setColorTexts: "black";
     property int setTextFontSize: 30;
     property int setTimerIntervalValue: 150;
     property int setInputIntValue:0;
@@ -12,7 +12,7 @@ Item
     property int outputResultInt:0;
     property int vSpeedCounter: 0;
     property int vSpeedLevel: 1;
-    property color setColorBG: "transparent";
+//    property color setColorBG: "transparent";
 
     /*
       use like this for outputResult when use component (example for txtMinute)
@@ -24,11 +24,11 @@ Item
     {
         width: 35;
         height:35;
-        color:setColorBG;
+        color:cBG_Unknown;
         Text
         {
             text:setLocalStatusIncreaseOrDecrease? "+":"-";
-            color:setColorTexts;
+            color:cTxt_normal;
             font.pointSize: setTextFontSize;
             anchors.centerIn: parent;
         }

@@ -2,9 +2,6 @@ import QtQuick 2.0
 
 Item
 {
-    property color setColorActived: "lightblue";
-    property color setColorDeactived: "gray";
-    property color setTotalColor: "white";
     property int setSwitchWidth:parent.width;
     property int setAnimationDuration:150;
     property int setBorderWidth: 6;
@@ -19,20 +16,20 @@ Item
         width:  setSwitchWidth;
         height: width/1.80;
         radius:50;
-        color:setStatusSwitch<=0? setColorDeactived: setColorActived;
+        color:setStatusSwitch<=0? cBG_button_deactivated: cBG_button_activated;
         Rectangle
         {
             id:switchCircle;
             width: parent.width/setSizeSwitchCircle;
             height: width;
-            color:setTotalColor;
+            color:cUnknown;
             radius:50;
             anchors.verticalCenter: parent.verticalCenter;
             x:setStatusSwitch<=0? mySwitsch.width/8: mySwitsch.width/1.90;
 //            y:setSwitchWidth/7;
         }
         border.width: setStatusBorder<=0? 0:setBorderWidth;
-        border.color: setStatusBorder<=0? "transparent":setTotalColor;
+        border.color: setStatusBorder<=0? cBG_Unknown:cUnknown;
         MouseArea
         {
             anchors.fill: parent;
@@ -41,12 +38,12 @@ Item
                 if(switchCircle.x>mySwitsch.width/5)
                 {
                     animactionDeactive.running=true;
-                    mySwitsch.color = setColorDeactived;
+                    mySwitsch.color = cBG_button_deactivated;
                 }
                 else
                 {
                     animationAcvite.running=true;
-                    mySwitsch.color = setColorActived;
+                    mySwitsch.color = cBG_button_activated;
                 }
 
 

@@ -10,22 +10,22 @@ Item
     signal buttonCancelClicked;
     signal buttonSaveClicked;
     property string setTextButtonSave: "Save";
-    property color setColorButtonSave:"#B178FF";
-    property color setColorTextButtonSave:"white";
+//    property color setColorButtonSave:"#B178FF";
+//    property color setColorTextButtonSave:"white";
 
-    property color setColorTextButtonCancel: "#312B63";
-    property string setFontFamily: "Courier";
-    property color setColorBG: "transparent";
+//    property color setColorTextButtonCancel: "#312B63";
+//    property string setFontFamily: "Courier";
+//    property color setColorBG: "transparent";
 
     Rectangle
     {
         id:baseTopButtons;
         anchors.fill: parent;
-        color:setColorBG;
+        color:cBG_Unknown;
         Rectangle
         {
             id:buttonSave;
-            color:setColorButtonSave;
+            color:cBG_button;
             width: 70;
             height:30;
             radius:7.50;
@@ -37,9 +37,9 @@ Item
             Text
             {
                 text:setTextButtonSave;
-                color:setColorTextButtonSave;
+                color:cUnknown;
                 anchors.centerIn: parent;
-                font.family: setFontFamily;
+                font.family: gFontFamily;
                 font.bold: true;
                 font.pointSize: 12;
             }
@@ -57,7 +57,7 @@ Item
         Rectangle
         {
             id:buttonCancel;
-            color:setColorBG;
+            color:cBG_Unknown;
             width: height;
             height:parent.height;
             anchors
@@ -68,9 +68,9 @@ Item
             Text
             {
                 text:"✕";
-                color:setColorTextButtonCancel;
+                color:cBG_button;//color execption 1
                 anchors.centerIn: parent;
-                font.family: setFontFamily;
+                font.family: gFontFamily;
                 font.pointSize: 25;
             }
             MouseArea

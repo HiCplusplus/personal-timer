@@ -8,8 +8,8 @@ import "thePages"
 
 Item
 {
-    property color setColorBG: "white";
-    property color colorTexts: "black";
+//    property color setColorBG: "white";
+//    property color colorTexts: "black";
 
 
     property int theHour: 0;
@@ -19,7 +19,7 @@ Item
 
 
     //for MyAutoValue Increase Decrease.qml
-    property color mavColorTexts: "black";
+//    property color mavColorTexts: "black";
     property int mavFontSizes: 30;
     property int mavTimerIntervalValue: 200;
 
@@ -33,7 +33,7 @@ Item
     {
         id:root;
         anchors.fill: parent;
-        color:setColorBG;
+        color:cBG;
     }
 
     SoundEffect
@@ -88,7 +88,7 @@ Item
         id:addNewTimer;
         width: parent.width/1.2;
         height:parent.height/4;
-        color:"transparent";
+        color:cBG_Unknown;
         anchors
         {
             horizontalCenter:parent.horizontalCenter;
@@ -101,7 +101,7 @@ Item
             width: parent.width;
             height: parent.height;
             anchors.centerIn: parent;
-            color:"transparent";
+            color:cBG_Unknown;
             Row
             {
                 anchors.fill: parent;
@@ -110,18 +110,18 @@ Item
                     id:setHour;
                     width: parent.width/3.2;
                     height:parent.height;
-                    color:"transparent";
+                    color:cBG_Unknown;
                     Text
                     {
                         text:"Hours";
-                        color:"black";
+                        color:cTxt_title;
                         anchors.horizontalCenter:parent.horizontalCenter;
                     }
                     Text
                     {
                         id:txtHour;
                         text:theHour<10? "0"+theHour: theHour;
-                        color:"black";
+                        color:cTxt_title;
                         anchors.horizontalCenter:parent.horizontalCenter;
                         anchors.verticalCenter: parent.verticalCenter;
                         font.pointSize: 40;
@@ -133,15 +133,13 @@ Item
                         height:35;
                         anchors.bottom: txtHour.top;
                         anchors.horizontalCenter: parent.horizontalCenter;
-                        color:"transparent";
+                        color:cBG_Unknown;
                         MyAutoValue_Increase_Decrease
                         {
                             id:hourIncrease;
                             anchors.fill: parent;
 
                             setLocalStatusIncreaseOrDecrease: true;//false means decrease, true means  increase
-                            setColorTexts: mavColorTexts;
-                            setTextFontSize: mavFontSizes;
                             setTimerIntervalValue: mavTimerIntervalValue;
                             setInputIntValue: theHour;
                             onOutputResultStringChanged:
@@ -161,14 +159,13 @@ Item
                         height:35;
                         anchors.top: txtHour.bottom;
                         anchors.horizontalCenter: parent.horizontalCenter;
-                        color:"transparent";
+                        color:cBG_Unknown;
                         MyAutoValue_Increase_Decrease
                         {
                             id:hourDecrease;
                             anchors.fill: parent;
 
                             setLocalStatusIncreaseOrDecrease: false;//false means decrease, true means  increase
-                            setColorTexts: mavColorTexts;
                             setTextFontSize: mavFontSizes;
                             setTimerIntervalValue: mavTimerIntervalValue;
                             setInputIntValue: theHour;
@@ -188,7 +185,7 @@ Item
                 Text
                 {
                     text:":";
-                    color:"black";
+                    color:cTxt_title;
                     anchors.verticalCenter: parent.verticalCenter;
                     font.pointSize: 40;
                     font.bold:true;
@@ -198,18 +195,18 @@ Item
                     id:setMinute;
                     width: parent.width/3.2;
                     height:parent.height;
-                    color:"transparent";
+                    color:cBG_Unknown;
                     Text
                     {
                         text:"Minutes";
-                        color:"black";
+                        color:cTxt_title;
                         anchors.horizontalCenter:parent.horizontalCenter;
                     }
                     Text
                     {
                         id:txtMinute;
                         text:theMinute<10? "0"+theMinute: theMinute;
-                        color:"black";
+                        color:cTxt_title;
                         anchors.horizontalCenter:parent.horizontalCenter;
                         anchors.verticalCenter: parent.verticalCenter;
                         font.pointSize: 40;
@@ -222,14 +219,13 @@ Item
                         height:35;
                         anchors.bottom: txtMinute.top;
                         anchors.horizontalCenter: parent.horizontalCenter;
-                        color:"transparent";
+                        color:cBG_Unknown;
                         MyAutoValue_Increase_Decrease
                         {
                             id:minuteIncrease;
                             anchors.fill: parent;
 
                             setLocalStatusIncreaseOrDecrease: true;//false means decrease, true means  increase
-                            setColorTexts: mavColorTexts;
                             setTextFontSize: mavFontSizes;
                             setTimerIntervalValue: mavTimerIntervalValue;
                             setInputIntValue: theMinute;
@@ -249,14 +245,13 @@ Item
                         height:35;
                         anchors.top: txtMinute.bottom;
                         anchors.horizontalCenter: parent.horizontalCenter;
-                        color:"transparent";
+                        color:cBG_Unknown;
                         MyAutoValue_Increase_Decrease
                         {
                             id:minuteDecrease;
                             anchors.fill: parent;
 
                             setLocalStatusIncreaseOrDecrease: false;//false means decrease, true means  increase
-                            setColorTexts: mavColorTexts;
                             setTextFontSize: mavFontSizes;
                             setTimerIntervalValue: mavTimerIntervalValue;
                             setInputIntValue: theMinute;
@@ -275,7 +270,7 @@ Item
                 Text
                 {
                     text:":";
-                    color:"black";
+                    color:cTxt_title;
                     anchors.verticalCenter: parent.verticalCenter;
                     font.pointSize: 40;
                     font.bold:true;
@@ -285,19 +280,19 @@ Item
                     id:setSecond;
                     width: parent.width/3.2;
                     height:parent.height;
-                    color:"transparent";
+                    color:cBG_Unknown;
                     Text
                     {
                         id:labelSeconds;
                         text:"Seconds";
-                        color:"black";
+                        color:cTxt_title;
                         anchors.horizontalCenter:parent.horizontalCenter;
                     }
                     Text
                     {
                         id:txtSecond;
                         text:theSecond<10? "0"+theSecond:theSecond;
-                        color:"black";
+                        color:cTxt_title;
                         anchors.horizontalCenter:parent.horizontalCenter;
                         anchors.verticalCenter: parent.verticalCenter;
                         font.pointSize: 40;
@@ -309,14 +304,13 @@ Item
                         height:35;
                         anchors.bottom: txtSecond.top;
                         anchors.horizontalCenter: parent.horizontalCenter;
-                        color:"transparent";
+                        color:cBG_Unknown;
                         MyAutoValue_Increase_Decrease
                         {
                             id:secondIncrease;
                             anchors.fill: parent;
 
                             setLocalStatusIncreaseOrDecrease: true;//false means decrease, true means  increase
-                            setColorTexts: mavColorTexts;
                             setTextFontSize: mavFontSizes;
                             setTimerIntervalValue: mavTimerIntervalValue;
                             setInputIntValue: theSecond;
@@ -339,14 +333,13 @@ Item
                         height:35;
                         anchors.top: txtSecond.bottom;
                         anchors.horizontalCenter: parent.horizontalCenter;
-                        color:"transparent";
+                        color:cBG_Unknown;
                         MyAutoValue_Increase_Decrease
                         {
                             id:secondDecrease;
                             anchors.fill: parent;
 
                             setLocalStatusIncreaseOrDecrease: false;//false means decrease, true means  increase
-                            setColorTexts: mavColorTexts;
                             setTextFontSize: mavFontSizes;
                             setTimerIntervalValue: mavTimerIntervalValue;
                             setInputIntValue: theSecond;
