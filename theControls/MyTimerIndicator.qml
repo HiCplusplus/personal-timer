@@ -13,18 +13,15 @@ Item
     property int indexesWidth: rowArea.width/3.5;
     property int indexesHeight: 50; //rowArea.height
     property int indexesRadius: 50;
-    property color colorBG: "white";
-    property color colorTxt: "black";
-    property color colorBtn: "lime";
-    property color colorBtnInactive: "transparent";
+
 
     onMyIndicatorIndexChanged:
     {
         function setIndexActive(a_Active,b_Diactive,c_Diactive)
         {
-            a_Active.color = colorBtn;
-            b_Diactive.color = colorBtnInactive;
-            c_Diactive.color = colorBtnInactive;
+            a_Active.color = cBG_button;
+            b_Diactive.color = cBG_button_deactivated;
+            c_Diactive.color = cBG_button_deactivated;
         }
         switch(myIndicatorIndex)
         {
@@ -39,7 +36,7 @@ Item
     {
         id:root;
         anchors.fill: parent;
-        color:colorBG;
+        color:cBG;
         Row
         {
             id:rowArea;
@@ -62,7 +59,7 @@ Item
                     anchors.horizontalCenter: indexA.horizontalCenter;
                     anchors.verticalCenter: indexA.verticalCenter;
                     text:myIndicatorIndexAText;
-                    color:colorTxt;
+                    color:cTxt_button;
 
                 }
                 MouseArea
@@ -89,7 +86,7 @@ Item
                     anchors.horizontalCenter: indexB.horizontalCenter;
                     anchors.verticalCenter: indexB.verticalCenter;
                     text:myIndicatorIndexBText;
-                    color: colorTxt;
+                    color: cTxt_button;
                 }
                 MouseArea
                 {
@@ -114,7 +111,7 @@ Item
                     anchors.horizontalCenter: indexC.horizontalCenter;
                     anchors.verticalCenter: indexC.verticalCenter;
                     text:myIndicatorIndexCText;
-                    color:colorTxt;
+                    color:cTxt_button;
                 }
                 MouseArea
                 {

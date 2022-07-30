@@ -74,11 +74,9 @@ Window
             textTitleMenu:appTitle;
             onSignalDarkModeTest:
             {
-                console.log(themeDarkMode);
 
                 if(!themeDarkMode)
                 {
-                    console.log("darkmod");
                     themeDarkMode = true;
                     cTxt_normal = "black";
                     cTxt_title = "#3E386C";
@@ -95,7 +93,6 @@ Window
                 }
                 else
                 {
-                    console.log("lightmode");
                     themeDarkMode = false;
                     cTxt_normal = "black";
                     cTxt_title = "#3E386C";
@@ -111,6 +108,11 @@ Window
                     cUnknown= "white";
                     themeDarkMode = false;
                 }
+                /*
+                    chanching the index swipe for solve (when theme color
+                    changed the myIndicator colors isnt refresh/upgrade
+                    untill swupe page index changed
+                */
 
 
             }
@@ -203,10 +205,6 @@ Window
         myIndicatorIndexAText: "Alarm";
         myIndicatorIndexBText: "StopWatch";
         myIndicatorIndexCText: "Timer";
-        colorBG: cBG;//colorBackgrounds
-        colorTxt: cTxt_normal;
-        colorBtn: cBG_button;
-        colorBtnInactive: cBG_button_deactivated;
         anchors.bottom:root.bottom;
     }
     //timer indicator ends

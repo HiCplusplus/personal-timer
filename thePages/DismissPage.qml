@@ -17,10 +17,11 @@ Item
             border.width: 4;
             radius:100;
             anchors.centerIn: parent;
+            color: cBG_Unknown;
         }
 
         anchors.fill: parent;
-        color:cUnknown;
+        color:cBG_element;
         DropArea
         {
             id:idDropArea;
@@ -47,7 +48,7 @@ Item
             anchors.centerIn: idDropArea;
             width: 100;
             height: width;
-            color: "black";
+            color: cBG_button;
             radius: 100;
             Drag.active: dragArea.drag.active
 //            Drag.hotSpot.x: 10;Drag.hotSpot.y: 10;
@@ -55,7 +56,7 @@ Item
             {
                 text: "✖";
                 anchors.centerIn: parent;
-                color:cUnknown;
+                color:cTxt_button;
                 font.pointSize: 30;
             }
 
