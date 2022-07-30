@@ -49,8 +49,8 @@ Window
     property bool themeDarkMode:false;
     property color cTxt_normal : "black";
     property color cTxt_title : "#3E386C";
-    property color cBG : "#F6F6F6";
-    property color cBG_menu : "#F6F6F6";
+    property color cBG : "#dedede";//"#F6F6F6";
+    property color cBG_menu : "#dedede";//"#F6F6F6";
     property color cBG_element: "white";
     property color cTxt_button : "black";
     property color cBG_button : "#B178FF";
@@ -96,7 +96,7 @@ Window
                     themeDarkMode = false;
                     cTxt_normal = "black";
                     cTxt_title = "#3E386C";
-                    cBG = "#F6F6F6";
+                    cBG = "#dedede";
                     cBG_menu = "#F6F6F6";
                     cBG_element= "white";
                     cTxt_button = "black";
@@ -108,11 +108,6 @@ Window
                     cUnknown= "white";
                     themeDarkMode = false;
                 }
-                /*
-                    chanching the index swipe for solve (when theme color
-                    changed the myIndicator colors isnt refresh/upgrade
-                    untill swupe page index changed
-                */
 
 
             }
