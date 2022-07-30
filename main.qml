@@ -52,7 +52,7 @@ Window
     property color cTxt_normal : "black";
     property color cTxt_title : "#3E386C";
     property color cBG : "#dedede";//"#F6F6F6";
-    property color cBG_menu : "#dedede";//"#F6F6F6";
+    property color cBG_menu : "#dedede"; //"#F6F6F6";
     property color cBG_element: "white";
     property color cTxt_button : "black";
     property color cBG_button : "#B178FF";
