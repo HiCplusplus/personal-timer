@@ -14,7 +14,9 @@ Window
     visible: true;
     property string appTitle: "MeinAlarm v.5";
     title: qsTr(appTitle);
+    color:cBG;
 
+    //menu down idea from https://dribbble.com/shots/17686848-Alarm-Clock-App-UI
 
     Rectangle
     {
@@ -81,7 +83,7 @@ Window
                     cTxt_normal = "black";
                     cTxt_title = "#3E386C";
                     cBG = "#23272A";//darked
-                    cBG_menu = "#2C2F33";//darked bad
+                    cBG_menu = "#23272A";//"#2C2F33";//darked bad
                     cBG_element= "#565578";//darked
                     cTxt_button = "white";//darked
                     cBG_button = "#7289DA";//darked
@@ -97,7 +99,7 @@ Window
                     cTxt_normal = "black";
                     cTxt_title = "#3E386C";
                     cBG = "#dedede";
-                    cBG_menu = "#F6F6F6";
+                    cBG_menu = "#dedede";
                     cBG_element= "white";
                     cTxt_button = "black";
                     cBG_button = "#B178FF";
