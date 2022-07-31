@@ -1,7 +1,7 @@
-import QtQuick
+import QtQuick 2.15
 import "theScripts/updateCountUp.js" as UCUP
 import "theControls"
-import QtQuick.Controls
+import QtQuick.Controls 2.15
 
 
 Item

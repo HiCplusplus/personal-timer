@@ -1,9 +1,9 @@
-import QtQuick
-import QtQuick.Controls
+import QtQuick 2.15
+import QtQuick.Controls 2.15
 import "theControls"
 import "theScripts/controllerSpingBoxCountDown.js" as CSBC
 import "theScripts/updateCountDown.js" as UCD
-import QtMultimedia
+import QtMultimedia 5.15
 import "thePages"
 
 Item
