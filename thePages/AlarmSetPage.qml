@@ -1,7 +1,7 @@
-import QtQuick 2.0
+import QtQuick 2.15
 import "../theControls"
 //import QtQuick.Shapes
-import QtQuick.Controls
+import QtQuick.Controls 2.15
 
 Item
 {
