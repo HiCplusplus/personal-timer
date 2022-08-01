@@ -10,12 +10,7 @@ Item
     signal buttonCancelClicked;
     signal buttonSaveClicked;
     property string setTextButtonSave: "Save";
-//    property color setColorButtonSave:"#B178FF";
-//    property color setColorTextButtonSave:"white";
 
-//    property color setColorTextButtonCancel: "#312B63";
-//    property string setFontFamily: "Courier";
-//    property color setColorBG: "transparent";
 
     Rectangle
     {
@@ -65,14 +60,13 @@ Item
                 top:parent.top;
                 left:parent.left;
             }
-            Text
+
+            Image
             {
-                text:"✕";
-                color:cBG_button;//color execption 1
-                anchors.centerIn: parent;
-                font.family: gFontFamily;
-                font.pointSize: 25;
+                source:"../thePictures/icon-cancel.png";
+                anchors.fill: parent;
             }
+
             MouseArea
             {
                 anchors.fill: parent;
