@@ -23,18 +23,6 @@ Item
         onButtonCancelClicked: { buttonCancel(); }
     }
 
-
-    Rectangle
-    {
-        id:alarmSetValue
-        width:parent.width/1.20;
-        height:250;
-        color:cBG_element;
-        anchors.horizontalCenter: root.horizontalCenter;
-        anchors.top:myCancelSaveButtons.bottom;
-        anchors.topMargin: 45;
-        radius:7;
-    }
     Rectangle
     {
         id:tabAlarmSetValue;
@@ -73,6 +61,26 @@ Item
         }
         radius:7;
     }
+
+
+    Rectangle
+    {
+        z:2;
+        id:alarmSetValue
+        width:parent.width/1.20;
+        height:250;
+        color:cBG_element;
+        anchors.horizontalCenter: root.horizontalCenter;
+        anchors.top:myCancelSaveButtons.bottom;
+        anchors.topMargin: 45;
+        radius:7;
+        MyHourPicker
+        {
+            anchors.top:parent.top;
+            anchors.topMargin: 5;
+        }
+    }
+
 
     Rectangle
     {

@@ -34,19 +34,6 @@ Window
 
 
 
-    //old theme color
-//    property color colorLines: "#3E386C";
-//    property color colorTitles: "#3E386C";
-//    property color colorTextes: "#3E386C";
-
-//    property color colorBackgroundIcons: "transparent";
-//    property color colorBackgrounds: "#F6F6F6";
-//    property color colorButtons: "orange";
-//    property color colorButtonsInactive: "transparent";
-//    property color colorBackgroundMenu: "#F6F6F6";//
-
-
-
     //new for dark mode
     property bool themeDarkMode:false;
     property color cTxt_normal : "black";
@@ -130,10 +117,6 @@ Window
             right:root.right;
             bottom:root.bottom;
             bottomMargin: parent.height/15;
-
-//            left:iconSettings.right;
-//            right:root.right;
-//            leftMargin:mainWindow.width/50;
         }
 
         Item
@@ -163,7 +146,22 @@ Window
                     id: firstPage
                     TimerDown
                     {
+                        onChangeStatusSwiperFromTimerDown:
+                        {
+                            if(viewTimers.interactive)
+                            {
+                                myIndicator.visible=false;
+                                viewTimers.interactive=false;
+                            }
 
+                            else
+                            {
+                                viewTimers.interactive=true;
+                                myIndicator.visible=true;
+                            }
+
+
+                        }
                     }
                 }
                 Item

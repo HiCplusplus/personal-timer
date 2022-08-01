@@ -3,7 +3,7 @@ import "theControls"
 import "thePages"
 Item
 {
-
+    signal changeStatusSwiperFromTimerDown;
     anchors.fill: parent;
     Rectangle
     {
@@ -15,14 +15,8 @@ Item
     ListView
     {
         id:listViewMain;
-        anchors
-        {
-            fill:parent;
-//            top:root.top;
-//            left:root.left;
-//            right:root.right;
-//            bottom:idMyThreeBottomButtons.top;
-        }
+        anchors.fill:parent;
+
         clip:true;
         model:
         ListModel
@@ -112,7 +106,9 @@ Item
             if(!baseAlarmSet.visible)
             {
                 baseAlarmSet.visible=true;
+
                 listViewMain.visible=false;
+                changeStatusSwiperFromTimerDown();
             }
         }
     }//end of mytheebuttons
@@ -134,7 +130,9 @@ Item
             onButtonCancel:
             {
                 baseAlarmSet.visible=false;
+
                 listViewMain.visible=true;
+                changeStatusSwiperFromTimerDown();
             }
         }
 

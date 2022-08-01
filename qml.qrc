@@ -23,6 +23,8 @@
         <file>theControls/MySlider.qml</file>
         <file>theControls/MyAlarmContentStyle.qml</file>
         <file>theControls/MyAutoIncreaseValue.qml</file>
+        <file>theControls/MyHourPicker.qml</file>
+        <file>thePictures/icon-cancel.png</file>
     </qresource>
     <qresource prefix="/thePictures"/>
 </RCC>
