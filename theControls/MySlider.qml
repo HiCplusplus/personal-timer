@@ -30,7 +30,6 @@ Item
                 color:"#EBDDFF";//color exception 3
                 radius:15;
             }
-
         }
 
         Rectangle
