@@ -9,6 +9,46 @@ Item
     property string textTitleMenu: "Timer";
     anchors.fill: parent;
 
+    onSignalDarkModeTest:
+    {
+
+        if(!themeDarkMode)
+        {
+            themeDarkMode = true;
+            cTxt_normal = "black";
+            cTxt_title = "#3E386C";
+            cBG = "#23272A";//darked
+            cBG_menu = "#23272A";//"#2C2F33";//darked bad
+            cBG_element= "#565578";//darked
+            cTxt_button = "white";//darked
+            cBG_button = "#7289DA";//darked
+            cBG_button_activated= "#7289DA";//darked
+            cBG_button_deactivated= "gray";//darked
+            gFontFamily="Courier";//ok
+            cBG_Unknown= "transparent";
+            cUnknown = "white";//o99AAB5k
+        }
+        else
+        {
+            themeDarkMode = false;
+            cTxt_normal = "black";
+            cTxt_title = "#3E386C";
+            cBG = "#dedede";
+            cBG_menu = "#dedede";
+            cBG_element= "white";
+            cTxt_button = "black";
+            cBG_button = "#B178FF";
+            cBG_button_activated= "#B178FF";
+            cBG_button_deactivated= "#EBDDFF";
+            gFontFamily="Courier";
+            cBG_Unknown= "transparent";
+            cUnknown= "white";
+            themeDarkMode = false;
+        }
+
+
+    }
+
     //icons bar starts
     Rectangle
     {
