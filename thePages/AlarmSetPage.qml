@@ -10,6 +10,17 @@ Item
     signal buttonCancel;
     signal buttonAlarmSound;
     property int setMaxCharAlarmName:25;
+    property variant setHourValues :
+        ["01","02","03","04","05","06","07","08","09","10","11","12"];
+
+
+    property variant setMinuteValues:
+        ["00","01","02","03","04","05","06","07","08","09","10",
+        "11","12","13","14","15","16","17","18","19","20",
+        "21","22","23","24","25","26","27","28","29","30",
+        "31","32","33","34","35","36","37","38","39","40",
+        "41","42","43","44","45","46","47","48","49","50",
+        "51","52","53","54","55","56","57","58","59"]
     Rectangle
     {
         id:root;
@@ -19,7 +30,11 @@ Item
     MyCancelSaveButton//1380
     {
         id:myCancelSaveButtons;
-        onButtonSaveClicked: { buttonSave(); }
+        onButtonSaveClicked:
+        {
+            buttonSave();
+            console.log(hoursTumbler.currentIndex+1 + "\t" + minutesTumbler.currentIndex + "\t"+ amPmTumbler.currentIndex);
+        }
         onButtonCancelClicked: { buttonCancel(); }
     }
 
@@ -57,7 +72,6 @@ Item
             leftMargin:-22;
             topMargin:8.80;
             top:tabAlarmSetValue.top;
-//            right:alarmSetValue.top;
         }
         radius:7;
     }
@@ -69,26 +83,65 @@ Item
         id:alarmSetValue
         width:parent.width/1.20;
         height:250;
-        color:cBG_element;
         anchors.horizontalCenter: root.horizontalCenter;
         anchors.top:myCancelSaveButtons.bottom;
         anchors.topMargin: 45;
         radius:7;
-//        MyHourPicker
-//        {
-//            anchors.top:parent.top;
-//            anchors.topMargin: 5;
-//        }
+        color:cBG_element;
 
         Rectangle
         {
-            width:parent.width/10;
-            height:parent.height;
-            My_Horizontal_Slider
+            id:baseTumblers;
+            anchors.fill: parent;
+            anchors.topMargin: 25;
+            color:cBG_element;
+
+
+            Row
             {
+                id: row;
+                anchors.fill: parent;
+                anchors.topMargin: 5;
 
 
+                Tumbler
+                {
+                    id: hoursTumbler;
+                    width: parent.width/3;
+                    model: setHourValues
+                    currentIndex: 1;
+                    font.bold: true;
+                    font.pointSize: 30;
+                }
+                Text
+                {
+                    text: ":";
+                    anchors.top:parent.top;
+                    anchors.topMargin: parent.height/3
+                    font.bold: true;
+                    font.pointSize: 30;
+                    color:themeDarkMode? "#353436": "black";
+                }
+                Tumbler
+                {
+                    id: minutesTumbler;
+                    width: parent.width/3;
+                    model: setMinuteValues;
+                    font.bold: true;
+                    font.pointSize: 30;
+                }
+
+                Tumbler
+                {
+                    id: amPmTumbler;
+                    width: parent.width/3;
+                    model: ["AM", "PM"];
+                    font.bold: true;
+                    font.pointSize: 30;
+                }
             }
+
+
         }
 
 
