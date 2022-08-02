@@ -25,6 +25,7 @@
         <file>theControls/MyAutoIncreaseValue.qml</file>
         <file>theControls/MyHourPicker.qml</file>
         <file>thePictures/icon-cancel.png</file>
+        <file>theControls/My_Horizontal_Slider.qml</file>
     </qresource>
     <qresource prefix="/thePictures"/>
 </RCC>

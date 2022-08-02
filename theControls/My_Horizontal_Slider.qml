@@ -2,21 +2,20 @@ import QtQuick 2.0
 
 Item
 {
-//    property color setColorSelected: "#B178FF";
-//    property color setColorNotSelected: "#EBDDFF";//
     property int setMinValue: 5;
     property int setMaxValue: 100;
     property int setCurrentValue:50;
-    property int outPutVolume:setCurrentValue; //use this for
+    property int outPutVolume:setCurrentValue;
+
 
     id:itemBase;
     anchors.fill: parent;
     Rectangle
     {
         id:root;
-        anchors.verticalCenter:  parent.verticalCenter;
-        height:parent.height/2;
-        width: parent.width;
+        anchors.horizontalCenter:  parent.horizontalCenter;
+        height:parent.height;
+        width: parent.width/2;
         color:cBG_Unknown;
         clip:true;
 
@@ -27,7 +26,7 @@ Item
             {
                 id:baseSlider;
                 anchors.fill: parent;
-                color:"#EBDDFF";//color exception 3 clo
+                color:"#EBDDFF";//color exception 3 close to gray
                 radius:15;
             }
         }
@@ -38,15 +37,15 @@ Item
             width: setCurrentValue;//(baseSlider.width/100)*setCurrentValue
             height:parent.height;
             color:cBG_button;
-            radius:15;
+//            radius:15;
         }
     }
     Rectangle
     {
         id:sliderCircle;
-        width: itemBase.height;
-        height: itemBase.height;
-        anchors.verticalCenter: parent.verticalCenter;
+        width: itemBase.width;
+        height: itemBase.width;
+        anchors.horizontalCenter: parent.horizontalCenter;
         color:cBG_button;
         radius:100;
         x:((baseSlider.width/100)*setCurrentValue)-height;
@@ -54,8 +53,8 @@ Item
         Drag.active: dragArea.drag.active;
         onXChanged:
         {
-            selectedSlider.width=x+height;
-            outPutVolume= (x/(baseSlider.width-height))*100;
+            selectedSlider.height=y+height;
+            outPutVolume= (y/(baseSlider.height-height))*100;
             textVolume.text=outPutVolume;
         }
 
@@ -73,8 +72,8 @@ Item
             id: dragArea;
             anchors.fill: parent;
             drag.target: parent;
-            drag.maximumX: baseSlider.width-sliderCircle.height;
-            drag.minimumX: 0;
+            drag.maximumY: baseSlider.height-sliderCircle.height;
+            drag.minimumY: 0;
         }
     }
 
