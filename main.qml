@@ -13,6 +13,7 @@ Window
     height:1339/1.7;
     visible: true;
     property string appTitle: "MeinAlarm v.5";
+
     title: qsTr(appTitle);
     color:cBG;
 
@@ -31,7 +32,7 @@ Window
     property string fileIcon_backToHome: "icon-back.png";
     property string directory_Icons: "thePictures/";
     property int fontSizeTitles: mainWindow.width<700 ? 45:65;
-
+    property int swipeLunchIndex: 0;
 
 
     //new for dark mode
@@ -61,46 +62,8 @@ Window
             cBGMenu: cBG_menu;
             colorTextMenu:cTxt_button;
             textTitleMenu:appTitle;
-            onSignalDarkModeTest:
-            {
-
-                if(!themeDarkMode)
-                {
-                    themeDarkMode = true;
-                    cTxt_normal = "black";
-                    cTxt_title = "#3E386C";
-                    cBG = "#23272A";//darked
-                    cBG_menu = "#23272A";//"#2C2F33";//darked bad
-                    cBG_element= "#565578";//darked
-                    cTxt_button = "white";//darked
-                    cBG_button = "#7289DA";//darked
-                    cBG_button_activated= "#7289DA";//darked
-                    cBG_button_deactivated= "gray";//darked
-                    gFontFamily="Courier";//ok
-                    cBG_Unknown= "transparent";
-                    cUnknown = "white";//o99AAB5k
-                }
-                else
-                {
-                    themeDarkMode = false;
-                    cTxt_normal = "black";
-                    cTxt_title = "#3E386C";
-                    cBG = "#dedede";
-                    cBG_menu = "#dedede";
-                    cBG_element= "white";
-                    cTxt_button = "black";
-                    cBG_button = "#B178FF";
-                    cBG_button_activated= "#B178FF";
-                    cBG_button_deactivated= "#EBDDFF";
-                    gFontFamily="Courier";
-                    cBG_Unknown= "transparent";
-                    cUnknown= "white";
-                    themeDarkMode = false;
-                }
-
-
-            }
        }
+
    }
 
     //swipe base Timer starts
@@ -115,8 +78,8 @@ Window
             top:iconsBar.bottom;
             left:root.left;
             right:root.right;
-            bottom:root.bottom;
-            bottomMargin: parent.height/15;
+            bottom:myIndicator.top;
+//            bottomMargin: parent.height/15;
         }
 
         Item
@@ -133,12 +96,12 @@ Window
             {
                 id: viewTimers
 
-                currentIndex: itemBaseViewTimers.swipeViewIndex;
+                currentIndex: swipeLunchIndex;//itemBaseViewTimers.swipeViewIndex;
                 width: baseTimers.width;
                 height:baseTimers.height/100*99;
                 onCurrentIndexChanged:
                 {
-                    itemBaseViewTimers.swipeViewIndex = viewTimers.currentIndex ;
+                    myIndicator.myIndicatorIndex = viewTimers.currentIndex;
                 }
 
                 Item
@@ -182,6 +145,11 @@ Window
 
                     }
                 }
+                Item
+                {
+                    id:fourthPage;
+
+                }
             }
         }
 
@@ -196,11 +164,31 @@ Window
     MyTimerIndicator
     {
         id:myIndicator;
-        myIndicatorIndex: itemBaseViewTimers.swipeViewIndex;
+        myIndicatorIndex: swipeLunchIndex;
         myIndicatorIndexAText: "Alarm";
         myIndicatorIndexBText: "StopWatch";
         myIndicatorIndexCText: "Timer";
+        myIndicatorIndexDText: ";";
         anchors.bottom:root.bottom;
+
+        onIndex_a_clicked:
+        {
+            viewTimers.setCurrentIndex(0);
+        }
+        onIndex_b_clicked:
+        {
+            viewTimers.setCurrentIndex(1);
+        }
+
+        onIndex_c_clicked:
+        {
+            viewTimers.setCurrentIndex(2);
+        }
+
+        onIndex_d_clicked:
+        {
+            viewTimers.setCurrentIndex(3);
+        }
     }
     //timer indicator ends
 }//end of window
