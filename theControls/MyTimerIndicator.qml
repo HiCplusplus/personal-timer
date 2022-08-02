@@ -1,36 +1,38 @@
 import QtQuick 2.15
-
+import "../theScripts/updateIndicator.js" as UIN
 Item
 {
     id:itemRoot;
     width:parent.width;
-    height:parent.height/15;
+//    height:parent.height/15;
+    height:80;
     clip:true;
+    signal index_a_clicked;
+    signal index_b_clicked;
+    signal index_c_clicked;
+    signal index_d_clicked;
     property int myIndicatorIndex: -1;
     property string myIndicatorIndexAText: "A";
     property string myIndicatorIndexBText: "B";
     property string myIndicatorIndexCText: "C";
-    property int indexesWidth: rowArea.width/3.5;
-    property int indexesHeight: 50; //rowArea.height
+    property string myIndicatorIndexDText: "D";
+    property int indexesWidth: 70;//rowArea.width/3.5;
+    property int indexesHeight: 70; //rowArea.height
     property int indexesRadius: 50;
-
 
     onMyIndicatorIndexChanged:
     {
-        function setIndexActive(a_Active,b_Diactive,c_Diactive)
-        {
-            a_Active.color = cBG_button;
-            b_Diactive.color = cBG_button_deactivated;
-            c_Diactive.color = cBG_button_deactivated;
-        }
         switch(myIndicatorIndex)
         {
-            case 0 : setIndexActive(indexA,indexB,indexC);break;
-            case 1 : setIndexActive(indexB,indexC,indexA);break;
-            case 2 : setIndexActive(indexC,indexA,indexB);break;
+            case 0 : UIN.setIndexActive(indexA,indexB,indexC,indexD);break;
+            case 1 : UIN.setIndexActive(indexB,indexC,indexA,indexD);break;
+            case 2 : UIN.setIndexActive(indexC,indexA,indexB,indexD);break;
+            case 3 : UIN.setIndexActive(indexD,indexC,indexA,indexB);break;
         }
 
     }
+
+
 
     Rectangle
     {
@@ -67,7 +69,7 @@ Item
                     anchors.fill: parent;
                     onClicked:
                     {
-                        viewTimers.setCurrentIndex(0);
+                        index_a_clicked();
                     }
                 }
 
@@ -93,7 +95,7 @@ Item
                     anchors.fill: parent;
                     onClicked:
                     {
-                        viewTimers.setCurrentIndex(1);
+                        index_b_clicked();
                     }
                 }
             }
@@ -118,10 +120,37 @@ Item
                     anchors.fill: parent;
                     onClicked:
                     {
-                        viewTimers.setCurrentIndex(2);
+                        index_c_clicked();
                     }
                 }
-            }
+            }//end of index c
+
+
+
+
+            Rectangle
+            {
+                id:indexD;
+                clip:true;
+                width:indexesWidth;
+                height:indexesHeight;
+                radius: indexesRadius;
+                Text
+                {
+                    anchors.horizontalCenter: indexD.horizontalCenter;
+                    anchors.verticalCenter: indexD.verticalCenter;
+                    text:myIndicatorIndexDText;
+                    color:cTxt_button;
+                }
+                MouseArea
+                {
+                    anchors.fill: parent;
+                    onClicked:
+                    {
+                        index_d_clicked();
+                    }
+                }
+            }//end of index D
         }
     }
 }
