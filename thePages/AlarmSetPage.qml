@@ -74,11 +74,24 @@ Item
         anchors.top:myCancelSaveButtons.bottom;
         anchors.topMargin: 45;
         radius:7;
-        MyHourPicker
+//        MyHourPicker
+//        {
+//            anchors.top:parent.top;
+//            anchors.topMargin: 5;
+//        }
+
+        Rectangle
         {
-            anchors.top:parent.top;
-            anchors.topMargin: 5;
+            width:parent.width/10;
+            height:parent.height;
+            My_Horizontal_Slider
+            {
+
+
+            }
         }
+
+
     }
 
 
