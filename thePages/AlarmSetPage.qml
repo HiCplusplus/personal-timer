@@ -262,6 +262,7 @@ Item
             font.bold: true;
             color:cTxt_button;
         }
+
         Text
         {
             text:"default";
@@ -276,6 +277,7 @@ Item
             onClicked:
             {
                 buttonAlarmSound();
+                myCombobox.visible=true;
             }
         }
 
@@ -367,6 +369,12 @@ Item
     }//end of base alarm mit vibration
 
 
+    MyComboBox
+    {
+        id:myCombobox;
+        visible: false;
+
+    }
 
 
 }

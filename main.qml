@@ -28,14 +28,26 @@ Window
 
 
     property int iconWidthAndHeight: mainWindow.width<700? 40:50; //for button iconBackToHome &  iconSettings
-    property string fileIcon_Settings: "icon-settings.png";
-    property string fileIcon_backToHome: "icon-back.png";
-    property string directory_Icons: "thePictures/";
     property int fontSizeTitles: mainWindow.width<700 ? 45:65;
     property int swipeLunchIndex: 0;
 
 
-    //new for dark mode
+    //icons
+    property string directory_Icons: "../thePictures/";
+    property string direcotry_BlackIcons: "dark-25px/";
+    property string direcotry_WhiteIcons: "white-25px/";
+    property string path_to_menuIcons: directory_Icons + direcotry_BlackIcons;//(!themeDarkMode? direcotry_BlackIcons:direcotry_WhiteIcons);
+
+    property string fileIcon_Settings: "icon-settings.png";
+    property string fileIcon_backToHome: "icon-back.png";
+    property string fileIcon_Countdown: "icon-countdown.png";
+    property string fileIcon_Stopwatch: "icon-stopwatch.png";
+    property string fileIcon_Alarm: "icon-alarm.png";
+    property string fileIcon_Calender: "icon-calender.png";
+
+
+
+    //set theme, default light mode colors
     property bool themeDarkMode:false;
     property color cTxt_normal : "black";
     property color cTxt_title : "#3E386C";
@@ -168,9 +180,13 @@ Window
         myIndicatorIndexAText: "Alarm";
         myIndicatorIndexBText: "StopWatch";
         myIndicatorIndexCText: "Timer";
-        myIndicatorIndexDText: ";";
+        myIndicatorIndexDText: "Calender";
         anchors.bottom:root.bottom;
 
+        setIconIndexA: path_to_menuIcons + fileIcon_Alarm;
+        setIconIndexB: path_to_menuIcons + fileIcon_Stopwatch;
+        setIconIndexC: path_to_menuIcons + fileIcon_Countdown;
+        setIconIndexD: path_to_menuIcons + fileIcon_Calender;
         onIndex_a_clicked:
         {
             viewTimers.setCurrentIndex(0);

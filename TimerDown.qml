@@ -32,26 +32,7 @@ Item
                 clock:"11:21";
                 am:true;
             }
-            ListElement
-            {
-                clock:"02:12";
-                am:false;
-            }
-            ListElement
-            {
-                clock:"11:21";
-                am:true;
-            }
-            ListElement
-            {
-                clock:"02:12";
-                am:false;
-            }
-            ListElement
-            {
-                clock:"11:21";
-                am:true;
-            }
+
 
         }
         delegate:
