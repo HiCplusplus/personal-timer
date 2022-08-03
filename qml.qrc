@@ -1,7 +1,6 @@
 <RCC>
     <qresource prefix="/">
         <file>main.qml</file>
-        <file>theControls/DELETEMyButton.qml</file>
         <file>theControls/MyTimerIndicator.qml</file>
         <file>CountUp.qml</file>
         <file>theScripts/updateCountUp.js</file>
@@ -25,6 +24,15 @@
         <file>theControls/MyAutoIncreaseValue.qml</file>
         <file>thePictures/icon-cancel.png</file>
         <file>theScripts/updateIndicator.js</file>
+        <file>thePictures/white-25px/icon-stopwatch.png</file>
+        <file>thePictures/white-25px/icon-countdown.png</file>
+        <file>thePictures/white-25px/icon-alarm.png</file>
+        <file>thePictures/dark-25px/icon-stopwatch.png</file>
+        <file>thePictures/dark-25px/icon-countdown.png</file>
+        <file>thePictures/dark-25px/icon-alarm.png</file>
+        <file>thePictures/dark-25px/icon-calender.png</file>
+        <file>thePictures/white-25px/icon-calender.png</file>
+        <file>theControls/MyComboBox.qml</file>
     </qresource>
     <qresource prefix="/thePictures"/>
 </RCC>
