@@ -104,10 +104,7 @@ Item
         visible: false;
         AlarmSetPage
         {
-            onButtonSave:
-            {
-                console.log("save");
-            }
+
             onButtonCancel:
             {
                 baseAlarmSet.visible=false;

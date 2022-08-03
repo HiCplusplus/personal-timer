@@ -33,6 +33,7 @@
         <file>thePictures/dark-25px/icon-calender.png</file>
         <file>thePictures/white-25px/icon-calender.png</file>
         <file>theControls/MyComboBox.qml</file>
+        <file>theControls/MyShadowForFocus.qml</file>
     </qresource>
     <qresource prefix="/thePictures"/>
 </RCC>
