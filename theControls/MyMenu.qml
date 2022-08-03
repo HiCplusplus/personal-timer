@@ -18,7 +18,7 @@ Item
             cTxt_normal = "black";
             cTxt_title = "#3E386C";
             cBG = "#23272A";//darked
-            cBG_menu = "#23272A";//"#2C2F33";//darked bad
+//            cBG_menu = "#23272A";//"#2C2F33";//darked bad
             cBG_element= "#565578";//darked
             cTxt_button = "white";//darked
             cBG_button = "#7289DA";//darked
@@ -34,7 +34,7 @@ Item
             cTxt_normal = "black";
             cTxt_title = "#3E386C";
             cBG = "#dedede";
-            cBG_menu = "#dedede";
+//            cBG_menu = "#dedede";
             cBG_element= "white";
             cTxt_button = "black";
             cBG_button = "#B178FF";
