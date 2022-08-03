@@ -32,16 +32,17 @@ Item
     property int setLabelTopMargin: root.height/2;
 
 
-    onMyIndicatorIndexChanged:
-    {
-        switch(myIndicatorIndex)
-        {
-            case 0 : UIN.setIndexActive(indexA,indexB,indexC,indexD,iconA);break;
-            case 1 : UIN.setIndexActive(indexB,indexC,indexA,indexD,iconB);break;
-            case 2 : UIN.setIndexActive(indexC,indexA,indexB,indexD,iconC);break;
-            case 3 : UIN.setIndexActive(indexD,indexC,indexA,indexB,iconD);break;
-        }
-    }
+//    onMyIndicatorIndexChanged:
+//    {
+//        switch(myIndicatorIndex)
+//        {
+//            case 0 : UIN.setIndexActive(indexD,indexC,indexA,indexB,iconD);break;
+////            case 1 : UIN.setIndexActive(indexA,indexB,indexC,indexD,iconA);break;
+//            case 2 : UIN.setIndexActive(indexB,indexC,indexA,indexD,iconB);break;
+//            case 3 : UIN.setIndexActive(indexC,indexA,indexB,indexD,iconC);break;
+////            case 3 :
+//        }
+//    }
 
 
 
@@ -60,6 +61,52 @@ Item
             anchors.bottom: root.bottom;
             anchors.bottomMargin: 5;
             spacing: root.width/25;
+
+            Rectangle
+            {
+                id:indexD;
+                clip:true;
+                width:indexesWidth;
+                height:indexesHeight;
+                radius: indexesRadius;
+                color : myIndicatorIndex==0 ? cBG_button: cBG_button_deactivated;
+
+                Rectangle
+                {
+                    width: setIconWidthHeight;
+                    height:setIconWidthHeight;
+                    color:cBG_Unknown;
+                    anchors.horizontalCenter: parent.horizontalCenter;
+                    anchors.top:parent.top;
+                    anchors.topMargin: setIconTopMargin;
+                    Image
+                    {
+                        id:iconD;
+                        anchors.fill: parent;
+                        source: setIconIndexD;
+                    }
+                }
+                Text
+                {
+                    anchors.horizontalCenter: indexD.horizontalCenter;
+                    anchors.top:parent.top;
+                    anchors.topMargin: setLabelTopMargin;
+                    text:myIndicatorIndexDText;
+                    color:setLabelColor;
+                    font.pointSize: setLabelFontSize;
+                }
+                MouseArea
+                {
+                    anchors.fill: parent;
+                    onClicked:
+                    {
+                        index_d_clicked();
+                    }
+                }
+            }//end of index D
+
+
+
             Rectangle
             {
                 id:indexA;
@@ -67,6 +114,8 @@ Item
                 width:indexesWidth;
                 height:indexesHeight;
                 radius: indexesRadius;
+                color:myIndicatorIndex==1 ? cBG_button: cBG_button_deactivated;
+
                 Rectangle
                 {
                     width: setIconWidthHeight;
@@ -110,6 +159,7 @@ Item
                 width:indexesWidth;
                 height:indexesHeight;
                 radius: indexesRadius;
+                color : myIndicatorIndex==2 ? cBG_button: cBG_button_deactivated;
                 Rectangle
                 {
                     width: setIconWidthHeight;
@@ -153,6 +203,7 @@ Item
                 width:indexesWidth;
                 height:indexesHeight;
                 radius: indexesRadius;
+                color : myIndicatorIndex==3 ? cBG_button: cBG_button_deactivated;
                 Rectangle
                 {
                     width: setIconWidthHeight;
@@ -190,46 +241,7 @@ Item
 
 
 
-            Rectangle
-            {
-                id:indexD;
-                clip:true;
-                width:indexesWidth;
-                height:indexesHeight;
-                radius: indexesRadius;
-                Rectangle
-                {
-                    width: setIconWidthHeight;
-                    height:setIconWidthHeight;
-                    color:cBG_Unknown;
-                    anchors.horizontalCenter: parent.horizontalCenter;
-                    anchors.top:parent.top;
-                    anchors.topMargin: setIconTopMargin;
-                    Image
-                    {
-                        id:iconD;
-                        anchors.fill: parent;
-                        source: setIconIndexD;
-                    }
-                }
-                Text
-                {
-                    anchors.horizontalCenter: indexD.horizontalCenter;
-                    anchors.top:parent.top;
-                    anchors.topMargin: setLabelTopMargin;
-                    text:myIndicatorIndexDText;
-                    color:setLabelColor;
-                    font.pointSize: setLabelFontSize;
-                }
-                MouseArea
-                {
-                    anchors.fill: parent;
-                    onClicked:
-                    {
-                        index_d_clicked();
-                    }
-                }
-            }//end of index D
+
         }
     }
 }
