@@ -22,7 +22,7 @@ Item
     property string setIconIndexC: "";
     property string setIconIndexD: "";
 
-    property color setLabelColor: "black";//cTxt_button;
+//    property color setLabelColor: "black";//;
     property int setLabelFontSize:8;
     property int indexesWidth: 70;//rowArea.width/3.5;
     property int indexesHeight: 70; //rowArea.height
@@ -92,7 +92,7 @@ Item
                     anchors.top:parent.top;
                     anchors.topMargin: setLabelTopMargin;
                     text:myIndicatorIndexDText;
-                    color:setLabelColor;
+                    color:cTxt_button;
                     font.pointSize: setLabelFontSize;
                 }
                 MouseArea
@@ -137,7 +137,7 @@ Item
                     anchors.top:parent.top;
                     anchors.topMargin: setLabelTopMargin;
                     text:myIndicatorIndexAText;
-                    color:setLabelColor;
+                    color:cTxt_button;
                     font.pointSize: setLabelFontSize;
                 }
                 MouseArea
@@ -182,7 +182,7 @@ Item
                     anchors.top:parent.top;
                     anchors.topMargin: setLabelTopMargin;
                     text:myIndicatorIndexBText;
-                    color: setLabelColor;
+                    color: cTxt_button;
                     font.pointSize: setLabelFontSize;
                 }
                 MouseArea
@@ -225,7 +225,7 @@ Item
                     anchors.top:parent.top;
                     anchors.topMargin: setLabelTopMargin;
                     text:myIndicatorIndexCText;
-                    color:setLabelColor;
+                    color:cTxt_button;
                     font.pointSize: setLabelFontSize;
                 }
                 MouseArea

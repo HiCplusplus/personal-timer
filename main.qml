@@ -29,6 +29,8 @@ Window
     alarm style / page set alarm  idee from
             https://dribbble.com/shots/10918806-Smart-Alarm-app
 
+    calender base from
+            https://dribbble.com/shots/9709600-Daily-UI-Events-Dark-Version
     */
 
 
@@ -95,7 +97,7 @@ Window
     property string fileIcon_Stopwatch: "icon-stopwatch.png";
     property string fileIcon_Alarm: "icon-alarm.png";
     property string fileIcon_Calender: "icon-calender.png";
-
+    property string fileIcon_BackNext: "icon-back-next.png";
 
 
     //set theme, default light mode colors

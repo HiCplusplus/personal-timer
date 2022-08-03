@@ -36,6 +36,9 @@
         <file>theControls/MyShadowForFocus.qml</file>
         <file>theControls/MyAutoDecreaseValue.qml</file>
         <file>thePages/CalenderPage.qml</file>
+        <file>theControls/MyCalender.qml</file>
+        <file>thePictures/dark-25px/icon-back-next.png</file>
+        <file>thePictures/white-25px/icon-back-next.png</file>
     </qresource>
     <qresource prefix="/thePictures"/>
 </RCC>
