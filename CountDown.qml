@@ -176,12 +176,10 @@ Item
                         anchors.top: txtHour.bottom;
                         anchors.horizontalCenter: parent.horizontalCenter;
                         color:cBG_Unknown;
-                        MyAutoValue_Increase_Decrease
+                        MyAutoDecreaseValue
                         {
                             id:hourDecrease;
                             anchors.fill: parent;
-
-                            setLocalStatusIncreaseOrDecrease: false;//false means decrease, true means  increase
                             setTextFontSize: mavFontSizes;
                             setTimerIntervalValue: mavTimerIntervalValue;
                             setInputIntValue: theHour;
@@ -194,6 +192,24 @@ Item
                                 theHour = outputResultInt;
                             }
                         }
+//                        MyAutoValue_Increase_Decrease
+//                        {
+//                            id:hourDecrease;
+//                            anchors.fill: parent;
+
+//                            setLocalStatusIncreaseOrDecrease: false;//false means decrease, true means  increase
+//                            setTextFontSize: mavFontSizes;
+//                            setTimerIntervalValue: mavTimerIntervalValue;
+//                            setInputIntValue: theHour;
+//                            onOutputResultStringChanged:
+//                            {
+//                                txtHour.text = outputResultString;
+//                            }
+//                            onOutputResultIntChanged:
+//                            {
+//                                theHour = outputResultInt;
+//                            }
+//                        }
                     }
 
 
@@ -279,12 +295,11 @@ Item
                         anchors.top: txtMinute.bottom;
                         anchors.horizontalCenter: parent.horizontalCenter;
                         color:cBG_Unknown;
-                        MyAutoValue_Increase_Decrease
+                        MyAutoDecreaseValue
                         {
                             id:minuteDecrease;
                             anchors.fill: parent;
 
-                            setLocalStatusIncreaseOrDecrease: false;//false means decrease, true means  increase
                             setTextFontSize: mavFontSizes;
                             setTimerIntervalValue: mavTimerIntervalValue;
                             setInputIntValue: theMinute;
@@ -297,6 +312,24 @@ Item
                                 theMinute = outputResultInt;
                             }
                         }
+//                        MyAutoValue_Increase_Decrease
+//                        {
+//                            id:minuteDecrease;
+//                            anchors.fill: parent;
+
+//                            setLocalStatusIncreaseOrDecrease: false;//false means decrease, true means  increase
+//                            setTextFontSize: mavFontSizes;
+//                            setTimerIntervalValue: mavTimerIntervalValue;
+//                            setInputIntValue: theMinute;
+//                            onOutputResultStringChanged:
+//                            {
+//                                txtMinute.text = outputResultString;
+//                            }
+//                            onOutputResultIntChanged:
+//                            {
+//                                theMinute = outputResultInt;
+//                            }
+//                        }
                     }
 
                 }
@@ -384,12 +417,11 @@ Item
                         anchors.top: txtSecond.bottom;
                         anchors.horizontalCenter: parent.horizontalCenter;
                         color:cBG_Unknown;
-                        MyAutoValue_Increase_Decrease
+                        MyAutoDecreaseValue
                         {
                             id:secondDecrease;
                             anchors.fill: parent;
 
-                            setLocalStatusIncreaseOrDecrease: false;//false means decrease, true means  increase
                             setTextFontSize: mavFontSizes;
                             setTimerIntervalValue: mavTimerIntervalValue;
                             setInputIntValue: theSecond;
@@ -402,6 +434,24 @@ Item
                                 theSecond = outputResultInt;
                             }
                         }
+//                        MyAutoValue_Increase_Decrease
+//                        {
+//                            id:secondDecrease;
+//                            anchors.fill: parent;
+
+//                            setLocalStatusIncreaseOrDecrease: false;//false means decrease, true means  increase
+//                            setTextFontSize: mavFontSizes;
+//                            setTimerIntervalValue: mavTimerIntervalValue;
+//                            setInputIntValue: theSecond;
+//                            onOutputResultStringChanged:
+//                            {
+//                                txtSecond.text = outputResultString;
+//                            }
+//                            onOutputResultIntChanged:
+//                            {
+//                                theSecond = outputResultInt;
+//                            }
+//                        }
                     }
 
                 }

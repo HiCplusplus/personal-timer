@@ -3,6 +3,7 @@ import QtQuick.Window 2.15
 import QtMultimedia 5.15
 import QtQuick.Controls 2.15
 import "theControls"
+import "thePages"
 
 Window
 {
@@ -17,7 +18,57 @@ Window
     title: qsTr(appTitle);
     color:cBG;
 
-    //menu down idea from https://dribbble.com/shots/17686848-Alarm-Clock-App-UI
+    /*
+    thanks to :
+
+    icons8.com
+
+    menu down idea from
+            https://dribbble.com/shots/17686848-Alarm-Clock-App-UI
+
+    alarm style / page set alarm  idee from
+            https://dribbble.com/shots/10918806-Smart-Alarm-app
+
+    */
+
+
+    /* My fav styles
+
+    i wish do this https://dribbble.com/shots/14896001-Alarm-App-Concept
+
+
+    good looking color and theme https://dribbble.com/shots/17279416-Sleepzy-Sleep-tracker-app
+
+
+    https://dribbble.com/shots/4894371-Dashboard-Graph
+
+    good looking calneders
+        https://dribbble.com/shots/16390127-Schedule-App
+        https://dribbble.com/shots/15628214-Calendar-app
+        https://dribbble.com/shots/16618447-Falop-Project
+        https://dribbble.com/shots/6291859-Date-Picker
+        https://dribbble.com/shots/3769275-Calendar-Daily-UI-038
+        https://dribbble.com/shots/5554215-Task-manage-app-concept
+        https://dribbble.com/shots/9622078-Daily-UI-Events-App-Design
+        https://dribbble.com/shots/18098594-Delivery-Components
+        https://dribbble.com/shots/4749823-Calender-Screen
+        https://dribbble.com/shots/5642817-Calender-with-Background-Gradient
+        https://dribbble.com/shots/5811377-5-100-Calender-of-the-day
+        https://dribbble.com/shots/3870315-Event-Listing-Daily-UI-070
+        https://dribbble.com/shots/3671877-Calender
+        https://dribbble.com/shots/8945197-Minimal-Calender-Modul-1
+        https://dribbble.com/shots/10924372-UI-design-for-calender
+        https://dribbble.com/shots/4129451-Time-Tracker-Concept
+        https://dribbble.com/shots/4994794-Flight-Booking-App-Freebie
+        https://dribbble.com/shots/16710172-Task-Management-App-to-do-calender-events
+        https://dribbble.com/shots/10170477-Date-Picker-Exploration-Part-1
+        https://dribbble.com/shots/11751267-DailyUI-Day42-ToDo-List
+
+
+
+
+
+    */
 
     Rectangle
     {
@@ -52,7 +103,7 @@ Window
     property color cTxt_normal : "black";
     property color cTxt_title : "#3E386C";
     property color cBG : "#dedede";//"#F6F6F6";
-    property color cBG_menu : "#dedede"; //"#F6F6F6";
+//    property color cBG_menu : "#dedede"; //"#F6F6F6";
     property color cBG_element: "white";
     property color cTxt_button : "black";
     property color cBG_button : "#B178FF";
@@ -64,14 +115,15 @@ Window
 
    Rectangle
    {
-       id:iconsBar;
+       id:menuBar;
        width: root.width;
        height:root.height/15;
        anchors.top:root.top;
        color:cBG;
        MyMenu
        {
-            cBGMenu: cBG_menu;
+           id:myMenu;
+            cBGMenu: viewTimers.currentIndex==0? cBG_button: cBG;
             colorTextMenu:cTxt_button;
             textTitleMenu:appTitle;
        }
@@ -87,7 +139,7 @@ Window
         color:cBG;
         anchors
         {
-            top:iconsBar.bottom;
+            top:menuBar.bottom;
             left:root.left;
             right:root.right;
             bottom:myIndicator.top;
@@ -115,7 +167,14 @@ Window
                 {
                     myIndicator.myIndicatorIndex = viewTimers.currentIndex;
                 }
+                Item
+                {
+                    id:calenderPage;
+                    CalenderPage
+                    {
 
+                    }
+                }
                 Item
                 {
                     id: firstPage
@@ -157,11 +216,7 @@ Window
 
                     }
                 }
-                Item
-                {
-                    id:fourthPage;
 
-                }
             }
         }
 
@@ -187,21 +242,21 @@ Window
         setIconIndexB: path_to_menuIcons + fileIcon_Stopwatch;
         setIconIndexC: path_to_menuIcons + fileIcon_Countdown;
         setIconIndexD: path_to_menuIcons + fileIcon_Calender;
-        onIndex_a_clicked:
+
+        onIndex_d_clicked:
         {
             viewTimers.setCurrentIndex(0);
         }
-        onIndex_b_clicked:
+        onIndex_a_clicked:
         {
             viewTimers.setCurrentIndex(1);
         }
-
-        onIndex_c_clicked:
+        onIndex_b_clicked:
         {
             viewTimers.setCurrentIndex(2);
         }
 
-        onIndex_d_clicked:
+        onIndex_c_clicked:
         {
             viewTimers.setCurrentIndex(3);
         }

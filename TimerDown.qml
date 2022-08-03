@@ -104,7 +104,6 @@ Item
         visible: false;
         AlarmSetPage
         {
-
             onButtonCancel:
             {
                 baseAlarmSet.visible=false;

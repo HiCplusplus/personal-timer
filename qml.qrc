@@ -34,6 +34,8 @@
         <file>thePictures/white-25px/icon-calender.png</file>
         <file>theControls/MyComboBox.qml</file>
         <file>theControls/MyShadowForFocus.qml</file>
+        <file>theControls/MyAutoDecreaseValue.qml</file>
+        <file>thePages/CalenderPage.qml</file>
     </qresource>
     <qresource prefix="/thePictures"/>
 </RCC>
