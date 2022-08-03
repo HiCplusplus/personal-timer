@@ -163,10 +163,10 @@ Item
                 setStatusSwitch:setStatusSwitch;
                 setStatusBorder:false;
                 setSizeSwitchCircle: 2.80;
-                onStatusSwitch:
-                {
-                    //HERE LEAVE NOTHING =-=================================================================================s
-                }
+//                onStatusSwitch:
+//                {
+//                    //HERE LEAVE NOTHING =-=================================================================================s
+//                }
             }
         }//end ofswitch
 

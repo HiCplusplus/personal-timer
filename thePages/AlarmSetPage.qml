@@ -2,17 +2,16 @@ import QtQuick 2.15
 import "../theControls"
 //import QtQuick.Shapes
 import QtQuick.Controls 2.15
-
 Item
 {
     anchors.fill: parent;
-    signal buttonSave;
     signal buttonCancel;
-    signal buttonAlarmSound;
     property int setMaxCharAlarmName:25;
     property variant setHourValues :
         ["01","02","03","04","05","06","07","08","09","10","11","12"];
 
+
+    property variant setAmPmValues:  ["AM", "PM"];
 
     property variant setMinuteValues:
         ["00","01","02","03","04","05","06","07","08","09","10",
@@ -20,7 +19,9 @@ Item
         "21","22","23","24","25","26","27","28","29","30",
         "31","32","33","34","35","36","37","38","39","40",
         "41","42","43","44","45","46","47","48","49","50",
-        "51","52","53","54","55","56","57","58","59"]
+        "51","52","53","54","55","56","57","58","59"];
+
+
     Rectangle
     {
         id:root;
@@ -32,8 +33,25 @@ Item
         id:myCancelSaveButtons;
         onButtonSaveClicked:
         {
-            buttonSave();
-            console.log(hoursTumbler.currentIndex+1 + "\t" + minutesTumbler.currentIndex + "\t"+ amPmTumbler.currentIndex);
+            console.log("alarm hour = "+setHourValues[hoursTumbler.currentIndex]
+                        + "\n alarm minute = " + minutesTumbler.currentIndex
+                        + "\n alarm am/pm = "+ setAmPmValues[amPmTumbler.currentIndex]
+
+                        + "\n alarm days \n"
+                        +"= {" + weekdaysPick.textAPick + " = " + weekdaysPick.setAPicked
+                        + "\t   " + weekdaysPick.textBPick + " = " + weekdaysPick.setBPicked
+                        + "\t   " + weekdaysPick.textCPick + " = " + weekdaysPick.setCPicked
+                        + "\t   " + weekdaysPick.textDPick + " = " + weekdaysPick.setDPicked
+                        + "\t   " + weekdaysPick.textEPick + " = " + weekdaysPick.setEPicked
+                        + "\t   " + weekdaysPick.textFPick + " = " + weekdaysPick.setFPicked
+                        + "\t   " + weekdaysPick.textGPick + " = " + weekdaysPick.setGPicked
+                        + "}\n"
+
+                        + "\n alarm name = " + alarmName.text
+                        + "\n alarm with vibration status = " + vibrationSwitch.setStatusSwitch
+                        + "\n alarm sound effect = " + myCombobox.values[myCombobox.selectedIndex]
+                        + "\n alarm sound volume = " + soundVolume.outPutVolume);
+
         }
         onButtonCancelClicked: { buttonCancel(); }
     }
@@ -135,7 +153,7 @@ Item
                 {
                     id: amPmTumbler;
                     width: parent.width/3;
-                    model: ["AM", "PM"];
+                    model: setAmPmValues;
                     font.bold: true;
                     font.pointSize: 30;
                 }
@@ -185,13 +203,7 @@ Item
         clip:true;
         MyWeekDayPicker
         {
-            onAPick: {}
-            onBPick: {}
-            onCPick: {}
-            onDPick: {}
-            onEPick: {}
-            onFPick: {}
-            onGPick: {}
+            id:weekdaysPick;
         }
     }
     Rectangle
@@ -265,6 +277,7 @@ Item
 
         Text
         {
+            id:alarmSoundText;
             text:"default";
             font.family: gFontFamily;
             anchors.right: parent.right;
@@ -276,8 +289,8 @@ Item
             anchors.fill: parent;
             onClicked:
             {
-                buttonAlarmSound();
                 myCombobox.visible=true;
+                myShadow.visible=true;
             }
         }
 
@@ -313,10 +326,7 @@ Item
             color:cBG_Unknown;
             MySlider
             {
-                onOutPutVolumeChanged:
-                {
-
-                }
+                id:soundVolume;
             }
         }
     }//end of basealarmvolume
@@ -356,24 +366,41 @@ Item
 
             MySwitch
             {
+                id:vibrationSwitch;
                 setBorderWidth: 4;
                 setStatusSwitch:false;
                 setStatusBorder:false;
                 setSizeSwitchCircle: 2.80;
-                onStatusSwitch:
-                {
-                    //HERE LEAVE NOTHING =-=================================================================================s
-                }
             }
         }
     }//end of base alarm mit vibration
 
 
+    MyShadowForFocus
+    {
+        id:myShadow;
+        z:5;
+        onRootclicked:
+        {
+            myCombobox.btnCancel();
+        }
+    }
     MyComboBox
     {
         id:myCombobox;
         visible: false;
-
+        z:6;
+        setColor: cBG_element;
+        onBtnCancel:
+        {
+            myCombobox.visible=false;
+            myShadow.visible=false;
+        }
+        onBtnSave:
+        {
+            alarmSoundText.text = values[selectedIndex];
+            btnCancel();
+        }
     }
 
 

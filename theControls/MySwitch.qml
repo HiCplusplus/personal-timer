@@ -5,7 +5,7 @@ Item
     property int setSwitchWidth:parent.width;
     property int setAnimationDuration:150;
     property int setBorderWidth: 6;
-    signal statusSwitch;
+//    signal statusSwitch;
     property bool setStatusSwitch:false;
     property bool setStatusBorder:true;
     property double setSizeSwitchCircle: 3.80;
@@ -39,11 +39,13 @@ Item
                 {
                     animactionDeactive.running=true;
                     mySwitsch.color = cBG_button_deactivated;
+                    setStatusSwitch=false;
                 }
                 else
                 {
                     animationAcvite.running=true;
                     mySwitsch.color = cBG_button_activated;
+                    setStatusSwitch=true;
                 }
 
 
