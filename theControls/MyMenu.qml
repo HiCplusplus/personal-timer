@@ -23,10 +23,11 @@ Item
             cTxt_button = "white";//darked
             cBG_button = "#7289DA";//darked
             cBG_button_activated= "#7289DA";//darked
-            cBG_button_deactivated= "gray";//darked
+            cBG_button_deactivated= "#313447";//"gray";//darked
             gFontFamily="Courier";//ok
             cBG_Unknown= "transparent";
             cUnknown = "white";//o99AAB5k
+            path_to_menuIcons= directory_Icons + direcotry_WhiteIcons;
         }
         else
         {
@@ -39,11 +40,12 @@ Item
             cTxt_button = "black";
             cBG_button = "#B178FF";
             cBG_button_activated= "#B178FF";
-            cBG_button_deactivated= "#EBDDFF";
+            cBG_button_deactivated= "#dcd3e8";
             gFontFamily="Courier";
             cBG_Unknown= "transparent";
             cUnknown= "white";
             themeDarkMode = false;
+            path_to_menuIcons= directory_Icons + direcotry_BlackIcons;
         }
 
 
