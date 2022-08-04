@@ -65,7 +65,7 @@ Window
         https://dribbble.com/shots/16710172-Task-Management-App-to-do-calender-events
         https://dribbble.com/shots/10170477-Date-Picker-Exploration-Part-1
         https://dribbble.com/shots/11751267-DailyUI-Day42-ToDo-List
-
+https://dribbble.com/shots/14748311-Task-Manager-App
 
 
 

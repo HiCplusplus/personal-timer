@@ -39,6 +39,8 @@
         <file>theControls/MyCalender.qml</file>
         <file>thePictures/dark-25px/icon-back-next.png</file>
         <file>thePictures/white-25px/icon-back-next.png</file>
+        <file>theControls/MyDayPicker.qml</file>
+        <file>theScripts/calculateDates.js</file>
     </qresource>
     <qresource prefix="/thePictures"/>
 </RCC>

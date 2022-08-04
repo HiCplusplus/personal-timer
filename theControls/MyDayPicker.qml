@@ -1,15 +1,25 @@
-import QtQuick 2.0
+import QtQuick 2.15
 
 Item
 {
     anchors.fill: parent;
-    property string textAPick: "Mon";
-    property string textBPick: "Tue";
-    property string textCPick: "Wed";
-    property string textDPick: "Thu";
-    property string textEPick: "Fri";
-    property string textFPick: "Sat";
-    property string textGPick: "Sun";
+    property int setPickMode: 0;
+    /*
+        0 -> readonly
+        1 -> only one pick
+        2 -> mutiple pick (week pick) (whole month pick)
+        3 -> range pick
+    */
+    property variant setDays: ["1","2","3","4","5","6","7","8"
+                              ,"9","10","11","12","13","14","15","16"
+                              ,"17","18","19","20","21","22","23","24"
+                              ,"25","26","27","28","29","30","31"];
+
+    property int howManyDaysAreBlank: 0;
+    property int maxDaysThisMonth:31;
+
+
+
     property bool setAPicked: false;
     property bool setBPicked: false;
     property bool setCPicked: false;
