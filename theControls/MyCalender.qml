@@ -8,13 +8,12 @@ Item
     property int setFontSizeMonth: 25;
     property variant setTextMonth: ["","January","February","March","April","May","June"
                                     ,"July","August","September","October","November","December"];
-    property int setYear: 2022;
     property int setTopMarginMonth: 5;
     property int setLeftRightMarginNextBackMonth:5;
 
     property bool setCalenderOnlyView: false;
 
-
+    property int setCurrentYear: 2022;
     property int setCurrentMonth:1;
     anchors.fill: parent;
 
@@ -51,7 +50,7 @@ Item
                     {
                         id: textYear;
                         color: cTxt_button;
-                        text: setYear;
+                        text: setCurrentYear;
                         font.pointSize: setFontSizeMonth/2;
                         font.bold: true;
                         font.family: gFontFamily;
@@ -269,7 +268,9 @@ Item
             }
             MyDayPicker
             {
-
+                setViewOnlyStatus : setCalenderOnlyView;
+                setYear: setCurrentYear;
+                setMonth: setCurrentMonth;
             }
         }
 

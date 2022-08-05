@@ -87,7 +87,6 @@ Item
             if(!baseAlarmSet.visible)
             {
                 baseAlarmSet.visible=true;
-
                 listViewMain.visible=false;
                 changeStatusSwiperFromTimerDown();
             }

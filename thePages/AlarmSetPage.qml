@@ -204,6 +204,13 @@ Item
         MyWeekDayPicker
         {
             id:weekdaysPick;
+            textAPick: "Monday";
+            textBPick: "Tuesday";
+            textCPick: "Wednesday";
+            textDPick: "Thursday";
+            textEPick: "Friday";
+            textFPick: "Saturday";
+            textGPick: "Sunday";
         }
     }
     Rectangle

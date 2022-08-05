@@ -119,7 +119,12 @@ function monthDays(year,month)
 }
 
 
-function automaticMonth(year,month,dayOfMonth=1)
+function automaticMonth(year,month,showMode=0)
+/*showMode is another function condintion (by default disabled)for
+            make space after the value ONLY FOR SHOW INTHE
+            TEXTS TO AVOID ERROR Unable to assign [undefined] to QString*/
+
+
 // return me space days with fill '0' untill month day started of week and insert other days (maxday)
 // e.g : (2022,'january') or (2022,1)
 // result must be like : [0,0,0,0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15, ... , 31]
@@ -128,12 +133,12 @@ function automaticMonth(year,month,dayOfMonth=1)
     var result = [];
 
 
-    var makeSpaceForValues = dayOfWeek(year,month,'nontext',dayOfMonth);//day is default filled by 1
+    var makeSpaceForValues = dayOfWeek(year,month,'nontext');//day is default filled by 1
     if(makeSpaceForValues>0)
     {
         if(makeSpaceForValues>0)
             for(var i=0;i<=makeSpaceForValues;i++)
-                result[i] = 0;   //now day space added into result
+                result[i] = "0";   //now day space added into result , it was 0 but changed to empty string
 
     }
     else
@@ -147,5 +152,52 @@ function automaticMonth(year,month,dayOfMonth=1)
         for(var j=1; j<= maxDay; j++)
             result.push(j);
 
+    if(showMode)
+    {
+        for(var a=1; a<= maxDay/2; a++)
+            result.push('0');
+    }
+
     return result;
+}
+
+
+
+
+//day picker section
+function calculateColumns_of_MonthDays(arrayLen)
+{
+
+    /*
+      how style 7 day in a row
+
+      TITLES are :
+      //NOTE start '*' means anyday (28 29 30 31)
+      (spaced/nulled) (table columns) -> (max day of month)    (max days + spaced days)
+
+            0                4        -> 28                     (28)
+            0                5        -> 29 30 31               (29 , 30 , 31)
+            1                5        -> *                      (29 to 32)
+            2                5        -> *                      (30 to 33)
+            3                5        -> *                      (31 to 34)
+            4                5        -> *                      (32 to 35)
+            5                5        -> 28 29 30               (33 , 34 , 35)
+            6                5        -> 28 29                  (34 , 35)
+
+
+            5                6        -> 31                     (36)
+            6                6        -> 30 31                  (36 , 37)
+
+            x<29 -> 4 column
+            x>=29 && x<=35 -> 5 column
+            x>=36 or else -> 6 column
+      */
+
+
+    if(arrayLen<29)
+        return 4;
+    else if(arrayLen >= 29 && arrayLen <= 35)
+        return 5;
+    else
+        return 6;
 }
