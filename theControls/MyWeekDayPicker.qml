@@ -3,13 +3,14 @@ import QtQuick 2.0
 Item
 {
     anchors.fill: parent;
-    property string textAPick: "Mon";
-    property string textBPick: "Tue";
-    property string textCPick: "Wed";
-    property string textDPick: "Thu";
-    property string textEPick: "Fri";
-    property string textFPick: "Sat";
-    property string textGPick: "Sun";
+    property string emptyTextForAll: "";
+    property string textAPick: emptyTextForAll;
+    property string textBPick: emptyTextForAll;
+    property string textCPick: emptyTextForAll;
+    property string textDPick: emptyTextForAll;
+    property string textEPick: emptyTextForAll;
+    property string textFPick: emptyTextForAll;
+    property string textGPick: emptyTextForAll;
     property bool setAPicked: false;
     property bool setBPicked: false;
     property bool setCPicked: false;
@@ -18,8 +19,22 @@ Item
     property bool setFPicked: false;
     property bool setGPicked: false;
 
+
+
+    //setpicmode changes
+    property int setPickMode: 2;
+    /*
+        1 -> only one pick
+        2 -> mutiple pick
+    */
+    property bool setMonthDayPicker: false;
+
+
+
+
+
     property color setColorPicked: cBG_button;
-    property color setColorNotPicked: cBG_element;
+    property color setColorNotPicked: setMonthDayPicker? cBG_Unknown : cBG_element;
     property color setColorTextPicked: "white";//"white";
     property color setColorTextNotPicked: cTxt_button;//color exception 5
 
@@ -27,35 +42,34 @@ Item
     property bool setTextBold: true;
     property int setBaseRadius:10;
     property int setBaseWidth: theRow.width/8;
-    property int setBaseHeight: theRow.height;
+    property int setBaseHeight:theRow.height;
     property int setLimitForTexts: 50;
     property bool setViewOnly:false;
-    signal aPick;
-    signal bPick;
-    signal cPick;
-    signal dPick;
-    signal ePick;
-    signal fPick;
-    signal gPick;
+
 
     Row
     {
         id:theRow;
         anchors.fill: parent;
         spacing:parent.width/50;
+
         Rectangle
         {
             height:setBaseHeight;
             width:setBaseWidth;
             color:setAPicked<=0? setColorNotPicked:setColorPicked;
             radius:setBaseRadius;
+            enabled: textAPick!=emptyTextForAll? true:false;
+            opacity: textAPick!=emptyTextForAll? 1.0:0;
+
             Text
             {
-                text: parent.width>setLimitForTexts? textAPick : textAPick.slice(0,3);
+                text: (parent.width>setLimitForTexts) ? textAPick : textAPick.slice(0,3);
                 anchors.centerIn: parent;
                 font.pointSize: setTextFontSize;
                 color:setAPicked<=0? setColorTextNotPicked: setColorTextPicked;
                 font.bold: setTextBold;
+
 
             }
             MouseArea
@@ -68,8 +82,18 @@ Item
                         if(setAPicked)
                             setAPicked=false;
                         else
-                            setAPicked=true;
-                        aPick();
+                            if(setPickMode==2)
+                                setAPicked=true;
+                            else
+                            {
+                                setAPicked=true;
+                                setBPicked=false;
+                                setCPicked=false;
+                                setDPicked=false;
+                                setEPicked=false;
+                                setFPicked=false;
+                                setGPicked=false;
+                            }
                     }
 
                 }
@@ -82,6 +106,8 @@ Item
             width:setBaseWidth;
             color:setBPicked<=0? setColorNotPicked:setColorPicked;
             radius:setBaseRadius;
+            enabled: textBPick!=emptyTextForAll? true:false;
+            opacity: textBPick!=emptyTextForAll? 1.0:0;
             Text
             {
                 text: parent.width>setLimitForTexts? textBPick : textBPick.slice(0,3);
@@ -100,9 +126,22 @@ Item
                         if(setBPicked)
                             setBPicked=false;
                         else
-                            setBPicked=true;
-                        bPick();
+                            if(setPickMode==2)
+                                setBPicked=true;
+                            else
+                            {
+                                setBPicked=true;
+                                setAPicked=false;
+                                setCPicked=false;
+                                setDPicked=false;
+                                setEPicked=false;
+                                setFPicked=false;
+                                setGPicked=false;
+                            }
                     }
+
+
+
                 }
             }
         }//end of b
@@ -114,6 +153,8 @@ Item
             width:setBaseWidth;
             color:setCPicked<=0? setColorNotPicked:setColorPicked;
             radius:setBaseRadius;
+            enabled: textCPick!=emptyTextForAll? true:false;
+            opacity: textCPick!=emptyTextForAll? 1.0:0;
             Text
             {
                 text: parent.width>setLimitForTexts? textCPick : textCPick.slice(0,3);
@@ -132,8 +173,18 @@ Item
                         if(setCPicked)
                             setCPicked=false;
                         else
-                            setCPicked=true;
-                        cPick();
+                            if(setPickMode==2)
+                                setCPicked=true;
+                            else
+                            {
+                                setCPicked=true;
+                                setBPicked=false;
+                                setAPicked=false;
+                                setDPicked=false;
+                                setEPicked=false;
+                                setFPicked=false;
+                                setGPicked=false;
+                            }
                     }
 
                 }
@@ -146,6 +197,8 @@ Item
             width:setBaseWidth;
             color:setDPicked<=0? setColorNotPicked:setColorPicked;
             radius:setBaseRadius;
+            enabled: textDPick!=emptyTextForAll? true:false;
+            opacity: textDPick!=emptyTextForAll? 1.0:0;
             Text
             {
                 text: parent.width>setLimitForTexts? textDPick : textDPick.slice(0,3);
@@ -164,8 +217,18 @@ Item
                         if(setDPicked)
                             setDPicked=false;
                         else
-                            setDPicked=true;
-                        dPick();
+                            if(setPickMode==2)
+                                setDPicked=true;
+                            else
+                            {
+                                setDPicked=true;
+                                setBPicked=false;
+                                setCPicked=false;
+                                setAPicked=false;
+                                setEPicked=false;
+                                setFPicked=false;
+                                setGPicked=false;
+                            }
                     }
                 }
             }
@@ -181,6 +244,8 @@ Item
             width:setBaseWidth;
             color:setEPicked<=0? setColorNotPicked:setColorPicked;
             radius:setBaseRadius;
+            enabled: textEPick!=emptyTextForAll? true:false;
+            opacity: textEPick!=emptyTextForAll? 1.0:0;
             Text
             {
                 text: parent.width>setLimitForTexts? textEPick : textEPick.slice(0,3);
@@ -199,8 +264,18 @@ Item
                         if(setEPicked)
                             setEPicked=false;
                         else
-                            setEPicked=true;
-                        ePick();
+                            if(setPickMode==2)
+                                setEPicked=true;
+                            else
+                            {
+                                setEPicked=true;
+                                setBPicked=false;
+                                setCPicked=false;
+                                setDPicked=false;
+                                setAPicked=false;
+                                setFPicked=false;
+                                setGPicked=false;
+                            }
                     }
                 }
             }
@@ -214,6 +289,8 @@ Item
             width:setBaseWidth;
             color:setFPicked<=0? setColorNotPicked:setColorPicked;
             radius:setBaseRadius;
+            enabled: textFPick!=emptyTextForAll? true:false;
+            opacity: textFPick!=emptyTextForAll? 1.0:0;
             Text
             {
                 text: parent.width>setLimitForTexts? textFPick : textFPick.slice(0,3);
@@ -232,8 +309,18 @@ Item
                         if(setFPicked)
                             setFPicked=false;
                         else
-                            setFPicked=true;
-                        fPick();
+                            if(setPickMode==2)
+                                setFPicked=true;
+                            else
+                            {
+                                setFPicked=true;
+                                setBPicked=false;
+                                setCPicked=false;
+                                setDPicked=false;
+                                setEPicked=false;
+                                setAPicked=false;
+                                setGPicked=false;
+                            }
                     }
                 }
             }
@@ -247,6 +334,8 @@ Item
             width:setBaseWidth;
             color:setGPicked<=0? setColorNotPicked:setColorPicked;
             radius:setBaseRadius;
+            enabled: textGPick!=emptyTextForAll? true:false;
+            opacity: textGPick!=emptyTextForAll? 1.0:0;
             Text
             {
                 text: parent.width>setLimitForTexts? textGPick : textGPick.slice(0,3);
@@ -265,8 +354,18 @@ Item
                         if(setGPicked)
                             setGPicked=false;
                         else
-                            setGPicked=true;
-                        gPick();
+                            if(setPickMode==2)
+                                setGPicked=true;
+                            else
+                            {
+                                setGPicked=true;
+                                setBPicked=false;
+                                setCPicked=false;
+                                setDPicked=false;
+                                setEPicked=false;
+                                setFPicked=false;
+                                setAPicked=false;
+                            }
                     }
                 }
             }

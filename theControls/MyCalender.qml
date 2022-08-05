@@ -8,14 +8,18 @@ Item
     property int setFontSizeMonth: 25;
     property variant setTextMonth: ["","January","February","March","April","May","June"
                                     ,"July","August","September","October","November","December"];
-    property int setYear: 2022;
     property int setTopMarginMonth: 5;
     property int setLeftRightMarginNextBackMonth:5;
 
     property bool setCalenderOnlyView: false;
 
+    property int setCurrentYear: 2020;
+    property int setCurrentMonth:2;
+    //2,3,11 monday problem 2021
+    //-------------------------------------------------------------------------------------------------HERE
 
-    property int setCurrentMonth:1;
+
+    property int setpickmode:2; //1 only one pick , 2 multi pick
     anchors.fill: parent;
 
     Rectangle
@@ -41,6 +45,11 @@ Item
                 width: parent.width/1.20;
                 height:parent.height;
                 color:cBG_Unknown;
+
+
+
+
+                //-------------- year
                 Rectangle
                 {
                     id:baseYearText;
@@ -51,7 +60,7 @@ Item
                     {
                         id: textYear;
                         color: cTxt_button;
-                        text: setYear;
+                        text: setCurrentYear;
                         font.pointSize: setFontSizeMonth/2;
                         font.bold: true;
                         font.family: gFontFamily;
@@ -59,15 +68,14 @@ Item
                         anchors.top:parent.top;
                     }
 
-                    //---- buttons
                     Rectangle
                     {
                         id:baseBackYear;
                         width: 20;
                         height:width;
                         visible: setCalenderOnlyView?false:true;
-                        opacity: setCurrentMonth==1? 0.5 : 1;
-                        enabled: setCurrentMonth==1? false:true;
+                        //opacity: setCurrentMonth==1? 0.5 : 1;
+                        //enabled: setCurrentMonth==1? false:true;
                         color:cBG_Unknown;
                         anchors
                         {
@@ -87,8 +95,12 @@ Item
                             anchors.fill: parent;
                             onClicked:
                             {
-                                console.log("back month pressed");
-                                test();
+                                //console.log("back year pressed");
+                                if(setCurrentYear>1000)
+                                {
+                                    setCurrentYear--;
+                                    textYear.text = setCurrentYear;
+                                }
                             }
                         }
                     }//end of back month button
@@ -100,8 +112,8 @@ Item
                         height:width;
                         visible: setCalenderOnlyView?false:true;
                         color:cBG_Unknown;
-                        opacity: setCurrentMonth==11? 0.5 : 1;
-                        enabled: setCurrentMonth==11? false:true;
+//                        opacity: setCurrentMonth==11? 0.5 : 1;
+//                        enabled: setCurrentMonth==11? false:true;
                         anchors
                         {
                             left:textYear.right;
@@ -121,14 +133,25 @@ Item
                             anchors.fill: parent;
                             onClicked:
                             {
-                                console.log("next month pressed" + setCurrentMonth);
-                                console.log("value = "+ CD.dayofweek(2001,9,9));
+                                //console.log("next year pressed");
+                                if(setCurrentYear<9999)
+                                {
+                                    setCurrentYear++;
+                                    textYear.text = setCurrentYear;
+                                }
                             }
                         }
                     }//end of next month button
                 }
 
 
+
+
+
+
+
+
+                //-------------- month
                 Rectangle
                 {
                     id:baseMonthText;
@@ -146,21 +169,14 @@ Item
                         font.family: gFontFamily;
                         anchors.centerIn: parent;
                     }//end of text month
-
-
-
-
-
-
-                    //---- buttons
                     Rectangle
                     {
                         id:baseBackMonth;
                         width: 20;
                         height:width;
                         visible: setCalenderOnlyView?false:true;
-                        opacity: setCurrentMonth==1? 0.5 : 1;
-                        enabled: setCurrentMonth==1? false:true;
+//                        //opacity: setCurrentMonth==1? 0.5 : 1;
+//                        //enabled: setCurrentMonth==1? false:true;
                         color:cBG_Unknown;
                         anchors
                         {
@@ -181,8 +197,19 @@ Item
                             anchors.fill: parent;
                             onClicked:
                             {
-                                console.log("back month pressed");
-                                test();
+                                //console.log("back month pressed");
+                                if(setCurrentMonth>1)
+                                    setCurrentMonth--;
+                                else
+                                {
+                                    setCurrentMonth--;
+                                    if(setCurrentMonth==0)
+                                    {
+                                        textYear.text = --setCurrentYear;
+                                        setCurrentMonth=12;
+                                    }
+                                }
+                                textMonth.text = setTextMonth[setCurrentMonth];
                             }
                         }
                     }//end of back month button
@@ -194,8 +221,8 @@ Item
                         height:width;
                         visible: setCalenderOnlyView?false:true;
                         color:cBG_Unknown;
-                        opacity: setCurrentMonth==11? 0.5 : 1;
-                        enabled: setCurrentMonth==11? false:true;
+//                        opacity: setCurrentMonth==11? 0.5 : 1;
+//                        enabled: setCurrentMonth==11? false:true;
                         anchors
                         {
                             left:textMonth.right;
@@ -216,8 +243,18 @@ Item
                             anchors.fill: parent;
                             onClicked:
                             {
-                                console.log("next month pressed" + setCurrentMonth);
-                                console.log("value = "+ CD.dayofweek(2001,9,9));
+                                //console.log("next month pressed" + setCurrentMonth);
+                                if(setCurrentMonth<12)
+                                    setCurrentMonth++;
+                                else
+                                {
+                                    if(setCurrentMonth==12)
+                                    {
+                                        textYear.text = ++setCurrentYear;
+                                        setCurrentMonth=1;
+                                    }
+                                }
+                                textMonth.text = setTextMonth[setCurrentMonth];
                             }
                         }
                     }//end of next month button
@@ -261,7 +298,7 @@ Item
             id:baseDays;
             width: parent.width/1.20;
             height: setCalenderOnlyView? parent.height/1.42 :parent.height/1.52;
-            color:"purple";
+            color:cBG_Unknown;
             anchors
             {
                 horizontalCenter:parent.horizontalCenter;
@@ -269,7 +306,11 @@ Item
             }
             MyDayPicker
             {
-
+                setViewOnlyStatus : setCalenderOnlyView;
+                setYear: setCurrentYear;
+                setMonth: setCurrentMonth;
+                pickMode: setpickmode;
+                setPickedDays:[0];
             }
         }
 
