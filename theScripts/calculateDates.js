@@ -29,7 +29,7 @@ function translateMonthInputs(m) //m means month
 function dayOfWeek(y,m,outputType,d=1) //outputType is a string: value 'text' or any
 {
 
-    m = translateMonthInputs(m);
+//    m = translateMonthInputs(m);
     if(m>0)
     {
         let t = [ 0, 3, 2, 5, 0, 3, 5, 1, 4, 6, 2, 4 ];
@@ -38,14 +38,14 @@ function dayOfWeek(y,m,outputType,d=1) //outputType is a string: value 'text' or
         if(outputType==="text")
         {
             switch(result)
-            {
+            {                               
                 case 0 : return "Sunday";
                 case 1 : return "Monday";
                 case 2 : return "Tuesday";
                 case 3 : return "Wednesday";
                 case 4 : return "Thursday";
                 case 5 : return "Friday";
-                case 6 : return "Saturday";
+                case 6 : return "Saturday";//+1
                 default : return -1; //means error :"error dayofweek (result>6 or result <0 from outputType text)";
             }
         }
@@ -134,12 +134,12 @@ function automaticMonth(year,month,showMode=0)
 
 
     var makeSpaceForValues = dayOfWeek(year,month,'nontext');//day is default filled by 1
-    if(makeSpaceForValues>0)
+    if(makeSpaceForValues>-1)
     {
 //        if(makeSpaceForValues===0)
 //            makeSpaceForValues--;
 
-        makeSpaceForValues--;
+//        makeSpaceForValues--;
         if(makeSpaceForValues>0)
             for(var i=0;i<=makeSpaceForValues;i++)
                 result[i] = '0';   //now day space added into result , it was 0 but changed to empty string
@@ -158,7 +158,7 @@ function automaticMonth(year,month,showMode=0)
 
     if(showMode)
     {
-        for(var a=1; a<= maxDay/2; a++)
+        for(var a=1; a<= maxDay*2; a++)
             result.push('0');
     }
 

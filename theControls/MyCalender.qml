@@ -13,9 +13,17 @@ Item
 
     property bool setCalenderOnlyView: false;
 
-    property int setCurrentYear: 2020;
-    property int setCurrentMonth:2;
+    property int setCurrentYear: 1902;
+    property int setCurrentMonth:10;
+
+
     //2,3,11 monday problem 2021
+
+
+    //new
+    //2020, jan ok, feb ok ,march onday++, april 2day++, may++, jun 5d--, jul 2d++, aug 1d++, sep 1d++, oct 1d+, nov 1d+, dec1++
+    //2021, jan 1d+, feb 5d--, mar ok, ap ok, may ok, jun +1, jul ok, aug ok, sep ok, oc ok, nov ok, dec ok
+    //2022, ja ok, feb -1, mar +1, ap ok, may ok, jun ok
     //-------------------------------------------------------------------------------------------------HERE
 
 
@@ -98,8 +106,7 @@ Item
                                 //console.log("back year pressed");
                                 if(setCurrentYear>1000)
                                 {
-                                    setCurrentYear--;
-                                    textYear.text = setCurrentYear;
+                                    textYear.text = --setCurrentYear;
                                 }
                             }
                         }
@@ -136,8 +143,7 @@ Item
                                 //console.log("next year pressed");
                                 if(setCurrentYear<9999)
                                 {
-                                    setCurrentYear++;
-                                    textYear.text = setCurrentYear;
+                                    textYear.text = ++setCurrentYear;
                                 }
                             }
                         }
@@ -250,10 +256,12 @@ Item
                                 {
                                     if(setCurrentMonth==12)
                                     {
+
                                         textYear.text = ++setCurrentYear;
                                         setCurrentMonth=1;
                                     }
                                 }
+
                                 textMonth.text = setTextMonth[setCurrentMonth];
                             }
                         }

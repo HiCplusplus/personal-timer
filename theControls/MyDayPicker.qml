@@ -18,21 +18,21 @@ Item
       (1 t0 29 or 28 or 31 or 30) -> select that day
     */
 
-    onSetPickedDaysChanged:
-    {
-        for(var x=0; x<=setPickedDays.length; x++)
-        {
-            if(countColumns==4)
-            {
+//    onSetPickedDaysChanged:
+//    {
+//        for(var x=0; x<=setPickedDays.length; x++)
+//        {
+//            if(countColumns==4)
+//            {
 
-            }
+//            }
 
-            switch(setPickedDays[x])
-            {
+//            switch(setPickedDays[x])
+//            {
 
-            }
-        }
-    }
+//            }
+//        }
+//    }
 
     property bool setViewOnlyStatus:false;
     property int setMonth: 1;
@@ -41,6 +41,17 @@ Item
     property variant monthDays: CD.automaticMonth(setYear,setMonth);
     property int countColumns: CD.calculateColumns_of_MonthDays(monthDays.length);
     property int monthNullDays: CD.dayOfWeek(setYear,setMonth,'nontext');
+
+    onMonthDaysChanged:
+    {
+        console.log("\n\n\n monthdays: "+monthDays);
+        console.log(CD.dayOfWeek(setYear,setMonth,"text")+ " ==============");
+    }
+    onMonthDaysForShowChanged:
+    {
+        console.log("\n\n\nmonthDaysForShow: "+monthDaysForShow);
+        console.log(monthDaysForShow[31]);
+    }
 
     property variant monthDaysForShow: CD.automaticMonth(setYear,setMonth,true);//true parameter is for free spacer
 
