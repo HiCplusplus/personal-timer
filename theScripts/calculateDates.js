@@ -136,9 +136,13 @@ function automaticMonth(year,month,showMode=0)
     var makeSpaceForValues = dayOfWeek(year,month,'nontext');//day is default filled by 1
     if(makeSpaceForValues>0)
     {
+//        if(makeSpaceForValues===0)
+//            makeSpaceForValues--;
+
+        makeSpaceForValues--;
         if(makeSpaceForValues>0)
             for(var i=0;i<=makeSpaceForValues;i++)
-                result[i] = "0";   //now day space added into result , it was 0 but changed to empty string
+                result[i] = '0';   //now day space added into result , it was 0 but changed to empty string
 
     }
     else
@@ -176,6 +180,7 @@ function calculateColumns_of_MonthDays(arrayLen)
       (spaced/nulled) (table columns) -> (max day of month)    (max days + spaced days)
 
             0                4        -> 28                     (28)
+
             0                5        -> 29 30 31               (29 , 30 , 31)
             1                5        -> *                      (29 to 32)
             2                5        -> *                      (30 to 33)

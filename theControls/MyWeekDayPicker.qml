@@ -41,8 +41,8 @@ Item
     property int setTextFontSize: 9;
     property bool setTextBold: true;
     property int setBaseRadius:10;
-    property int setBaseWidth: setMonthDayPicker? theRow.height:theRow.width/8;
-    property int setBaseHeight: setMonthDayPicker? theRow.height : theRow.height;
+    property int setBaseWidth: theRow.width/8;
+    property int setBaseHeight:theRow.height;
     property int setLimitForTexts: 50;
     property bool setViewOnly:false;
 
@@ -52,6 +52,7 @@ Item
         id:theRow;
         anchors.fill: parent;
         spacing:parent.width/50;
+
         Rectangle
         {
             height:setBaseHeight;
@@ -60,6 +61,7 @@ Item
             radius:setBaseRadius;
             enabled: textAPick!=emptyTextForAll? true:false;
             opacity: textAPick!=emptyTextForAll? 1.0:0;
+
             Text
             {
                 text: (parent.width>setLimitForTexts) ? textAPick : textAPick.slice(0,3);

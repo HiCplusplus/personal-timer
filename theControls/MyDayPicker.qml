@@ -12,11 +12,29 @@ Item
         2 -> mutiple pick
     */
 
-    property int setToday: 0;
+    property variant setPickedDays: [0];
     /*
       0 -> no select
       (1 t0 29 or 28 or 31 or 30) -> select that day
     */
+
+    onSetPickedDaysChanged:
+    {
+        for(var x=0; x<=setPickedDays.length; x++)
+        {
+            if(countColumns==4)
+            {
+
+            }
+
+            switch(setPickedDays[x])
+            {
+
+            }
+        }
+    }
+
+    property bool setViewOnlyStatus:false;
     property int setMonth: 1;
     property int setYear: 2022;
 
@@ -24,20 +42,9 @@ Item
     property int countColumns: CD.calculateColumns_of_MonthDays(monthDays.length);
     property int monthNullDays: CD.dayOfWeek(setYear,setMonth,'nontext');
 
-    property variant monthDaysForShow: CD.automaticMonth(setYear,setMonth,true);//true is for free spacer
+    property variant monthDaysForShow: CD.automaticMonth(setYear,setMonth,true);//true parameter is for free spacer
 
-//    property color setColorPicked: cBG_button;
-//    property color setColorNotPicked: cBG_element;
-//    property color setColorTextPicked: "white";
-//    property color setColorTextNotPicked: cTxt_button;
 
-//    property int setTextFontSize: 9;
-//    property bool setTextBold: true;
-//    property int setBaseRadius:10;
-//    property int setBaseWidth: parent.width/8;
-//    property int setBaseHeight: parent.height/4;
-//    property int setLimitForTexts: 50;
-    property bool setViewOnlyStatus:false;
     Column
     {
         anchors.fill: parent;
@@ -48,9 +55,11 @@ Item
             color:cBG_Unknown;
             MyWeekDayPicker
             {
+                id:week1;
                 setPickMode: pickMode;
                 setMonthDayPicker:true;
-                emptyTextForAll:"0";
+                setViewOnly: setViewOnlyStatus;
+                emptyTextForAll:"0"; //will set disable(false),opcity(zero),bgColor:unknonw(transparent) for '0' values
                 setBaseRadius:100;
                 textAPick:monthDaysForShow[0];
                 textBPick:monthDaysForShow[1];
@@ -59,7 +68,7 @@ Item
                 textEPick:monthDaysForShow[4];
                 textFPick:monthDaysForShow[5];
                 textGPick:monthDaysForShow[6];
-                setViewOnly: setViewOnlyStatus;
+
             }
         }
         Rectangle
@@ -69,6 +78,7 @@ Item
             color:cBG_Unknown;
             MyWeekDayPicker
             {
+                id:week2;
                 setPickMode: pickMode;
                 setMonthDayPicker:true;
                 emptyTextForAll:"0";
@@ -91,6 +101,7 @@ Item
             color:cBG_Unknown;
             MyWeekDayPicker
             {
+                id:week3;
                 setPickMode: pickMode;
                 setMonthDayPicker:true;
                 emptyTextForAll:"0";
@@ -114,6 +125,7 @@ Item
             color:cBG_Unknown;
             MyWeekDayPicker
             {
+                id:week4;
                 setPickMode: pickMode;
                 setMonthDayPicker:true;
                 emptyTextForAll:"0";
@@ -136,6 +148,7 @@ Item
             color:cBG_Unknown;
             MyWeekDayPicker
             {
+                id:week5;
                 setPickMode: pickMode;
                 setMonthDayPicker:true;
                 emptyTextForAll:"0";
@@ -158,6 +171,7 @@ Item
             color:cBG_Unknown;
             MyWeekDayPicker
             {
+                id:week6;
                 setPickMode: pickMode;
                 setMonthDayPicker:true;
                 emptyTextForAll:"0";
