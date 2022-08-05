@@ -217,7 +217,7 @@ Item
                             onClicked:
                             {
                                 console.log("next month pressed" + setCurrentMonth);
-                                console.log("value = "+ CD.dayofweek(2001,9,9));
+//                                console.log("value = "+ CD.dayofweek(2001,9,9));
                             }
                         }
                     }//end of next month button
@@ -261,7 +261,7 @@ Item
             id:baseDays;
             width: parent.width/1.20;
             height: setCalenderOnlyView? parent.height/1.42 :parent.height/1.52;
-            color:"purple";
+            color:cBG_Unknown;
             anchors
             {
                 horizontalCenter:parent.horizontalCenter;
