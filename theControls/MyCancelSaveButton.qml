@@ -63,7 +63,7 @@ Item
 
             Image
             {
-                source:"../thePictures/icon-cancel.png";
+                source: directory_Icons + fileIcon_Cancel;
                 anchors.fill: parent;
             }
 
