@@ -13,8 +13,19 @@ Item
 
     property bool setCalenderOnlyView: false;
 
-    property int setCurrentYear: 1902;
-    property int setCurrentMonth:10;
+    property int setCurrentYear: 2022;
+    property int setCurrentMonth:8;
+
+
+
+    onSetCurrentMonthChanged:
+    {
+        CD.resetAllSelectedElements(mweek);
+    }
+    onSetCurrentYearChanged:
+    {
+        CD.resetAllSelectedElements(mweek);
+    }
 
 
     //2,3,11 monday problem 2021
@@ -289,6 +300,7 @@ Item
 
             MyWeekDayPicker
             {
+                id:mweek;
                 setLimitForTexts:50;
                 setViewOnly:setCalenderOnlyView;
                 textAPick:"Monday";
@@ -298,6 +310,25 @@ Item
                 textEPick: "Friday";
                 textFPick: "Saturday";
                 textGPick: "Sunday";
+
+                onAPicked: mydPicker.monPicked();
+                onBPicked: mydPicker.tuePicked();
+                onCPicked: mydPicker.wedPicked();
+                onDPicked: mydPicker.thuPicked();
+                onEPicked: mydPicker.friPicked();
+                onFPicked: mydPicker.satPicked();
+                onGPicked: mydPicker.sunPicked();
+
+
+                onAUnpicked: mydPicker.monUnpicked();
+                onBUnpicked: mydPicker.tueUnpicked();
+                onCUnpicked: mydPicker.wedUnpicked();
+                onDUnpicked: mydPicker.thuUnpicked();
+                onEUnpicked: mydPicker.friUnpicked();
+                onFUnpicked: mydPicker.satUnpicked();
+                onGUnpicked: mydPicker.sunUnpicked();
+
+
             }
         }
 
@@ -314,11 +345,11 @@ Item
             }
             MyDayPicker
             {
+                id:mydPicker;
                 setViewOnlyStatus : setCalenderOnlyView;
                 setYear: setCurrentYear;
                 setMonth: setCurrentMonth;
                 pickMode: setpickmode;
-                setPickedDays:[0];
             }
         }
 
