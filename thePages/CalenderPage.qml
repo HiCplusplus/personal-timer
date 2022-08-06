@@ -5,7 +5,11 @@ import "../theControls"
 Item
 {
     anchors.fill: parent;
-
+    property int c_day : 20;
+    property int c_month: 8;
+    property int c_year: 2022;
+    property variant c_picked_day: [c_day];//it must be filled [2,...] !!!! not an int/string
+    property bool c_viewOnly: true;
     Rectangle
     {
         id:root;
@@ -59,7 +63,7 @@ Item
                     Text
                     {
                         id:textDayNumber;
-                        text:"20";
+                        text:c_day;
                         color:"white";
                         font.pointSize: 35;
                         font.bold: true;
@@ -126,7 +130,17 @@ Item
             }
             MyCalender
             {
-
+                setCurrentYear: c_year;
+                setCurrentMonth: c_month;
+                setCurrentDays: c_picked_day;
+                setCalenderOnlyView: c_viewOnly;
+//                setTextWeek: ["شنبه"
+//                    ,"یکشنبه"
+//                    ,"دوشنبه"
+//                    ,"سه شنبه"
+//                    ,"چهارشنبه"
+//                    ,"5shnbe"
+//                    ,"jome"];
             }
 
         }

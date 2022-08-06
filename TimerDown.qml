@@ -3,7 +3,8 @@ import "theControls"
 import "thePages"
 Item
 {
-    signal changeStatusSwiperFromTimerDown;
+//    signal changeStatusSwiperFromTimerDown;
+    signal goToAlarmSetPage;
     anchors.fill: parent;
     Rectangle
     {
@@ -121,35 +122,8 @@ Item
         }
         onCenterButtonPressed:
         {
-            if(!baseAlarmSet.visible)
-            {
-                baseAlarmSet.visible=true;
-                listViewMain.visible=false;
-                changeStatusSwiperFromTimerDown();
-            }
+            goToAlarmSetPage();
         }
-    }//end of mytheebuttons
-
-
-
-    Rectangle
-    {
-        id:baseAlarmSet;
-        anchors.fill: parent;
-        color:"transparent";
-        visible: false;
-        AlarmSetPage
-        {
-            onButtonCancel:
-            {
-                baseAlarmSet.visible=false;
-
-                listViewMain.visible=true;
-                changeStatusSwiperFromTimerDown();
-            }
-        }
-
     }
-
 
 }//end of item
