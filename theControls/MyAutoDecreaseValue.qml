@@ -11,7 +11,6 @@ Item
     property int vSpeedCounter: 0;
     property int vSpeedLevel: 1;
 
-
     Rectangle
     {
         width: 35;

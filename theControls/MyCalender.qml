@@ -6,16 +6,24 @@ Item
 {
     property int setFontCalender:10;
     property int setFontSizeMonth: 25;
-    property variant setTextMonth: ["","January","February","March","April","May","June"
-                                    ,"July","August","September","October","November","December"];
     property int setTopMarginMonth: 5;
     property int setLeftRightMarginNextBackMonth:5;
 
-    property bool setCalenderOnlyView: false;
 
+
+
+    property variant setTextMonth: ["","January","February","March","April","May","June"
+                                    ,"July","August","September","October","November","December"];
+
+    property variant setTextWeek: ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday",];
+
+
+
+
+    property bool setCalenderOnlyView: true;//false;
     property int setCurrentYear: 2022;
     property int setCurrentMonth:8;
-
+    property variant setCurrentDays: [6]; //it must be filled [2,...] !!!! not an int/string
 
 
     onSetCurrentMonthChanged:
@@ -28,16 +36,7 @@ Item
     }
 
 
-    //2,3,11 monday problem 2021
-
-
-    //new
-    //2020, jan ok, feb ok ,march onday++, april 2day++, may++, jun 5d--, jul 2d++, aug 1d++, sep 1d++, oct 1d+, nov 1d+, dec1++
-    //2021, jan 1d+, feb 5d--, mar ok, ap ok, may ok, jun +1, jul ok, aug ok, sep ok, oc ok, nov ok, dec ok
-    //2022, ja ok, feb -1, mar +1, ap ok, may ok, jun ok
-    //-------------------------------------------------------------------------------------------------HERE
-
-
+    //solo pick is not work fully-correctly but multi pick is work for that month correctly
     property int setpickmode:2; //1 only one pick , 2 multi pick
     anchors.fill: parent;
 
@@ -297,19 +296,19 @@ Item
             color: cBG_Unknown;
             anchors.top:baseTextMonth.bottom;
             anchors.horizontalCenter: parent.horizontalCenter;
-
+            anchors.topMargin: parent.height/25;
             MyWeekDayPicker
             {
                 id:mweek;
                 setLimitForTexts:50;
                 setViewOnly:setCalenderOnlyView;
-                textAPick:"Monday";
-                textBPick:"Tuesday";
-                textCPick:"Wednesday";
-                textDPick: "Thursday";
-                textEPick: "Friday";
-                textFPick: "Saturday";
-                textGPick: "Sunday";
+                textAPick: setTextWeek[0];
+                textBPick: setTextWeek[1];
+                textCPick: setTextWeek[2];
+                textDPick: setTextWeek[3];
+                textEPick: setTextWeek[4];
+                textFPick: setTextWeek[5];
+                textGPick: setTextWeek[6];
 
                 onAPicked: mydPicker.monPicked();
                 onBPicked: mydPicker.tuePicked();
@@ -342,6 +341,7 @@ Item
             {
                 horizontalCenter:parent.horizontalCenter;
                 top:baseWeekDays.bottom;
+//                topMargin:parent.height/;
             }
             MyDayPicker
             {
@@ -350,6 +350,7 @@ Item
                 setYear: setCurrentYear;
                 setMonth: setCurrentMonth;
                 pickMode: setpickmode;
+                setPickedDays: setCurrentDays;
             }
         }
 

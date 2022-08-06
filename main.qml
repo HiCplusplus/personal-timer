@@ -13,7 +13,7 @@ Window
     width:720/2+10;
     height:1339/1.7;
     visible: true;
-    property string appTitle: "MeinAlarm v.5";
+    property string appTitle: "pLarm";
 
     title: qsTr(appTitle);
     color:cBG;
@@ -37,13 +37,8 @@ Window
     /* My fav styles
 
     i wish do this https://dribbble.com/shots/14896001-Alarm-App-Concept
-
-
     good looking color and theme https://dribbble.com/shots/17279416-Sleepzy-Sleep-tracker-app
-
-
     https://dribbble.com/shots/4894371-Dashboard-Graph
-
     good looking calneders
         https://dribbble.com/shots/16390127-Schedule-App
         https://dribbble.com/shots/15628214-Calendar-app
@@ -98,6 +93,9 @@ https://dribbble.com/shots/14748311-Task-Manager-App
     property string fileIcon_Alarm: "icon-alarm.png";
     property string fileIcon_Calender: "icon-calender.png";
     property string fileIcon_BackNext: "icon-back-next.png";
+    property string fileIcon_DarkMode: "icon-darkmode.png";
+    property string fileIcon_LightMode: "icon-lightmode.png";
+    property string fileIcon_Cancel: "icon-cancel.png";
 
 
     //set theme, default light mode colors
@@ -122,12 +120,20 @@ https://dribbble.com/shots/14748311-Task-Manager-App
        height:root.height/15;
        anchors.top:root.top;
        color:cBG;
+       z:5;
        MyMenu
        {
-           id:myMenu;
+            id:myMenu;
             cBGMenu: viewTimers.currentIndex==0? cBG_button: cBG;
             colorTextMenu:cTxt_button;
             textTitleMenu:appTitle;
+            onSignalOpenMenu:
+            {
+                if(pageSettings.visible)
+                    pageSettings.visible=false;
+                else
+                    pageSettings.visible=true;
+            }
        }
 
    }
@@ -182,22 +188,14 @@ https://dribbble.com/shots/14748311-Task-Manager-App
                     id: firstPage
                     TimerDown
                     {
-                        onChangeStatusSwiperFromTimerDown:
+                        onGoToAlarmSetPage:
                         {
-                            if(viewTimers.interactive)
-                            {
-                                myIndicator.visible=false;
+
+                                baseAlarmSet.visible=true;
                                 viewTimers.interactive=false;
-                            }
-
-                            else
-                            {
-                                viewTimers.interactive=true;
-                                myIndicator.visible=true;
-                            }
-
-
+                                viewTimers.visible=false;
                         }
+
                     }
                 }
                 Item
@@ -264,4 +262,33 @@ https://dribbble.com/shots/14748311-Task-Manager-App
         }
     }
     //timer indicator ends
+
+    Rectangle
+    {
+        id:baseAlarmSet;
+        anchors.fill: parent;
+        anchors.topMargin: menuBar.height;
+        color:cBG_Unknown;
+        visible: false;
+        z:4;
+        AlarmSetPage
+        {
+            id:pageAlarmSet;
+
+
+            onButtonCancel:
+            {
+                baseAlarmSet.visible=false;
+                viewTimers.interactive=true;
+                viewTimers.visible=true;
+            }
+        }
+    }
+
+    SettingsPage
+    {
+        id:pageSettings;
+        visible: false;
+        z:4;
+    }
 }//end of window

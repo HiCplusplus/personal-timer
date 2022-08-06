@@ -2,14 +2,16 @@ import QtQuick 2.0
 
 Item
 {
-    signal signalDarkModeTest;
+    signal signalDarkMode;
+    signal signalOpenMenu;
+
     property color cBGMenu: cUnknown;
     property color colorTextMenu: cTxt_title;
 //    property color colorMenuLines: "#3E386C";//color exception 4
     property string textTitleMenu: "Timer";
     anchors.fill: parent;
 
-    onSignalDarkModeTest:
+    onSignalDarkMode:
     {
 
         if(!themeDarkMode)
@@ -51,7 +53,7 @@ Item
 
     }
 
-    //icons bar starts
+
     Rectangle
     {
         id:root;
@@ -72,6 +74,8 @@ Item
             }
 
         }
+
+        //menu button shapes start
         Rectangle
         {
             id:baseOpenMenuIcon;
@@ -115,9 +119,43 @@ Item
             anchors.fill: parent;
             onClicked:
             {
-                signalDarkModeTest();
+                signalOpenMenu();
             }
         }
+        }//menu button shapes end
+
+        Rectangle
+        {
+            id:baseDarkLightModeButton;
+            width:35;
+            height:35;
+            color:cBG_Unknown;
+            anchors
+            {
+                right:baseOpenMenuIcon.left;
+                rightMargin:15;
+                verticalCenter:parent.verticalCenter;
+            }
+
+            Image
+            {
+                id:iconDarkLight;
+                source: (!themeDarkMode)? path_to_menuIcons+fileIcon_DarkMode : path_to_menuIcons+fileIcon_LightMode;
+                anchors
+                {
+                    centerIn:parent;
+                    fill: parent;
+                }
+            }
+            MouseArea
+            {
+                anchors.fill: parent;
+                onClicked:
+                {
+                    signalDarkMode();
+                }
+            }
+
         }
     }
     //icons bar ends

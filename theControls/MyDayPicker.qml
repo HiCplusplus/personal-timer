@@ -3,142 +3,83 @@ import "../theScripts/calculateDates.js" as CD
 
 Item
 {
+
+    signal monPicked; signal tuePicked; signal wedPicked;
+    signal thuPicked; signal friPicked; signal satPicked; signal sunPicked;
+    onMonPicked:{CD.pickWeek("monday",true,week1,week2,week3,week4,week5,week6);}
+    onTuePicked:{CD.pickWeek("tuesday",true,week1,week2,week3,week4,week5,week6);}
+    onWedPicked:{CD.pickWeek("wednesday",true,week1,week2,week3,week4,week5,week6);}
+    onThuPicked:{CD.pickWeek("thursday",true,week1,week2,week3,week4,week5,week6);}
+    onFriPicked:{CD.pickWeek("friday",true,week1,week2,week3,week4,week5,week6);}
+    onSatPicked:{CD.pickWeek("saturday",true,week1,week2,week3,week4,week5,week6);}
+    onSunPicked:{CD.pickWeek("sunday",true,week1,week2,week3,week4,week5,week6);}
+
+    signal monUnpicked; signal tueUnpicked; signal wedUnpicked;
+    signal thuUnpicked; signal friUnpicked; signal satUnpicked; signal sunUnpicked;
+    onMonUnpicked: {CD.pickWeek("monday",false,week1,week2,week3,week4,week5,week6);}
+    onTueUnpicked: {CD.pickWeek("tuesday",false,week1,week2,week3,week4,week5,week6);}
+    onWedUnpicked: {CD.pickWeek("wednesday",false,week1,week2,week3,week4,week5,week6);}
+    onThuUnpicked: {CD.pickWeek("thursday",false,week1,week2,week3,week4,week5,week6);}
+    onFriUnpicked: {CD.pickWeek("friday",false,week1,week2,week3,week4,week5,week6);}
+    onSatUnpicked: {CD.pickWeek("saturday",false,week1,week2,week3,week4,week5,week6);}
+    onSunUnpicked: {CD.pickWeek("sunday",false,week1,week2,week3,week4,week5,week6);}
+
+
+
+
+
     id:root;
     anchors.fill: parent;
-
-
-    signal monPicked;
-    signal tuePicked;
-    signal wedPicked;
-    signal thuPicked;
-    signal friPicked;
-    signal satPicked;
-    signal sunPicked;
-    onMonPicked:
-    {
-        CD.pickWeek("monday",true,week1,week2,week3,week4,week5,week6);
-    }
-    onTuePicked:
-    {
-        CD.pickWeek("tuesday",true,week1,week2,week3,week4,week5,week6);
-    }
-    onWedPicked:
-    {
-        CD.pickWeek("wednesday",true,week1,week2,week3,week4,week5,week6);
-    }
-    onThuPicked:
-    {
-        CD.pickWeek("thursday",true,week1,week2,week3,week4,week5,week6);
-    }
-    onFriPicked:
-    {
-        CD.pickWeek("friday",true,week1,week2,week3,week4,week5,week6);
-    }
-    onSatPicked:
-    {
-        CD.pickWeek("saturday",true,week1,week2,week3,week4,week5,week6);
-    }
-    onSunPicked:
-    {
-        CD.pickWeek("sunday",true,week1,week2,week3,week4,week5,week6);
-    }
-
-    signal monUnpicked;
-    signal tueUnpicked;
-    signal wedUnpicked;
-    signal thuUnpicked;
-    signal friUnpicked;
-    signal satUnpicked;
-    signal sunUnpicked;
-
-    onMonUnpicked:
-    {
-        CD.pickWeek("monday",false,week1,week2,week3,week4,week5,week6);
-    }
-    onTueUnpicked:
-    {
-        CD.pickWeek("tuesday",false,week1,week2,week3,week4,week5,week6);
-    }
-    onWedUnpicked:
-    {
-        CD.pickWeek("wednesday",false,week1,week2,week3,week4,week5,week6);
-    }
-    onThuUnpicked:
-    {
-        CD.pickWeek("thursday",false,week1,week2,week3,week4,week5,week6);
-    }
-    onFriUnpicked:
-    {
-        CD.pickWeek("friday",false,week1,week2,week3,week4,week5,week6);
-    }
-    onSatUnpicked:
-    {
-        CD.pickWeek("saturday",false,week1,week2,week3,week4,week5,week6);
-    }
-    onSunUnpicked:
-    {
-        CD.pickWeek("sunday",false,week1,week2,week3,week4,week5,week6);
-    }
-
-    property int pickMode: 2;
-    /*
-        1 -> only one pick
-        2 -> mutiple pick
-    */
-
-//    property variant setPickedDays: [0];
-//    /*
-//      0 -> no select
-//      (1 t0 29 or 28 or 31 or 30) -> select that day
-//    */
-
-
+    property int pickMode: 2; // 1 -> only one pick          2 -> mutiple pick
     property bool setViewOnlyStatus:false;
     property int setMonth: 1;
     property int setYear: 2022;
-
-
-
-    onSetMonthChanged:
+    property variant setPickedDays: [];//it must be filled [2,...] !!!! not an int/string
+    onSetPickedDaysChanged:
     {
-        console.log(week1.outputPickedDays);
-        console.log(week2.outputPickedDays);
-        console.log(week3.outputPickedDays);
-        console.log(week4.outputPickedDays);
-        console.log(week5.outputPickedDays);
-        console.log(week6.outputPickedDays);
-        CD.resetAllSelectedElements(week1);
-        CD.resetAllSelectedElements(week2);
-        CD.resetAllSelectedElements(week3);
-        CD.resetAllSelectedElements(week4);
-        CD.resetAllSelectedElements(week5);
-        CD.resetAllSelectedElements(week6);
-    }
-    onSetYearChanged:
-    {
-        CD.resetAllSelectedElements(week1);
-        CD.resetAllSelectedElements(week2);
-        CD.resetAllSelectedElements(week3);
-        CD.resetAllSelectedElements(week4);
-        CD.resetAllSelectedElements(week5);
-        CD.resetAllSelectedElements(week6);
+        CD.pickedDays(setPickedDays,week1);
+        CD.pickedDays(setPickedDays,week2);
+        CD.pickedDays(setPickedDays,week3);
+        CD.pickedDays(setPickedDays,week4);
+        CD.pickedDays(setPickedDays,week5);
+        CD.pickedDays(setPickedDays,week6);
     }
 
     property variant monthDays: CD.automaticMonth(setYear,setMonth);
     property int countColumns: CD.calculateColumns_of_MonthDays(monthDays.length);
-
-//    onMonthDaysChanged:
-//    {
-//        console.log("\n\n\n monthdays: "+monthDays);
-//        console.log(CD.weekdayFromDate(setYear,setMonth,"text")+ " ==============");
-//    }
-//    onMonthDaysForShowChanged:
-//    {
-//        console.log("\n\n\nmonthDaysForShow: "+monthDaysForShow);
-//    }
-
     property variant monthDaysForShow: CD.automaticMonth(setYear,setMonth,true);//true parameter is for free spacer
 
+
+    onSetMonthChanged: //BUTTON SAVE CLICKED
+    {
+
+
+        //remove duplicated values
+        week1.outputPickedDays = CD.uniqBy(week1.outputPickedDays,JSON.stringify);
+        week2.outputPickedDays = CD.uniqBy(week2.outputPickedDays,JSON.stringify);
+        week3.outputPickedDays = CD.uniqBy(week3.outputPickedDays,JSON.stringify);
+        week4.outputPickedDays = CD.uniqBy(week4.outputPickedDays,JSON.stringify);
+        week5.outputPickedDays = CD.uniqBy(week5.outputPickedDays,JSON.stringify);
+        week6.outputPickedDays = CD.uniqBy(week6.outputPickedDays,JSON.stringify);
+
+        /*
+            print values for check test (if needed copy these into somewhere before month/year going ++ or --
+            but dont expect month/year will be correct becuse these codes dont know user pressed
+            back or next month/year and will write next/back month/year inside the console so
+            please move these codes into back/next month/year and when user press next --setyear/month
+            or user pressed next ++setyear/month.
+        */
+//        console.log("month= "+ setMonth + "\t year= " + setYear +" \tweek1= "+week1.outputPickedDays+ "\t week2= "+week2.outputPickedDays + "\t week3= " + week3.outputPickedDays + "\t week4= "+week4.outputPickedDays+ "\t week5= "+week5.outputPickedDays+ "\t week6= " + week6.outputPickedDays);
+
+        //make clear values and backgrounds from calendar and make em ready for next month/year
+        //if remove these bottom codes, the next month will be selected monthdays and user didnt select those
+        CD.resetAllSelectedElements(week1);
+        CD.resetAllSelectedElements(week2);
+        CD.resetAllSelectedElements(week3);
+        CD.resetAllSelectedElements(week4);
+        CD.resetAllSelectedElements(week5);
+        CD.resetAllSelectedElements(week6);
+    }
 
     Column
     {

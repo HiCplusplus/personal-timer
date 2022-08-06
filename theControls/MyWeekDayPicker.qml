@@ -42,9 +42,9 @@ Item
 
     property int setTextFontSize: 9;
     property bool setTextBold: true;
-    property int setBaseRadius:10;
+    property int setBaseRadius:150;
     property int setBaseWidth: theRow.width/8;
-    property int setBaseHeight:theRow.height;
+    property int setBaseHeight:theRow.height/1.20;
     property int setLimitForTexts: 50;
     property bool setViewOnly:false;
 
