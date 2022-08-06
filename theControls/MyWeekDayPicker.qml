@@ -20,6 +20,8 @@ Item
     property bool setGPicked: false;
 
 
+    property variant outputPickedDays: [];
+
 
     //setpicmode changes
     property int setPickMode: 2;
@@ -47,6 +49,22 @@ Item
     property bool setViewOnly:false;
 
 
+    signal aPicked;
+    signal bPicked;
+    signal cPicked;
+    signal dPicked;
+    signal ePicked;
+    signal fPicked;
+    signal gPicked;
+
+    signal aUnpicked;
+    signal bUnpicked;
+    signal cUnpicked;
+    signal dUnpicked;
+    signal eUnpicked;
+    signal fUnpicked;
+    signal gUnpicked;
+
     Row
     {
         id:theRow;
@@ -69,8 +87,6 @@ Item
                 font.pointSize: setTextFontSize;
                 color:setAPicked<=0? setColorTextNotPicked: setColorTextPicked;
                 font.bold: setTextBold;
-
-
             }
             MouseArea
             {
@@ -80,10 +96,20 @@ Item
                     if(!setViewOnly)
                     {
                         if(setAPicked)
+                        {
                             setAPicked=false;
+                            const index = outputPickedDays.indexOf(textAPick);
+                            if (index > -1)
+                                 outputPickedDays.splice(index, 1); // 2nd parameter means remove one item only
+                            aUnpicked();
+                        }
                         else
+                        {
                             if(setPickMode==2)
+                            {
                                 setAPicked=true;
+                                aPicked();
+                            }
                             else
                             {
                                 setAPicked=true;
@@ -94,6 +120,9 @@ Item
                                 setFPicked=false;
                                 setGPicked=false;
                             }
+                            outputPickedDays.push(textAPick);
+                        }
+
                     }
 
                 }
@@ -124,21 +153,51 @@ Item
                     if(!setViewOnly)
                     {
                         if(setBPicked)
+                        {
                             setBPicked=false;
+                            const index = outputPickedDays.indexOf(textBPick);
+                            if (index > -1)
+                                 outputPickedDays.splice(index, 1); // 2nd parameter means remove one item only
+                            bUnpicked();
+                        }
                         else
+                        {
                             if(setPickMode==2)
+                            {
                                 setBPicked=true;
+                                bPicked();
+                            }
                             else
                             {
                                 setBPicked=true;
-                                setAPicked=false;
+                                setBPicked=false;
                                 setCPicked=false;
                                 setDPicked=false;
                                 setEPicked=false;
                                 setFPicked=false;
                                 setGPicked=false;
                             }
+                            outputPickedDays.push(textBPick);
+                        }
                     }
+//                    if(!setViewOnly)
+//                    {
+//                        if(setBPicked)
+//                            setBPicked=false;
+//                        else
+//                            if(setPickMode==2)
+//                                setBPicked=true;
+//                            else
+//                            {
+//                                setBPicked=true;
+//                                setAPicked=false;
+//                                setCPicked=false;
+//                                setDPicked=false;
+//                                setEPicked=false;
+//                                setFPicked=false;
+//                                setGPicked=false;
+//                            }
+//                    }
 
 
 
@@ -171,10 +230,21 @@ Item
                     if(!setViewOnly)
                     {
                         if(setCPicked)
+                        {
                             setCPicked=false;
+                            const index = outputPickedDays.indexOf(textCPick);
+                            if (index > -1)
+                                 outputPickedDays.splice(index, 1); // 2nd parameter means remove one item only
+                            cUnpicked();
+                        }
                         else
+                        {
                             if(setPickMode==2)
+                            {
                                 setCPicked=true;
+                                cPicked();
+
+                            }
                             else
                             {
                                 setCPicked=true;
@@ -185,7 +255,27 @@ Item
                                 setFPicked=false;
                                 setGPicked=false;
                             }
+                            outputPickedDays.push(textCPick);
+                        }
                     }
+//                    if(!setViewOnly)
+//                    {
+//                        if(setCPicked)
+//                            setCPicked=false;
+//                        else
+//                            if(setPickMode==2)
+//                                setCPicked=true;
+//                            else
+//                            {
+//                                setCPicked=true;
+//                                setBPicked=false;
+//                                setAPicked=false;
+//                                setDPicked=false;
+//                                setEPicked=false;
+//                                setFPicked=false;
+//                                setGPicked=false;
+//                            }
+//                    }
 
                 }
             }
@@ -215,10 +305,20 @@ Item
                     if(!setViewOnly)
                     {
                         if(setDPicked)
+                        {
                             setDPicked=false;
+                            const index = outputPickedDays.indexOf(textDPick);
+                            if (index > -1)
+                                 outputPickedDays.splice(index, 1); // 2nd parameter means remove one item only
+                            dUnpicked();
+                        }
                         else
+                        {
                             if(setPickMode==2)
+                            {
                                 setDPicked=true;
+                                dPicked();
+                            }
                             else
                             {
                                 setDPicked=true;
@@ -229,7 +329,27 @@ Item
                                 setFPicked=false;
                                 setGPicked=false;
                             }
+                            outputPickedDays.push(textDPick);
+                        }
                     }
+//                    if(!setViewOnly)
+//                    {
+//                        if(setDPicked)
+//                            setDPicked=false;
+//                        else
+//                            if(setPickMode==2)
+//                                setDPicked=true;
+//                            else
+//                            {
+//                                setDPicked=true;
+//                                setBPicked=false;
+//                                setCPicked=false;
+//                                setAPicked=false;
+//                                setEPicked=false;
+//                                setFPicked=false;
+//                                setGPicked=false;
+//                            }
+//                    }
                 }
             }
         }//end of d
@@ -262,10 +382,20 @@ Item
                     if(!setViewOnly)
                     {
                         if(setEPicked)
+                        {
                             setEPicked=false;
+                            const index = outputPickedDays.indexOf(textEPick);
+                            if (index > -1)
+                                 outputPickedDays.splice(index, 1); // 2nd parameter means remove one item only
+                            eUnpicked();
+                        }
                         else
+                        {
                             if(setPickMode==2)
+                            {
                                 setEPicked=true;
+                                ePicked();
+                            }
                             else
                             {
                                 setEPicked=true;
@@ -276,7 +406,27 @@ Item
                                 setFPicked=false;
                                 setGPicked=false;
                             }
+                            outputPickedDays.push(textEPick);
+                        }
                     }
+//                    if(!setViewOnly)
+//                    {
+//                        if(setEPicked)
+//                            setEPicked=false;
+//                        else
+//                            if(setPickMode==2)
+//                                setEPicked=true;
+//                            else
+//                            {
+//                                setEPicked=true;
+//                                setBPicked=false;
+//                                setCPicked=false;
+//                                setDPicked=false;
+//                                setAPicked=false;
+//                                setFPicked=false;
+//                                setGPicked=false;
+//                            }
+//                    }
                 }
             }
         }//end of e
@@ -307,10 +457,20 @@ Item
                     if(!setViewOnly)
                     {
                         if(setFPicked)
+                        {
                             setFPicked=false;
+                            const index = outputPickedDays.indexOf(textFPick);
+                            if (index > -1)
+                                 outputPickedDays.splice(index, 1); // 2nd parameter means remove one item only
+                            fUnpicked();
+                        }
                         else
+                        {
                             if(setPickMode==2)
+                            {
                                 setFPicked=true;
+                                fPicked();
+                            }
                             else
                             {
                                 setFPicked=true;
@@ -321,7 +481,27 @@ Item
                                 setAPicked=false;
                                 setGPicked=false;
                             }
+                            outputPickedDays.push(textFPick);
+                        }
                     }
+//                    if(!setViewOnly)
+//                    {
+//                        if(setFPicked)
+//                            setFPicked=false;
+//                        else
+//                            if(setPickMode==2)
+//                                setFPicked=true;
+//                            else
+//                            {
+//                                setFPicked=true;
+//                                setBPicked=false;
+//                                setCPicked=false;
+//                                setDPicked=false;
+//                                setEPicked=false;
+//                                setAPicked=false;
+//                                setGPicked=false;
+//                            }
+//                    }
                 }
             }
         }//end of f
@@ -352,10 +532,20 @@ Item
                     if(!setViewOnly)
                     {
                         if(setGPicked)
+                        {
                             setGPicked=false;
+                            const index = outputPickedDays.indexOf(textGPick);
+                            if (index > -1)
+                                 outputPickedDays.splice(index, 1); // 2nd parameter means remove one item only
+                            gUnpicked();
+                        }
                         else
+                        {
                             if(setPickMode==2)
+                            {
                                 setGPicked=true;
+                                gPicked();
+                            }
                             else
                             {
                                 setGPicked=true;
@@ -366,7 +556,28 @@ Item
                                 setFPicked=false;
                                 setAPicked=false;
                             }
+                            outputPickedDays.push(textGPick);
+                        }
+
                     }
+//                    if(!setViewOnly)
+//                    {
+//                        if(setGPicked)
+//                            setGPicked=false;
+//                        else
+//                            if(setPickMode==2)
+//                                setGPicked=true;
+//                            else
+//                            {
+//                                setGPicked=true;
+//                                setBPicked=false;
+//                                setCPicked=false;
+//                                setDPicked=false;
+//                                setEPicked=false;
+//                                setFPicked=false;
+//                                setAPicked=false;
+//                            }
+//                    }
                 }
             }
         }//end of g

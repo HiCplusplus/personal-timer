@@ -6,41 +6,136 @@ Item
     id:root;
     anchors.fill: parent;
 
+
+    signal monPicked;
+    signal tuePicked;
+    signal wedPicked;
+    signal thuPicked;
+    signal friPicked;
+    signal satPicked;
+    signal sunPicked;
+    onMonPicked:
+    {
+        CD.pickWeek("monday",true,week1,week2,week3,week4,week5,week6);
+    }
+    onTuePicked:
+    {
+        CD.pickWeek("tuesday",true,week1,week2,week3,week4,week5,week6);
+    }
+    onWedPicked:
+    {
+        CD.pickWeek("wednesday",true,week1,week2,week3,week4,week5,week6);
+    }
+    onThuPicked:
+    {
+        CD.pickWeek("thursday",true,week1,week2,week3,week4,week5,week6);
+    }
+    onFriPicked:
+    {
+        CD.pickWeek("friday",true,week1,week2,week3,week4,week5,week6);
+    }
+    onSatPicked:
+    {
+        CD.pickWeek("saturday",true,week1,week2,week3,week4,week5,week6);
+    }
+    onSunPicked:
+    {
+        CD.pickWeek("sunday",true,week1,week2,week3,week4,week5,week6);
+    }
+
+    signal monUnpicked;
+    signal tueUnpicked;
+    signal wedUnpicked;
+    signal thuUnpicked;
+    signal friUnpicked;
+    signal satUnpicked;
+    signal sunUnpicked;
+
+    onMonUnpicked:
+    {
+        CD.pickWeek("monday",false,week1,week2,week3,week4,week5,week6);
+    }
+    onTueUnpicked:
+    {
+        CD.pickWeek("tuesday",false,week1,week2,week3,week4,week5,week6);
+    }
+    onWedUnpicked:
+    {
+        CD.pickWeek("wednesday",false,week1,week2,week3,week4,week5,week6);
+    }
+    onThuUnpicked:
+    {
+        CD.pickWeek("thursday",false,week1,week2,week3,week4,week5,week6);
+    }
+    onFriUnpicked:
+    {
+        CD.pickWeek("friday",false,week1,week2,week3,week4,week5,week6);
+    }
+    onSatUnpicked:
+    {
+        CD.pickWeek("saturday",false,week1,week2,week3,week4,week5,week6);
+    }
+    onSunUnpicked:
+    {
+        CD.pickWeek("sunday",false,week1,week2,week3,week4,week5,week6);
+    }
+
     property int pickMode: 2;
     /*
         1 -> only one pick
         2 -> mutiple pick
     */
 
-    property variant setPickedDays: [0];
-    /*
-      0 -> no select
-      (1 t0 29 or 28 or 31 or 30) -> select that day
-    */
+//    property variant setPickedDays: [0];
+//    /*
+//      0 -> no select
+//      (1 t0 29 or 28 or 31 or 30) -> select that day
+//    */
 
-    onSetPickedDaysChanged:
-    {
-        for(var x=0; x<=setPickedDays.length; x++)
-        {
-            if(countColumns==4)
-            {
-
-            }
-
-            switch(setPickedDays[x])
-            {
-
-            }
-        }
-    }
 
     property bool setViewOnlyStatus:false;
     property int setMonth: 1;
     property int setYear: 2022;
 
+
+
+    onSetMonthChanged:
+    {
+        console.log(week1.outputPickedDays);
+        console.log(week2.outputPickedDays);
+        console.log(week3.outputPickedDays);
+        console.log(week4.outputPickedDays);
+        console.log(week5.outputPickedDays);
+        console.log(week6.outputPickedDays);
+        CD.resetAllSelectedElements(week1);
+        CD.resetAllSelectedElements(week2);
+        CD.resetAllSelectedElements(week3);
+        CD.resetAllSelectedElements(week4);
+        CD.resetAllSelectedElements(week5);
+        CD.resetAllSelectedElements(week6);
+    }
+    onSetYearChanged:
+    {
+        CD.resetAllSelectedElements(week1);
+        CD.resetAllSelectedElements(week2);
+        CD.resetAllSelectedElements(week3);
+        CD.resetAllSelectedElements(week4);
+        CD.resetAllSelectedElements(week5);
+        CD.resetAllSelectedElements(week6);
+    }
+
     property variant monthDays: CD.automaticMonth(setYear,setMonth);
     property int countColumns: CD.calculateColumns_of_MonthDays(monthDays.length);
-    property int monthNullDays: CD.dayOfWeek(setYear,setMonth,'nontext');
+
+//    onMonthDaysChanged:
+//    {
+//        console.log("\n\n\n monthdays: "+monthDays);
+//        console.log(CD.weekdayFromDate(setYear,setMonth,"text")+ " ==============");
+//    }
+//    onMonthDaysForShowChanged:
+//    {
+//        console.log("\n\n\nmonthDaysForShow: "+monthDaysForShow);
+//    }
 
     property variant monthDaysForShow: CD.automaticMonth(setYear,setMonth,true);//true parameter is for free spacer
 
@@ -68,7 +163,6 @@ Item
                 textEPick:monthDaysForShow[4];
                 textFPick:monthDaysForShow[5];
                 textGPick:monthDaysForShow[6];
-
             }
         }
         Rectangle
