@@ -211,13 +211,15 @@ function calculateColumns_of_MonthDays(arrayLen)
 
 //--------------------------------------------------------------------------------------------------
 
-
+//from https://ideone.com/aDwLCM
 function leapYear_weekdayFromDate(y,m)
 {
     if(m<=2)
         y--;
     return ((y/4)-(y/100)+(y/400));
 }
+
+//from https://ideone.com/aDwLCM
 function weekdayFromDate(y,m,outputType,d=1) //outputType == 'text' -> e.g sunday.  outputType == '' or any -> number (nontext)
 {
     var dayy=[];
@@ -240,6 +242,12 @@ function weekdayFromDate(y,m,outputType,d=1) //outputType == 'text' -> e.g sunda
 }
 
 
+
+
+
+
+
+
 function resetAllSelectedElements(elem)
 {
     elem.setAPicked = false;
@@ -260,6 +268,64 @@ function removeFromArray(value,arra)
     return arra;
 }
 
+
+//from https://stackoverflow.com/questions/9229645/remove-duplicate-values-from-js-array
+function uniqBy(a, key)  //key is defaulted from code by 'JSON.stringify'
+{
+    var seen = {};
+    return a.filter(function(item)
+    {
+        var k = key(item);
+        return seen.hasOwnProperty(k) ? false : (seen[k] = true);
+    })
+}
+
+function pickedDays(listOfDays,week) //w means week
+{
+    listOfDays.forEach((element) =>
+                       {
+                           for(var ilocal=0; ilocal<=6; ilocal++)
+                           {
+                               if(parseInt(week.textAPick)===element)
+                               {
+                                   week.outputPickedDays.push(week.textAPick);
+                                   week.setAPicked=true;
+                               }
+                               if(parseInt(week.textBPick)===element)
+                               {
+                                   week.outputPickedDays.push(week.textBPick);
+                                   week.setBPicked=true;
+                               }
+                               if(parseInt(week.textCPick)===element)
+                               {
+                                   week.outputPickedDays.push(week.textCPick);
+                                   week.setCPicked=true;
+                               }
+                               if(parseInt(week.textDPick)===element)
+                               {
+                                   week.outputPickedDays.push(week.textDPick);
+                                   week.setDPicked=true;
+                               }
+                               if(parseInt(week.textEPick)===element)
+                               {
+                                   week.outputPickedDays.push(week.textEPick);
+                                   week.setEPicked=true;
+                               }
+                               if(parseInt(week.textFPick)===element)
+                               {
+                                   week.outputPickedDays.push(week.textFPick);
+                                   week.setFPicked=true;
+                               }
+                               if(parseInt(week.textGPick)===element)
+                               {
+                                   week.outputPickedDays.push(week.textGPick);
+                                   week.setGPicked=true;
+                               }
+                           }
+                           week.outputPickedDays = uniqBy(week.outputPickedDays,JSON.stringify); //JSON.stringify is default ... means nothing for me :|
+
+                       })
+}
 
 function pickWeek(weekDay,status,week1,week2,week3,week4,week5,week6)
 {
