@@ -16,6 +16,7 @@ Item
     property int theMinute:0;
     property int theSecond:0;
 
+    signal goToDismissPage;
 
 
     //for MyAutoValue Increase Decrease.qml
@@ -79,6 +80,7 @@ Item
             {
                 theSoundEffectTimesUp.play();
                 myDismiss.visible=true;
+                goToDismissPage();
             }
         }
     }
@@ -470,7 +472,7 @@ Item
         height:root.height/10.5;
         setCenterButtonText: "Start";
         setLeftButtonText: "Reset";
-        setRightButtonText: "";
+        setRightButtonText: ""; //leave empty for hide button
         anchors
         {
             bottom:root.bottom;

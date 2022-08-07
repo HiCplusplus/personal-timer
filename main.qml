@@ -31,6 +31,11 @@ Window
 
     calender base from
             https://dribbble.com/shots/9709600-Daily-UI-Events-Dark-Version
+
+    timer single from
+            https://dribbble.com/shots/7077105-Daily-UI-challenge-014-Countdown-Timer
+
+
     */
 
 
@@ -235,7 +240,7 @@ https://dribbble.com/shots/14748311-Task-Manager-App
         myIndicatorIndexAText: "Alarm";
         myIndicatorIndexBText: "StopWatch";
         myIndicatorIndexCText: "Timer";
-        myIndicatorIndexDText: "Calender";
+        myIndicatorIndexDText: "Calendar";
         anchors.bottom:root.bottom;
 
         setIconIndexA: path_to_menuIcons + fileIcon_Alarm;

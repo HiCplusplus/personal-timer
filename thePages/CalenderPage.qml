@@ -5,11 +5,11 @@ import "../theControls"
 Item
 {
     anchors.fill: parent;
-    property int c_day : 20;
-    property int c_month: 8;
+    property int c_day : 4;
+    property int c_month: 10;
     property int c_year: 2022;
-    property variant c_picked_day: [c_day];//it must be filled [2,...] !!!! not an int/string
-    property bool c_viewOnly: true;
+    property variant c_picked_day: [4,10,19];//it must be filled [2,...] !!!! not an int/string
+    property bool c_viewOnly: false;
     Rectangle
     {
         id:root;

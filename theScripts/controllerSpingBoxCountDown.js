@@ -20,7 +20,7 @@ function minusValue(valueMinused)
         return valueMinused;
 }
 
-function plusHour(valuePlused)
-{
+//function plusHour(valuePlused)
+//{
 
-}
+//}
