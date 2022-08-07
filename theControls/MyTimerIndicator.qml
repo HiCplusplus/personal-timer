@@ -6,19 +6,20 @@ Item
 //    height:parent.height/15;
     property int setHeight: 80;
     property int setWidth: 320;
+    property color setBGcolor: cBG;
     height:setHeight;
     width:setWidth;
     clip:true;
     anchors.horizontalCenter: parent.horizontalCenter;
+    signal index_d_clicked;
     signal index_a_clicked;
     signal index_b_clicked;
     signal index_c_clicked;
-    signal index_d_clicked;
     property int myIndicatorIndex: -1;
-    property string myIndicatorIndexAText: "A";
-    property string myIndicatorIndexBText: "B";
-    property string myIndicatorIndexCText: "C";
-    property string myIndicatorIndexDText: "D";
+    property string myIndicatorIndexAText: "";
+    property string myIndicatorIndexBText: "";
+    property string myIndicatorIndexCText: "";
+    property string myIndicatorIndexDText: "";
     property string setIconIndexA: "";
     property string setIconIndexB: "";
     property string setIconIndexC: "";
@@ -52,7 +53,7 @@ Item
     {
         id:root;
         anchors.fill: parent;
-        color:cBG;
+        color:setBGcolor;
         Row
         {
             id:rowArea;
@@ -68,6 +69,7 @@ Item
             {
                 id:indexD;
                 clip:true;
+                visible: myIndicatorIndexDText=='' ? false: true;
                 width:indexesWidth;
                 height:indexesHeight;
                 radius: indexesRadius;
@@ -114,6 +116,7 @@ Item
                 id:indexA;
                 clip:true;
                 width:indexesWidth;
+                visible: myIndicatorIndexAText=='' ? false: true;
                 height:indexesHeight;
                 radius: indexesRadius;
                 color:myIndicatorIndex==1 ? cBG_button: cBG_button_deactivated;
@@ -161,6 +164,7 @@ Item
                 width:indexesWidth;
                 height:indexesHeight;
                 radius: indexesRadius;
+                visible: myIndicatorIndexBText=='' ? false: true;
                 color : myIndicatorIndex==2 ? cBG_button: cBG_button_deactivated;
                 Rectangle
                 {
@@ -205,6 +209,7 @@ Item
                 width:indexesWidth;
                 height:indexesHeight;
                 radius: indexesRadius;
+                visible: myIndicatorIndexCText=='' ? false: true;
                 color : myIndicatorIndex==3 ? cBG_button: cBG_button_deactivated;
                 Rectangle
                 {
