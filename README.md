@@ -9,4 +9,4 @@
 ![screenshot7](http://mewware.com/mewware/p-screenshots/v0.1.0-screenshots/7.png)
 ![screenshot8](http://mewware.com/mewware/p-screenshots/v0.1.0-screenshots/8.png)
 ![screenshot9](http://mewware.com/mewware/p-screenshots/v0.1.0-screenshots/9.png)
-![screenshot10](http://mewware.com/mewware/p-screenshots/v0.1.0-screenshots/1o.png)
+![screenshot10](http://mewware.com/mewware/p-screenshots/v0.1.0-screenshots/10.png)
