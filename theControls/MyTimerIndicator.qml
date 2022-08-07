@@ -3,9 +3,11 @@ import "../theScripts/updateIndicator.js" as UIN
 Item
 {
     id:itemRoot;
-    width:320;
 //    height:parent.height/15;
-    height:80;
+    property int setHeight: 80;
+    property int setWidth: 320;
+    height:setHeight;
+    width:setWidth;
     clip:true;
     anchors.horizontalCenter: parent.horizontalCenter;
     signal index_a_clicked;
