@@ -79,7 +79,7 @@ Item
                     {
                         id: textWeekDay;
                         text: CDJS.weekdayFromDate(c_year,c_month,'text',c_day);
-                        color:cUnknownn;
+                        color:cUnknown;
                         font.pointSize: 15.50;
                         font.bold: true;
                         font.family: gFontFamily;

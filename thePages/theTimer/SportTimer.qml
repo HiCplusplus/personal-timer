@@ -12,11 +12,13 @@ Item
     property variant setSpeechPlayEvery: [0,0,10,0]; //hour , minute , second. ,milisecond
     property variant setColors: ["gray","orange","red","cyan"]; //hour, minute, second, milisecond
     property int setRound: 4;//not sure put this or not
-    property variant setLineWidths: [20,15,10,5]; //hour,minute,second,milisecond  //test make this int instead variant
-    property variant setRadiuses: [20,19,18,17]; //h,m,s,ms
+
+    property int lineWsFromParent: parent.width/40;
+    property variant setLineWidths: [lineWsFromParent,lineWsFromParent,lineWsFromParent,lineWsFromParent]//[20,15,10,5]; //hour,minute,second,milisecond  //test make this int instead variant
+    property variant setRadiuses: [20,17,14,11]; //h,m,s,ms
 
 
-    property variant timePast: [0,0,0,0]; //hour, minute, second, milisecond
+    property variant timePast: [1,1,1,1]; //hour, minute, second, milisecond
 
 
     //setttings
@@ -32,8 +34,8 @@ Item
 
     Timer
     {
-        id:myTime;
-        interval: 1; running: true; repeat: true;
+        id:timerRun;
+        interval: 1; running: false; repeat: true;
         onTriggered:
         {
             function updateCircles(h,m,s,ms)
@@ -84,11 +86,20 @@ Item
         }
     }
 
+
+    Timer
+    {
+        id:timerBreak;
+        interval: 1; running: false; repeat: true;
+    }
+
     anchors.fill: parent;
     Rectangle
     {
         anchors.fill: parent;
         color:"purple";
+//        anchors.top: parent.top;
+//        anchors.topMargin: 20;
         DrawCircle
         {
             id:circleHour;

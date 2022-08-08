@@ -25,7 +25,6 @@ Item
     property string setIconIndexC: "";
     property string setIconIndexD: "";
 
-//    property color setLabelColor: "black";//;
     property int setLabelFontSize:8;
     property int indexesWidth: 70;//rowArea.width/3.5;
     property int indexesHeight: 70; //rowArea.height
@@ -33,19 +32,6 @@ Item
     property int setIconTopMargin:10;
     property int setIconWidthHeight: 25;
     property int setLabelTopMargin: root.height/2;
-
-
-//    onMyIndicatorIndexChanged:
-//    {
-//        switch(myIndicatorIndex)
-//        {
-//            case 0 : UIN.setIndexActive(indexD,indexC,indexA,indexB,iconD);break;
-////            case 1 : UIN.setIndexActive(indexA,indexB,indexC,indexD,iconA);break;
-//            case 2 : UIN.setIndexActive(indexB,indexC,indexA,indexD,iconB);break;
-//            case 3 : UIN.setIndexActive(indexC,indexA,indexB,indexD,iconC);break;
-////            case 3 :
-//        }
-//    }
 
 
 
@@ -60,7 +46,6 @@ Item
             anchors.fill: parent;
             anchors.horizontalCenter: root.horizontalCenter;
             anchors.left: root.left;
-//            anchors.leftMargin: root.width/25;
             anchors.bottom: root.bottom;
             anchors.bottomMargin: 5;
             spacing: root.width/25;

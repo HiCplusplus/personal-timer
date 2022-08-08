@@ -2,8 +2,11 @@ import QtQuick 2.15
 import "../theControls"
 //import QtQuick.Shapes
 import QtQuick.Controls 2.15
+
 Item
 {
+
+
     anchors.fill: parent;
     signal buttonCancel;
     property int setMaxCharAlarmName:25;
@@ -130,6 +133,7 @@ Item
                         currentIndex: 1;
                         font.bold: true;
                         font.pointSize: 30;
+                        visibleItemCount: 4;
                     }
                     Text
                     {
@@ -138,7 +142,7 @@ Item
                         anchors.topMargin: parent.height/3
                         font.bold: true;
                         font.pointSize: 30;
-                        color:themeDarkMode? "#353436": "black";
+                        color:cTxt_button;//themeDarkMode? "#353436": "black";
                     }
                     Tumbler
                     {
@@ -147,6 +151,8 @@ Item
                         model: setMinuteValues;
                         font.bold: true;
                         font.pointSize: 30;
+                        visibleItemCount: 4;
+
                     }
 
                     Tumbler
