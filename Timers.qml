@@ -24,10 +24,9 @@ Item
             Item
             {
                 id:singleTimer;
-                Rectangle
+                CountDown
                 {
-                    anchors.fill: parent;
-                    color:"cyan";
+
                 }
             }
             Item

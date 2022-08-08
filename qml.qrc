@@ -4,7 +4,6 @@
         <file>theControls/MyTimerIndicator.qml</file>
         <file>CountUp.qml</file>
         <file>theScripts/updateCountUp.js</file>
-        <file>CountDown.qml</file>
         <file>theScripts/controllerSpingBoxCountDown.js</file>
         <file>theControls/MyAutoValue_Increase_Decrease.qml</file>
         <file>theControls/MyThreeBottomButtons.qml</file>
@@ -51,6 +50,7 @@
         <file>thePages/theTimer/CreateNewSportTimer.qml</file>
         <file>theScripts/theTimer/sportTimer.js</file>
         <file>theControls/canvasDraws/DrawCircle.qml</file>
+        <file>thePages/theTimer/CountDown.qml</file>
     </qresource>
     <qresource prefix="/thePictures"/>
 </RCC>

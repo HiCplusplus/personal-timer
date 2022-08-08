@@ -224,7 +224,7 @@ https://dribbble.com/shots/14748311-Task-Manager-App
                 Item
                 {
                     id: thirdPage
-                    CountDown
+                    Timers
                     {
 
                     }
