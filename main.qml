@@ -4,9 +4,16 @@ import QtMultimedia 5.15
 import QtQuick.Controls 2.15
 import "theControls"
 import "thePages"
+import QtQuick.Controls.Material 2.15
+
 
 Window
 {
+//    Material.theme:Material.Dark
+//    Material.accent: Material.LightBlue
+    Material.foreground: cTxt_button;
+
+
     id: mainWindow;
 //    width: Screen.width;
 //    height: Screen.height;
@@ -31,6 +38,12 @@ Window
 
     calender base from
             https://dribbble.com/shots/9709600-Daily-UI-Events-Dark-Version
+
+    timer single from
+            https://dribbble.com/shots/7077105-Daily-UI-challenge-014-Countdown-Timer
+
+
+
     */
 
 
@@ -77,7 +90,7 @@ https://dribbble.com/shots/14748311-Task-Manager-App
 
     property int iconWidthAndHeight: mainWindow.width<700? 40:50; //for button iconBackToHome &  iconSettings
     property int fontSizeTitles: mainWindow.width<700 ? 45:65;
-    property int swipeLunchIndex: 0;
+    property int swipeLunchIndex: 3;
 
 
     //icons
@@ -235,7 +248,7 @@ https://dribbble.com/shots/14748311-Task-Manager-App
         myIndicatorIndexAText: "Alarm";
         myIndicatorIndexBText: "StopWatch";
         myIndicatorIndexCText: "Timer";
-        myIndicatorIndexDText: "Calender";
+        myIndicatorIndexDText: "Calendar";
         anchors.bottom:root.bottom;
 
         setIconIndexA: path_to_menuIcons + fileIcon_Alarm;

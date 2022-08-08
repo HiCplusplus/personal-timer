@@ -2,13 +2,14 @@ import QtQuick 2.15
 import QtGraphicalEffects 1.15
  import QtQuick.Controls 1.4
 import "../theControls"
+import "../theScripts/calculateDates.js" as CDJS
 Item
 {
     anchors.fill: parent;
-    property int c_day : 20;
+    property int c_day : 7;
     property int c_month: 8;
     property int c_year: 2022;
-    property variant c_picked_day: [c_day];//it must be filled [2,...] !!!! not an int/string
+    property variant c_picked_day: [7];//it must be filled [2,...] !!!! not an int/string
     property bool c_viewOnly: true;
     Rectangle
     {
@@ -64,7 +65,7 @@ Item
                     {
                         id:textDayNumber;
                         text:c_day;
-                        color:"white";
+                        color:cUnknown;
                         font.pointSize: 35;
                         font.bold: true;
                         font.family: gFontFamily;
@@ -77,8 +78,8 @@ Item
                     Text
                     {
                         id: textWeekDay;
-                        text: "Wednesday";
-                        color:"white";
+                        text: CDJS.weekdayFromDate(c_year,c_month,'text',c_day);
+                        color:cUnknown;
                         font.pointSize: 15.50;
                         font.bold: true;
                         font.family: gFontFamily;

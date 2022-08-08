@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
-<!-- Written by QtCreator 8.0.0, 2022-08-05T22:07:10. -->
+<!-- Written by QtCreator 8.0.0, 2022-08-08T00:13:47. -->
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
@@ -345,6 +345,7 @@
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">timer2</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">CMakeProjectManager.CMakeRunConfiguration.timer2</value>
     <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">timer2</value>
+    <value type="QString" key="RunConfiguration.Arguments">-style material</value>
     <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
     <value type="bool" key="RunConfiguration.UseLibrarySearchPath">true</value>

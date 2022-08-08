@@ -46,6 +46,11 @@
         <file>thePictures/white-25px/icon-lightmode.png</file>
         <file>thePictures/white-25px/icon-darkmode.png</file>
         <file>thePages/SettingsPage.qml</file>
+        <file>thePages/theTimer/SportTimer.qml</file>
+        <file>Timers.qml</file>
+        <file>thePages/theTimer/CreateNewSportTimer.qml</file>
+        <file>theScripts/theTimer/sportTimer.js</file>
+        <file>theControls/canvasDraws/DrawCircle.qml</file>
     </qresource>
     <qresource prefix="/thePictures"/>
 </RCC>
