@@ -5,7 +5,7 @@ import "../../theControls/canvasDraws/"
 Item
 {
 
-    property variant baseTime: [0,0,30]; //hour, minute, second, to know when is the time, example: if(setTime[0]=== baseTime[0]/2) means we are in half way.
+    property variant baseTime: [24,50,30]; //hour, minute, second, to know when is the time, example: if(setTime[0]=== baseTime[0]/2) means we are in half way.
     property variant setTimes: [baseTime[0],baseTime[1],baseTime[2]]; //hour, minute, second
     property variant setBreaks: [0,0,30]; //hour, minute, second
     property int setRounds: 4;
