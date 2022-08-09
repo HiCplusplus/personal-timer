@@ -1,8 +1,5 @@
 import QtQuick 2.15
 import QtQuick.Controls 2.15
-//import QtQuick.Layouts 1.15
-//import QtQuick.Shapes 1.15
-//import QtQuick.Window 2.15
 import "../../theControls/canvasDraws/"
 import "../../theScripts/theTimer/sportTimer.js" as ST
 
@@ -10,10 +7,14 @@ Item
 {
 
     //data from user
-    property int setRounds: 4;
-    property variant setTimePerRound: [1,0,0]; //hour, minute, second, to know when is the time, example: if(setTime[0]=== setTimePerRound[0]/2) means we are in half way.
+    property int setRounds: 10;
+    property int tempSetRounds:setRounds;
+    property variant setTimePerRound: [0,1,0]; //hour, minute, second, to know when is the time, example: if(setTime[0]=== setTimePerRound[0]/2) means we are in half way.
     property variant setBreaks: [0,0,30]; //hour, minute, second
+    property int roundOn: 1; //a flag to know when is Break/Round
 
+    property variant tempBreaks: setBreaks;
+    property variant tempTPR: setTimePerRound;
 
     property variant avrageRounds: [(setTimePerRound[0]*setRounds) , (setTimePerRound[1]*setRounds) , (setTimePerRound[2]*setRounds)] //TPR (timePerRound) * rounds
     property variant avrageBreaks: [(setBreaks[0]*setRounds) , (setBreaks[1]*setRounds) , (setBreaks[2]*setRounds)]; //breaks*rounds
@@ -30,8 +31,6 @@ Item
         setTimes[2] = parseInt(ST.addTimes_together(avrageBreak_Round[0],avrageBreak_Round[1],avrageBreak_Round[2],2));
     }
 
-
-    property int roundOn: 1;
     //drawCircle
     property variant timePast: [avrageBreak_Round[0]*minusPast_Hour/4,
                                 (avrageBreak_Round[1]+4)*minusPast_MinuteSecond,
@@ -63,112 +62,33 @@ Item
 
     Timer
     {
-        id:timerRun;
-        interval: 1000; running: true; repeat: true;
+        id:mainTimer;
+        interval: 1; running: true; repeat: true;
         onTriggered:
         {
-            function timeSystem(h,m,s,_pastH,_pastM,_pastS,_textTimer)
-            {
-                if(s>0)
-                {
-                    s--;
-                    _pastS -= minusPast_MinuteSecond;
-                    if(_pastS<0)
-                        _pastS=maxCircles;
-
-                }
-                else if(m>0)
-                {
-                    if(m>0)
-                    {
-                        if(roundOn)
-                        {
-                            roundOn=0;
-                        }
-                        else
-                        {
-                            roundOn=1;
-                        }
-                        m--;
-                        _pastM -= minusPast_MinuteSecond;
-                        if(_pastM<0)
-                        {
-                            if(h<=0)
-                                _pastM=0;
-                            else
-                                _pastM=maxCircles;
-                        }
-                        s=60;
-                    }
-                }
-                else
-                {
-                    if(h>0)
-                    {
-                        _pastH -= minusPast_Hour;
-                        if(_pastH<0)
-                        {
-                            if(h<=0)
-                                _pastH=0;
-                            else
-                                _pastH=maxCircles;
-                        }
-                        h--;
-                        m=60;
-                    }
-                    else
-                        _pastM=0;
-                }
-
-                    timePast[2] = _pastS;
-                    timePast[1] = _pastM;
-                    timePast[0] = _pastH;
-
-                    setTimes[2] = s;
-                    setTimes[1] = m;
-                    setTimes[0] = h;
+            valueRound.text= tempSetRounds;//setTimes[0]+":"+setTimes[1]+":"+setTimes[2];
 
 
 
-                updateCircles(circleSecond,timePast[2],roundOn);
-                updateCircles(circleMinute,timePast[1],3,setColors[1]);
-                updateCircles(circleHour,timePast[0],3,setColors[0]);
-//                    console.log("\th=" +h + "\tm=" + m + "\ts=" + s + "\tph=" + _pastH+ "\tpm=" +_pastM + "\tps=" +_pastS);
-
-            }
-
-            function updateCircles(_circle,_time,_status,_color='') //status ->  0 break , 1 round , 2 paused , 3 normal-color
-            {
-                switch(_status)
-                {
-                    case 0: _circle.setColor = setBreak_and_RoundColors[0]; break;
-                    case 1: _circle.setColor = setBreak_and_RoundColors[1]; break;
-                    case 2 : _circle.setColor = setBreak_and_RoundColors[2]; break;
-                    default: _circle.setColor = _color; break;
-                }
-                _circle.setTime = _time;
-                _circle.canvasPrint();
-            }
-
-            function refreshAll()
-            {
-                timeSystem(setTimes[0],setTimes[1],setTimes[2],timePast[0],timePast[1],timePast[2]);
-                textRound.text= setTimes[0]+":"+setTimes[1]+":"+setTimes[2];
 
 
+//            ST.timeSystem(setBreaks[0],setBreaks[1],setBreaks[2],timePast[0],timePast[1],timePast[2],0);
+//            ST.timeSystem(setTimes[0],setTimes[1],setTimes[2],timePast[0],timePast[1],timePast[2],tempBreaks[0],tempBreaks[1],tempBreaks[2],roundOn);
+//            if((setTimes[0]-setBreaks[0])/tempSetRounds === setTimePerRound[0] &&
+//               (setTimes[1]-setBreaks[1])/tempSetRounds === setTimePerRound[1] &&
+//               (setTimes[2]-setBreaks[2])/tempSetRounds === setTimePerRound[2])
+//            {
+//                tempSetRounds--;
+//                console.log(setRounds + "\t"+ setTimes[0] + "\t"+ setTimes[1] + "\t"+ setTimes[2]);
+//                console.log(setRounds + "\t"+ setBreaks[0] + "\t"+ setBreaks[1] + "\t"+ setBreaks[2]);
+//                console.log(setRounds + "\t"+ (setTimes[0]-setBreaks[0])/setRounds + "\t"+ (setTimes[1]-setBreaks[1])/setRounds + "\t"+ (setTimes[2]-setBreaks[2])/setRounds);
+//                console.log(setRounds + "\t"+ avrageRounds[0] + "\t"+ avrageRounds[1] + "\t"+ avrageRounds[2]);
+//                console.log(setRounds + "\t"+ avrageBreak_Round[0] + "\t"+ avrageBreak_Round[1] + "\t"+ avrageBreak_Round[2]);
+//                console.log("\n");
+//            }
 
-//                if(setTimes[0])
-            }
 
-            refreshAll();
         }
-    }
-
-
-    Timer
-    {
-        id:timerBreak;
-        interval: 1; running: false; repeat: true;
     }
 
     anchors.fill: parent;
@@ -184,13 +104,31 @@ Item
             setRadius: setRadiuses[0];
             setTime: timePast[0];
             setTimeDivide: 60;
-            Text
+            Rectangle
             {
-                id:textRound;
-                text:"01";
+                id:baseTextRound;
                 anchors.centerIn: parent;
-                font.pointSize: ((parent.width<=520) ? 13 : 20);
-                color:cTxt_button;
+                width: parent.width/8;
+                height: parent.height/8;
+                color:cBG_Unknown;
+                Text
+                {
+                    id:valueRound;
+                    text:setRounds;
+                    anchors.horizontalCenter: parent.horizontalCenter;
+                    anchors.bottom: parent.bottom;
+                    font.pointSize: ((parent.width<=100) ? 15 : 30);
+                    color:cTxt_button;
+                }
+                Text
+                {
+                    id:textRound;
+                    text:"Round";
+                    anchors.bottom: valueRound.top;
+                    anchors.horizontalCenter: parent.horizontalCenter;
+                    font.pointSize: ((parent.width<=100) ? 15 : 25);
+                    color:cTxt_button;
+                }
             }
 
             DrawCircle
