@@ -1,12 +1,18 @@
-# plarm [WORKING ON...] screenshots from version 0.1.0 (feature stpowatch works)
- [WORKING ON] an alarm , multi-timer , stopwatch, calendar, made by QML QT
-![screenshot1](http://mewware.com/mewware/p-screenshots/v0.1.0-screenshots/1.png)
-![screenshot2](http://mewware.com/mewware/p-screenshots/v0.1.0-screenshots/2.png)
-![screenshot3](http://mewware.com/mewware/p-screenshots/v0.1.0-screenshots/3.png)
-![screenshot4](http://mewware.com/mewware/p-screenshots/v0.1.0-screenshots/4.png)
-![screenshot5](http://mewware.com/mewware/p-screenshots/v0.1.0-screenshots/5.png)
-![screenshot6](http://mewware.com/mewware/p-screenshots/v0.1.0-screenshots/6.png)
-![screenshot7](http://mewware.com/mewware/p-screenshots/v0.1.0-screenshots/7.png)
-![screenshot8](http://mewware.com/mewware/p-screenshots/v0.1.0-screenshots/8.png)
-![screenshot9](http://mewware.com/mewware/p-screenshots/v0.1.0-screenshots/9.png)
-![screenshot10](http://mewware.com/mewware/p-screenshots/v0.1.0-screenshots/10.png)
+# pLarm [WORKING ON...] screenshots from v0.1.0
+
+## Features Log
+ - StopWatch v0.1.0
+ - <del>Timer v0.1.0 </del>
+ - Dark/Light Mode v0.2.0
+ - Alarm View + SetPage v0.3.0
+ - Calender View + One-DayPick + Multi-DayPick + WeekPick v0.4.0
+____________________________________
+
+ ## Working On
+ - Sport Timer (Tabata) + SetPage +SoundEffect v0.5.0 <b>[WORKIN HERE]</b>
+ - Single Timer + SetPage v0.6.0
+ - Sport Timer -> Timer-Speech 
+ - Multi Timer
+ - Calender 
+ - Alarm 
+ - Background application (with local data save)
