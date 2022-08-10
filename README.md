@@ -1,4 +1,4 @@
-# plarm [WORKING ON...] screenshots from version 0.1.0
+# plarm [WORKING ON...] screenshots from version 0.1.0 (feature stpowatch works)
  [WORKING ON] an alarm , multi-timer , stopwatch, calendar, made by QML QT
 ![screenshot1](http://mewware.com/mewware/p-screenshots/v0.1.0-screenshots/1.png)
 ![screenshot2](http://mewware.com/mewware/p-screenshots/v0.1.0-screenshots/2.png)
