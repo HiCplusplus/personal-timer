@@ -72,10 +72,9 @@ function updateCircles(_circle,_time,_status,_color='') //status ->  0 break , 1
 
 
 
-function timeSystem(h,m,s,_pastH,_pastM,_pastS,_breakH,_breakM,_breakS,_mode) //mode 1 round , 0 break
+function timeSystem(h,m,s,_pastH,_pastM,_pastS,_mode) //mode 1 round , 0 break
 {
-    if(_mode)
-    {
+
         if(s>0)
         {
             s--;
@@ -119,53 +118,6 @@ function timeSystem(h,m,s,_pastH,_pastM,_pastS,_breakH,_breakM,_breakS,_mode) //
                 _pastM=0;
         }
 
-    }
-    else
-    {
-        if(s>0)
-        {
-            s--;
-            _pastS -= minusPast_MinuteSecond;
-            if(_pastS<0)
-                _pastS=maxCircles;
-
-        }
-        else if(m>0)
-        {
-            if(m>0)
-            {
-                m--;
-                _pastM -= minusPast_MinuteSecond;
-                if(_pastM<0)
-                {
-                    if(h<=0)
-                        _pastM=0;
-                    else
-                        _pastM=maxCircles;
-                }
-                s=60;
-            }
-        }
-        else
-        {
-            if(h>0)
-            {
-                _pastH -= minusPast_Hour;
-                if(_pastH<0)
-                {
-                    if(h<=0)
-                        _pastH=0;
-                    else
-                        _pastH=maxCircles;
-                }
-                h--;
-                m=60;
-            }
-            else
-                _pastM=0;
-        }
-
-    }
 
 
     timePast[2] = _pastS;
