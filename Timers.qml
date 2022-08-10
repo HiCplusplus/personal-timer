@@ -9,16 +9,17 @@ Item
 {
     property int setLunchIndex: 2;
     anchors.fill: parent;
+    clip:true;
     Rectangle
     {
         id:root;
         anchors.fill: parent;
         color:cBG;
+        clip:true;
         SwipeView
         {
             id:timersSwiper;
             anchors.fill: parent;
-
             anchors.top: timersIndicator.bottom;
             currentIndex: setLunchIndex;
             Item
@@ -28,6 +29,7 @@ Item
                 {
 
                 }
+
             }
             Item
             {
@@ -40,11 +42,11 @@ Item
             }
             Item
             {
-                id:sportTimer;
+                id:baseSportTimer;
                 SportTimer
                 {
-
-                }
+                    id:sportTimer;
+                }                
             }
 
 

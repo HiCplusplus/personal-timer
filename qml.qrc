@@ -51,6 +51,7 @@
         <file>theScripts/theTimer/sportTimer.js</file>
         <file>theControls/canvasDraws/DrawCircle.qml</file>
         <file>thePages/theTimer/CountDown.qml</file>
+        <file>TrashCodesForLater.qml</file>
     </qresource>
     <qresource prefix="/thePictures"/>
 </RCC>

@@ -27,8 +27,11 @@ Window
 
     /*
     thanks to :
-
     icons8.com
+
+
+    sound effects from
+            https://mixkit.co/free-sound-effects/
 
     menu down idea from
             https://dribbble.com/shots/17686848-Alarm-Clock-App-UI
@@ -73,7 +76,7 @@ Window
         https://dribbble.com/shots/16710172-Task-Management-App-to-do-calender-events
         https://dribbble.com/shots/10170477-Date-Picker-Exploration-Part-1
         https://dribbble.com/shots/11751267-DailyUI-Day42-ToDo-List
-https://dribbble.com/shots/14748311-Task-Manager-App
+        https://dribbble.com/shots/14748311-Task-Manager-App
 
 
 
@@ -93,7 +96,22 @@ https://dribbble.com/shots/14748311-Task-Manager-App
     property int swipeLunchIndex: 3;
 
 
-    //icons
+    //- - - - - - - - - - - - - - - - - - - - - - set theme, default light mode colors
+    property bool themeDarkMode:false;
+    property color cTxt_normal : "black";
+    property color cTxt_title : "#3E386C";
+    property color cBG : "#dedede";//"#F6F6F6";
+//    property color cBG_menu : "#dedede"; //"#F6F6F6";
+    property color cBG_element: "white";
+    property color cTxt_button : "black";
+    property color cBG_button : "#B178FF";
+    property color cBG_button_activated: "#B178FF";
+    property color cBG_button_deactivated: "#EBDDFF";
+    property string gFontFamily:"Courier";
+    property color cBG_Unknown: "transparent";
+    property color cUnknown: "white";
+
+    //- - - - - - - - - - - - - - - - - - - - - - icons
     property string directory_Icons: "../thePictures/";
     property string direcotry_BlackIcons: "dark-25px/";
     property string direcotry_WhiteIcons: "white-25px/";
@@ -111,20 +129,10 @@ https://dribbble.com/shots/14748311-Task-Manager-App
     property string fileIcon_Cancel: "icon-cancel.png";
 
 
-    //set theme, default light mode colors
-    property bool themeDarkMode:false;
-    property color cTxt_normal : "black";
-    property color cTxt_title : "#3E386C";
-    property color cBG : "#dedede";//"#F6F6F6";
-//    property color cBG_menu : "#dedede"; //"#F6F6F6";
-    property color cBG_element: "white";
-    property color cTxt_button : "black";
-    property color cBG_button : "#B178FF";
-    property color cBG_button_activated: "#B178FF";
-    property color cBG_button_deactivated: "#EBDDFF";
-    property string gFontFamily:"Courier";
-    property color cBG_Unknown: "transparent";
-    property color cUnknown: "white";
+
+    //- - - - - - - - - - - - - - - - - - - - - - sound effects
+    //- - sportTimer:
+    property string directory_SoundEffects: "../theSounds/";
 
    Rectangle
    {

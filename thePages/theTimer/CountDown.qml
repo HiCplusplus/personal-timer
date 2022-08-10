@@ -1,14 +1,17 @@
 import QtQuick 2.15
 import QtQuick.Controls 2.15
 import "../../theControls/canvasDraws/"
-
+import "../../theControls/"
 Item
 {
+    id:root;
+    clip:true;
+    anchors.fill: parent;
 
-    property variant baseTime: [24,50,30]; //hour, minute, second, to know when is the time, example: if(setTime[0]=== baseTime[0]/2) means we are in half way.
+    property variant baseTime: [23,50,30]; //hour, minute, second, to know when is the time, example: if(setTime[0]=== baseTime[0]/2) means we are in half way.
     property variant setTimes: [baseTime[0],baseTime[1],baseTime[2]]; //hour, minute, second
-    property variant setBreaks: [0,0,30]; //hour, minute, second
-    property int setRounds: 4;
+//    property variant setBreaks: [0,0,30]; //hour, minute, second
+//    property int setRounds: 4;
 
 
 
@@ -22,21 +25,21 @@ Item
     property int lineWsFromParent: parent.width/40;
     property variant setLineWidths: [lineWsFromParent,lineWsFromParent,lineWsFromParent];//hour,minute,second
     property variant setRadiuses: [20,17,14]; //h,m,s
-    property variant setColors: ["black",cBG_button,"orange"];//hour, minute, second
+    property variant setColors: ["orange",cBG_button,"black"];//hour, minute, second
     property variant setBreak_and_RoundColors: ["red","green","blue"]; //break, round, pause
 
 
 
     //section options
-    property bool setSpeechOn: false;
-    property variant setSpeechPlayEvery: [0,0,10];//hour , minute , second.
-    property variant setSpeechPlayWhen: ["Rounds & rests & letsgo","Rounds & rests","Only rounds","Only rests"];
-    property variant speechPacks: ["male","female"];
+//    property bool setSpeechOn: false;
+//    property variant setSpeechPlayEvery: [0,0,10];//hour , minute , second.
+//    property variant setSpeechPlayWhen: ["Rounds & rests & letsgo","Rounds & rests","Only rounds","Only rests"];
+//    property variant speechPacks: ["male","female"];
 
-    property bool setVibrationOn: false;
-    property bool setNotificationOn: false;
-    property bool setSoundEffectsOn: false;
-    property variant soundEffectsPacks: ["beeps","pings"];
+//    property bool setVibrationOn: false;
+//    property bool setNotificationOn: false;
+//    property bool setSoundEffectsOn: false;
+//    property variant soundEffectsPacks: ["beeps","pings"];
 
 
     Timer
@@ -164,13 +167,12 @@ Item
     }
 
 
-    Timer
-    {
-        id:timerBreak;
-        interval: 1; running: false; repeat: true;
-    }
+//    Timer
+//    {
+//        id:timerBreak;
+//        interval: 1; running: false; repeat: true;
+//    }
 
-    anchors.fill: parent;
     Rectangle
     {
         anchors.fill: parent;
@@ -212,6 +214,17 @@ Item
             }
 
         }
+    }
+    MyThreeBottomButtons
+    {
+        id:sportButtons;
+        anchors.bottom:root.bottom;
+        width: root.width;
+        height:root.height/10.5;
+        setCenterButtonText: "Pause";
+//        setCenterButtonCircleStyled:true;
+        setLeftButtonText: "Cancel";
+        setRightButtonText: "";
     }
 }
 
