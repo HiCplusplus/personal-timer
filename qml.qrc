@@ -21,7 +21,6 @@
         <file>theControls/MySlider.qml</file>
         <file>theControls/MyAlarmContentStyle.qml</file>
         <file>theControls/MyAutoIncreaseValue.qml</file>
-        <file>thePictures/icon-cancel.png</file>
         <file>theScripts/updateIndicator.js</file>
         <file>thePictures/white-25px/icon-stopwatch.png</file>
         <file>thePictures/white-25px/icon-countdown.png</file>
@@ -52,6 +51,14 @@
         <file>theControls/canvasDraws/DrawCircle.qml</file>
         <file>thePages/theTimer/CountDown.qml</file>
         <file>TrashCodesForLater.qml</file>
+        <file>thePictures/dark-25px/icon-unmute.png</file>
+        <file>thePictures/dark-25px/icon-mute.png</file>
+        <file>thePictures/white-25px/icon-unmute.png</file>
+        <file>thePictures/white-25px/icon-mute.png</file>
+        <file>thePictures/white-25px/icon-settings.png</file>
+        <file>thePictures/dark-25px/icon-settings.png</file>
+        <file>thePictures/white-25px/icon-cancel.png</file>
+        <file>thePictures/dark-25px/icon-cancel.png</file>
     </qresource>
     <qresource prefix="/thePictures"/>
 </RCC>

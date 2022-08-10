@@ -17,6 +17,10 @@ Item
     property string setCenterButtonText: "center";
     property string setRightButtonText: "right";
 
+
+    property string setLeftButtonIcon: "";
+    property string setRightButtonIcon: "";
+
     Rectangle
     {
         id:baseButtons;
@@ -26,7 +30,7 @@ Item
 
         Rectangle
         {
-            id:btnAddNew;
+            id:btnAddNew;//center BUTtON
             width: setCenterButtonCircleStyled<1 ? parent.width/3.5 : 50;
             height: 50; //parent.height/1.3
             visible: setCenterButtonText==""? false:true;
@@ -58,7 +62,7 @@ Item
 
         Rectangle
         {
-            id:btnClearAll;
+            id:btnClearAll;//LEFT BUTTON
             width:parent.width/1.7;
             height: 40; //parent.height/1.7
             visible: setLeftButtonText==""? false:true;
@@ -82,6 +86,26 @@ Item
                     verticalCenter:parent.verticalCenter;
                 }
             }
+            Rectangle
+            {
+                id:baseIconLeftButton;
+                width:25;
+                height:25;
+                color:cBG_Unknown;
+                visible: setRightButtonIcon==""? false:true;
+                anchors
+                {
+                    right:btnClearAll.right;
+                    verticalCenter:parent.verticalCenter;
+                    rightMargin:15;
+                }
+                Image
+                {
+                    id: iconLeftButton;
+                    anchors.fill: parent;
+                    source: setLeftButtonIcon;
+                }
+            }
             MouseArea
             {
                 anchors.fill: parent;
@@ -92,7 +116,7 @@ Item
 
         Rectangle
         {
-            id:btnIdk;
+            id:btnIdk; //RightButton
             width:parent.width/1.7;
             height: 40; //parent.height/1.7;
             visible: setRightButtonText==""? false:true;
@@ -108,7 +132,7 @@ Item
             radius:50;
             Text
             {
-
+                id:textRightButton;
                 text:setRightButtonText;
                 color:cTxt_button;
                 anchors
@@ -117,6 +141,27 @@ Item
                     verticalCenter:parent.verticalCenter;
                 }
             }
+            Rectangle
+            {
+                id:baseIconRightButton;
+                width:25;
+                height:25;
+                color:cBG_Unknown;
+                visible: setRightButtonIcon==""? false:true;
+                anchors
+                {
+                    left:btnIdk.left;
+                    verticalCenter:parent.verticalCenter;
+                    leftMargin:15;
+                }
+                Image
+                {
+                    id: iconRightButton;
+                    anchors.fill: parent;
+                    source: setRightButtonIcon;
+                }
+            }
+
             MouseArea
             {
                 anchors.fill: parent;

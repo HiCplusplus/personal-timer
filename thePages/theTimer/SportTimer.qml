@@ -10,10 +10,10 @@ Item
     clip:true;
     anchors.fill: parent;
     //user set data
-    property int setRounds: 80;
+    property int setRounds: 4;
 
     property variant setTimePerRound: [0,0,30]; //hour, minute, second, to know when is the time, example: if(setTime[0]=== setTimePerRound[0]/2) means we are in half way.
-    property variant setBreaks: [0,0,30]; //hour, minute, second
+    property variant setBreaks: [0,0,20]; //hour, minute, second
 
     //user set options
     property bool setSpeechOn: false;
@@ -55,9 +55,9 @@ Item
     property double minusPast_Hour : 15.75; //maxCircles/24
     property double minusPast_MinuteSecond: 6.30; //maxCircles/60
 
-    property int lineWsFromParent: parent.width/40;
+    property int lineWsFromParent: parent.width/15;//parent.width/40;
     property variant setLineWidths: [lineWsFromParent,lineWsFromParent,lineWsFromParent];//hour,minute,second
-    property variant setRadiuses: [20,17,14]; //h,m,s
+    property variant setRadiuses: [20];//,22,19];//[20,17,14]; //h,m,s
     property variant setColors: [cBG_Unknown,cBG_Unknown,cBG_Unknown];//["black",cBG_button,"orange"];//hour, minute, second . //minute hour has bug disabled
     property variant setBreak_and_RoundColors: ["red","green","blue"]; //break, round, pause circle colors
 
@@ -130,7 +130,7 @@ Item
                     roundOn=0;//means breaks turn
                     tempSaveRunnigs=0;//reset global counter second
                     valueRound.text= Math.abs(tempBreaks-(setRounds+1)); //this could be only  *.text = tempRounds, but (for example rounds=8) tempRounds will count from 8 to 0 but we want 1 to 8
-                    textRound.text = "Rest";
+                    textRound.text = "rest";
                     if(setBreaks[2]<60 && setBreaks[2]>0)
                         minusPast_MinuteSecond = maxCircles/setBreaks[2];
                     else
@@ -152,7 +152,7 @@ Item
                 {
                     roundOn=1;//means rounds turn
                     tempSaveRunnigs=0;
-                    textRound.text = "Round";
+                    textRound.text = "SET";
                     valueRound.text= Math.abs(tempRounds-(setRounds+1)); //this could be only  *.text = tempRounds, but (for example rounds=8) tempRounds will count from 8 to 0 but we want 1 to 8
                     if(setTimePerRound[2]<60 && setTimePerRound[2]>0)
                         minusPast_MinuteSecond = maxCircles/setTimePerRound[2];
@@ -172,13 +172,13 @@ Item
         id:baseCircles;
         anchors.fill: parent;
         color:cBG;
-        DrawCircle
+        DrawCircle //other circles termperory removed from here because they didnt work but stored in TrashCodesForLater.qml
         {
-            id:circleHour;
-            setLineWidth: setLineWidths[0];
-            setColor: setColors[0];
-            setRadius: setRadiuses[0];
-            setTime: timePast[0];
+            id:circleSecond;
+            setLineWidth: setLineWidths[0]; //could be [2] but Hour's is better looking
+            setColor: setColors[2];
+            setRadius: setRadiuses[0]; //could be [2] but Hour's is better looking
+            setTime: timePast[2];
             setTimeDivide: 60;
             Rectangle
             {
@@ -193,7 +193,7 @@ Item
                     text:setRounds;
                     anchors.horizontalCenter: parent.horizontalCenter;
                     anchors.bottom: parent.bottom;
-                    font.pointSize: ((parent.width<=100) ? 15 : 30);
+                    font.pointSize: ((parent.width<=100) ? 45 : 60);
                     color:cTxt_button;
                 }
                 Text
@@ -206,37 +206,63 @@ Item
                 }
             }
 
-            DrawCircle
-            {
-                id:circleMinute;
-                setLineWidth: setLineWidths[1];
-                setColor: setColors[1];
-                setRadius: setRadiuses[1];
-                setTime: timePast[1];
-                setTimeDivide: 60;
-                DrawCircle
-                {
-                    id:circleSecond;
-                    setLineWidth: setLineWidths[2];
-                    setColor: setColors[2];
-                    setRadius: setRadiuses[2];
-                    setTime: timePast[2];
-                    setTimeDivide: 60;
-                }
-            }
+        }
+    }
+    MyThreeBottomButtons
+    {
+        id:sportSettingsMuteButton;
+        width: root.width;
+        height:root.height/10.5;
+        //setCenterButtonCircleStyled:true;
+        setCenterButtonText: "";
+        setLeftButtonText: "Speech";
+        setLeftButtonIcon: path_to_menuIcons + fileIcon_Unmute;
 
+        setRightButtonText: "Effect";
+        setRightButtonIcon: path_to_menuIcons + fileIcon_Mute;
+
+        anchors
+        {
+            bottom:sportButtons.bottom;
+            bottomMargin:sportButtons.height;
         }
     }
 
     MyThreeBottomButtons
     {
         id:sportButtons;
-        anchors.bottom:root.bottom;
         width: root.width;
         height:root.height/10.5;
         //setCenterButtonCircleStyled:true;
         setCenterButtonText: "Pause";
+        onCenterButtonPressed:
+        {
+            if(setCenterButtonText=="Pause")
+            {
+                mainTimer.running=false;
+                secondTimer.running=false;
+                setCenterButtonText="Resume";
+            }
+            else
+            {
+                mainTimer.running=true;
+                secondTimer.running=true;
+                setCenterButtonText="Pause";
+            }
+        }
+
         setLeftButtonText: "Cancel";
-        setRightButtonText: "";
+        setLeftButtonIcon: path_to_menuIcons + fileIcon_Cancel;
+
+
+        setRightButtonText: "Settings";
+        setRightButtonIcon: path_to_menuIcons + fileIcon_Settings;
+
+
+        anchors
+        {
+            bottom:root.bottom;
+            bottomMargin:15;
+        }
     }
 }
