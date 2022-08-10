@@ -7,14 +7,15 @@ Item
 {
 
     //data from user
-    property int setRounds: 10;
-    property int tempSetRounds:setRounds;
-    property variant setTimePerRound: [0,1,0]; //hour, minute, second, to know when is the time, example: if(setTime[0]=== setTimePerRound[0]/2) means we are in half way.
-    property variant setBreaks: [0,0,30]; //hour, minute, second
-    property int roundOn: 1; //a flag to know when is Break/Round
+    property int setRounds: 8;
+    property int tempRounds:setRounds;
+    property int tempBreaks: setRounds;
 
-    property variant tempBreaks: setBreaks;
-    property variant tempTPR: setTimePerRound;
+    //remove this later #FOR TEST/DEBUG
+    property int timersInterval: 1;
+
+    property variant setTimePerRound: [0,10,20]; //hour, minute, second, to know when is the time, example: if(setTime[0]=== setTimePerRound[0]/2) means we are in half way.
+    property variant setBreaks: [0,0,10]; //hour, minute, second
 
     property variant avrageRounds: [(setTimePerRound[0]*setRounds) , (setTimePerRound[1]*setRounds) , (setTimePerRound[2]*setRounds)] //TPR (timePerRound) * rounds
     property variant avrageBreaks: [(setBreaks[0]*setRounds) , (setBreaks[1]*setRounds) , (setBreaks[2]*setRounds)]; //breaks*rounds
@@ -22,6 +23,9 @@ Item
                                          (avrageRounds[1]+avrageBreaks[1]),
                                          (avrageRounds[2]+avrageBreaks[2])]; //hour,minute,second (avrage time = rounds+breaks)
 
+
+    property int roundOn : 0;
+    property int tempSaveRunnigs: 0;
 
     property variant setTimes: []; //hour,minute,second (avrage time = rounds+breaks)
     onAvrageBreak_RoundChanged:
@@ -32,8 +36,8 @@ Item
     }
 
     //drawCircle
-    property variant timePast: [avrageBreak_Round[0]*minusPast_Hour/4,
-                                (avrageBreak_Round[1]+4)*minusPast_MinuteSecond,
+    property variant timePast: [avrageBreak_Round[0]*minusPast_Hour/8, ///4,
+                                (avrageBreak_Round[1])*minusPast_MinuteSecond, //(avrageBreak_Round[1]+4)*minusPast_MinuteSecond,
                                 avrageBreak_Round[2]*minusPast_MinuteSecond/maxCircles];
         //[setTimes[0]*minusPast_Hour  ,setTimes[1]*minusPast_MinuteSecond   ,setTimes[2]*minusPast_MinuteSecond]; //hour, minute, second
     property int maxCircles: 378;
@@ -59,20 +63,116 @@ Item
     property bool setSoundEffectsOn: false;
     property variant soundEffectsPacks: ["beeps","pings"];
 
+    Timer
+    {
+        id:secondTimer;
+        interval: timersInterval; running: false; repeat: true;
+        onTriggered:
+        {
+            tempSaveRunnigs++;
+            if(roundOn==0)//break
+            {
+                if(tempSaveRunnigs >= ((setBreaks[0]*60) + setBreaks[1])*60 + setBreaks[2]) //(hour*60=> miunute + main-minute)*60 => seconds
+                {
+                    secondTimer.running=false;
+                    mainTimer.running=true;
+                    tempBreaks--;
+//                    console.log("breaks="+tempBreaks);
+                }
+                else
+                    ST.timeSystem(setTimes[0],setTimes[1],setTimes[2],timePast[0],timePast[1],timePast[2],roundOn);
+            }
+            else //round
+            {
+                if(tempSaveRunnigs >= ((setTimePerRound[0]*60) + setTimePerRound[1])*60 + setTimePerRound[2]) //(hour*60=> miunute + main-minute)*60 => seconds
+                {
+                    secondTimer.running=false;
+                    mainTimer.running=true;
+                    tempRounds--;
+                }
+                else
+                    ST.timeSystem(setTimes[0],setTimes[1],setTimes[2],timePast[0],timePast[1],timePast[2],roundOn);
+            }
+
+        }
+    }
 
     Timer
     {
         id:mainTimer;
-        interval: 1; running: true; repeat: true;
+        interval: timersInterval; running: true; repeat: true;
         onTriggered:
         {
-            valueRound.text= tempSetRounds;//setTimes[0]+":"+setTimes[1]+":"+setTimes[2];
+//            console.log("counts:\n breaks=" +tempBreaks + "\trounds="+ tempRounds);
+//            console.log("setRounds="+setRounds + "\t setTimes H="+ setTimes[0] + "\tsetTimes M="+ setTimes[1] + "\tsetTimes S="+ setTimes[2]);
+//            console.log("\tbreaks H="+ setBreaks[0] + "\t"+ setBreaks[1] + "\t"+ setBreaks[2]);
+//            console.log("\t(setTimes[0]-setBreaks[0])/setRounds="+ (setTimes[0]-setBreaks[0])/setRounds + "\t"+ (setTimes[1]-setBreaks[1])/setRounds + "\t"+ (setTimes[2]-setBreaks[2])/setRounds);
+//            console.log("\tavrageRounds[0]="+ avrageRounds[0] + "\t"+ avrageRounds[1] + "\t"+ avrageRounds[2]);
+//            console.log("\tavrageBreak_Round[0]="+ avrageBreak_Round[0] + "\t"+ avrageBreak_Round[1] + "\t"+ avrageBreak_Round[2]);
+//            console.log("\n");
+
+
+            if(tempBreaks>=tempRounds)
+            {
+
+                //break
+                if(tempBreaks<=0)
+                {
+                    textRound.text = "end";
+                }
+                else
+                {
+                    roundOn=0;//means breaks turn
+                    tempSaveRunnigs=0;
+                    valueRound.text= tempBreaks;//setTimes[0]+":"+setTimes[1]+":"+setTimes[2];
+                    textRound.text = "Break";
+                    if(setBreaks[2]<60 && setBreaks[2]>0)
+                        minusPast_MinuteSecond = maxCircles/setBreaks[2];
+                    else
+                        minusPast_MinuteSecond = maxCircles/60;
+
+                    secondTimer.running = true;
+                    mainTimer.running = false;
+
+//                    while(setTimes[2] !== setTimes[2]-setBreaks[2])
+//                    {
+//                        console.log("---------------------" + timePast[2]/minusPast_MinuteSecond +"-"+ (setTimes[2]-setBreaks[2]));
+//                        ST.timeSystem(setTimes[0],setTimes[1],setTimes[2],timePast[0],timePast[1],timePast[2],0);
+//                    }
+
+                }
+
+            }
+            else
+            {
+                //round
+                if(tempRounds<=0)
+                {
+                    textRound.text = "end";
+                }
+                else
+                {
+                    roundOn=1;//means rounds turn
+                    tempSaveRunnigs=0;
+
+
+//                    ST.timeSystem(setBreaks[0],setBreaks[1],setBreaks[2],timePast[0],timePast[1],timePast[2],1);
+                    textRound.text = "Round";
+                    valueRound.text= tempRounds;//setTimes[0]+":"+setTimes[1]+":"+setTimes[2];
+                    if(setTimePerRound[2]<60 && setTimePerRound[2]>0)
+                        minusPast_MinuteSecond = maxCircles/setTimePerRound[2];
+                    else
+                        minusPast_MinuteSecond = maxCircles/60;
+
+
+                    mainTimer.running = false;
+                    secondTimer.running = true;
+                }
+            }
 
 
 
 
-
-//            ST.timeSystem(setBreaks[0],setBreaks[1],setBreaks[2],timePast[0],timePast[1],timePast[2],0);
 //            ST.timeSystem(setTimes[0],setTimes[1],setTimes[2],timePast[0],timePast[1],timePast[2],tempBreaks[0],tempBreaks[1],tempBreaks[2],roundOn);
 //            if((setTimes[0]-setBreaks[0])/tempSetRounds === setTimePerRound[0] &&
 //               (setTimes[1]-setBreaks[1])/tempSetRounds === setTimePerRound[1] &&
@@ -124,7 +224,7 @@ Item
                 {
                     id:textRound;
                     text:"Round";
-                    anchors.bottom: valueRound.top;
+//                    anchors.bottom: valueRound.top;
                     anchors.horizontalCenter: parent.horizontalCenter;
                     font.pointSize: ((parent.width<=100) ? 15 : 25);
                     color:cTxt_button;
