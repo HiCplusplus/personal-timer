@@ -15,11 +15,12 @@ Item
         id:root;
         anchors.fill: parent;
         color:cBG;
-        clip:true;
+
         SwipeView
         {
             id:timersSwiper;
             anchors.fill: parent;
+            clip:true;
             anchors.top: timersIndicator.bottom;
             currentIndex: setLunchIndex;
             Item
@@ -46,7 +47,7 @@ Item
                 SportTimer
                 {
                     id:sportTimer;
-                }                
+                }
             }
 
 
