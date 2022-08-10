@@ -47,6 +47,11 @@ Window
 
 
 
+
+            icon mute/unmute from icons8
+            https://icons8.com/icons/authors/klDPcgJ2LxJD/febrian-hidayat/external-febrian-hidayat-glyph-febrian-hidayat/external-user-interface-febrian-hidayat-glyph-febrian-hidayat
+
+
     */
 
 
@@ -117,16 +122,30 @@ Window
     property string direcotry_WhiteIcons: "white-25px/";
     property string path_to_menuIcons: directory_Icons + direcotry_BlackIcons;//(!themeDarkMode? direcotry_BlackIcons:direcotry_WhiteIcons);
 
-    property string fileIcon_Settings: "icon-settings.png";
-    property string fileIcon_backToHome: "icon-back.png";
-    property string fileIcon_Countdown: "icon-countdown.png";
-    property string fileIcon_Stopwatch: "icon-stopwatch.png";
-    property string fileIcon_Alarm: "icon-alarm.png";
-    property string fileIcon_Calender: "icon-calender.png";
-    property string fileIcon_BackNext: "icon-back-next.png";
+    //dark/light switch icons
     property string fileIcon_DarkMode: "icon-darkmode.png";
     property string fileIcon_LightMode: "icon-lightmode.png";
+
+
+    //my inidcator icons
+    property string fileIcon_Alarm: "icon-alarm.png";
+    property string fileIcon_Countdown: "icon-countdown.png";
+    property string fileIcon_Stopwatch: "icon-stopwatch.png";
+    property string fileIcon_Calender: "icon-calender.png";
+
+    //calender icons
+    property string fileIcon_BackNext: "icon-back-next.png";
+
+    //alarm(TimerDown.qml) icons
     property string fileIcon_Cancel: "icon-cancel.png";
+
+//    property string fileIcon_backToHome: "icon-back.png"; //NOT FOUND NOT USED
+
+
+    //sportTimer Icons
+    property string fileIcon_Mute: "icon-mute.png";
+    property string fileIcon_Unmute: "icon-unmute.png";
+    property string fileIcon_Settings: "icon-settings.png";
 
 
 
@@ -295,8 +314,6 @@ Window
         AlarmSetPage
         {
             id:pageAlarmSet;
-
-
             onButtonCancel:
             {
                 baseAlarmSet.visible=false;
