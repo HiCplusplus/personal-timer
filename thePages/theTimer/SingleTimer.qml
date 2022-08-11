@@ -3,6 +3,10 @@ import QtQuick.Controls 2.15
 import "../../theControls/canvasDraws/"
 import "../../theControls/"
 import "../../theScripts/theTimer/sportTimer.js" as ST
+import "../../thePages"
+
+import QtMultimedia 5.15
+
 Item
 {
     id:root;
@@ -10,6 +14,16 @@ Item
     anchors.fill: parent;
     signal runTimer;
     signal cancelTimer;
+    signal gotoPageDismiss;
+
+
+    SoundEffect
+    {
+        id:theSoundEffectTimesUp;
+        source: "../"+ directory_SoundEffects + fileAudio_elevatorTone; //from https://mixkit.co/free-sound-effects/
+    }
+
+
     onCancelTimer:
     {
         timerRun.stop();
@@ -108,7 +122,8 @@ Item
                     ST.updateCircles(circleHour,timePast[0],3,setColors[0]);
                 if(h === 0 && m === 0 && s===0)
                 {
-                    cancelTimer();
+                    theSoundEffectTimesUp.play();
+                    dismissPage.visible=true;
                 }
             }
 
@@ -195,6 +210,19 @@ Item
         {
             bottom:root.bottom;
             bottomMargin:15;
+        }
+    }
+
+
+    DismissPage
+    {
+        id:dismissPage;
+        visible: false;
+        onStatusDismiss:
+        {
+            theSoundEffectTimesUp.stop();
+            visible=false;
+            cancelTimer();
         }
     }
 }
