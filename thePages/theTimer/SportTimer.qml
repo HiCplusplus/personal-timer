@@ -12,8 +12,8 @@ Item
     //user set data
     property int setRounds: 4;
 
-    property variant setTimePerRound: [0,0,30]; //hour, minute, second, to know when is the time, example: if(setTime[0]=== setTimePerRound[0]/2) means we are in half way.
-    property variant setBreaks: [0,0,20]; //hour, minute, second
+    property variant setTimePerRound: [0,0,10]; //hour, minute, second, to know when is the time, example: if(setTime[0]=== setTimePerRound[0]/2) means we are in half way.
+    property variant setBreaks: [0,0,10]; //hour, minute, second
 
     //user set options
     property bool setSpeechOn: false;
@@ -59,7 +59,7 @@ Item
     property variant setLineWidths: [lineWsFromParent,lineWsFromParent,lineWsFromParent];//hour,minute,second
     property variant setRadiuses: [20];//,22,19];//[20,17,14]; //h,m,s
     property variant setColors: [cBG_Unknown,cBG_Unknown,cBG_Unknown];//["black",cBG_button,"orange"];//hour, minute, second . //minute hour has bug disabled
-    property variant setBreak_and_RoundColors: ["red","green","blue"]; //break, round, pause circle colors
+    property variant setBreak_and_RoundColors: ["#fc4949","#00bf66","blue"]; //break, round, pause circle colors. green->#10FCB3. red->#fc4949
 
 
     signal sportTimerEnded; //when times end this called
@@ -68,8 +68,9 @@ Item
         mainTimer.stop();
         secondTimer.stop();
         baseCircles.visible=false;
-        //make something reset
 
+
+        //make something reset
         tempSaveRunnigs=0;
         roundOn=0;
     }
@@ -80,6 +81,7 @@ Item
         interval: 1000; running: false; repeat: true;
         onTriggered:
         {
+//            ST.updateCircles(justShowCircle,maxCircles,3,cBG_element); //update background color
             //break turn
             tempSaveRunnigs++; //second counter (all value Hour/Minute/Second converted to Second) for example
             if(roundOn==0)
@@ -112,10 +114,10 @@ Item
     Timer
     {
         id:mainTimer;
-        interval: 1000; running: true; repeat: true;
+        interval: 1000; running: false; repeat: true;
         onTriggered:
         {
-
+//            ST.updateCircles(justShowCircle,maxCircles,3,cBG_element); //update background color
             if(tempBreaks>=tempRounds)
             {
 
@@ -129,8 +131,8 @@ Item
                 {
                     roundOn=0;//means breaks turn
                     tempSaveRunnigs=0;//reset global counter second
-                    valueRound.text= Math.abs(tempBreaks-(setRounds+1)); //this could be only  *.text = tempRounds, but (for example rounds=8) tempRounds will count from 8 to 0 but we want 1 to 8
-                    textRound.text = "rest";
+                    valueRound.text= "rest";//Math.abs(tempBreaks-(setRounds+1)); //this could be only  *.text = tempRounds, but (for example rounds=8) tempRounds will count from 8 to 0 but we want 1 to 8
+//                    textRound.text = "";
                     if(setBreaks[2]<60 && setBreaks[2]>0)
                         minusPast_MinuteSecond = maxCircles/setBreaks[2];
                     else
@@ -152,7 +154,7 @@ Item
                 {
                     roundOn=1;//means rounds turn
                     tempSaveRunnigs=0;
-                    textRound.text = "SET";
+//                    textRound.text = "SET";
                     valueRound.text= Math.abs(tempRounds-(setRounds+1)); //this could be only  *.text = tempRounds, but (for example rounds=8) tempRounds will count from 8 to 0 but we want 1 to 8
                     if(setTimePerRound[2]<60 && setTimePerRound[2]>0)
                         minusPast_MinuteSecond = maxCircles/setTimePerRound[2];
@@ -172,6 +174,20 @@ Item
         id:baseCircles;
         anchors.fill: parent;
         color:cBG;
+
+
+        //empty circle for a line to better look
+        DrawCircle
+        {
+            id:justShowCircle;
+            setLineWidth: setLineWidths[0];
+            setColor: "#cfcfcf";//cBG_button_deactivated;//"#dcd3e8";
+            setRadius: setRadiuses[0];
+            setTime: maxCircles;
+        }
+
+
+
         DrawCircle //other circles termperory removed from here because they didnt work but stored in TrashCodesForLater.qml
         {
             id:circleSecond;
@@ -192,18 +208,20 @@ Item
                     id:valueRound;
                     text:setRounds;
                     anchors.horizontalCenter: parent.horizontalCenter;
-                    anchors.bottom: parent.bottom;
+//                    anchors.bottom: parent.bottom;
                     font.pointSize: ((parent.width<=100) ? 45 : 60);
+                    font.family: gFontFamily;
                     color:cTxt_button;
                 }
-                Text
-                {
-                    id:textRound;
-                    text:"Round";
-                    anchors.horizontalCenter: parent.horizontalCenter;
-                    font.pointSize: ((parent.width<=100) ? 15 : 25);
-                    color:cTxt_button;
-                }
+//                Text
+//                {
+//                    id:textRound;
+//                    text:"";//round
+//                    anchors.horizontalCenter: parent.horizontalCenter;
+//                    font.pointSize: ((parent.width<=100) ? 15 : 25);
+//                    font.family: gFontFamily;
+//                    color:cTxt_button;
+//                }
             }
 
         }
@@ -216,10 +234,10 @@ Item
         //setCenterButtonCircleStyled:true;
         setCenterButtonText: "";
         setLeftButtonText: "Speech";
-        setLeftButtonIcon: path_to_menuIcons + fileIcon_Unmute;
+        setLeftButtonIcon: path_to_menuIcons + fileIcon_Mute;
 
         setRightButtonText: "Effect";
-        setRightButtonIcon: path_to_menuIcons + fileIcon_Mute;
+        setRightButtonIcon: path_to_menuIcons + fileIcon_Unmute;
 
         anchors
         {
