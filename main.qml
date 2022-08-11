@@ -153,6 +153,11 @@ Window
     //- - sportTimer:
     property string directory_SoundEffects: "../theSounds/";
 
+
+    //singleTimer
+    property string fileAudio_elevatorTone: "mixkit-elevator-tone-2863.wav";
+
+
    Rectangle
    {
        id:menuBar;
