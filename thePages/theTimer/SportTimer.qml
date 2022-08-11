@@ -15,6 +15,13 @@ Item
     property variant setTimePerRound: [0,0,10]; //hour, minute, second, to know when is the time, example: if(setTime[0]=== setTimePerRound[0]/2) means we are in half way.
     property variant setBreaks: [0,0,10]; //hour, minute, second
 
+    signal startTheMainTimer;
+    onStartTheMainTimer:
+    {
+        mainTimer.running=true;
+    }
+
+
     //user set options
     property bool setSpeechOn: false;
     property variant setSpeechPlayEvery: [0,0,10];//hour , minute , second.
@@ -67,12 +74,20 @@ Item
     {
         mainTimer.stop();
         secondTimer.stop();
-        baseCircles.visible=false;
+//        baseCircles.visible=false;
 
 
         //make something reset
         tempSaveRunnigs=0;
         roundOn=0;
+        timePast[0] = timePast[1] = timePast[2] = 0;
+        setTimes[0] = setTimes[1] = setTimes[2] = 0;
+        tempBreaks=0;
+        tempRounds=0;
+        avrageRounds[0] = avrageRounds[1] = avrageRounds[2] = 0;
+        avrageBreaks[0] = avrageBreaks[1] = avrageBreaks[2] = 0;
+        avrageBreak_Round[0] = avrageBreak_Round[1] = avrageBreak_Round[2] = 0;
+
     }
 
     Timer
@@ -81,6 +96,7 @@ Item
         interval: 1000; running: false; repeat: true;
         onTriggered:
         {
+            console.log("second timer run");
 //            ST.updateCircles(justShowCircle,maxCircles,3,cBG_element); //update background color
             //break turn
             tempSaveRunnigs++; //second counter (all value Hour/Minute/Second converted to Second) for example
@@ -117,6 +133,7 @@ Item
         interval: 1000; running: false; repeat: true;
         onTriggered:
         {
+            console.log("main tumer run");
 //            ST.updateCircles(justShowCircle,maxCircles,3,cBG_element); //update background color
             if(tempBreaks>=tempRounds)
             {
@@ -271,7 +288,10 @@ Item
 
         setLeftButtonText: "Cancel";
         setLeftButtonIcon: path_to_menuIcons + fileIcon_Cancel;
-
+        onLeftButtonPressed:
+        {
+            sportTimerEnded();
+        }
 
         setRightButtonText: "Settings";
         setRightButtonIcon: path_to_menuIcons + fileIcon_Settings;

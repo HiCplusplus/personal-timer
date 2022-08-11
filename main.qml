@@ -146,12 +146,17 @@ Window
     property string fileIcon_Mute: "icon-mute.png";
     property string fileIcon_Unmute: "icon-unmute.png";
     property string fileIcon_Settings: "icon-settings.png";
-
+    property string fileIcon_Reset: "icon-reset.png";
 
 
     //- - - - - - - - - - - - - - - - - - - - - - sound effects
     //- - sportTimer:
     property string directory_SoundEffects: "../theSounds/";
+
+
+    //singleTimer
+    property string fileAudio_elevatorTone: "mixkit-elevator-tone-2863.wav";
+
 
    Rectangle
    {
