@@ -132,7 +132,7 @@ ctx.beginPath();
 
 
 
-//------------------------------------------------------------------------------------------------------- from CountDonw
+//------------------------------------------------------------------------------------------------------- from Count Down
 
 
 
@@ -791,4 +791,19 @@ Item
 
 
 
-//-------------------------------------------------------------------------------------------------------
+//------------------------------------------------------------------------------------------------------- from NEW CountDown.qml
+//            function updateCircles(_circle,_time,_status,_color='') //status ->  0 break , 1 round , 2 paused , 3 normal-color
+//            {
+//                switch(_status)
+//                {
+//                    case 0: _circle.setColor = setBreak_and_RoundColors[0]; break;
+//                    case 1: _circle.setColor = setBreak_and_RoundColors[1]; break;
+//                    case 2 : _circle.setColor = setBreak_and_RoundColors[2]; break;
+//                    default: _circle.setColor = _color; break;
+//                }
+//                _circle.setTime = _time;
+//                _circle.canvasPrint();
+//            }
+
+
+

@@ -226,7 +226,7 @@ Window
                 Item
                 {
                     id: firstPage
-                    TimerDown
+                    Alarm
                     {
                         onGoToAlarmSetPage:
                         {
@@ -235,18 +235,15 @@ Window
                                 viewTimers.interactive=false;
                                 viewTimers.visible=false;
                         }
-
                     }
                 }
                 Item
                 {
                     id: secondPage
-                    CountUp
+                    StopWatch
                     {
 
                     }
-
-
                 }
                 Item
                 {

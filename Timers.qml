@@ -25,10 +25,29 @@ Item
             currentIndex: setLunchIndex;
             Item
             {
-                id:singleTimer;
-                CountDown
+                id:baseSingleTimer;
+                SingleTimer
                 {
-
+                    id:singleTimer;
+                    visible:false;
+                    onCancelTimer:
+                    {
+                        singleTimer.visible=false;
+                        singleTimerSetPage.visible=true;
+                    }
+                }
+                SingleTimerSetPage
+                {
+                    id:singleTimerSetPage;
+                    onButtonStartClicked:
+                    {
+                        singleTimer.baseTime[0] = singleTimerSetPage.selectHour;
+                        singleTimer.baseTime[1] = singleTimerSetPage.selectMinute;
+                        singleTimer.baseTime[2] = singleTimerSetPage.selectSecond;
+                        singleTimerSetPage.visible=false;
+                        singleTimer.visible=true;
+                        singleTimer.runTimer();
+                    }
                 }
 
             }

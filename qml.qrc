@@ -2,13 +2,13 @@
     <qresource prefix="/">
         <file>main.qml</file>
         <file>theControls/MyTimerIndicator.qml</file>
-        <file>CountUp.qml</file>
+        <file>StopWatch.qml</file>
         <file>theScripts/updateCountUp.js</file>
         <file>theScripts/controllerSpingBoxCountDown.js</file>
         <file>theControls/MyAutoValue_Increase_Decrease.qml</file>
         <file>theControls/MyThreeBottomButtons.qml</file>
         <file>theScripts/updateCountDown.js</file>
-        <file>TimerDown.qml</file>
+        <file>Alarm.qml</file>
         <file>theControls/MyMenu.qml</file>
         <file>theControls/MySwitch.qml</file>
         <file>theSounds/mixkit-elevator-tone-2863.wav</file>
@@ -46,10 +46,10 @@
         <file>thePages/SettingsPage.qml</file>
         <file>thePages/theTimer/SportTimer.qml</file>
         <file>Timers.qml</file>
-        <file>thePages/theTimer/CreateNewSportTimer.qml</file>
+        <file>thePages/theTimer/SportTimerSetPage.qml</file>
         <file>theScripts/theTimer/sportTimer.js</file>
         <file>theControls/canvasDraws/DrawCircle.qml</file>
-        <file>thePages/theTimer/CountDown.qml</file>
+        <file>thePages/theTimer/SingleTimer.qml</file>
         <file>TrashCodesForLater.qml</file>
         <file>thePictures/dark-25px/icon-unmute.png</file>
         <file>thePictures/dark-25px/icon-mute.png</file>
@@ -59,6 +59,9 @@
         <file>thePictures/dark-25px/icon-settings.png</file>
         <file>thePictures/white-25px/icon-cancel.png</file>
         <file>thePictures/dark-25px/icon-cancel.png</file>
+        <file>thePages/theTimer/SingleTimerSetPage.qml</file>
+        <file>thePages/theTimer/MultiTimer.qml</file>
+        <file>thePages/theTimer/MultiTimerSetPage.qml</file>
     </qresource>
     <qresource prefix="/thePictures"/>
 </RCC>
