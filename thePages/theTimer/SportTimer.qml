@@ -15,12 +15,6 @@ Item
     property variant setTimePerRound: [0,0,10]; //hour, minute, second, to know when is the time, example: if(setTime[0]=== setTimePerRound[0]/2) means we are in half way.
     property variant setBreaks: [0,0,10]; //hour, minute, second
 
-    signal startTheMainTimer;
-    onStartTheMainTimer:
-    {
-        mainTimer.running=true;
-    }
-
 
     //user set options
     property bool setSpeechOn: false;
@@ -53,6 +47,11 @@ Item
         setTimes[2] = parseInt(ST.addTimes_together(avrageBreak_Round[0],avrageBreak_Round[1],avrageBreak_Round[2],2));
     }
 
+
+
+
+
+
     //for drawCircle
     property variant timePast: [avrageBreak_Round[0]*minusPast_Hour/8, ///4,
         (avrageBreak_Round[1])*minusPast_MinuteSecond, //(avrageBreak_Round[1]+4)*minusPast_MinuteSecond,
@@ -69,26 +68,46 @@ Item
     property variant setBreak_and_RoundColors: ["#fc4949","#00bf66","blue"]; //break, round, pause circle colors. green->#10FCB3. red->#fc4949
 
 
+    //to pepear for next sport Timer values
+    signal startTheMainTimer; //call from outside
+    signal initValues; //re-fill values for next time
     signal sportTimerEnded; //when times end this called
+
+    onStartTheMainTimer:
+    {
+        initValues();
+        mainTimer.running=true;
+    }
+
+    onInitValues:
+    {
+        tempRounds= setRounds;
+        tempBreaks= setRounds;
+        avrageRounds= [(setTimePerRound[0]*setRounds) , (setTimePerRound[1]*setRounds) , (setTimePerRound[2]*setRounds)] //TPR (timePerRound) * rounds
+        avrageBreaks= [(setBreaks[0]*setRounds) , (setBreaks[1]*setRounds) , (setBreaks[2]*setRounds)]; //breaks*rounds
+        avrageBreak_Round= [(avrageRounds[0]+avrageBreaks[0]),
+                (avrageRounds[1]+avrageBreaks[1]),
+                (avrageRounds[2]+avrageBreaks[2])];
+
+        tempSaveRunnigs=0;
+        roundOn=0;
+
+        timePast= [avrageBreak_Round[0]*minusPast_Hour/8, ///4,
+                (avrageBreak_Round[1])*minusPast_MinuteSecond, //(avrageBreak_Round[1]+4)*minusPast_MinuteSecond,
+                avrageBreak_Round[2]*minusPast_MinuteSecond/maxCircles];
+    }
+
     onSportTimerEnded:
     {
         mainTimer.stop();
         secondTimer.stop();
-//        baseCircles.visible=false;
-
-
-        //make something reset
-        tempSaveRunnigs=0;
-        roundOn=0;
-        timePast[0] = timePast[1] = timePast[2] = 0;
-        setTimes[0] = setTimes[1] = setTimes[2] = 0;
-        tempBreaks=0;
-        tempRounds=0;
-        avrageRounds[0] = avrageRounds[1] = avrageRounds[2] = 0;
-        avrageBreaks[0] = avrageBreaks[1] = avrageBreaks[2] = 0;
-        avrageBreak_Round[0] = avrageBreak_Round[1] = avrageBreak_Round[2] = 0;
-
     }
+
+
+
+
+
+
 
     Timer
     {
@@ -96,8 +115,7 @@ Item
         interval: 1000; running: false; repeat: true;
         onTriggered:
         {
-            console.log("second timer run");
-//            ST.updateCircles(justShowCircle,maxCircles,3,cBG_element); //update background color
+            ST.updateCircles(justShowCircle,maxCircles,3,cBG_element); //update background color
             //break turn
             tempSaveRunnigs++; //second counter (all value Hour/Minute/Second converted to Second) for example
             if(roundOn==0)
@@ -133,11 +151,9 @@ Item
         interval: 1000; running: false; repeat: true;
         onTriggered:
         {
-            console.log("main tumer run");
-//            ST.updateCircles(justShowCircle,maxCircles,3,cBG_element); //update background color
+            ST.updateCircles(justShowCircle,maxCircles,3,cBG_element); //update background color
             if(tempBreaks>=tempRounds)
             {
-
                 //break turn
                 if(tempBreaks<=0)
                 {
@@ -149,7 +165,6 @@ Item
                     roundOn=0;//means breaks turn
                     tempSaveRunnigs=0;//reset global counter second
                     valueRound.text= "rest";//Math.abs(tempBreaks-(setRounds+1)); //this could be only  *.text = tempRounds, but (for example rounds=8) tempRounds will count from 8 to 0 but we want 1 to 8
-//                    textRound.text = "";
                     if(setBreaks[2]<60 && setBreaks[2]>0)
                         minusPast_MinuteSecond = maxCircles/setBreaks[2];
                     else
@@ -171,7 +186,6 @@ Item
                 {
                     roundOn=1;//means rounds turn
                     tempSaveRunnigs=0;
-//                    textRound.text = "SET";
                     valueRound.text= Math.abs(tempRounds-(setRounds+1)); //this could be only  *.text = tempRounds, but (for example rounds=8) tempRounds will count from 8 to 0 but we want 1 to 8
                     if(setTimePerRound[2]<60 && setTimePerRound[2]>0)
                         minusPast_MinuteSecond = maxCircles/setTimePerRound[2];
@@ -192,8 +206,6 @@ Item
         anchors.fill: parent;
         color:cBG;
 
-
-        //empty circle for a line to better look
         DrawCircle
         {
             id:justShowCircle;
@@ -202,8 +214,6 @@ Item
             setRadius: setRadiuses[0];
             setTime: maxCircles;
         }
-
-
 
         DrawCircle //other circles termperory removed from here because they didnt work but stored in TrashCodesForLater.qml
         {
@@ -225,23 +235,18 @@ Item
                     id:valueRound;
                     text:setRounds;
                     anchors.horizontalCenter: parent.horizontalCenter;
-//                    anchors.bottom: parent.bottom;
                     font.pointSize: ((parent.width<=100) ? 45 : 60);
                     font.family: gFontFamily;
                     color:cTxt_button;
                 }
-//                Text
-//                {
-//                    id:textRound;
-//                    text:"";//round
-//                    anchors.horizontalCenter: parent.horizontalCenter;
-//                    font.pointSize: ((parent.width<=100) ? 15 : 25);
-//                    font.family: gFontFamily;
-//                    color:cTxt_button;
-//                }
+
             }
 
         }
+
+
+        //empty circle for a line to better look
+
     }
     MyThreeBottomButtons
     {
