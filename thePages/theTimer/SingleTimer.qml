@@ -10,6 +10,11 @@ Item
     anchors.fill: parent;
     signal runTimer;
     signal cancelTimer;
+    onCancelTimer:
+    {
+        timerRun.stop();
+    }
+
     onRunTimer:
     {
         setTimes[0] = baseTime[0];
@@ -101,6 +106,10 @@ Item
                     ST.updateCircles(circleSecond,timePast[2],1);
                     ST.updateCircles(circleMinute,timePast[1],3,setColors[1]);
                     ST.updateCircles(circleHour,timePast[0],3,setColors[0]);
+                if(h === 0 && m === 0 && s===0)
+                {
+                    cancelTimer();
+                }
             }
 
             timeSystem(setTimes[0],setTimes[1],setTimes[2],timePast[0],timePast[1],timePast[2]);
@@ -165,7 +174,6 @@ Item
         setRightButtonText: "Pause";
         onLeftButtonPressed:
         {
-            timerRun.stop();
             cancelTimer();
         }
         onRightButtonPressed:
