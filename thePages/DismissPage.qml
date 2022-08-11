@@ -33,7 +33,6 @@ Item
             Rectangle
             {
                 anchors.fill: parent;
-
                 color:cBG_Unknown;
             }
             onContainsDragChanged: //has Error  QML Rectangle (parent or ancestor of QQuickDragAttached): active cannot be changed from within a drag event handler
@@ -54,7 +53,7 @@ Item
 //            Drag.hotSpot.x: 10;Drag.hotSpot.y: 10;
             Text
             {
-                text: "✖";
+                text: "x";//"✖";
                 anchors.centerIn: parent;
                 color:cTxt_button;
                 font.pointSize: 30;

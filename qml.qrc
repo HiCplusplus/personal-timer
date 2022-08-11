@@ -62,6 +62,9 @@
         <file>thePages/theTimer/SingleTimerSetPage.qml</file>
         <file>thePages/theTimer/MultiTimer.qml</file>
         <file>thePages/theTimer/MultiTimerSetPage.qml</file>
+        <file>theControls/MyThreepleTumbler.qml</file>
+        <file>thePictures/dark-25px/icon-reset.png</file>
+        <file>thePictures/white-25px/icon-reset.png</file>
     </qresource>
     <qresource prefix="/thePictures"/>
 </RCC>
