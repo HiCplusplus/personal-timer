@@ -1,9 +1,9 @@
-import QtQuick 2.0
+import QtQuick 2.15
 
 Item
 {
     signal statusDismiss;
-    property bool statusChan:false;
+//    property bool statusValue:false;
     property int setAnimationDuration:100;
     anchors.fill: parent;
     Rectangle
@@ -65,6 +65,11 @@ Item
                 id: dragArea;
                 anchors.fill: parent;
                 drag.target: parent;
+                onClicked:
+                {
+                    statusDismiss();
+                }
+
                 onDoubleClicked:
                 {
                     statusDismiss();
