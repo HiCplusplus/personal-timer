@@ -2,14 +2,26 @@ import QtQuick 2.15
 import QtQuick.Controls 2.15
 import "../../theControls/canvasDraws/"
 import "../../theControls/"
+import "../../theScripts/theTimer/sportTimer.js" as ST
 Item
 {
     id:root;
     clip:true;
     anchors.fill: parent;
+    signal runTimer;
+    signal cancelTimer;
+    onRunTimer:
+    {
+        setTimes[0] = baseTime[0];
+        setTimes[1] = baseTime[1];
+        setTimes[2] = baseTime[2];
+        timePast= [setTimes[0]*minusPast_Hour  ,setTimes[1]*minusPast_MinuteSecond   ,setTimes[2]*minusPast_MinuteSecond];
+        timerRun.running=true;
+    }
 
-    property variant baseTime: [23,50,30]; //hour, minute, second, to know when is the time, example: if(setTime[0]=== baseTime[0]/2) means we are in half way.
-    property variant setTimes: [baseTime[0],baseTime[1],baseTime[2]]; //hour, minute, second
+    property variant baseTime: [0,0,0]; //hour, minute, second, to know when is the time, example: if(setTime[0]=== baseTime[0]/2) means we are in half way.
+    property variant setTimes: [];//baseTime[0],baseTime[1],baseTime[2]]; //hour, minute, second
+
 
 
 
@@ -29,11 +41,9 @@ Item
     Timer
     {
         id:timerRun;
-        interval: 1; running: true; repeat: true;
+        interval: 1000; running: false; repeat: true;
         onTriggered:
         {
-
-
 
             function timeSystem(h,m,s,_pastH,_pastM,_pastS,_textTimer)
             {
@@ -88,34 +98,14 @@ Item
                     setTimes[1] = m;
                     setTimes[0] = h;
 
-                    updateCircles(circleSecond,timePast[2],1);
-                    updateCircles(circleMinute,timePast[1],3,setColors[1]);
-                    updateCircles(circleHour,timePast[0],3,setColors[0]);
+                    ST.updateCircles(circleSecond,timePast[2],1);
+                    ST.updateCircles(circleMinute,timePast[1],3,setColors[1]);
+                    ST.updateCircles(circleHour,timePast[0],3,setColors[0]);
             }
 
-            function updateCircles(_circle,_time,_status,_color='') //status ->  0 break , 1 round , 2 paused , 3 normal-color
-            {
-                switch(_status)
-                {
-                    case 0: _circle.setColor = setBreak_and_RoundColors[0]; break;
-                    case 1: _circle.setColor = setBreak_and_RoundColors[1]; break;
-                    case 2 : _circle.setColor = setBreak_and_RoundColors[2]; break;
-                    default: _circle.setColor = _color; break;
-                }
-                _circle.setTime = _time;
-                _circle.canvasPrint();
+            timeSystem(setTimes[0],setTimes[1],setTimes[2],timePast[0],timePast[1],timePast[2]);
+            textRound.text= setTimes[0]+":"+setTimes[1]+":"+setTimes[2];
 
-            }
-
-
-            function refreshAll()
-            {
-                timeSystem(setTimes[0],setTimes[1],setTimes[2],timePast[0],timePast[1],timePast[2]);
-                textRound.text= setTimes[0]+":"+setTimes[1]+":"+setTimes[2];
-            }
-
-
-            refreshAll();
         }
     }
 
@@ -169,10 +159,30 @@ Item
         id:sportButtons;
         width: root.width;
         height:root.height/10.5;
-        setCenterButtonText: "Pause";
+        setCenterButtonText: "";
 //        setCenterButtonCircleStyled:true;
         setLeftButtonText: "Cancel";
-        setRightButtonText: "";
+        setRightButtonText: "Pause";
+        onLeftButtonPressed:
+        {
+            timerRun.stop();
+            cancelTimer();
+        }
+        onRightButtonPressed:
+        {
+            if(setRightButtonText == "Pause")
+            {
+                timerRun.stop();
+                setRightButtonText = "Resume";
+            }
+            else
+            {
+                timerRun.running=true;;
+                setRightButtonText= "Pause";
+            }
+
+        }
+
         anchors
         {
             bottom:root.bottom;
