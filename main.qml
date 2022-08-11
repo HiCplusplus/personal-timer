@@ -146,7 +146,7 @@ Window
     property string fileIcon_Mute: "icon-mute.png";
     property string fileIcon_Unmute: "icon-unmute.png";
     property string fileIcon_Settings: "icon-settings.png";
-
+    property string fileIcon_Reset: "icon-reset.png";
 
 
     //- - - - - - - - - - - - - - - - - - - - - - sound effects
