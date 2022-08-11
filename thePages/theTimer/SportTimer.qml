@@ -15,33 +15,6 @@ Item
     property variant setTimePerRound: [0,0,10]; //hour, minute, second, to know when is the time, example: if(setTime[0]=== setTimePerRound[0]/2) means we are in half way.
     property variant setBreaks: [0,0,10]; //hour, minute, second
 
-    signal startTheMainTimer; //call from outside
-    signal initValues; //re-fill values for next time
-
-    onInitValues:
-    {
-        tempRounds= setRounds;
-        tempBreaks= setRounds;
-        avrageRounds= [(setTimePerRound[0]*setRounds) , (setTimePerRound[1]*setRounds) , (setTimePerRound[2]*setRounds)] //TPR (timePerRound) * rounds
-        avrageBreaks= [(setBreaks[0]*setRounds) , (setBreaks[1]*setRounds) , (setBreaks[2]*setRounds)]; //breaks*rounds
-        avrageBreak_Round= [(avrageRounds[0]+avrageBreaks[0]),
-                (avrageRounds[1]+avrageBreaks[1]),
-                (avrageRounds[2]+avrageBreaks[2])];
-
-        tempSaveRunnigs=0;
-        roundOn=0;
-
-        timePast= [avrageBreak_Round[0]*minusPast_Hour/8, ///4,
-                (avrageBreak_Round[1])*minusPast_MinuteSecond, //(avrageBreak_Round[1]+4)*minusPast_MinuteSecond,
-                avrageBreak_Round[2]*minusPast_MinuteSecond/maxCircles];
-    }
-
-    onStartTheMainTimer:
-    {
-        initValues();
-        mainTimer.running=true;
-    }
-
 
     //user set options
     property bool setSpeechOn: false;
@@ -74,6 +47,11 @@ Item
         setTimes[2] = parseInt(ST.addTimes_together(avrageBreak_Round[0],avrageBreak_Round[1],avrageBreak_Round[2],2));
     }
 
+
+
+
+
+
     //for drawCircle
     property variant timePast: [avrageBreak_Round[0]*minusPast_Hour/8, ///4,
         (avrageBreak_Round[1])*minusPast_MinuteSecond, //(avrageBreak_Round[1]+4)*minusPast_MinuteSecond,
@@ -90,12 +68,46 @@ Item
     property variant setBreak_and_RoundColors: ["#fc4949","#00bf66","blue"]; //break, round, pause circle colors. green->#10FCB3. red->#fc4949
 
 
+    //to pepear for next sport Timer values
+    signal startTheMainTimer; //call from outside
+    signal initValues; //re-fill values for next time
     signal sportTimerEnded; //when times end this called
+
+    onStartTheMainTimer:
+    {
+        initValues();
+        mainTimer.running=true;
+    }
+
+    onInitValues:
+    {
+        tempRounds= setRounds;
+        tempBreaks= setRounds;
+        avrageRounds= [(setTimePerRound[0]*setRounds) , (setTimePerRound[1]*setRounds) , (setTimePerRound[2]*setRounds)] //TPR (timePerRound) * rounds
+        avrageBreaks= [(setBreaks[0]*setRounds) , (setBreaks[1]*setRounds) , (setBreaks[2]*setRounds)]; //breaks*rounds
+        avrageBreak_Round= [(avrageRounds[0]+avrageBreaks[0]),
+                (avrageRounds[1]+avrageBreaks[1]),
+                (avrageRounds[2]+avrageBreaks[2])];
+
+        tempSaveRunnigs=0;
+        roundOn=0;
+
+        timePast= [avrageBreak_Round[0]*minusPast_Hour/8, ///4,
+                (avrageBreak_Round[1])*minusPast_MinuteSecond, //(avrageBreak_Round[1]+4)*minusPast_MinuteSecond,
+                avrageBreak_Round[2]*minusPast_MinuteSecond/maxCircles];
+    }
+
     onSportTimerEnded:
     {
         mainTimer.stop();
         secondTimer.stop();
     }
+
+
+
+
+
+
 
     Timer
     {
