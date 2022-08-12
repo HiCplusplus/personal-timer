@@ -3,6 +3,62 @@ Item {
     id: name
 }
 
+
+/* My fav styles
+
+
+    menu down idea
+            https://dribbble.com/shots/17686848-Alarm-Clock-App-UI
+
+
+    timer single
+            https://dribbble.com/shots/7077105-Daily-UI-challenge-014-Countdown-Timer
+
+i wish do this https://dribbble.com/shots/14896001-Alarm-App-Concept
+good looking color and theme https://dribbble.com/shots/17279416-Sleepzy-Sleep-tracker-app
+https://dribbble.com/shots/4894371-Dashboard-Graph
+good looking calneders
+    https://dribbble.com/shots/16390127-Schedule-App
+    https://dribbble.com/shots/15628214-Calendar-app
+    https://dribbble.com/shots/16618447-Falop-Project
+    https://dribbble.com/shots/6291859-Date-Picker
+    https://dribbble.com/shots/3769275-Calendar-Daily-UI-038
+    https://dribbble.com/shots/5554215-Task-manage-app-concept
+    https://dribbble.com/shots/9622078-Daily-UI-Events-App-Design
+    https://dribbble.com/shots/18098594-Delivery-Components
+    https://dribbble.com/shots/4749823-Calender-Screen
+    https://dribbble.com/shots/5642817-Calender-with-Background-Gradient
+    https://dribbble.com/shots/5811377-5-100-Calender-of-the-day
+    https://dribbble.com/shots/3870315-Event-Listing-Daily-UI-070
+    https://dribbble.com/shots/3671877-Calender
+    https://dribbble.com/shots/8945197-Minimal-Calender-Modul-1
+    https://dribbble.com/shots/10924372-UI-design-for-calender
+    https://dribbble.com/shots/4129451-Time-Tracker-Concept
+    https://dribbble.com/shots/4994794-Flight-Booking-App-Freebie
+    https://dribbble.com/shots/16710172-Task-Management-App-to-do-calender-events
+    https://dribbble.com/shots/10170477-Date-Picker-Exploration-Part-1
+    https://dribbble.com/shots/11751267-DailyUI-Day42-ToDo-List
+    https://dribbble.com/shots/14748311-Task-Manager-App
+    Text to speech sounds:
+    https://ttsmp3.com/
+    https://freetts.com/
+    https://voicemaker.in/
+
+
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
 //------------------------------------------------------------------------------------------------------- from Sport Timer
 
 
