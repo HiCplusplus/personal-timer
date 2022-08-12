@@ -65,6 +65,14 @@
         <file>theControls/MyThreepleTumbler.qml</file>
         <file>thePictures/dark-25px/icon-reset.png</file>
         <file>thePictures/white-25px/icon-reset.png</file>
+        <file>theScripts/theTimer/sportTimerSoundEffects.js</file>
+        <file>theSounds/sportTimer/sound-effects/sound-pack-a/stopped.wav</file>
+        <file>theSounds/sportTimer/sound-effects/sound-pack-a/started.wav</file>
+        <file>theSounds/sportTimer/sound-effects/sound-pack-a/round-stopped.wav</file>
+        <file>theSounds/sportTimer/sound-effects/sound-pack-a/round-started.wav</file>
+        <file>theSounds/sportTimer/sound-effects/sound-pack-a/break-stopped.wav</file>
+        <file>theSounds/sportTimer/sound-effects/sound-pack-a/break-started.wav</file>
+        <file>AboutApplication.qml</file>
     </qresource>
     <qresource prefix="/thePictures"/>
 </RCC>

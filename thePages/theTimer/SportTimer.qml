@@ -1,8 +1,10 @@
 import QtQuick 2.15
+import QtMultimedia 5.15
 import QtQuick.Controls 2.15
 import "../../theControls/canvasDraws/"
 import "../../theScripts/theTimer/sportTimer.js" as ST
 import "../../theControls"
+import "../../theScripts/theTimer/sportTimerSoundEffects.js" as STsoundEffects
 
 Item
 {
@@ -16,15 +18,6 @@ Item
     property variant setBreaks: [0,0,10]; //hour, minute, second
 
 
-    //user set options
-    property bool setSpeechOn: false;
-    property variant setSpeechPlayEvery: [0,0,10];//hour , minute , second.
-    property variant setSpeechPlayWhen: ["Rounds & rests & letsgo","Rounds & rests","Only rounds","Only rests"];
-    property variant speechPacks: ["male","female"];
-    property bool setVibrationOn: false;
-    property bool setNotificationOn: false;
-    property bool setSoundEffectsOn: false;
-    property variant soundEffectsPacks: ["beeps","pings"];
 
 
     //proccess data (some of these are for temprary to avoid destory user data. if replace these with orginal, some part of app will calculate/show wrong)
@@ -50,6 +43,27 @@ Item
 
 
 
+    //for sound service, user options
+    property bool setSpeechOn: false;
+    property variant setSpeechPlayEvery: [0,0,10];//hour , minute , second.
+    property variant setSpeechPlayWhen: ["Rounds & rests & letsgo","Rounds & rests","Only rounds","Only rests"];
+    property variant speechPacks: ["female"];//,"male"];
+
+//    property bool setVibrationOn: false;
+//    property bool setNotificationOn: false;
+
+    property bool setSoundEffectsOn: true;//false;
+    property variant soundEffectsPacks: [directory_soundPackA];//,directory_soundPackB];
+    property int soundPackActived: 0;
+    property string pathToActivedSoundPack: path_to_sportTimer_SoundEffect + soundEffectsPacks[soundPackActived];
+    onSoundPackActivedChanged:
+    {
+        pathToActivedSoundPack = path_to_sportTimer_SoundEffect + soundEffectsPacks[soundPackActived];
+    }
+
+
+
+
 
 
     //for drawCircle
@@ -60,12 +74,105 @@ Item
     property int maxCircles: 378;
     property double minusPast_Hour : 15.75; //maxCircles/24
     property double minusPast_MinuteSecond: 6.30; //maxCircles/60
-
     property int lineWsFromParent: parent.width/15;//parent.width/40;
     property variant setLineWidths: [lineWsFromParent,lineWsFromParent,lineWsFromParent];//hour,minute,second
     property variant setRadiuses: [20];//,22,19];//[20,17,14]; //h,m,s
     property variant setColors: [cBG_Unknown,cBG_Unknown,cBG_Unknown];//["black",cBG_button,"orange"];//hour, minute, second . //minute hour has bug disabled
     property variant setBreak_and_RoundColors: ["#fc4949","#00bf66","blue"]; //break, round, pause circle colors. green->#10FCB3. red->#fc4949
+
+
+
+    //signals for notices
+    signal notices_roundStarted;
+    signal notices_roundStopped;
+    onNotices_roundStarted:
+    {
+        if(setSoundEffectsOn)
+        {
+            STsoundEffects.playSoundEffect(theSoundEffect,1,2); //parameters: soundEffect id's  ,  status-> (0 stopped/endded) & (1 started/run), model (1 sportTimer) & (2 Round/Set) & (3 Break/Rest)
+        }
+        else
+        {
+            console.log("round start");
+        }
+
+    }
+    onNotices_roundStopped:
+    {
+        if(setSoundEffectsOn)
+        {
+            STsoundEffects.playSoundEffect(theSoundEffect,0,2);
+        }
+        else
+        {
+            console.log("round stop");
+        }
+
+
+    }
+
+
+
+
+    signal notices_breakStarted;
+    signal notices_breakStopped;
+    onNotices_breakStarted:
+    {
+        if(setSoundEffectsOn)
+        {
+            STsoundEffects.playSoundEffect(theSoundEffect,1,3); //parameters: soundEffect id's  ,  status-> (0 stopped/endded) & (1 started/run), model (1 sportTimer) & (2 Round/Set) & (3 Break/Rest)
+        }
+        else
+        {
+            console.log("break start");
+        }
+    }
+
+    onNotices_breakStopped:
+    {
+        if(setSoundEffectsOn)
+        {
+            STsoundEffects.playSoundEffect(theSoundEffect,0,3);
+        }
+
+        else
+        {
+            console.log("break start");
+        }
+    }
+
+
+
+    signal notices_timerStarted;
+    signal notices_timerStopped;
+    onNotices_timerStarted:
+    {
+        if(setSoundEffectsOn)
+        {
+            STsoundEffects.playSoundEffect(theSoundEffect,1,1); //parameters: soundEffect id's  ,  status-> (0 stopped/endded) & (1 started/run), model (1 sportTimer) & (2 Round/Set) & (3 Break/Rest)
+        }
+
+        else
+        {
+            console.log("timer start");
+        }
+    }
+
+    onNotices_timerStopped:
+    {
+        if(setSoundEffectsOn)
+        {
+            STsoundEffects.playSoundEffect(theSoundEffect,0,1);
+        }
+
+        else
+        {
+            console.log("timer stop");
+        }
+    }
+
+
+
 
 
     //to pepear for next sport Timer values
@@ -77,6 +184,14 @@ Item
     {
         initValues();
         mainTimer.running=true;
+        notices_timerStarted();
+    }
+
+    onSportTimerEnded:
+    {
+        mainTimer.stop();
+        secondTimer.stop();
+        notices_timerStopped();
     }
 
     onInitValues:
@@ -97,15 +212,15 @@ Item
                 avrageBreak_Round[2]*minusPast_MinuteSecond/maxCircles];
     }
 
-    onSportTimerEnded:
+
+
+
+
+    SoundEffect
     {
-        mainTimer.stop();
-        secondTimer.stop();
+        id:theSoundEffect;
+        source: "";
     }
-
-
-
-
 
 
 
@@ -124,6 +239,7 @@ Item
                 {
                     secondTimer.running=false;
                     mainTimer.running=true;
+                    notices_breakStopped();
                     tempBreaks--;
                 }
                 else
@@ -136,6 +252,7 @@ Item
                 {
                     secondTimer.running=false;
                     mainTimer.running=true;
+                    notices_roundStopped();
                     tempRounds--;
                 }
                 else
@@ -159,6 +276,7 @@ Item
                 {
                     //break value is end
                     sportTimerEnded();
+
                 }
                 else
                 {
@@ -170,6 +288,7 @@ Item
                     else
                         minusPast_MinuteSecond = maxCircles/60; //this should be maxCircle/minusPast_MinuteSecond, isnt because the second is morethan 60s so circle will divide by 60, 1minte=60sec
 
+                    notices_breakStarted();
                     secondTimer.running = true;
                     mainTimer.running = false;
                 }
@@ -180,6 +299,7 @@ Item
                 //round turn
                 if(tempRounds<=0)
                 {
+                    //round value is end
                     sportTimerEnded();
                 }
                 else
@@ -192,6 +312,7 @@ Item
                     else
                         minusPast_MinuteSecond = maxCircles/60;
 
+                    notices_roundStarted();
                     mainTimer.running = false;
                     secondTimer.running = true;
                 }
