@@ -24,3 +24,12 @@ ____________________________________
  - Calender (...)
  - Alarm 
  - Background application (with local data save)
+
+
+_____________________________________
+Thanks to :
+    icons8.com for icons.
+    ttsmp3.com for Text To Speech Voices.    
+    mixkit.co for Sound Effect.
+    https://dribbble.com/shots/10918806-Smart-Alarm-app  for Design alarm style + set alarm.
+    https://dribbble.com/shots/9709600-Daily-UI-Events-Dark-Version for Calender base.            
