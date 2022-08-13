@@ -10,14 +10,14 @@
  - Sport Timer (Tabata) + SetPage(half) + SoundEffect + SoundSpeech(so,so) v0.6.0
  - test in android enviroment v0.6.1 (AlarmSetPage fixed)
  - test in android enviroment v0.6.2 (SwipeView Timers fixed but indeicator isnt show whereis thepage)
- 
+ - test in android enviroment v0.6.3 (Single timer fixed but dismissPage button dont swipe to cancel/stop, just on button clicked work)
+
 
  
 ____________________________________
 
  ## up comming
- - test in android enviroment v0.6.3 (Single timer)  <b>WORKING ON</b>
- - test in android enviroment v0.6.4 (sport timer)
+ - test in android enviroment v0.6.4 (sport timer)  <b>WORKING ON</b>
  - Multi Timer
  - how to save in android local files, or local database
  - Calender PickDay (multi month day picks)
