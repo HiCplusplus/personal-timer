@@ -1,6 +1,6 @@
 import QtQuick 2.15
-import QtGraphicalEffects 1.15
- import QtQuick.Controls 1.4
+//import QtGraphicalEffects 1.15
+ import QtQuick.Controls 2.15
 import "../theControls"
 import "../theScripts/calculateDates.js" as CDJS
 Item
@@ -92,28 +92,28 @@ Item
 
                 }
             }
-            DropShadow
-            {
-                anchors.fill: circleMiddle;
-                horizontalOffset: 3;
-                verticalOffset: 3;
-                radius: 8.0;
-                samples: 17;
-                color: "#80000000";
-                source: circleMiddle;
-            }
+//            DropShadow
+//            {
+//                anchors.fill: circleMiddle;
+//                horizontalOffset: 3;
+//                verticalOffset: 3;
+//                radius: 8.0;
+//                samples: 17;
+//                color: "#80000000";
+//                source: circleMiddle;
+//            }
 
         }//end of circlebase
-        DropShadow
-        {
-            anchors.fill: circleBase;
-            horizontalOffset: 3;
-            verticalOffset: 3;
-            radius: 16.0;
-            samples: 17;
-            color: "#80000000";
-            source: circleBase;
-        }
+//        DropShadow
+//        {
+//            anchors.fill: circleBase;
+//            horizontalOffset: 3;
+//            verticalOffset: 3;
+//            radius: 16.0;
+//            samples: 17;
+//            color: "#80000000";
+//            source: circleBase;
+//        }
 
 
         Rectangle

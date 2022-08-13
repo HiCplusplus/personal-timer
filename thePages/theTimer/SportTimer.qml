@@ -5,7 +5,7 @@ import "../../theControls/canvasDraws/"
 import "../../theScripts/theTimer/sportTimer.js" as ST
 import "../../theControls"
 import "../../theScripts/theTimer/sportTimerSoundEffects.js" as STsoundEffects
-
+import "../../theScripts/theTimer/sportTimerSpeech.js" as STspeech
 Item
 {
     id:root;
@@ -44,16 +44,30 @@ Item
 
 
     //for sound service, user options
-    property bool setSpeechOn: false;
-    property variant setSpeechPlayEvery: [0,0,10];//hour , minute , second.
-    property variant setSpeechPlayWhen: ["Rounds & rests & letsgo","Rounds & rests","Only rounds","Only rests"];
-    property variant speechPacks: ["female"];//,"male"];
-
 //    property bool setVibrationOn: false;
 //    property bool setNotificationOn: false;
+    property bool setSpeechOn: true;
+    property bool setSpeechForBreaks:true;
+    property bool setSpeechForRounds: true;
+    property bool setSpeechForStartStop: true;
+    //cheer , go , time remaning, left will come soon
 
-    property bool setSoundEffectsOn: true;//false;
-    property variant soundEffectsPacks: [directory_soundPackA];//,directory_soundPackB];
+//    property variant setSpeechPlayEvery: [0,0,10];//hour , minute , second.
+//    property variant setSpeechPlayWhen: ["Rounds & rests & letsgo","Rounds & rests","Only rounds","Only rests"];
+    property variant speechPacks: [directory_SoundSpeech_PackA];//,"male"];
+    property int speechPackActived: 0;
+    property string pathToActivedSpeechPack: path_to_sportTimer_SoundSpeech + speechPacks[speechPackActived];
+    onSpeechPackActivedChanged:
+    {
+        pathToActivedSpeechPack = path_to_sportTimer_SoundSpeech + speechPacks[speechPackActived];
+    }
+
+
+    property bool setSoundEffectsOn: false;//false;
+    property bool setSoundEffectsForBreaks: false;
+    property bool setSoundEffectsForRounds: false;
+    property bool setSoundEffectsForStartStop: false;
+    property variant soundEffectsPacks: [directory_SoundEffect_PackA];//,directory_soundPackB];
     property int soundPackActived: 0;
     property string pathToActivedSoundPack: path_to_sportTimer_SoundEffect + soundEffectsPacks[soundPackActived];
     onSoundPackActivedChanged:
@@ -87,28 +101,30 @@ Item
     signal notices_roundStopped;
     onNotices_roundStarted:
     {
-        if(setSoundEffectsOn)
+        console.log("round start");
+        if(setSoundEffectsOn && setSoundEffectsForRounds)
         {
             STsoundEffects.playSoundEffect(theSoundEffect,1,2); //parameters: soundEffect id's  ,  status-> (0 stopped/endded) & (1 started/run), model (1 sportTimer) & (2 Round/Set) & (3 Break/Rest)
         }
-        else
+        if(setSpeechOn && setSpeechForRounds)
         {
-            console.log("round start");
+            STspeech.sayRoundBreak(theSoundSpeech,1);
+            waitForSayNumber.running = true;
         }
-
     }
     onNotices_roundStopped:
     {
-        if(setSoundEffectsOn)
+        console.log("round stop");
+        if(setSoundEffectsOn && setSoundEffectsForRounds)
         {
             STsoundEffects.playSoundEffect(theSoundEffect,0,2);
         }
-        else
+        if(setSpeechOn && setSpeechForRounds)
         {
-            console.log("round stop");
+            STspeech.sayRoundBreak(theSoundSpeech,0);
         }
 
-
+        //speech ## round STOP REMOVED BECAUSE OF SOME REASONS
     }
 
 
@@ -118,27 +134,21 @@ Item
     signal notices_breakStopped;
     onNotices_breakStarted:
     {
-        if(setSoundEffectsOn)
-        {
-            STsoundEffects.playSoundEffect(theSoundEffect,1,3); //parameters: soundEffect id's  ,  status-> (0 stopped/endded) & (1 started/run), model (1 sportTimer) & (2 Round/Set) & (3 Break/Rest)
-        }
-        else
-        {
-            console.log("break start");
-        }
+        console.log("break start");
+//        if(setSoundEffectsOn && setSoundEffectsForBreaks)
+//        {
+//            STsoundEffects.playSoundEffect(theSoundEffect,1,3); //parameters: soundEffect id's  ,  status-> (0 stopped/endded) & (1 started/run), model (1 sportTimer) & (2 Round/Set) & (3 Break/Rest)
+//        }
     }
 
     onNotices_breakStopped:
     {
-        if(setSoundEffectsOn)
-        {
-            STsoundEffects.playSoundEffect(theSoundEffect,0,3);
-        }
+        console.log("break start");
+//        if(setSoundEffectsOn && setSoundEffectsForBreaks)
+//        {
+//            STsoundEffects.playSoundEffect(theSoundEffect,0,3);
+//        }
 
-        else
-        {
-            console.log("break start");
-        }
     }
 
 
@@ -147,27 +157,27 @@ Item
     signal notices_timerStopped;
     onNotices_timerStarted:
     {
-        if(setSoundEffectsOn)
+        console.log("timer start");
+        if(setSoundEffectsOn && setSoundEffectsForStartStop)
         {
             STsoundEffects.playSoundEffect(theSoundEffect,1,1); //parameters: soundEffect id's  ,  status-> (0 stopped/endded) & (1 started/run), model (1 sportTimer) & (2 Round/Set) & (3 Break/Rest)
         }
-
-        else
+        if(setSpeechOn && setSpeechForStartStop)
         {
-            console.log("timer start");
+            STspeech.sayStartStop(theSoundSpeech,1);
         }
     }
 
     onNotices_timerStopped:
     {
-        if(setSoundEffectsOn)
+        console.log("timer stop");
+        if(setSoundEffectsOn && setSoundEffectsForStartStop)
         {
             STsoundEffects.playSoundEffect(theSoundEffect,0,1);
         }
-
-        else
+        if(setSpeechOn && setSpeechForStartStop)
         {
-            console.log("timer stop");
+            STspeech.sayStartStop(theSoundSpeech,0);
         }
     }
 
@@ -196,6 +206,7 @@ Item
 
     onInitValues:
     {
+        valueRound.text=setRounds;
         tempRounds= setRounds;
         tempBreaks= setRounds;
         avrageRounds= [(setTimePerRound[0]*setRounds) , (setTimePerRound[1]*setRounds) , (setTimePerRound[2]*setRounds)] //TPR (timePerRound) * rounds
@@ -222,7 +233,31 @@ Item
         source: "";
     }
 
+    SoundEffect
+    {
+        id:theSoundSpeech;
+        source: "";
+    }
 
+    Timer
+    {
+        id:waitForSayNumber;
+        interval: 100; running: false; repeat: true;
+        onTriggered:
+        {
+            secondTimer.stop();
+            mainTimer.stop();
+            if(theSoundSpeech.playing==false)
+            {
+                console.log("sintplaying");
+                var rou = Math.abs(tempRounds-(setRounds+1));
+                STspeech.sayTeenNumbers(theSoundSpeech,Math.abs(tempRounds-(setRounds+1)));
+//                STspeech.sayEntyNumber(theSoundSpeech,rou);
+                waitForSayNumber.stop();
+                secondTimer.running =true;
+            }
+        }
+    }
 
     Timer
     {
@@ -306,7 +341,7 @@ Item
                 {
                     roundOn=1;//means rounds turn
                     tempSaveRunnigs=0;
-                    valueRound.text= Math.abs(tempRounds-(setRounds+1)); //this could be only  *.text = tempRounds, but (for example rounds=8) tempRounds will count from 8 to 0 but we want 1 to 8
+                    valueRound.text= Math.abs(tempRounds-(setRounds+1)) + "/" +setRounds; //this could be only  *.text = tempRounds, but (for example rounds=8) tempRounds will count from 8 to 0 but we want 1 to 8
                     if(setTimePerRound[2]<60 && setTimePerRound[2]>0)
                         minusPast_MinuteSecond = maxCircles/setTimePerRound[2];
                     else
