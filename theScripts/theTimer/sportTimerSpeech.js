@@ -7,7 +7,9 @@ function sayStartStop(soundDevice,status)
     }
     else
     {
-        soundDevice.source = pathToActivedSpeechPack+fileAudio_speech_stop;
+//        soundDevice.source = pathToActivedSpeechPack+fileAudio_speech_stop;
+        soundDevice.source = pathToActivedSpeechPack+fileAudio_speech_cheer;
+
     }
     soundDevice.play();
 }
@@ -88,17 +90,16 @@ function sayEntyNumber(soundDevice,roundNumber)
             soundDevice.play();
         }break;
     }
+
+
 }
 
-
-function sayTeenNumbers(soundDevice,roundNumber)
+function saySingleNumbers(soundDevice,roundNumber)
 {
-    console.log("sayTeenNumbers");
     switch(roundNumber)
     {
         case 1:
         {
-            console.log("case1");
             soundDevice.source = pathToActivedSpeechPack+directory_sportTimer_SoundSpeech_Numbers+fileAudio_speech_numbers[1];
             soundDevice.play();
         }break;
@@ -142,6 +143,13 @@ function sayTeenNumbers(soundDevice,roundNumber)
             soundDevice.source = pathToActivedSpeechPack+directory_sportTimer_SoundSpeech_Numbers+fileAudio_speech_numbers[9];
             soundDevice.play();
         }break;
+    }
+}
+
+function sayTeenNumbers(soundDevice,roundNumber)
+{
+    switch(roundNumber)
+    {
         case 10:
         {
             soundDevice.source = pathToActivedSpeechPack+directory_sportTimer_SoundSpeech_Numbers+fileAudio_speech_numbers[10];

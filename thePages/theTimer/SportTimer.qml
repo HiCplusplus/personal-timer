@@ -6,6 +6,7 @@ import "../../theScripts/theTimer/sportTimer.js" as ST
 import "../../theControls"
 import "../../theScripts/theTimer/sportTimerSoundEffects.js" as STsoundEffects
 import "../../theScripts/theTimer/sportTimerSpeech.js" as STspeech
+
 Item
 {
     id:root;
@@ -39,6 +40,7 @@ Item
         setTimes[1] = parseInt(ST.addTimes_together(avrageBreak_Round[0],avrageBreak_Round[1],avrageBreak_Round[2],1));
         setTimes[2] = parseInt(ST.addTimes_together(avrageBreak_Round[0],avrageBreak_Round[1],avrageBreak_Round[2],2));
     }
+    property bool statusFlagSpeechEntyRunned: false;
 
 
 
@@ -109,6 +111,9 @@ Item
         if(setSpeechOn && setSpeechForRounds)
         {
             STspeech.sayRoundBreak(theSoundSpeech,1);
+            statusFlagSpeechEntyRunned= false;
+            secondTimer.stop();
+            mainTimer.stop();
             waitForSayNumber.running = true;
         }
     }
@@ -242,19 +247,56 @@ Item
     Timer
     {
         id:waitForSayNumber;
-        interval: 100; running: false; repeat: true;
+        interval: 10; running: false; repeat: true;
         onTriggered:
         {
-            secondTimer.stop();
-            mainTimer.stop();
             if(theSoundSpeech.playing==false)
             {
-                console.log("sintplaying");
                 var rou = Math.abs(tempRounds-(setRounds+1));
-                STspeech.sayTeenNumbers(theSoundSpeech,Math.abs(tempRounds-(setRounds+1)));
-//                STspeech.sayEntyNumber(theSoundSpeech,rou);
-                waitForSayNumber.stop();
-                secondTimer.running =true;
+                if(rou<=9)
+                {
+                    STspeech.saySingleNumbers(theSoundSpeech,rou);
+                    waitForSayNumber.stop();
+                    secondTimer.running =true;
+                }
+                else if(rou > 9 && rou<=19)
+                {
+                    STspeech.sayTeenNumbers(theSoundSpeech,rou);
+                    waitForSayNumber.stop();
+                    secondTimer.running =true;
+                }
+                else
+                {
+                    if(!statusFlagSpeechEntyRunned)
+                    {
+                        STspeech.sayEntyNumber(theSoundSpeech,rou);
+                        statusFlagSpeechEntyRunned=true;
+                    }
+
+                    if(theSoundSpeech.playing==false)
+                    {
+                        //to know other number example: 80/10=8 8-8=0 0*10=0;    other example: 85/10=8.5-8=0.5*10=5
+                        var tempA = rou/10;
+                        var tempVar = (rou/10) - parseInt(rou/10);
+                        console.log("-- rou="+rou +" rou/10="+tempA+" tempVar="+tempVar+ " tempVar*10="+tempVar*10);
+                        tempVar = parseInt(Math.round(tempVar*10));
+                        console.log("++ rou="+rou +" rou/10="+tempA+" tempVar="+tempVar+ " tempVar*10="+tempVar*10);
+                        if(tempVar!==0)
+                        {
+                            console.log("inside");
+                            STspeech.saySingleNumbers(theSoundSpeech,tempVar);
+                            console.log("after");
+                            waitForSayNumber.stop();
+                            secondTimer.running =true;
+                        }
+                        else
+                        {
+                            waitForSayNumber.stop();
+                            secondTimer.running =true;
+                        }
+                    }
+                }
+
             }
         }
     }
@@ -411,11 +453,37 @@ Item
         height:root.height/10.5;
         //setCenterButtonCircleStyled:true;
         setCenterButtonText: "";
-        setLeftButtonText: "Speech";
+        setLeftButtonText: setSpeechOn ? "Speech" : "";
         setLeftButtonIcon: path_to_menuIcons + fileIcon_Mute;
+        onLeftButtonPressed:
+        {
+            if(setLeftButtonIcon == path_to_menuIcons + fileIcon_Mute)
+            {
+                theSoundSpeech.volume = 1.0;
+                setLeftButtonIcon= path_to_menuIcons + fileIcon_Unmute;
+            }
+            else
+            {
+                theSoundSpeech.volume = 0.0;
+                setLeftButtonIcon= path_to_menuIcons + fileIcon_Mute;
+            }
+        }
 
-        setRightButtonText: "Effect";
+        setRightButtonText: setSoundEffectsOn ? "Effect" : "";
         setRightButtonIcon: path_to_menuIcons + fileIcon_Unmute;
+        onRightButtonPressed:
+        {
+            if(setRightButtonIcon == path_to_menuIcons + fileIcon_Mute)
+            {
+                theSoundEffect.volume = 1.0;
+                setRightButtonIcon= path_to_menuIcons + fileIcon_Unmute;
+            }
+            else
+            {
+                theSoundEffect.volume = 0.0;
+                setRightButtonIcon= path_to_menuIcons + fileIcon_Mute;
+            }
+        }
 
         anchors
         {

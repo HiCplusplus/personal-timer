@@ -116,11 +116,12 @@ Window
     property string directory_sportTimer_SoundSpeech_Numbers: "numbers/";
 
     property string fileAudio_speech_start: "start.wav";
-    property string fileAudio_speech_cheer: "cheer.wav";
     property string fileAudio_speech_stop: "stop.wav";
     property string fileAudio_speech_rest: "rest.wav";
     property string fileAudio_speech_set: "set.wav";
     property string fileAudio_speech_go: "go.wav";
+    property string fileAudio_speech_cheer: "cheer.wav";
+    property string fileAudio_speech_ready: "ready.wav";
 
     property string fileAudio_speech_hour: "hour.wav";
     property string fileAudio_speech_minute: "minute.wav";
