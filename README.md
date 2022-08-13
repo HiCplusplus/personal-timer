@@ -11,7 +11,7 @@
 ____________________________________
 
  ## Working On
-  - Sport Timer (Tabata) + SetPage + SoundEffect v0.6.0 <b>[WORKIN HERE]</b>
+  - Sport Timer (Tabata) + SetPage + SoundEffect + SoundSpeech v0.6.0 <b>[WORKIN HERE]</b>
  - Sport Timer -> Timer-Speech 
  - Multi Timer
  - Calender 
