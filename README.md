@@ -26,8 +26,8 @@ ____________________________________
  - Background application (with local data save)
 
 
-_____________________________________
-Thanks to :
+____________________________________
+## Thanks to :<br/>
     icons8.com for icons.<br/>
     ttsmp3.com for Text To Speech Voices.<br/>
     mixkit.co for Sound Effect.<br/>
