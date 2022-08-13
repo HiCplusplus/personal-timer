@@ -11,7 +11,6 @@ Window
 {
 //    Material.theme:Material.Dark
 //    Material.accent: Material.LightBlue
-    Material.foreground: cTxt_button;
 
 
     id: mainWindow;
@@ -25,68 +24,7 @@ Window
     title: qsTr(appTitle);
     color:cBG;
 
-    /*
-    thanks to :
-    icons8.com
 
-
-    sound effects from
-            https://mixkit.co/free-sound-effects/
-
-    menu down idea from
-            https://dribbble.com/shots/17686848-Alarm-Clock-App-UI
-
-    alarm style / page set alarm  idee from
-            https://dribbble.com/shots/10918806-Smart-Alarm-app
-
-    calender base from
-            https://dribbble.com/shots/9709600-Daily-UI-Events-Dark-Version
-
-    timer single from
-            https://dribbble.com/shots/7077105-Daily-UI-challenge-014-Countdown-Timer
-
-
-
-
-            icon mute/unmute from icons8
-            https://icons8.com/icons/authors/klDPcgJ2LxJD/febrian-hidayat/external-febrian-hidayat-glyph-febrian-hidayat/external-user-interface-febrian-hidayat-glyph-febrian-hidayat
-
-
-    */
-
-
-    /* My fav styles
-
-    i wish do this https://dribbble.com/shots/14896001-Alarm-App-Concept
-    good looking color and theme https://dribbble.com/shots/17279416-Sleepzy-Sleep-tracker-app
-    https://dribbble.com/shots/4894371-Dashboard-Graph
-    good looking calneders
-        https://dribbble.com/shots/16390127-Schedule-App
-        https://dribbble.com/shots/15628214-Calendar-app
-        https://dribbble.com/shots/16618447-Falop-Project
-        https://dribbble.com/shots/6291859-Date-Picker
-        https://dribbble.com/shots/3769275-Calendar-Daily-UI-038
-        https://dribbble.com/shots/5554215-Task-manage-app-concept
-        https://dribbble.com/shots/9622078-Daily-UI-Events-App-Design
-        https://dribbble.com/shots/18098594-Delivery-Components
-        https://dribbble.com/shots/4749823-Calender-Screen
-        https://dribbble.com/shots/5642817-Calender-with-Background-Gradient
-        https://dribbble.com/shots/5811377-5-100-Calender-of-the-day
-        https://dribbble.com/shots/3870315-Event-Listing-Daily-UI-070
-        https://dribbble.com/shots/3671877-Calender
-        https://dribbble.com/shots/8945197-Minimal-Calender-Modul-1
-        https://dribbble.com/shots/10924372-UI-design-for-calender
-        https://dribbble.com/shots/4129451-Time-Tracker-Concept
-        https://dribbble.com/shots/4994794-Flight-Booking-App-Freebie
-        https://dribbble.com/shots/16710172-Task-Management-App-to-do-calender-events
-        https://dribbble.com/shots/10170477-Date-Picker-Exploration-Part-1
-        https://dribbble.com/shots/11751267-DailyUI-Day42-ToDo-List
-        https://dribbble.com/shots/14748311-Task-Manager-App
-
-
-
-
-    */
 
     Rectangle
     {
@@ -115,6 +53,8 @@ Window
     property string gFontFamily:"Courier";
     property color cBG_Unknown: "transparent";
     property color cUnknown: "white";
+    Material.foreground: cTxt_button;
+
 
     //- - - - - - - - - - - - - - - - - - - - - - icons
     property string directory_Icons: "../thePictures/";
@@ -151,11 +91,66 @@ Window
 
     //- - - - - - - - - - - - - - - - - - - - - - sound effects
     //- - sportTimer:
-    property string directory_SoundEffects: "../theSounds/";
+    property string directory_Sounds: "../theSounds/";
+    property string directory_sportTimer_SoundEffects: "sportTimer/sound-effects/";
+    property string directory_SoundEffect_PackA: "sound-pack-a/";
+
+    property string fileAudio_timerStarted: "started.wav";
+    property string fileAudio_timerStopped: "stopped.wav";
+    property string fileAudio_roundStarted: "round-started.wav";
+    property string fileAudio_roundStopped: "round-stopped.wav";
+    property string fileAudio_breakStarted: "break-started.wav";
+    property string fileAudio_breakStopped: "break-stopped.wav";
+
+    property string path_to_sportTimer_SoundEffect: "../"+ directory_Sounds + directory_sportTimer_SoundEffects;//innder directory ../
 
 
-    //singleTimer
+    //- - - - - - - singleTimer
     property string fileAudio_elevatorTone: "mixkit-elevator-tone-2863.wav";
+
+
+
+    //- - - - - - - - - - - - - - - - - - - - - - sound speech
+    property string directory_sportTimer_SoundSpeech: "sportTimer/sound-speech/";
+    property string directory_SoundSpeech_PackA: "sound-pack-male-joey/"; //MALE , by ttsmp3.com , US English Joey
+    property string directory_sportTimer_SoundSpeech_Numbers: "numbers/";
+
+    property string fileAudio_speech_start: "start.wav";
+    property string fileAudio_speech_cheer: "cheer.wav";
+    property string fileAudio_speech_stop: "stop.wav";
+    property string fileAudio_speech_rest: "rest.wav";
+    property string fileAudio_speech_set: "set.wav";
+    property string fileAudio_speech_go: "go.wav";
+
+    property string fileAudio_speech_hour: "hour.wav";
+    property string fileAudio_speech_minute: "minute.wav";
+    property string fileAudio_speech_second: "second.wav";
+
+    property string fileAudio_speech_hours: "hours.wav";
+    property string fileAudio_speech_minutes: "minutes.wav";
+    property string fileAudio_speech_seconds: "seconds.wav";
+
+    property variant fileAudio_speech_numbers:
+        ["0","1.wav","2.wav","3.wav","4.wav","5.wav","6.wav","7.wav","8.wav","9.wav","10.wav",
+        "11.wav","12.wav","13.wav","14.wav","15.wav","16.wav","17.wav","18.wav","19.wav","20.wav",
+        "21.wav","22.wav","23.wav","24.wav","25.wav","26.wav","27.wav","28.wav","29.wav","30.wav",
+        "31.wav","32.wav","33.wav","34.wav","35.wav","36.wav","37.wav","38.wav","39.wav","40.wav",
+        "41.wav","42.wav","43.wav","44.wav","45.wav","46.wav","47.wav","48.wav","49.wav","50.wav",
+        "51.wav","52.wav","53.wav","54.wav","55.wav","56.wav","57.wav","58.wav","59.wav","60.wav",
+        "61.wav","62.wav","63.wav","64.wav","65.wav","66.wav","67.wav","68.wav","69.wav","70.wav",
+        "71.wav","72.wav","73.wav","74.wav","75.wav","76.wav","77.wav","78.wav","79.wav","80.wav",
+        "81.wav","82.wav","83.wav","84.wav","85.wav","86.wav","87.wav","88.wav","89.wav","90.wav",
+        "91.wav","92.wav","93.wav","94.wav","95.wav","96.wav","97.wav","98.wav","99.wav","100.wav"];
+
+
+//    property string fileAudio_speech_left: "left.wav";
+//    property string fileAudio_speech_passed: "passed.wav";
+
+
+    property string path_to_sportTimer_SoundSpeech: "../" + directory_Sounds + directory_sportTimer_SoundSpeech;
+
+
+
 
 
    Rectangle

@@ -65,6 +65,57 @@
         <file>theControls/MyThreepleTumbler.qml</file>
         <file>thePictures/dark-25px/icon-reset.png</file>
         <file>thePictures/white-25px/icon-reset.png</file>
+        <file>theScripts/theTimer/sportTimerSoundEffects.js</file>
+        <file>theSounds/sportTimer/sound-effects/sound-pack-a/stopped.wav</file>
+        <file>theSounds/sportTimer/sound-effects/sound-pack-a/started.wav</file>
+        <file>theSounds/sportTimer/sound-effects/sound-pack-a/round-stopped.wav</file>
+        <file>theSounds/sportTimer/sound-effects/sound-pack-a/round-started.wav</file>
+        <file>theSounds/sportTimer/sound-effects/sound-pack-a/break-stopped.wav</file>
+        <file>theSounds/sportTimer/sound-effects/sound-pack-a/break-started.wav</file>
+        <file>AboutApplication.qml</file>
+        <file>theScripts/theTimer/sportTimerSpeech.js</file>
+        <file>theSounds/sportTimer/sound-speech/sound-pack-male-joey/stop.wav</file>
+        <file>theSounds/sportTimer/sound-speech/sound-pack-male-joey/start.wav</file>
+        <file>theSounds/sportTimer/sound-speech/sound-pack-male-joey/set.wav</file>
+        <file>theSounds/sportTimer/sound-speech/sound-pack-male-joey/seconds.wav</file>
+        <file>theSounds/sportTimer/sound-speech/sound-pack-male-joey/second.wav</file>
+        <file>theSounds/sportTimer/sound-speech/sound-pack-male-joey/rest.wav</file>
+        <file>theSounds/sportTimer/sound-speech/sound-pack-male-joey/remaining-time.wav</file>
+        <file>theSounds/sportTimer/sound-speech/sound-pack-male-joey/minutes.wav</file>
+        <file>theSounds/sportTimer/sound-speech/sound-pack-male-joey/minute.wav</file>
+        <file>theSounds/sportTimer/sound-speech/sound-pack-male-joey/left.wav</file>
+        <file>theSounds/sportTimer/sound-speech/sound-pack-male-joey/hours.wav</file>
+        <file>theSounds/sportTimer/sound-speech/sound-pack-male-joey/hour.wav</file>
+        <file>theSounds/sportTimer/sound-speech/sound-pack-male-joey/go.wav</file>
+        <file>theSounds/sportTimer/sound-speech/sound-pack-male-joey/cheer.wav</file>
+        <file>theSounds/sportTimer/sound-speech/sound-pack-male-joey/numbers/100.wav</file>
+        <file>theSounds/sportTimer/sound-speech/sound-pack-male-joey/numbers/90.wav</file>
+        <file>theSounds/sportTimer/sound-speech/sound-pack-male-joey/numbers/80.wav</file>
+        <file>theSounds/sportTimer/sound-speech/sound-pack-male-joey/numbers/70.wav</file>
+        <file>theSounds/sportTimer/sound-speech/sound-pack-male-joey/numbers/60.wav</file>
+        <file>theSounds/sportTimer/sound-speech/sound-pack-male-joey/numbers/50.wav</file>
+        <file>theSounds/sportTimer/sound-speech/sound-pack-male-joey/numbers/40.wav</file>
+        <file>theSounds/sportTimer/sound-speech/sound-pack-male-joey/numbers/30.wav</file>
+        <file>theSounds/sportTimer/sound-speech/sound-pack-male-joey/numbers/20.wav</file>
+        <file>theSounds/sportTimer/sound-speech/sound-pack-male-joey/numbers/19.wav</file>
+        <file>theSounds/sportTimer/sound-speech/sound-pack-male-joey/numbers/18.wav</file>
+        <file>theSounds/sportTimer/sound-speech/sound-pack-male-joey/numbers/17.wav</file>
+        <file>theSounds/sportTimer/sound-speech/sound-pack-male-joey/numbers/16.wav</file>
+        <file>theSounds/sportTimer/sound-speech/sound-pack-male-joey/numbers/15.wav</file>
+        <file>theSounds/sportTimer/sound-speech/sound-pack-male-joey/numbers/14.wav</file>
+        <file>theSounds/sportTimer/sound-speech/sound-pack-male-joey/numbers/13.wav</file>
+        <file>theSounds/sportTimer/sound-speech/sound-pack-male-joey/numbers/12.wav</file>
+        <file>theSounds/sportTimer/sound-speech/sound-pack-male-joey/numbers/11.wav</file>
+        <file>theSounds/sportTimer/sound-speech/sound-pack-male-joey/numbers/10.wav</file>
+        <file>theSounds/sportTimer/sound-speech/sound-pack-male-joey/numbers/9.wav</file>
+        <file>theSounds/sportTimer/sound-speech/sound-pack-male-joey/numbers/8.wav</file>
+        <file>theSounds/sportTimer/sound-speech/sound-pack-male-joey/numbers/7.wav</file>
+        <file>theSounds/sportTimer/sound-speech/sound-pack-male-joey/numbers/6.wav</file>
+        <file>theSounds/sportTimer/sound-speech/sound-pack-male-joey/numbers/5.wav</file>
+        <file>theSounds/sportTimer/sound-speech/sound-pack-male-joey/numbers/4.wav</file>
+        <file>theSounds/sportTimer/sound-speech/sound-pack-male-joey/numbers/3.wav</file>
+        <file>theSounds/sportTimer/sound-speech/sound-pack-male-joey/numbers/2.wav</file>
+        <file>theSounds/sportTimer/sound-speech/sound-pack-male-joey/numbers/1.wav</file>
     </qresource>
     <qresource prefix="/thePictures"/>
 </RCC>

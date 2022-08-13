@@ -20,7 +20,7 @@ Item
     SoundEffect
     {
         id:theSoundEffectTimesUp;
-        source: "../"+ directory_SoundEffects + fileAudio_elevatorTone; //from https://mixkit.co/free-sound-effects/
+        source: "../"+ directory_Sounds + fileAudio_elevatorTone; //from https://mixkit.co/free-sound-effects/
     }
 
 
