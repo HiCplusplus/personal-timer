@@ -28,8 +28,8 @@ ____________________________________
 
 _____________________________________
 Thanks to :
-    icons8.com for icons.
-    ttsmp3.com for Text To Speech Voices.    
-    mixkit.co for Sound Effect.
-    https://dribbble.com/shots/10918806-Smart-Alarm-app  for Design alarm style + set alarm.
-    https://dribbble.com/shots/9709600-Daily-UI-Events-Dark-Version for Calender base.            
+    icons8.com for icons.<br/>
+    ttsmp3.com for Text To Speech Voices.<br/>
+    mixkit.co for Sound Effect.<br/>
+    https://dribbble.com/shots/10918806-Smart-Alarm-app  for Design alarm style + set alarm.<br/>
+    https://dribbble.com/shots/9709600-Daily-UI-Events-Dark-Version for Calender base.<br/> 
