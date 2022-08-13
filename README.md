@@ -7,13 +7,20 @@
  - Alarm View + SetPage v0.3.0
  - Calender View + One-DayPick + Multi-DayPick + WeekPick v0.4.0
  - Single Timer + SetPage + DismissPage v0.5.0
-
+ - Sport Timer (Tabata) + SetPage(half) + SoundEffect + SoundSpeech(so,so) v0.6.0
+ - test in android enviroment v0.6.1 (AlarmSetPage fixed)
+ 
+ 
 ____________________________________
 
- ## Working On
-  - Sport Timer (Tabata) + SetPage + SoundEffect + SoundSpeech v0.6.0 <b>[WORKIN HERE]</b>
- - Sport Timer -> Timer-Speech 
+ ## up comming
+ - test in android enviroment v0.6.2 (SwipeView Timers) <b>WORKING ON</b>
+ - test in android enviroment v0.6.3 (Single timer) 
+ - test in android enviroment v0.6.3 (sport timer)
  - Multi Timer
- - Calender 
+ - how to save in android local files, or local database
+ - Calender PickDay (multi month day picks)
+ - Calender (Shadow DayCircle)
+ - Calender (...)
  - Alarm 
  - Background application (with local data save)
