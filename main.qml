@@ -296,7 +296,6 @@ Window
                         {
                             sportTimer.visible=false;
                             sportTimerSetPage.visible=true;
-
                         }
                     }
                     SportTimerSetPage
@@ -318,6 +317,9 @@ Window
                             sportTimer.setBreaks[1] =  breakValues[1];
                             sportTimer.setBreaks[2] =  breakValues[2];
 
+
+                            sportTimer.setCountDownBeforeRoundStart = statusCDBeforeRoundStart;
+                            sportTimer.setSecondsCountDownBeforeRoundStart = secondsCDBeforeRoundSTart;
                             sportTimer.startTheMainTimer();
 
                         }
