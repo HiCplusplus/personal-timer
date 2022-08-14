@@ -291,7 +291,7 @@ Window
                     SportTimer
                     {
                         id:sportTimer;
-                        visible: false;
+                        visible: false;//example command, for test github
                         onSportTimerEnded:
                         {
                             sportTimer.visible=false;
