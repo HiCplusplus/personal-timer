@@ -1,31 +1,46 @@
 # pLarm
 
 ## Features Log since July 20, 2022.
- - StopWatch v0.1.0
- - <del>Timer + DismissPage v0.1.0</del>
- - Dark/Light Mode v0.2.0
- - Alarm View + SetPage v0.3.0
- - Calender View + One-DayPick + Multi-DayPick + WeekPick v0.4.0
- - Single Timer + SetPage + DismissPage v0.5.0
- - Sport Timer (Tabata) + SetPage(half) + SoundEffect + SoundSpeech(so,so) v0.6.0
- - test in android enviroment v0.6.1 (AlarmSetPage fixed)  aug 14 2022
- - test in android enviroment v0.6.2 (SwipeView Timers fixed but indeicator isnt show whereis thepage)  aug 14 2022
- - test in android enviroment v0.6.3 (Single timer fixed but dismissPage button dont swipe to cancel/stop, just on button clicked work) aug 14 2022
-
+ - 0.1.0 StopWatch
+ - <del>0.1.0 -> Timer + DismissPage </del> (Failed)
+ - 0.2.0 -> Dark/Light Mode
+ - 0.3.0 -> Alarm View + SetPage 
+ - 0.4.0 -> Calender View + One-DayPick + Multi-DayPick + WeekPick
+ - 0.5.0 -> Single Timer + SetPage + DismissPage
+ - 0.6.0 -> Sport Timer (Tabata) + SetPage(half) + SoundEffect + SoundSpeech(so,so) 
+ - 0.6.1 -> test in android enviroment (AlarmSetPage fixed)
+ - 0.6.2 -> test in android enviroment (SwipeView Timers fixed but indeicator isnt show whereis thepage)
+ - 0.6.3 -> test in android enviroment (Single timer fixed but dismissPage button dont swipe to cancel/stop, just on button clicked work)
+ - 0.6.4 -> test in android enviroment (sport timer)
+ - 0.6.5 -> sportTimer soundEffects & soundSpeech Mute/Unmute
+ 
 
  
 ____________________________________
 
  ## up comming
- - test in android enviroment v0.6.4 (sport timer)  <b>WORKING ON</b>
- - Multi Timer
+ - 0.6.6 -> Sound Effect/Speech pause & resume <b>WORKING ON</b>
+ - 0.6.7 -> Style sportTimer SetPage (Count Down Before Round Starts & Turn off/on SoundEffects & Turn off/on SoundSpeech) 
+ - 0.7.0 -> multi timer
  - how to save in android local files, or local database
  - Calender PickDay (multi month day picks)
  - Calender (Shadow DayCircle)
- - Calender (...)
  - Alarm 
  - Background application (with local data save)
 
+
+
+
+
+
+
+
+
+### NOTES FOR LATER
+Alarm set page
+Text alarm name when button save clicked disable/.. to avoid leave pointer text on all app
+- sportTime SPEECH FIX say (READ, GO)
+- SportTimer SounEffects selectable to pick SoundPack, SoundSpeech selectable to pick SpeechPack;
 
 ____________________________________
 ## Thanks to :<br/>
