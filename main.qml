@@ -288,40 +288,40 @@ Window
                 Page
                 {
                     id:sportTimerPage;
-                    //                SportTimer
-                    //                {
-                    //                    id:sportTimer;
-                    //                    visible: false;
-                    //                    onSportTimerEnded:
-                    //                    {
-                    //                        sportTimer.visible=false;
-                    //                        sportTimerSetPage.visible=true;
+                    SportTimer
+                    {
+                        id:sportTimer;
+                        visible: false;
+                        onSportTimerEnded:
+                        {
+                            sportTimer.visible=false;
+                            sportTimerSetPage.visible=true;
 
-                    //                    }
-                    //                }
-                    //                SportTimerSetPage
-                    //                {
-                    //                    id:sportTimerSetPage;
-                    //                    onStartSportTimer:
-                    //                    {
-                    //                        sportTimerSetPage.visible=false;
-                    //                        sportTimer.visible=true;
+                        }
+                    }
+                    SportTimerSetPage
+                    {
+                        id:sportTimerSetPage;
+                        onStartSportTimer:
+                        {
+                            sportTimerSetPage.visible=false;
+                            sportTimer.visible=true;
 
-                    //                        sportTimer.setRounds = repeatValue[0];
+                            sportTimer.setRounds = repeatValue[0];
 
 
-                    //                        sportTimer.setTimePerRound[0] =  roundValues[0];
-                    //                        sportTimer.setTimePerRound[1] =  roundValues[1];
-                    //                        sportTimer.setTimePerRound[2] =  roundValues[2];
+                            sportTimer.setTimePerRound[0] =  roundValues[0];
+                            sportTimer.setTimePerRound[1] =  roundValues[1];
+                            sportTimer.setTimePerRound[2] =  roundValues[2];
 
-                    //                        sportTimer.setBreaks[0] =  breakValues[0];
-                    //                        sportTimer.setBreaks[1] =  breakValues[1];
-                    //                        sportTimer.setBreaks[2] =  breakValues[2];
+                            sportTimer.setBreaks[0] =  breakValues[0];
+                            sportTimer.setBreaks[1] =  breakValues[1];
+                            sportTimer.setBreaks[2] =  breakValues[2];
 
-                    //                        sportTimer.startTheMainTimer();
+                            sportTimer.startTheMainTimer();
 
-                    //                    }
-                    //                }
+                        }
+                    }
                 }
             }
         }
