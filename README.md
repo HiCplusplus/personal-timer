@@ -1,6 +1,6 @@
 # pLarm
 
-## Features Log
+## Features Log since July 20, 2022.
  - StopWatch v0.1.0
  - <del>Timer + DismissPage v0.1.0</del>
  - Dark/Light Mode v0.2.0
@@ -8,9 +8,9 @@
  - Calender View + One-DayPick + Multi-DayPick + WeekPick v0.4.0
  - Single Timer + SetPage + DismissPage v0.5.0
  - Sport Timer (Tabata) + SetPage(half) + SoundEffect + SoundSpeech(so,so) v0.6.0
- - test in android enviroment v0.6.1 (AlarmSetPage fixed)
- - test in android enviroment v0.6.2 (SwipeView Timers fixed but indeicator isnt show whereis thepage)
- - test in android enviroment v0.6.3 (Single timer fixed but dismissPage button dont swipe to cancel/stop, just on button clicked work)
+ - test in android enviroment v0.6.1 (AlarmSetPage fixed)  aug 14 2022
+ - test in android enviroment v0.6.2 (SwipeView Timers fixed but indeicator isnt show whereis thepage)  aug 14 2022
+ - test in android enviroment v0.6.3 (Single timer fixed but dismissPage button dont swipe to cancel/stop, just on button clicked work) aug 14 2022
 
 
  
