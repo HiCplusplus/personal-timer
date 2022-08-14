@@ -13,13 +13,13 @@
  - 0.6.3 -> test in android enviroment (Single timer fixed but dismissPage button dont swipe to cancel/stop, just on button clicked work)
  - 0.6.4 -> test in android enviroment (sport timer)
  - 0.6.5 -> sportTimer soundEffects & soundSpeech Mute/Unmute
- 
+ - 0.6.6 -> Style sportTimer SetPage (Count Down Before Round Starts & Turn off/on SoundEffects & Turn off/on SoundSpeech) 
+
 
  
 ____________________________________
 
  ## up comming  <b>WORKING ON</b>
- - 0.6.6 -> Style sportTimer SetPage (Count Down Before Round Starts & Turn off/on SoundEffects & Turn off/on SoundSpeech) 
  - 0.6.7 -> Sound Effect/Speech pause & resume
  - ...
  - 0.7.0 -> multi timer
