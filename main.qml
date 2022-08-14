@@ -319,7 +319,28 @@ Window
 
 
                             sportTimer.setCountDownBeforeRoundStart = statusCDBeforeRoundStart;
-                            sportTimer.setSecondsCountDownBeforeRoundStart = secondsCDBeforeRoundSTart;
+                            if(statusCDBeforeRoundStart) //to avoid invalid value , == 0 or >= breaks values convert to second
+                            {
+                                var tempMin = breakValues[0] * 60;
+                                tempMin += breakValues[1];
+                                var tempSec = breakValues[2];
+                                tempSec += tempMin * 60;
+                                if(setSecondsCountDownBeforeRoundStart === 0 || setSecondsCountDownBeforeRoundStart >= tempSec)
+                                {
+                                    setSecondsCountDownBeforeRoundStart = 3;
+                                }
+                                else
+                                {
+                                    sportTimer.setSecondsCountDownBeforeRoundStart = secondsCDBeforeRoundSTart;
+                                }
+
+                            }
+
+
+
+                            sportTimer.setSpeechOn = statusSpeech;
+                            sportTimer.setSoundEffectsOn =statusSoundEffect;
+
                             sportTimer.startTheMainTimer();
 
                         }

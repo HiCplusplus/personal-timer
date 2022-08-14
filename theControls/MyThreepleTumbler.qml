@@ -179,7 +179,7 @@ Item
                     {
                         text: setShowSecondTitle? "Sec":"Hour";
                         anchors.horizontalCenter: hoursTumbler.horizontalCenter;
-                        visible: setShowSecondTitle?true:false;
+                        visible: setSingleTumbler? (setShowSecondTitle ? true : false) : true;
                         font.pointSize: 15;
                         font.family: gFontFamily;
                         color:cTxt_button;//themeDarkMode? "#353436": "black";
