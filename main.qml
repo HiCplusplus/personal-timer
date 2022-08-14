@@ -5,7 +5,7 @@ import QtQuick.Controls 2.15
 import "theControls"
 import "thePages"
 import QtQuick.Controls.Material 2.15
-
+import "thePages/theTimer"
 
 Window
 {
@@ -79,7 +79,7 @@ Window
     //alarm(TimerDown.qml) icons
     property string fileIcon_Cancel: "icon-cancel.png";
 
-//    property string fileIcon_backToHome: "icon-back.png"; //NOT FOUND NOT USED
+    property string fileIcon_backToHome: "icon-back.png"; //NOT FOUND NOT USED
 
 
     //sportTimer Icons
@@ -144,8 +144,8 @@ Window
         "91.wav","92.wav","93.wav","94.wav","95.wav","96.wav","97.wav","98.wav","99.wav","100.wav"];
 
 
-//    property string fileAudio_speech_left: "left.wav";
-//    property string fileAudio_speech_passed: "passed.wav";
+    property string fileAudio_speech_left: "left.wav";
+    property string fileAudio_speech_passed: "passed.wav";
 
 
     property string path_to_sportTimer_SoundSpeech: "../" + directory_Sounds + directory_sportTimer_SoundSpeech;
@@ -216,7 +216,7 @@ Window
                 {
                     myIndicator.myIndicatorIndex = viewTimers.currentIndex;
                 }
-                Item
+                Page
                 {
                     id:calenderPage;
                     CalenderPage
@@ -224,9 +224,9 @@ Window
 
                     }
                 }
-                Item
+                Page
                 {
-                    id: firstPage
+                    id: alaramPage;
                     Alarm
                     {
                         onGoToAlarmSetPage:
@@ -238,23 +238,91 @@ Window
                         }
                     }
                 }
-                Item
+                Page
                 {
-                    id: secondPage
+                    id: stopWatchPage;
                     StopWatch
                     {
 
                     }
                 }
-                Item
+                Page
                 {
-                    id: thirdPage
-                    Timers
+                    id: singleTimerPage;
+                    SingleTimer
                     {
-
+                        id:singleTimer;
+                        visible:false;
+                        onCancelTimer:
+                        {
+                            singleTimer.visible=false;
+                            singleTimerSetPage.visible=true;
+                        }
                     }
-                }
+                    SingleTimerSetPage
+                    {
+                        id:singleTimerSetPage;
+                        onButtonStartClicked:
+                        {
+                            singleTimer.baseTime[0] = singleTimerSetPage.selectHour;
+                            singleTimer.baseTime[1] = singleTimerSetPage.selectMinute;
+                            singleTimer.baseTime[2] = singleTimerSetPage.selectSecond;
+                            singleTimerSetPage.visible=false;
+                            singleTimer.visible=true;
+                            singleTimer.runTimer();
+                        }
+                    }
 
+                }//end of page 3 , single timer.
+
+                Page
+                {
+                    id:multiTimerPage;
+                    Rectangle
+                    {
+                        anchors.fill: parent;
+                        color:"pink";
+                    }
+                }//end of page 4,
+
+                Page
+                {
+                    id:sportTimerPage;
+                    //                SportTimer
+                    //                {
+                    //                    id:sportTimer;
+                    //                    visible: false;
+                    //                    onSportTimerEnded:
+                    //                    {
+                    //                        sportTimer.visible=false;
+                    //                        sportTimerSetPage.visible=true;
+
+                    //                    }
+                    //                }
+                    //                SportTimerSetPage
+                    //                {
+                    //                    id:sportTimerSetPage;
+                    //                    onStartSportTimer:
+                    //                    {
+                    //                        sportTimerSetPage.visible=false;
+                    //                        sportTimer.visible=true;
+
+                    //                        sportTimer.setRounds = repeatValue[0];
+
+
+                    //                        sportTimer.setTimePerRound[0] =  roundValues[0];
+                    //                        sportTimer.setTimePerRound[1] =  roundValues[1];
+                    //                        sportTimer.setTimePerRound[2] =  roundValues[2];
+
+                    //                        sportTimer.setBreaks[0] =  breakValues[0];
+                    //                        sportTimer.setBreaks[1] =  breakValues[1];
+                    //                        sportTimer.setBreaks[2] =  breakValues[2];
+
+                    //                        sportTimer.startTheMainTimer();
+
+                    //                    }
+                    //                }
+                }
             }
         }
 
@@ -300,6 +368,7 @@ Window
         }
     }
     //timer indicator ends
+
 
     Rectangle
     {
