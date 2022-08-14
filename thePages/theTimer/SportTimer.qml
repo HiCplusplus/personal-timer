@@ -21,6 +21,25 @@ Item
     property int setSecondsCountDownBeforeRoundStart: 5; //user set/ optional LIMITED INPUT IT MUST MORE THAN ROUND BREAK TIME AND CANT BE LESS OR EQUAL WITH ZERO
 
 
+
+    property bool setSpeechOn: true;
+    property bool setSpeechForBreaks:true;
+    property bool setSpeechForRounds: true;
+    property bool setSpeechForStartStop: true;
+    property int speechPackActived: 0;
+
+
+    property bool setSoundEffectsOn: false;//false;
+    property bool setSoundEffectsForBreaks: false;
+    property bool setSoundEffectsForRounds: false;
+    property bool setSoundEffectsForStartStop: false;
+    property int soundPackActived: 0;
+
+
+
+
+
+
     //proccess data (some of these are for temprary to avoid destory user data. if replace these with orginal, some part of app will calculate/show wrong)
     property int tempRounds: setRounds;
     property int tempBreaks: setRounds;
@@ -41,21 +60,12 @@ Item
         setTimes[2] = parseInt(ST.addTimes_together(avrageBreak_Round[0],avrageBreak_Round[1],avrageBreak_Round[2],2));
     }
     property bool statusFlagSpeechEntyRunned: false;
-    property bool statusFlagSecondCountDownSaid: false;
-
 
 
 
     //for sound service, user options
-    property bool setSpeechOn: true;
-    property bool setSpeechForBreaks:true;
-    property bool setSpeechForRounds: true;
-    property bool setSpeechForStartStop: true;
-
-
 
     property variant speechPacks: [directory_SoundSpeech_PackA];//,"male"];
-    property int speechPackActived: 0;
     property string pathToActivedSpeechPack: path_to_sportTimer_SoundSpeech + speechPacks[speechPackActived];
     onSpeechPackActivedChanged:
     {
@@ -63,12 +73,8 @@ Item
     }
 
 
-    property bool setSoundEffectsOn: false;//false;
-    property bool setSoundEffectsForBreaks: false;
-    property bool setSoundEffectsForRounds: false;
-    property bool setSoundEffectsForStartStop: false;
+
     property variant soundEffectsPacks: [directory_SoundEffect_PackA];//,directory_soundPackB];
-    property int soundPackActived: 0;
     property string pathToActivedSoundPack: path_to_sportTimer_SoundEffect + soundEffectsPacks[soundPackActived];
     onSoundPackActivedChanged:
     {
@@ -210,6 +216,8 @@ Item
         timePast= [avrageBreak_Round[0]*minusPast_Hour/8, ///4,
                 (avrageBreak_Round[1])*minusPast_MinuteSecond, //(avrageBreak_Round[1]+4)*minusPast_MinuteSecond,
                 avrageBreak_Round[2]*minusPast_MinuteSecond/maxCircles];
+
+        tempSCDBRS = setSecondsCountDownBeforeRoundStart;
     }
 
 
@@ -229,46 +237,39 @@ Item
     }
 
 
-    Timer
-    {
-        id: waitForSayGo;
-        interval: 10; running: false; repeat: true;
-        onTriggered:
-        {
-            if(theSoundSpeech.playing==false)
-            {
-                theSoundSpeech.source = pathToActivedSpeechPack + fileAudio_speech_go;
-                theSoundSpeech.play();
-                waitForSayGo.stop(/////////////////////////////////////////////////////=======================================================);
-                secondTimer.running=true;
-            }
-
-        }
-    }
+//    Timer
+//    {
+//        id: waitForSayGo;
+//        interval: 10; running: false; repeat: true;
+//        onTriggered:
+//        {
+//            if(theSoundSpeech.playing==false)
+//            {
+//                theSoundSpeech.source = pathToActivedSpeechPack + fileAudio_speech_go;
+//                theSoundSpeech.play();
+//                waitForSayGo.stop();
+//                secondTimer.running=true;
+//            }
+//        }
+//    }
 
     Timer
     {
         id: waitForSayCountDown;//3 2 1 go
-        interval: 10; running: false; repeat: true;
+        interval: 1; running: false; repeat: true;
         onTriggered:
         {
             if(theSoundSpeech.playing==false)
             {
-
                 if(tempSCDBRS <= 9)
                 {
                     STspeech.saySingleNumbers(theSoundSpeech,tempSCDBRS);
                     tempSCDBRS--;
-                    statusFlagSecondCountDownSaid=true;
-                    waitForSayCountDown.stop();
-                    waitForSayGo.running=true;
                 }
                 else if(tempSCDBRS> 9 && tempSCDBRS<=19)
                 {
                     STspeech.sayTeenNumbers(theSoundSpeech,tempSCDBRS);
                     tempSCDBRS--;
-                    waitForSayCountDown.stop();
-                    waitForSayGo.running=true;
                 }
                 else
                 {
@@ -288,18 +289,26 @@ Item
                                 STspeech.saySingleNumbers(theSoundSpeech,tempVar);
                                 tempSCDBRS--;
                                 statusFlagSpeechEntyRunned=false;
-                                waitForSayCountDown.stop();
-                                waitForSayGo.running =true;
                             }
                             else
                             {
                                 tempSCDBRS--;
                                 statusFlagSpeechEntyRunned=false;
-                                waitForSayCountDown.stop();
-                                waitForSayGo.running =true;
                             }
                     }
                 }
+
+//                if(tempSCDBRS==0)
+//                {
+//                    waitForSayCountDown.stop();
+//                    waitForSayGo.running=true;
+//                }
+//                else
+//                {
+                    waitForSayCountDown.stop();
+                    secondTimer.running =true;
+//                }
+
 
 
             }
@@ -309,7 +318,7 @@ Item
     Timer
     {
         id:waitForSayNumber; //for rounds
-        interval: 10; running: false; repeat: true;
+        interval: 1; running: false; repeat: true;
         onTriggered:
         {
             if(theSoundSpeech.playing==false)
@@ -356,7 +365,6 @@ Item
                         }
                     }
                 }
-
             }
         }
     }
@@ -381,7 +389,7 @@ Item
                     {
                         waitForSayCountDown.running=true;
                         secondTimer.stop();
-                        console.log(setSecondsCountDownBeforeRoundStart+" seconds to round");
+//                        console.log(setSecondsCountDownBeforeRoundStart+" seconds to round");
                     }
                 }
 
@@ -404,8 +412,9 @@ Item
                 {
                     secondTimer.running=false;
                     mainTimer.running=true;
-                    notices_roundStopped();
                     tempSCDBRS = setSecondsCountDownBeforeRoundStart;
+                    notices_roundStopped();
+
                     tempRounds--;
                 }
                 else
@@ -466,6 +475,8 @@ Item
                         minusPast_MinuteSecond = maxCircles/60;
 
                     notices_roundStarted();
+
+
                     mainTimer.running = false;
                     secondTimer.running = true;
                 }

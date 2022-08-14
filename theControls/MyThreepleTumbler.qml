@@ -5,6 +5,7 @@ Item
 {
     anchors.fill: parent;
     property bool setSingleTumbler: false;
+    property bool setShowSecondTitle: false;
     //when its single just get output from selectHour
     //when its single indexes are ++ because we dont have index 0 with value 00
 
@@ -14,6 +15,7 @@ Item
     property int selectHour;
     property int selectMinute;
     property int selectSecond;
+    property int selectSecondCountDownBeforeRoundStart;
 
     property variant setRepeatValues :
         ["01","02","03","04","05","06","07","08","09","10",
@@ -48,75 +50,109 @@ Item
         "51","52","53","54","55","56","57","58","59"];
 
 
+    Text
+    {
+        id:textTitle;
+        text: setTextTitle;
+        font.family: gFontFamily;
+        font.pointSize: setTextTitle.length > 6 ? 15:18;
+        color:cTxt_button;
+        z:3;
+        anchors.centerIn:tabAlarmSetValue;
+    }
+
+
 
     Rectangle
     {
-        id:root;
-        anchors.fill: parent;
-        color:cBG;
-        Rectangle
-        {
-            id:titleTumblers;
-            width: parent.width;
-            height: 35;
-            color:cBG_Unknown;
-            anchors.top: root.top;
-//            anchors.horizontalCenter: parent.horizontalCenter;
-            Text
-            {
-                id: textTitle;
-                text: setTextTitle;
-                font.family: gFontFamily;
-                font.pointSize: 20;
-                font.bold: true;
-                color:cTxt_button;
-                anchors.verticalCenter: parent.verticalCenter;
-                anchors.left:parent.left;
-//                anchors.leftMargin: 15;
-            }
-            Rectangle
-            {
-                id:baseIconA; //A -> right 1
-                width: 25;
-                height:25;
-                color:cBG_Unknown;
-                anchors.verticalCenter: parent.verticalCenter;
-                anchors.right: parent.right;
+        id:baseIconA; //A -> right 1
+        width: 17;
+        height:17;
+        z:3;
+        color:cBG_Unknown;
+//        anchors.verticalCenter: parent.verticalCenter;
+        anchors.right:tabAlarmSetValue.right;
+        anchors.top:textTitle.top;
+        anchors.topMargin: setTextTitle.length > 6 ? 5 : 10;
+//            anchors.right: parent.right;
 //                anchors.rightMargin: parent.width/10;
-                Image
+        Image
+        {
+            anchors.fill:parent;
+            source: path_to_menuIcons + fileIcon_Reset;
+        }
+        MouseArea
+        {
+            anchors.fill:parent;
+            onClicked:
+            {
+                if(setSingleTumbler)
                 {
-                    anchors.fill:parent;
-                    source: path_to_menuIcons + fileIcon_Reset;
+                    hoursTumbler.currentIndex = 0;
                 }
-                MouseArea
+                else
                 {
-                    anchors.fill:parent;
-                    onClicked:
-                    {
-                        if(setSingleTumbler)
-                        {
-                            hoursTumbler.currentIndex = 0;
-                        }
-                        else
-                        {
-                            hoursTumbler.currentIndex = 0;
-                            minutesTumbler.currentIndex = 0;
-                            secondsTumbler.currentIndex = 0;
-                        }
+                    hoursTumbler.currentIndex = 0;
+                    minutesTumbler.currentIndex = 0;
+                    secondsTumbler.currentIndex = 0;
+                }
 
-                    }
-                }
             }
         }
+    }
 
+
+    Rectangle
+    {
+        id:tabAlarmSetValue;
+        width:parent.width/2.50; //3.50;
+        height:25;
+        color:cBG_element;
+        anchors
+        {
+            left:alarmSetValue.left;
+            bottom:alarmSetValue.top;
+            bottomMargin:-8;
+        }
+        radius:7;
+
+    }
+    Rectangle
+    {
+        width:45;
+        height:30;
+        color:cBG_element;
+        rotation: 55;
+        anchors
+        {
+            left:tabAlarmSetValue.right;
+            leftMargin:-22;
+            topMargin:8.80;
+            top:tabAlarmSetValue.top;
+        }
+        radius:7;
+    }
+
+
+    Rectangle
+    {
+        z:2;
+        id:alarmSetValue
+        width:parent.width/1.20;
+        height:250;
+        anchors.horizontalCenter: parent.horizontalCenter;
+        anchors.top:parent.top
+        anchors.topMargin: 30;
+        radius:7;
+        color:cBG_element;
 
         Rectangle
         {
+            id:baseTumblers;
             anchors.fill: parent;
-            anchors.top: titleTumblers.bottom;
-            anchors.topMargin: 35;
-//            border.width: 0.50;
-            color:cBG_Unknown;
+            anchors.topMargin: 25;
+            color:cBG_element;
+
             Row
             {
                 id: row;
@@ -126,7 +162,7 @@ Item
                 {
                     id: hoursTumbler;
                     width: setSingleTumbler? parent.width: parent.width/3.15 ;
-                    model: setSingleTumbler? setRepeatValues: setHourValues;
+                    model: setSingleTumbler? (setShowSecondTitle ? setHourValues : setRepeatValues) : setHourValues;
     //                currentIndex: 1;
                     font.bold: true;
                     font.pointSize: 30;
@@ -134,17 +170,16 @@ Item
                     onCurrentIndexChanged:
                     {
                         selectHour = hoursTumbler.currentIndex;
-                        if(setSingleTumbler)
+                        if(setSingleTumbler && !setShowSecondTitle)
                         {
                             selectHour++; //++ because index is from 0 to 99 and values start from 1 to 100, only index 0 used
                         }
                     }
                     Text
                     {
-                        text: "Hour";
+                        text: setShowSecondTitle? "Sec":"Hour";
                         anchors.horizontalCenter: hoursTumbler.horizontalCenter;
-//                        font.bold: true;
-                        visible: setSingleTumbler?false:true;
+                        visible: setShowSecondTitle?true:false;
                         font.pointSize: 15;
                         font.family: gFontFamily;
                         color:cTxt_button;//themeDarkMode? "#353436": "black";
@@ -153,9 +188,8 @@ Item
                 Text
                 {
                     text: ":";
-                    //anchors.verticalCenter: parent.verticalCenter;
                     anchors.top:parent.top;
-                    anchors.topMargin: parent.height/2.20;
+                    anchors.topMargin: parent.height/3;
                     font.bold: true;
                     visible: setSingleTumbler?false:true;
                     font.pointSize: 30;
@@ -178,7 +212,6 @@ Item
                     {
                         text: "Min";
                         anchors.horizontalCenter: minutesTumbler.horizontalCenter;
-//                        font.bold: true;
                         visible: setSingleTumbler?false:true;
                         font.pointSize: 15;
                         font.family: gFontFamily;
@@ -190,9 +223,8 @@ Item
                 {
                     text: ":";
                     visible: setSingleTumbler?false:true;
-//                    anchors.verticalCenter: parent.verticalCenter;
                     anchors.top:parent.top;
-                    anchors.topMargin: parent.height/2.20;
+                    anchors.topMargin: parent.height/3;
                     font.bold: true;
                     font.pointSize: 30;
                     color:cTxt_button;//themeDarkMode? "#353436": "black";
@@ -225,4 +257,63 @@ Item
             }
         }
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+    Rectangle
+    {
+        id:root;
+        anchors.fill: parent;
+        color:cBG;
+        Rectangle
+        {
+            id:titleTumblers;
+            width: parent.width;
+            height: 35;
+            color:cBG_Unknown;
+            anchors.top: root.top;
+//            anchors.horizontalCenter: parent.horizontalCenter;
+            Text
+            {
+                id: textTitle;
+                text: setTextTitle;
+                font.family: gFontFamily;
+                font.pointSize: 20;
+                font.bold: true;
+                color:cTxt_button;
+                anchors.verticalCenter: parent.verticalCenter;
+                anchors.left:parent.left;
+//                anchors.leftMargin: 15;
+            }
+
+        }
+
+
+        Rectangle
+        {
+            anchors.fill: parent;
+            anchors.top: titleTumblers.bottom;
+            anchors.topMargin: 35;
+//            border.width: 0.50;
+            color:cBG_Unknown;
+
+        }
+    }
+
+    */
 }
