@@ -398,7 +398,7 @@ Item
                 myCombobox.btnCancel();
             }
         }
-        MyComboBox
+        MyComboBox //#BUG
         {
             id:myCombobox;
             visible: false;

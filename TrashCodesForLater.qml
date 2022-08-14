@@ -862,4 +862,94 @@ Item
 //            }
 
 
+//------------------------------------------------------------------------------------------------------- from Timers.qml
+//import QtQuick 2.15
+//import QtQuick.Controls 2.15
+//import "theControls"
+//import "thePages"
+//import "thePages/theTimer"
+////import "theScripts/updateIndicator.js" as uIndicator
 
+//Item
+//{
+//    property int setLunchIndex: 2;
+//    anchors.fill: parent;
+//    clip:true;
+//    Rectangle
+//    {
+//        id:root;
+//        anchors.fill: parent;
+//        color:cBG;
+
+//        SwipeView
+//        {
+//            id:timersSwiper;
+//            anchors.fill: parent;
+////            clip:true;
+//            anchors.top: timersIndicator.bottom;
+//            currentIndex: setLunchIndex;
+//            Item
+//            {
+//                id:baseSingleTimer;
+//            }
+//            Item
+//            {
+
+//            }
+//            Item
+//            {
+//                id:baseSportTimer;
+
+//            }
+
+
+//        }
+
+////        MyTimerIndicator
+////        {
+////            id:timersIndicator;
+////            myIndicatorIndexDText: "Single";
+////            myIndicatorIndexAText: "Multi";
+////            myIndicatorIndexBText: "Sport";
+////            setWidth: indexesWidth*3.30;
+////            indexesRadius:25;
+////            setBGcolor: cBG_Unknown;
+////            indexesHeight: 70/1.50;
+////            setLabelTopMargin:indexesHeight/100*32;
+////            setLabelFontSize:12;
+////            myIndicatorIndex:timersSwiper.currentIndex;
+////            onIndex_d_clicked:
+////            {
+////                timersSwiper.setCurrentIndex(0);
+////            }
+////            onIndex_a_clicked:
+////            {
+////                timersSwiper.setCurrentIndex(1);
+////            }
+////            onIndex_b_clicked:
+////            {
+////                timersSwiper.setCurrentIndex(2);
+////            }
+////        }
+
+
+
+//    }
+//}
+
+
+
+
+//---------drawCIrcle
+//            function drawMyCircle(obj,_lineWidth ,_color ,_width ,_height, _radius ,_time ,_timeDivide ,_angle=0)
+//            {
+//                obj.beginPath();
+//                obj.lineWidth = _lineWidth;
+//                obj.strokeStyle = _color;
+//                obj.arc(_width,//Width ,
+//                        _height,//Height ,
+//                        (_width/100+_height/100)*_radius,//radius,
+//                        _angle,//angleOffset,
+//                        _time/_timeDivide);//value  //angleOffset + angleSec
+//                obj.stroke();
+//            }

@@ -1,11 +1,13 @@
 import QtQuick 2.15
 import QtQuick.Controls 2.15
-import "../../theControls/canvasDraws/"
+//import "../../theControls/canvasDraws/"
 import "../../theControls/"
 import "../../theScripts/theTimer/sportTimer.js" as ST
 import "../../thePages"
 
-import QtMultimedia 5.15
+
+import QtMultimedia
+
 
 Item
 {
@@ -15,7 +17,6 @@ Item
     signal runTimer;
     signal cancelTimer;
     signal gotoPageDismiss;
-
 
     SoundEffect
     {
@@ -140,7 +141,7 @@ Item
     {
         anchors.fill: parent;
         color:cBG;
-        DrawCircle
+        DrawCircle2
         {
             id:circleHour;
             setLineWidth: setLineWidths[0];
@@ -157,7 +158,7 @@ Item
                 color:cTxt_button;
             }
 
-            DrawCircle
+            DrawCircle2
             {
                 id:circleMinute;
                 setLineWidth: setLineWidths[1];
@@ -165,7 +166,7 @@ Item
                 setRadius: setRadiuses[1];
                 setTime: timePast[1];
                 setTimeDivide: 60;
-                DrawCircle
+                DrawCircle2
                 {
                     id:circleSecond;
                     setLineWidth: setLineWidths[2];
@@ -178,6 +179,11 @@ Item
 
         }
     }
+
+
+
+
+
     MyThreeBottomButtons
     {
         id:sportButtons;
