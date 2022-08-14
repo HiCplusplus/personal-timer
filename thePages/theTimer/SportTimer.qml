@@ -1,9 +1,8 @@
 import QtQuick 2.15
 import QtMultimedia
 import QtQuick.Controls 2.15
-//import "../../theControls/canvasDraws/"
-import "../../theScripts/theTimer/sportTimer.js" as ST
 import "../../theControls"
+import "../../theScripts/theTimer/sportTimer.js" as ST
 import "../../theScripts/theTimer/sportTimerSoundEffects.js" as STsoundEffects
 import "../../theScripts/theTimer/sportTimerSpeech.js" as STspeech
 
@@ -18,7 +17,8 @@ Item
     property variant setTimePerRound: [0,0,10]; //hour, minute, second, to know when is the time, example: if(setTime[0]=== setTimePerRound[0]/2) means we are in half way.
     property variant setBreaks: [0,0,10]; //hour, minute, second
 
-
+    property bool setCountDownBeforeRoundStart: true;
+    property int setSecondsCountDownBeforeRoundStart: 5; //user set/ optional LIMITED INPUT IT MUST MORE THAN ROUND BREAK TIME AND CANT BE LESS OR EQUAL WITH ZERO
 
 
     //proccess data (some of these are for temprary to avoid destory user data. if replace these with orginal, some part of app will calculate/show wrong)
@@ -32,7 +32,7 @@ Item
 
     property int roundOn : 0; //this is flag , to turn off/on break/round turns . 0 means break turn, 1 means round turn
     property int tempSaveRunnigs: 0;//to know when is break , when is round. this is counter in Second timer
-
+    property int tempSCDBRS: setSecondsCountDownBeforeRoundStart;
     property variant setTimes: []; //hour,minute,second (avrage time = rounds+breaks)
     onAvrageBreak_RoundChanged:
     {
@@ -41,6 +41,7 @@ Item
         setTimes[2] = parseInt(ST.addTimes_together(avrageBreak_Round[0],avrageBreak_Round[1],avrageBreak_Round[2],2));
     }
     property bool statusFlagSpeechEntyRunned: false;
+    property bool statusFlagSecondCountDownSaid: false;
 
 
 
@@ -138,6 +139,7 @@ Item
 
     onNotices_breakStopped:
     {
+
     }
 
 
@@ -226,9 +228,87 @@ Item
         source: "";
     }
 
+
     Timer
     {
-        id:waitForSayNumber;
+        id: waitForSayGo;
+        interval: 10; running: false; repeat: true;
+        onTriggered:
+        {
+            if(theSoundSpeech.playing==false)
+            {
+                theSoundSpeech.source = pathToActivedSpeechPack + fileAudio_speech_go;
+                theSoundSpeech.play();
+                waitForSayGo.stop(/////////////////////////////////////////////////////=======================================================);
+                secondTimer.running=true;
+            }
+
+        }
+    }
+
+    Timer
+    {
+        id: waitForSayCountDown;//3 2 1 go
+        interval: 10; running: false; repeat: true;
+        onTriggered:
+        {
+            if(theSoundSpeech.playing==false)
+            {
+
+                if(tempSCDBRS <= 9)
+                {
+                    STspeech.saySingleNumbers(theSoundSpeech,tempSCDBRS);
+                    tempSCDBRS--;
+                    statusFlagSecondCountDownSaid=true;
+                    waitForSayCountDown.stop();
+                    waitForSayGo.running=true;
+                }
+                else if(tempSCDBRS> 9 && tempSCDBRS<=19)
+                {
+                    STspeech.sayTeenNumbers(theSoundSpeech,tempSCDBRS);
+                    tempSCDBRS--;
+                    waitForSayCountDown.stop();
+                    waitForSayGo.running=true;
+                }
+                else
+                {
+                    if(!statusFlagSpeechEntyRunned)
+                    {
+                        STspeech.sayEntyNumber(theSoundSpeech,tempSCDBRS);
+                        statusFlagSpeechEntyRunned=true;
+                    }
+                    if(theSoundSpeech.playing==false)
+                    {
+                            //to know other number example: 80/10=8 8-8=0 0*10=0;    other example: 85/10=8.5-8=0.5*10=5
+                            var tempA = tempSCDBRS/10;
+                            var tempVar = tempA - parseInt(tempA);
+                            tempVar = parseInt(Math.round(tempVar*10));
+                            if(tempVar!==0)
+                            {
+                                STspeech.saySingleNumbers(theSoundSpeech,tempVar);
+                                tempSCDBRS--;
+                                statusFlagSpeechEntyRunned=false;
+                                waitForSayCountDown.stop();
+                                waitForSayGo.running =true;
+                            }
+                            else
+                            {
+                                tempSCDBRS--;
+                                statusFlagSpeechEntyRunned=false;
+                                waitForSayCountDown.stop();
+                                waitForSayGo.running =true;
+                            }
+                    }
+                }
+
+
+            }
+        }
+    }
+
+    Timer
+    {
+        id:waitForSayNumber; //for rounds
         interval: 10; running: false; repeat: true;
         onTriggered:
         {
@@ -259,16 +339,18 @@ Item
                     {
                         //to know other number example: 80/10=8 8-8=0 0*10=0;    other example: 85/10=8.5-8=0.5*10=5
                         var tempA = rou/10;
-                        var tempVar = (rou/10) - parseInt(rou/10);
+                        var tempVar = tempA - parseInt(tempA);
                         tempVar = parseInt(Math.round(tempVar*10));
                         if(tempVar!==0)
                         {
                             STspeech.saySingleNumbers(theSoundSpeech,tempVar);
+                            statusFlagSpeechEntyRunned=false;
                             waitForSayNumber.stop();
                             secondTimer.running =true;
                         }
                         else
                         {
+                            statusFlagSpeechEntyRunned=false;
                             waitForSayNumber.stop();
                             secondTimer.running =true;
                         }
@@ -287,14 +369,29 @@ Item
         {
             ST.updateCircles(justShowCircle,maxCircles,3,cBG_element); //update background color
             //break turn
-            tempSaveRunnigs++; //second counter (all value Hour/Minute/Second converted to Second) for example
+            tempSaveRunnigs++; //second counter (all value Hour/Minute/Second converted to Second) for example 10minute and 10 -> 600seconds + 10 seconds = 610sec
+
             if(roundOn==0)
             {
+                //Second CountDown before round start. added here
+
+                if(setCountDownBeforeRoundStart)
+                {
+                    if(tempSaveRunnigs >= (((setBreaks[0]*60) + setBreaks[1])*60 + setBreaks[2] )- setSecondsCountDownBeforeRoundStart+1) //value +2 because that were count 3 2 . +1 -> 3 2 1 and +1 -> 3 2 1 go -> then other part say round 5.
+                    {
+                        waitForSayCountDown.running=true;
+                        secondTimer.stop();
+                        console.log(setSecondsCountDownBeforeRoundStart+" seconds to round");
+                    }
+                }
+
+
+
                 if(tempSaveRunnigs >= ((setBreaks[0]*60) + setBreaks[1])*60 + setBreaks[2]) //(hour*60=> miunute + main-minute)*60 => seconds
                 {
                     secondTimer.running=false;
                     mainTimer.running=true;
-                    notices_breakStopped();
+//                    notices_breakStopped();
                     tempBreaks--;
                 }
                 else
@@ -308,6 +405,7 @@ Item
                     secondTimer.running=false;
                     mainTimer.running=true;
                     notices_roundStopped();
+                    tempSCDBRS = setSecondsCountDownBeforeRoundStart;
                     tempRounds--;
                 }
                 else
@@ -343,7 +441,7 @@ Item
                     else
                         minusPast_MinuteSecond = maxCircles/60; //this should be maxCircle/minusPast_MinuteSecond, isnt because the second is morethan 60s so circle will divide by 60, 1minte=60sec
 
-                    notices_breakStarted();
+//                    notices_breakStarted();
                     secondTimer.running = true;
                     mainTimer.running = false;
                 }
@@ -432,7 +530,7 @@ Item
         //setCenterButtonCircleStyled:true;
         setCenterButtonText: "";
         setLeftButtonText: setSpeechOn ? "Speech" : "";
-        setLeftButtonIcon: path_to_menuIcons + fileIcon_Mute;
+        setLeftButtonIcon: path_to_menuIcons + fileIcon_Unmute;
         onLeftButtonPressed:
         {
             if(setLeftButtonIcon == path_to_menuIcons + fileIcon_Mute)

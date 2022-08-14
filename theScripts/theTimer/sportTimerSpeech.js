@@ -203,3 +203,13 @@ function sayTeenNumbers(soundDevice,roundNumber)
     }
 
 }
+
+
+function sayDymanicThings(soundDevice,sayTimer,fileName)
+{
+    if(soundDevice.running==false)
+    {
+        soundDevice.source = pathToActivedSpeechPack + fileName;
+        soundDevice.play();
+    }
+}
