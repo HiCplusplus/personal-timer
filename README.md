@@ -18,9 +18,10 @@
  
 ____________________________________
 
- ## up comming
- - 0.6.6 -> Sound Effect/Speech pause & resume <b>WORKING ON</b>
- - 0.6.7 -> Style sportTimer SetPage (Count Down Before Round Starts & Turn off/on SoundEffects & Turn off/on SoundSpeech) 
+ ## up comming  <b>WORKING ON</b>
+ - 0.6.6 -> Style sportTimer SetPage (Count Down Before Round Starts & Turn off/on SoundEffects & Turn off/on SoundSpeech) 
+ - 0.6.7 -> Sound Effect/Speech pause & resume
+ - ...
  - 0.7.0 -> multi timer
  - how to save in android local files, or local database
  - Calender PickDay (multi month day picks)
