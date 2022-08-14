@@ -1,7 +1,7 @@
 import QtQuick 2.15
-import QtMultimedia 5.15
+import QtMultimedia
 import QtQuick.Controls 2.15
-import "../../theControls/canvasDraws/"
+//import "../../theControls/canvasDraws/"
 import "../../theScripts/theTimer/sportTimer.js" as ST
 import "../../theControls"
 import "../../theScripts/theTimer/sportTimerSoundEffects.js" as STsoundEffects
@@ -46,16 +46,13 @@ Item
 
 
     //for sound service, user options
-//    property bool setVibrationOn: false;
-//    property bool setNotificationOn: false;
     property bool setSpeechOn: true;
     property bool setSpeechForBreaks:true;
     property bool setSpeechForRounds: true;
     property bool setSpeechForStartStop: true;
-    //cheer , go , time remaning, left will come soon
 
-//    property variant setSpeechPlayEvery: [0,0,10];//hour , minute , second.
-//    property variant setSpeechPlayWhen: ["Rounds & rests & letsgo","Rounds & rests","Only rounds","Only rests"];
+
+
     property variant speechPacks: [directory_SoundSpeech_PackA];//,"male"];
     property int speechPackActived: 0;
     property string pathToActivedSpeechPack: path_to_sportTimer_SoundSpeech + speechPacks[speechPackActived];
@@ -103,7 +100,6 @@ Item
     signal notices_roundStopped;
     onNotices_roundStarted:
     {
-        console.log("round start");
         if(setSoundEffectsOn && setSoundEffectsForRounds)
         {
             STsoundEffects.playSoundEffect(theSoundEffect,1,2); //parameters: soundEffect id's  ,  status-> (0 stopped/endded) & (1 started/run), model (1 sportTimer) & (2 Round/Set) & (3 Break/Rest)
@@ -119,7 +115,6 @@ Item
     }
     onNotices_roundStopped:
     {
-        console.log("round stop");
         if(setSoundEffectsOn && setSoundEffectsForRounds)
         {
             STsoundEffects.playSoundEffect(theSoundEffect,0,2);
@@ -128,7 +123,6 @@ Item
         {
             STspeech.sayRoundBreak(theSoundSpeech,0);
         }
-
         //speech ## round STOP REMOVED BECAUSE OF SOME REASONS
     }
 
@@ -139,21 +133,11 @@ Item
     signal notices_breakStopped;
     onNotices_breakStarted:
     {
-        console.log("break start");
-//        if(setSoundEffectsOn && setSoundEffectsForBreaks)
-//        {
-//            STsoundEffects.playSoundEffect(theSoundEffect,1,3); //parameters: soundEffect id's  ,  status-> (0 stopped/endded) & (1 started/run), model (1 sportTimer) & (2 Round/Set) & (3 Break/Rest)
-//        }
+
     }
 
     onNotices_breakStopped:
     {
-        console.log("break start");
-//        if(setSoundEffectsOn && setSoundEffectsForBreaks)
-//        {
-//            STsoundEffects.playSoundEffect(theSoundEffect,0,3);
-//        }
-
     }
 
 
@@ -162,7 +146,6 @@ Item
     signal notices_timerStopped;
     onNotices_timerStarted:
     {
-        console.log("timer start");
         if(setSoundEffectsOn && setSoundEffectsForStartStop)
         {
             STsoundEffects.playSoundEffect(theSoundEffect,1,1); //parameters: soundEffect id's  ,  status-> (0 stopped/endded) & (1 started/run), model (1 sportTimer) & (2 Round/Set) & (3 Break/Rest)
@@ -175,7 +158,6 @@ Item
 
     onNotices_timerStopped:
     {
-        console.log("timer stop");
         if(setSoundEffectsOn && setSoundEffectsForStartStop)
         {
             STsoundEffects.playSoundEffect(theSoundEffect,0,1);
@@ -278,14 +260,10 @@ Item
                         //to know other number example: 80/10=8 8-8=0 0*10=0;    other example: 85/10=8.5-8=0.5*10=5
                         var tempA = rou/10;
                         var tempVar = (rou/10) - parseInt(rou/10);
-                        console.log("-- rou="+rou +" rou/10="+tempA+" tempVar="+tempVar+ " tempVar*10="+tempVar*10);
                         tempVar = parseInt(Math.round(tempVar*10));
-                        console.log("++ rou="+rou +" rou/10="+tempA+" tempVar="+tempVar+ " tempVar*10="+tempVar*10);
                         if(tempVar!==0)
                         {
-                            console.log("inside");
                             STspeech.saySingleNumbers(theSoundSpeech,tempVar);
-                            console.log("after");
                             waitForSayNumber.stop();
                             secondTimer.running =true;
                         }
@@ -404,7 +382,7 @@ Item
         anchors.fill: parent;
         color:cBG;
 
-        DrawCircle
+        DrawCircle2 //back line, doing nothing just for beauty
         {
             id:justShowCircle;
             setLineWidth: setLineWidths[0];
@@ -413,7 +391,7 @@ Item
             setTime: maxCircles;
         }
 
-        DrawCircle //other circles termperory removed from here because they didnt work but stored in TrashCodesForLater.qml
+        DrawCircle2 //other circles termperory removed from here because they didnt work but stored in TrashCodesForLater.qml
         {
             id:circleSecond;
             setLineWidth: setLineWidths[0]; //could be [2] but Hour's is better looking

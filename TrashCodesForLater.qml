@@ -953,3 +953,27 @@ Item
 //                        _time/_timeDivide);//value  //angleOffset + angleSec
 //                obj.stroke();
 //            }
+
+
+
+//----sport timer
+//        if(setSoundEffectsOn && setSoundEffectsForBreaks)
+//        {
+//            STsoundEffects.playSoundEffect(theSoundEffect,0,3);
+//        }
+
+
+//        if(setSoundEffectsOn && setSoundEffectsForBreaks)
+//        {
+//            STsoundEffects.playSoundEffect(theSoundEffect,1,3); //parameters: soundEffect id's  ,  status-> (0 stopped/endded) & (1 started/run), model (1 sportTimer) & (2 Round/Set) & (3 Break/Rest)
+//        }
+
+
+//    property variant setSpeechPlayEvery: [0,0,10];//hour , minute , second.
+//    property variant setSpeechPlayWhen: ["Rounds & rests & letsgo","Rounds & rests","Only rounds","Only rests"];
+
+//    property bool setVibrationOn: false;
+//    property bool setNotificationOn: false;
+//cheer , go , time remaning, left will come soon
+//console.log("-- rou="+rou +" rou/10="+tempA+" tempVar="+tempVar+ " tempVar*10="+tempVar*10);
+//console.log("++ rou="+rou +" rou/10="+tempA+" tempVar="+tempVar+ " tempVar*10="+tempVar*10);
