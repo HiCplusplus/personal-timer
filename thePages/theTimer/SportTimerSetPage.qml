@@ -119,6 +119,8 @@ Item
                                     setUpCounDownBeforeRoundStart.height=0;
                                     setUpCounDownBeforeRoundStart.visible = cdBeforeSwitch.setStatusSwitch;
                                 }
+                                else
+                                    statusSpeech  = soundSpeechSwitch.setStatusSwitch;
                             }
                         }
                     }
@@ -298,6 +300,7 @@ Item
                     height: 310;
                     anchors.horizontalCenter: parent.horizontalCenter;
                     anchors.top:boxSwitchSoundEffect.bottom;
+                    anchors.topMargin: 50;
                     color:cBG_Unknown;
                     MyThreepleTumbler
                     {

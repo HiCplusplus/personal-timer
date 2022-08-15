@@ -388,10 +388,8 @@ Item
                     {
                         waitForSayCountDown.running=true;
                         secondTimer.stop();
-//                        console.log(setSecondsCountDownBeforeRoundStart+" seconds to round");
                     }
                 }
-
 
 
                 if(tempSaveRunnigs >= ((setBreaks[0]*60) + setBreaks[1])*60 + setBreaks[2]) //(hour*60=> miunute + main-minute)*60 => seconds
@@ -589,14 +587,16 @@ Item
         {
             if(setCenterButtonText=="Pause")
             {
-                mainTimer.running=false;
-                secondTimer.running=false;
+                mainTimer.stop();
+                secondTimer.stop();
+                waitForSayCountDown.stop();
+                waitForSayNumber.stop();
                 setCenterButtonText="Resume";
             }
             else
             {
                 mainTimer.running=true;
-                secondTimer.running=true;
+//                secondTimer.running=true;
                 setCenterButtonText="Pause";
             }
         }
