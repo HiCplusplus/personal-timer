@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
-<!-- Written by QtCreator 8.0.0, 2022-08-15T02:31:46. -->
+<!-- Written by QtCreator 8.0.0, 2022-08-15T04:34:37. -->
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
@@ -1078,6 +1078,7 @@
     <valuelist type="QVariantList" key="CustomOutputParsers"/>
     <value type="int" key="PE.EnvironmentAspect.Base">0</value>
     <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">timer2</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.AndroidRunConfiguration:timer2</value>
     <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">timer2</value>
     <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
@@ -1442,6 +1443,7 @@
     <valuelist type="QVariantList" key="CustomOutputParsers"/>
     <value type="int" key="PE.EnvironmentAspect.Base">0</value>
     <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">timer2</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.AndroidRunConfiguration:timer2</value>
     <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">timer2</value>
     <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
@@ -1806,6 +1808,7 @@
     <valuelist type="QVariantList" key="CustomOutputParsers"/>
     <value type="int" key="PE.EnvironmentAspect.Base">0</value>
     <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">timer2</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.AndroidRunConfiguration:timer2</value>
     <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">timer2</value>
     <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
