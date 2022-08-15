@@ -53,4 +53,5 @@ ____________________________________
     https://ideone.com/aDwLCM for how to find calender Date to DayOfWeek formual.
     https://aparat.com/v/7LUOt?playlist=66791 for Qml Tutorial.
     https://gist.github.com/joseluisq/dc205abcc9733630639eaf43e267d63f for how to add two date together.
+    https://fecub.wordpress.com/2016/01/08/save-your-qt-quick-app-settings-easily-with-localstorage/ for how to save localdata
     
