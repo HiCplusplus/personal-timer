@@ -325,15 +325,10 @@ Window
                                 tempMin += breakValues[1];
                                 var tempSec = breakValues[2];
                                 tempSec += tempMin * 60;
-                                console.log(secondsCDBeforeRoundSTart);
                                 if(secondsCDBeforeRoundSTart === 0 || secondsCDBeforeRoundSTart >= tempSec)
-                                {
                                     sportTimer.setSecondsCountDownBeforeRoundStart = 3;
-                                }
                                 else
-                                {
                                     sportTimer.setSecondsCountDownBeforeRoundStart = secondsCDBeforeRoundSTart;
-                                }
 
                             }
 

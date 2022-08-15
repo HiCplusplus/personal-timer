@@ -5,7 +5,6 @@
         <file>StopWatch.qml</file>
         <file>theScripts/updateCountUp.js</file>
         <file>theScripts/controllerSpingBoxCountDown.js</file>
-        <file>theControls/MyAutoValue_Increase_Decrease.qml</file>
         <file>theControls/MyThreeBottomButtons.qml</file>
         <file>theScripts/updateCountDown.js</file>
         <file>Alarm.qml</file>
@@ -20,7 +19,6 @@
         <file>theControls/MyWeekDayPicker.qml</file>
         <file>theControls/MySlider.qml</file>
         <file>theControls/MyAlarmContentStyle.qml</file>
-        <file>theControls/MyAutoIncreaseValue.qml</file>
         <file>theScripts/updateIndicator.js</file>
         <file>thePictures/white-25px/icon-stopwatch.png</file>
         <file>thePictures/white-25px/icon-countdown.png</file>
@@ -32,7 +30,6 @@
         <file>thePictures/white-25px/icon-calender.png</file>
         <file>theControls/MyComboBox.qml</file>
         <file>theControls/MyShadowForFocus.qml</file>
-        <file>theControls/MyAutoDecreaseValue.qml</file>
         <file>thePages/CalenderPage.qml</file>
         <file>theControls/MyCalender.qml</file>
         <file>thePictures/dark-25px/icon-back-next.png</file>
