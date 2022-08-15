@@ -9,18 +9,6 @@ Item
     {
         id:root;
         anchors.fill: parent;
-        Rectangle
-        {
-            id:baseIndicatorSettings;
-            MyTimerIndicator
-            {
 
-            }
-
-        }
-        SwipeView
-        {
-
-        }
     }
 }
