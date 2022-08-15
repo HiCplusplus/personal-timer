@@ -1,7 +1,7 @@
 # pLarm
 
 ## Features Log since July 20, 2022.
- - 0.1.0 StopWatch
+ - 0.1.0 -> StopWatch
  - 0.2.0 -> Dark/Light Mode
  - 0.3.0 -> Alarm View + SetPage 
  - 0.4.0 -> Calender View + One-DayPick + Multi-DayPick + WeekPick
