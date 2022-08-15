@@ -18,14 +18,16 @@
  
 ____________________________________
 
- ## up comming  <b>WORKING ON</b>
- - ...
- - 0.7.0 -> multi timer
- - how to save in android local files, or local database
+ ## up comming  
+ - 0.7.0 -> connect Alarm and Alarm-set-page with database <b>WORKING ON</b>
+ - settings page
+ - multi timer
  - Calender PickDay (multi month day picks)
  - Calender (Shadow DayCircle)
  - Alarm 
- - Background application (with local data save)
+ - Dark/Light mode save on database.
+ - Create routines
+ - Background application 
 
 
 
@@ -35,11 +37,11 @@ ____________________________________
 
 
 
-### NOTES FOR LATER
-Alarm set page
-Text alarm name when button save clicked disable/.. to avoid leave pointer text on all app
-- sportTime SPEECH FIX say (READ, GO)
-- SportTimer SounEffects selectable to pick SoundPack, SoundSpeech selectable to pick SpeechPack;
+### NOTES FOR FUTURE
+- Alarm set page : Text alarm name when button save clicked disable/.. to avoid leave pointer text on all app
+- sportTime : SPEECH FIX say (READ, GO)
+- SportTimer : SounEffects selectable to pick SoundPack, SoundSpeech selectable to pick SpeechPack;
+- sportTimer : report with speeech remaining/left 
 
 ____________________________________
 ## Thanks to :<br/>
