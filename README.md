@@ -19,15 +19,15 @@
 ____________________________________
 
  ## up comming  
- - 0.7.0 -> connect Alarm and Alarm-set-page with database <b>WORKING ON</b>
- - settings page
- - multi timer
- - Calender PickDay (multi month day picks)
- - Calender (Shadow DayCircle)
- - Alarm 
- - Dark/Light mode save on database.
- - Create routines
- - Background application 
+ - 0.6.8 -> connect Alarm and Alarm-set-page with database <b>WORKING ON</b>
+ - 0.6.9 
+ - 0.7.0 settings page
+ - 0.7.1 Dark/Light mode save on database.
+ - 0.8.0 multi timer
+ - 0.9.0 Calender PickDay (multi month day picks)
+ - 0.9.1 Calender (Shadow DayCircle) 
+ - 0.10.0 routine and tasks...
+ - 1.0.0 -> Background application 
 
 
 
