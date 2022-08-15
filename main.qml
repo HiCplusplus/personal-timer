@@ -36,7 +36,7 @@ Window
 
     property int iconWidthAndHeight: mainWindow.width<700? 40:50; //for button iconBackToHome &  iconSettings
     property int fontSizeTitles: mainWindow.width<700 ? 45:65;
-    property int swipeLunchIndex: 3;
+    property int swipeLunchIndex: 5;
 
 
     //- - - - - - - - - - - - - - - - - - - - - - set theme, default light mode colors
@@ -319,7 +319,28 @@ Window
 
 
                             sportTimer.setCountDownBeforeRoundStart = statusCDBeforeRoundStart;
-                            sportTimer.setSecondsCountDownBeforeRoundStart = secondsCDBeforeRoundSTart;
+                            if(statusCDBeforeRoundStart) //to avoid invalid value , == 0 or >= breaks values convert to second
+                            {
+                                var tempMin = breakValues[0] * 60;
+                                tempMin += breakValues[1];
+                                var tempSec = breakValues[2];
+                                tempSec += tempMin * 60;
+                                console.log(secondsCDBeforeRoundSTart);
+                                if(secondsCDBeforeRoundSTart === 0 || secondsCDBeforeRoundSTart >= tempSec)
+                                {
+                                    sportTimer.setSecondsCountDownBeforeRoundStart = 3;
+                                }
+                                else
+                                {
+                                    sportTimer.setSecondsCountDownBeforeRoundStart = secondsCDBeforeRoundSTart;
+                                }
+
+                            }
+
+
+                            sportTimer.setSpeechOn = statusSpeech;
+                            sportTimer.setSoundEffectsOn =statusSoundEffect;
+
                             sportTimer.startTheMainTimer();
 
                         }

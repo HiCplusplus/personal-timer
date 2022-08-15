@@ -12,28 +12,25 @@ Item
     clip:true;
     anchors.fill: parent;
     //user set data
-    property int setRounds: 4;
+    property int setRounds: 4; //user FILL
 
-    property variant setTimePerRound: [0,0,10]; //hour, minute, second, to know when is the time, example: if(setTime[0]=== setTimePerRound[0]/2) means we are in half way.
-    property variant setBreaks: [0,0,10]; //hour, minute, second
+    property variant setTimePerRound: [0,0,10]; //user FILL //hour, minute, second, to know when is the time, example: if(setTime[0]=== setTimePerRound[0]/2) means we are in half way.
+    property variant setBreaks: [0,0,10]; //user FILL  //hour, minute, second
 
-    property bool setCountDownBeforeRoundStart: true;
-    property int setSecondsCountDownBeforeRoundStart: 5; //user set/ optional LIMITED INPUT IT MUST MORE THAN ROUND BREAK TIME AND CANT BE LESS OR EQUAL WITH ZERO
-
-
-
-    property bool setSpeechOn: true;
-    property bool setSpeechForBreaks:true;
-    property bool setSpeechForRounds: true;
-    property bool setSpeechForStartStop: true;
-    property int speechPackActived: 0;
+    property bool setCountDownBeforeRoundStart: true; //USER FILL
+    property int setSecondsCountDownBeforeRoundStart; //user FILL  // optional LIMITED INPUT IT MUST MORE THAN ROUND BREAK TIME AND CANT BE LESS OR EQUAL WITH ZERO
 
 
-    property bool setSoundEffectsOn: false;//false;
-    property bool setSoundEffectsForBreaks: false;
-    property bool setSoundEffectsForRounds: false;
-    property bool setSoundEffectsForStartStop: false;
-    property int soundPackActived: 0;
+    property bool setSpeechOn: false; //user FILL
+    property bool setSpeechForBreaks:true; //later add option user turn off/on this
+    property bool setSpeechForRounds: true; //later add option user turn off/on this
+    property bool setSpeechForStartStop: true; //later add option user turn off/on this
+
+
+    property bool setSoundEffectsOn: false; //user FILL
+    property bool setSoundEffectsForBreaks: true; //later add option user turn off/on this
+    property bool setSoundEffectsForRounds: true; //later add option user turn off/on this
+    property bool setSoundEffectsForStartStop: true; //later add option user turn off/on this
 
 
 
@@ -67,6 +64,7 @@ Item
 
     property variant speechPacks: [directory_SoundSpeech_PackA];//,"male"];
     property string pathToActivedSpeechPack: path_to_sportTimer_SoundSpeech + speechPacks[speechPackActived];
+    property int speechPackActived: 0;
     onSpeechPackActivedChanged:
     {
         pathToActivedSpeechPack = path_to_sportTimer_SoundSpeech + speechPacks[speechPackActived];
@@ -76,6 +74,7 @@ Item
 
     property variant soundEffectsPacks: [directory_SoundEffect_PackA];//,directory_soundPackB];
     property string pathToActivedSoundPack: path_to_sportTimer_SoundEffect + soundEffectsPacks[soundPackActived];
+    property int soundPackActived: 0;
     onSoundPackActivedChanged:
     {
         pathToActivedSoundPack = path_to_sportTimer_SoundEffect + soundEffectsPacks[soundPackActived];
@@ -389,10 +388,8 @@ Item
                     {
                         waitForSayCountDown.running=true;
                         secondTimer.stop();
-//                        console.log(setSecondsCountDownBeforeRoundStart+" seconds to round");
                     }
                 }
-
 
 
                 if(tempSaveRunnigs >= ((setBreaks[0]*60) + setBreaks[1])*60 + setBreaks[2]) //(hour*60=> miunute + main-minute)*60 => seconds
@@ -590,14 +587,16 @@ Item
         {
             if(setCenterButtonText=="Pause")
             {
-                mainTimer.running=false;
-                secondTimer.running=false;
+                mainTimer.stop();
+                secondTimer.stop();
+                waitForSayCountDown.stop();
+                waitForSayNumber.stop();
                 setCenterButtonText="Resume";
             }
             else
             {
                 mainTimer.running=true;
-                secondTimer.running=true;
+//                secondTimer.running=true;
                 setCenterButtonText="Pause";
             }
         }
@@ -609,7 +608,7 @@ Item
             sportTimerEnded();
         }
 
-        setRightButtonText: "Settings";
+        setRightButtonText: "";//"Settings";
         setRightButtonIcon: path_to_menuIcons + fileIcon_Settings;
 
 
