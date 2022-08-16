@@ -14,15 +14,15 @@
  - 0.6.5 -> sportTimer soundEffects & soundSpeech Mute/Unmute
  - 0.6.6 -> Style sportTimer SetPage (Count Down Before Round Starts & Turn off/on SoundEffects & Turn off/on SoundSpeech) 
  - 0.6.7 -> Sound Effect/Speech pause & resume
+ - 0.6.8 Dark/Light mode save on database.
 
  
 ____________________________________
 
  ## up comming  
- - 0.6.8 -> connect Alarm and Alarm-set-page with database <b>WORKING ON</b>
+ - 0.6.9 -> connect Alarm and Alarm-set-page with database <b>WORKING ON</b>
  - 0.6.9 
  - 0.7.0 settings page
- - 0.7.1 Dark/Light mode save on database.
  - 0.8.0 multi timer
  - 0.9.0 Calender PickDay (multi month day picks)
  - 0.9.1 Calender (Shadow DayCircle) 
