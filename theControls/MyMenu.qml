@@ -1,4 +1,5 @@
-import QtQuick 2.0
+import QtQuick 2.15
+import "../theScripts/saveTheme.js" as SaveTheme
 
 Item
 {
@@ -13,7 +14,7 @@ Item
 
     onSignalDarkMode:
     {
-
+        console.log("fromsignal="+themeDarkMode);
         if(!themeDarkMode)
         {
             themeDarkMode = true;
@@ -30,6 +31,7 @@ Item
             cBG_Unknown= "transparent";
             cUnknown = "white";//o99AAB5k
             path_to_menuIcons= directory_Icons + direcotry_WhiteIcons;
+            SaveTheme.set("darkmode", 1);
         }
         else
         {
@@ -46,11 +48,9 @@ Item
             gFontFamily="Courier";
             cBG_Unknown= "transparent";
             cUnknown= "white";
-            themeDarkMode = false;
             path_to_menuIcons= directory_Icons + direcotry_BlackIcons;
+            SaveTheme.set("darkmode", 0);
         }
-
-
     }
 
 

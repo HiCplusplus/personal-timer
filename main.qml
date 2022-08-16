@@ -6,7 +6,7 @@ import "theControls"
 import "thePages"
 import QtQuick.Controls.Material 2.15
 import "thePages/theTimer"
-
+import "theScripts/saveTheme.js" as SaveTheme
 Window
 {
 //    Material.theme:Material.Dark
@@ -14,10 +14,10 @@ Window
 
 
     id: mainWindow;
-//    width: Screen.width;
-//    height: Screen.height;
-    width:720/2+10;
-    height:1339/1.7;
+    width: Screen.width;
+    height: Screen.height;
+//    width:720/2+10;
+//    height:1339/1.7;
     visible: true;
     property string appTitle: "pLarm";
 
@@ -54,6 +54,55 @@ Window
     property color cBG_Unknown: "transparent";
     property color cUnknown: "white";
     Material.foreground: cTxt_button;
+
+
+
+    //load theme Mode:
+    Component.onCompleted:
+    {
+        terminalPhone.visible=true;
+        textTerminalPhone.text = SaveTheme.get("darkmode", "Hello World");
+        if(SaveTheme.get("darkmode", "Hello World")==='1' || SaveTheme.get("darkmode", "Hello World")=== 1)
+        {
+            textTerminalPhone.text += "i'm in ===1 geter";
+            themeDarkMode = true;
+            cTxt_normal = "black";
+            cTxt_title = "#3E386C";
+            cBG = "#23272A";//darked
+//            cBG_menu = "#23272A";//"#2C2F33";//darked bad
+            cBG_element= "#565578";//darked
+            cTxt_button = "white";//darked
+            cBG_button = "#7289DA";//darked
+            cBG_button_activated= "#7289DA";//darked
+            cBG_button_deactivated= "#313447";//"gray";//darked
+            gFontFamily="Courier";//ok
+            cBG_Unknown= "transparent";
+            cUnknown = "white";//o99AAB5k
+            path_to_menuIcons= directory_Icons + direcotry_WhiteIcons;
+            appTitle = "DARK LOADED";
+        }
+        else
+        {
+            textTerminalPhone.text += "i'm in !==1 geter";
+            themeDarkMode = false;
+            cTxt_normal = "black";
+            cTxt_title = "#3E386C";
+            cBG = "#dedede";
+//            cBG_menu = "#dedede";
+            cBG_element= "white";
+            cTxt_button = "black";
+            cBG_button = "#B178FF";
+            cBG_button_activated= "#B178FF";
+            cBG_button_deactivated= "#dcd3e8";
+            gFontFamily="Courier";
+            cBG_Unknown= "transparent";
+            cUnknown= "white";
+            path_to_menuIcons= directory_Icons + direcotry_BlackIcons;
+            appTitle ="WHITE LOALDED";
+        }
+    }
+
+
 
 
     //- - - - - - - - - - - - - - - - - - - - - - icons
@@ -414,4 +463,32 @@ Window
         visible: false;
         z:4;
     }
+
+    Rectangle
+    {
+        id:terminalPhone;
+        width: parent.width;
+        height: 100;
+        anchors.bottom:parent.bottom;
+        anchors.horizontalCenter: parent.horizontalCenter;
+        color:"gray";
+        visible:true;
+        Text
+        {
+            id:textTerminalPhone;
+            anchors.centerIn:parent;
+            text: "empty";
+            color:"black";
+            font.pointSize: 20;
+        }
+        MouseArea
+        {
+            anchors.fill:parent;
+            onClicked:
+            {
+                terminalPhone.visible=false;
+            }
+        }
+    }
+
 }//end of window

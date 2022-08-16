@@ -111,6 +111,8 @@
         <file>theSounds/sportTimer/sound-speech/sound-pack-male-joey/numbers/2.wav</file>
         <file>theSounds/sportTimer/sound-speech/sound-pack-male-joey/numbers/1.wav</file>
         <file>theControls/DrawCircle2.qml</file>
+        <file>theScripts/saveTheme.js</file>
+        <file>deployment.pri</file>
     </qresource>
     <qresource prefix="/thePictures"/>
 </RCC>
