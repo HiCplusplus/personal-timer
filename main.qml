@@ -14,10 +14,10 @@ Window
 
 
     id: mainWindow;
-    width: Screen.width;
-    height: Screen.height;
-//    width:720/2+10;
-//    height:1339/1.7;
+//    width: Screen.width;
+//    height: Screen.height;
+    width:720/2+10;
+    height:1339/1.7;
     visible: true;
     property string appTitle: "pLarm";
 
@@ -60,11 +60,8 @@ Window
     //load theme Mode:
     Component.onCompleted:
     {
-        terminalPhone.visible=true;
-        textTerminalPhone.text = SaveTheme.get("darkmode", "Hello World");
         if(SaveTheme.get("darkmode", "Hello World")==='1' || SaveTheme.get("darkmode", "Hello World")=== 1)
         {
-            textTerminalPhone.text += "i'm in ===1 geter";
             themeDarkMode = true;
             cTxt_normal = "black";
             cTxt_title = "#3E386C";
@@ -79,11 +76,9 @@ Window
             cBG_Unknown= "transparent";
             cUnknown = "white";//o99AAB5k
             path_to_menuIcons= directory_Icons + direcotry_WhiteIcons;
-            appTitle = "DARK LOADED";
         }
         else
         {
-            textTerminalPhone.text += "i'm in !==1 geter";
             themeDarkMode = false;
             cTxt_normal = "black";
             cTxt_title = "#3E386C";
@@ -98,7 +93,6 @@ Window
             cBG_Unknown= "transparent";
             cUnknown= "white";
             path_to_menuIcons= directory_Icons + direcotry_BlackIcons;
-            appTitle ="WHITE LOALDED";
         }
     }
 
@@ -464,31 +458,31 @@ Window
         z:4;
     }
 
-    Rectangle
-    {
-        id:terminalPhone;
-        width: parent.width;
-        height: 100;
-        anchors.bottom:parent.bottom;
-        anchors.horizontalCenter: parent.horizontalCenter;
-        color:"gray";
-        visible:true;
-        Text
-        {
-            id:textTerminalPhone;
-            anchors.centerIn:parent;
-            text: "empty";
-            color:"black";
-            font.pointSize: 20;
-        }
-        MouseArea
-        {
-            anchors.fill:parent;
-            onClicked:
-            {
-                terminalPhone.visible=false;
-            }
-        }
-    }
+//    Rectangle
+//    {
+//        id:terminalPhone;
+//        width: parent.width;
+//        height: 100;
+//        anchors.bottom:parent.bottom;
+//        anchors.horizontalCenter: parent.horizontalCenter;
+//        color:"gray";
+//        visible:true;
+//        Text
+//        {
+//            id:textTerminalPhone;
+//            anchors.centerIn:parent;
+//            text: "empty";
+//            color:"black";
+//            font.pointSize: 20;
+//        }
+//        MouseArea
+//        {
+//            anchors.fill:parent;
+//            onClicked:
+//            {
+//                terminalPhone.visible=false;
+//            }
+//        }
+//    }
 
 }//end of window
