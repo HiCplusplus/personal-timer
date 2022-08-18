@@ -6,6 +6,8 @@ import "theControls"
 import "thePages"
 import QtQuick.Controls.Material 2.15
 import "thePages/theTimer"
+import "theScripts/saveSettings.js" as SaveTheme
+
 
 Window
 {
@@ -54,6 +56,56 @@ Window
     property color cBG_Unknown: "transparent";
     property color cUnknown: "white";
     Material.foreground: cTxt_button;
+
+
+    // - - - component for save the themeDarkLight
+
+    //load theme Mode:
+    Component.onCompleted:
+    {
+        if(SaveTheme.get("darkmode", "Hello World")==='1' || SaveTheme.get("darkmode", "Hello World")=== 1)
+        {
+            themeDarkMode = true;
+            cTxt_normal = "black";
+            cTxt_title = "#3E386C";
+            cBG = "#23272A";//darked
+//            cBG_menu = "#23272A";//"#2C2F33";//darked bad
+            cBG_element= "#565578";//darked
+            cTxt_button = "white";//darked
+            cBG_button = "#7289DA";//darked
+            cBG_button_activated= "#7289DA";//darked
+            cBG_button_deactivated= "#313447";//"gray";//darked
+            gFontFamily="Courier";//ok
+            cBG_Unknown= "transparent";
+            cUnknown = "white";//o99AAB5k
+            path_to_menuIcons= directory_Icons + direcotry_WhiteIcons;
+        }
+        else
+        {
+            themeDarkMode = false;
+            cTxt_normal = "black";
+            cTxt_title = "#3E386C";
+            cBG = "#dedede";
+//            cBG_menu = "#dedede";
+            cBG_element= "white";
+            cTxt_button = "black";
+            cBG_button = "#B178FF";
+            cBG_button_activated= "#B178FF";
+            cBG_button_deactivated= "#dcd3e8";
+            gFontFamily="Courier";
+            cBG_Unknown= "transparent";
+            cUnknown= "white";
+            path_to_menuIcons= directory_Icons + direcotry_BlackIcons;
+        }
+    }
+
+
+
+
+
+
+
+
 
 
     //- - - - - - - - - - - - - - - - - - - - - - icons
