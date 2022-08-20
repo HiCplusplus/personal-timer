@@ -1,5 +1,8 @@
 # pLarm
 
+![screen-from-sportTimer](http://mewware.com/mewware/p-screenshots/v0.6.7/Screenshot%20from%202022-08-15%2003-28-39.png)
+![screen-from-sportTimer](http://mewware.com/mewware/p-screenshots/v0.6.7/Screenshot%20from%202022-08-15%2003-26-39.png)
+
 ## Features Log since July 20, 2022.
  - 0.1.0 -> StopWatch
  - 0.2.0 -> Dark/Light Mode
@@ -19,9 +22,6 @@
  
 ____________________________________
 
-
-![screen-from-sportTimer](http://mewware.com/mewware/p-screenshots/v0.6.7/Screenshot%20from%202022-08-15%2003-28-39.png)
-![screen-from-sportTimer](http://mewware.com/mewware/p-screenshots/v0.6.7/Screenshot%20from%202022-08-15%2003-26-39.png)
 
 ![calendar](http://mewware.com/mewware/p-screenshots/0.6.3/photo_6035338519251107865_y.jpeg)
 ![alarmlist](http://mewware.com/mewware/p-screenshots/0.6.3/photo_6035338519251107863_y.jpeg)
