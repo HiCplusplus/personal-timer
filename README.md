@@ -19,6 +19,19 @@
  
 ____________________________________
 
+
+![screen-from-sportTimer](http://mewware.com/mewware/p-screenshots/v0.6.7/Screenshot%20from%202022-08-15%2003-28-39.png)
+![screen-from-sportTimer](http://mewware.com/mewware/p-screenshots/v0.6.7/Screenshot%20from%202022-08-15%2003-26-39.png)
+
+![calendar](http://mewware.com/mewware/p-screenshots/0.6.3/photo_6035338519251107865_y.jpeg)
+![alarmlist](http://mewware.com/mewware/p-screenshots/0.6.3/photo_6035338519251107863_y.jpeg)
+
+![stopWatch](http://mewware.com/mewware/p-screenshots/0.6.3/photo_6035338519251107861_y.jpeg)![alarmSetPage](http://mewware.com/mewware/p-screenshots/0.6.3/photo_6035338519251107864_y.jpeg)
+![singleTimer](http://mewware.com/mewware/p-screenshots/0.6.3/photo_6035338519251107859_y.jpeg)
+
+
+___________________________________
+
  ## up comming  
  - 0.6.9 -> connect Alarm and Alarm-set-page with database <b>WORKING ON</b>
  - 0.6.9 
@@ -32,18 +45,6 @@ ____________________________________
 - sportTime : SPEECH FIX say (READ, GO)
 - SportTimer : SounEffects selectable to pick SoundPack, SoundSpeech selectable to pick SpeechPack;
 - sportTimer : report with speeech remaining/left 
-
-![screen-from-sportTimer](http://mewware.com/mewware/p-screenshots/v0.6.7/Screenshot%20from%202022-08-15%2003-28-39.png)
-![screen-from-sportTimer](http://mewware.com/mewware/p-screenshots/v0.6.7/Screenshot%20from%202022-08-15%2003-26-39.png)
-
-![calendar](http://mewware.com/mewware/p-screenshots/0.6.3/photo_6035338519251107865_y.jpeg)
-![alarmlist](http://mewware.com/mewware/p-screenshots/0.6.3/photo_6035338519251107863_y.jpeg)
-
-![stopWatch](http://mewware.com/mewware/p-screenshots/0.6.3/photo_6035338519251107861_y.jpeg)![alarmSetPage](http://mewware.com/mewware/p-screenshots/0.6.3/photo_6035338519251107864_y.jpeg)
-![singleTimer](http://mewware.com/mewware/p-screenshots/0.6.3/photo_6035338519251107859_y.jpeg)
-
-
-
 
 ____________________________________
 ## Thanks to :<br/>
