@@ -2,13 +2,39 @@ import QtQuick 2.15
 import "../theControls"
 //import QtQuick.Shapes
 import QtQuick.Controls 2.15
-
+import "../theScripts/theDataBaseSystem/saveLoadAlarm.js" as SaveAlarm
 Item
 {
 
-
+    id:mainItem;
     anchors.fill: parent;
-    signal buttonCancel;
+    signal resetValues;
+    onResetValues:
+    {
+        alarmName.text = "";
+        alarmStatusSwitch.setStatusSwitch = false;
+        hoursTumbler.currentIndex = 0;
+        minutesTumbler.currentIndex = 0;
+        amPmTumbler.currentIndex = 0;
+        alarmSoundText.text = "default";
+        soundVolume.setCurrentValue = 50;
+
+        weekdaysPick.setAPicked = false; weekdaysPick.setEPicked = false;
+        weekdaysPick.setBPicked = false; weekdaysPick.setFPicked = false;
+        weekdaysPick.setCPicked = false; weekdaysPick.setGPicked = false;
+        weekdaysPick.setDPicked = false;
+    }
+
+
+    signal btnCancel;
+    onBtnCancel:
+    {
+        resetValues();
+    }
+
+    signal updateAlarmListModel;
+
+
     property int setMaxCharAlarmName:25;
     property variant setHourValues :
         ["01","02","03","04","05","06","07","08","09","10","11","12"];
@@ -32,30 +58,46 @@ Item
 
         MyCancelSaveButton
         {
-            id:myCancelSaveButtons;
+            id:myCancelSaveButtons; //here used as SAVE
             onButtonSaveClicked:
             {
-                console.log("alarm hour = "+setHourValues[hoursTumbler.currentIndex]
-                            + "\n alarm minute = " + minutesTumbler.currentIndex
-                            + "\n alarm am/pm = "+ setAmPmValues[amPmTumbler.currentIndex]
+                if(alarmName.text !== "")
+                {
+                    SaveAlarm.set(alarmName.text,
+                                  alarmStatusSwitch.setStatusSwitch,
+                                  setHourValues[hoursTumbler.currentIndex],
+                                  setMinuteValues[minutesTumbler.currentIndex],
+                                  amPmTumbler.currentIndex,
+                                  alarmSoundText.text,
+                                  soundVolume.outPutVolume,
+                                  (weekdaysPick.setAPicked ? 1 : 0) +","+(weekdaysPick.setBPicked ? 1 : 0)+","+(weekdaysPick.setCPicked ? 1 : 0)+","+(weekdaysPick.setDPicked ? 1 : 0)+","+(weekdaysPick.setEPicked ? 1 : 0) +","+(weekdaysPick.setFPicked ? 1 : 0) +","+(weekdaysPick.setGPicked ? 1 : 0));
+                    updateAlarmListModel();
+                    btnCancel();
+                }
 
-                            + "\n alarm days \n"
-                            +"= {" + weekdaysPick.textAPick + " = " + weekdaysPick.setAPicked
-                            + "\t   " + weekdaysPick.textBPick + " = " + weekdaysPick.setBPicked
-                            + "\t   " + weekdaysPick.textCPick + " = " + weekdaysPick.setCPicked
-                            + "\t   " + weekdaysPick.textDPick + " = " + weekdaysPick.setDPicked
-                            + "\t   " + weekdaysPick.textEPick + " = " + weekdaysPick.setEPicked
-                            + "\t   " + weekdaysPick.textFPick + " = " + weekdaysPick.setFPicked
-                            + "\t   " + weekdaysPick.textGPick + " = " + weekdaysPick.setGPicked
-                            + "}\n"
 
-                            + "\n alarm name = " + alarmName.text
-                            + "\n alarm with vibration status = " + vibrationSwitch.setStatusSwitch
-                            + "\n alarm sound effect = " + alarmSoundText.text //myCombobox.values[myCombobox.selectedIndex] this commandedpart has problem: if user leave the page but swiped the tumbler i will count that value inside output
-                            + "\n alarm sound volume = " + soundVolume.outPutVolume);
+
+//                console.log("alarm hour = "+setHourValues[hoursTumbler.currentIndex]
+//                            + "\n alarm minute = " + minutesTumbler.currentIndex
+//                            + "\n alarm am/pm = "+ setAmPmValues[amPmTumbler.currentIndex]
+
+//                            + "\n alarm days \n"
+//                            + "= {" + weekdaysPick.textAPick + " = " + weekdaysPick.setAPicked
+//                            + "\t   " + weekdaysPick.textBPick + " = " + weekdaysPick.setBPicked
+//                            + "\t   " + weekdaysPick.textCPick + " = " + weekdaysPick.setCPicked
+//                            + "\t   " + weekdaysPick.textDPick + " = " + weekdaysPick.setDPicked
+//                            + "\t   " + weekdaysPick.textEPick + " = " + weekdaysPick.setEPicked
+//                            + "\t   " + weekdaysPick.textFPick + " = " + weekdaysPick.setFPicked
+//                            + "\t   " + weekdaysPick.textGPick + " = " + weekdaysPick.setGPicked
+//                            + "}\n"
+
+//                            + "\n alarm name = " + alarmName.text
+//                            + "\n alarm with vibration status = " + alarmStatusSwitch.setStatusSwitch
+//                            + "\n alarm sound effect = " + alarmSoundText.text //myCombobox.values[myCombobox.selectedIndex] this commandedpart has problem: if user leave the page but swiped the tumbler i will count that value inside output
+//                            + "\n alarm sound volume = " + soundVolume.outPutVolume);
 
             }
-            onButtonCancelClicked: { buttonCancel(); }
+            onButtonCancelClicked: { btnCancel(); }
         }
 
 
@@ -379,7 +421,7 @@ Item
 
                 MySwitch
                 {
-                    id:vibrationSwitch;
+                    id:alarmStatusSwitch;
                     setBorderWidth: 4;
                     setStatusSwitch:false;
                     setStatusBorder:false;

@@ -1,10 +1,34 @@
 import QtQuick 2.0
 import "theControls"
 import "thePages"
+import "theScripts/theDataBaseSystem/saveLoadAlarm.js" as LoadAlarm
 Item
 {
 //    signal changeStatusSwiperFromTimerDown;
     signal goToAlarmSetPage;
+    signal refreshListModel;
+    onRefreshListModel:
+    {
+        var allObject = JSON.parse(LoadAlarm.get());
+        for(var i=0; i<allObject.alarms.length; i++)
+        {
+            var tempMinute = (allObject.alarms[i].minute > 9) ? allObject.alarms[i].minute : "0"+allObject.alarms[i].minute; //because if use this condition inside the 'clock:' like hour it would not run this line of code
+            var tempHour = (allObject.alarms[i].hour > 9 )? allObject.alarms[i].hour : "0"+allObject.alarms[i].hour;
+            listModelMain.append({
+                                     name:allObject.alarms[i].name,
+                                     clock : tempHour + ":" + tempMinute,
+                                     am:allObject.alarms[i].pm,
+                                     status: ((allObject.alarms[i].status==='1'||allObject.alarms[i].status === 1) ? true : false),
+                                     days:allObject.alarms[i].days,
+                                 });
+        }
+    }
+
+    Component.onCompleted:
+    {
+        refreshListModel();
+    }
+
     anchors.fill: parent;
     Rectangle
     {
@@ -23,55 +47,6 @@ Item
         ListModel
         {
             id:listModelMain;
-            ListElement
-            {
-                clock:"02:12";
-                am:false;
-            }
-            ListElement
-            {
-                clock:"11:21";
-                am:true;
-            }
-
-            ListElement
-            {
-                clock:"11:21";
-                am:true;
-            }
-
-            ListElement
-            {
-                clock:"11:21";
-                am:true;
-            }
-
-            ListElement
-            {
-                clock:"11:21";
-                am:true;
-            }
-
-            ListElement
-            {
-                clock:"11:21";
-                am:true;
-            }
-
-            ListElement
-            {
-                clock:"11:21";
-                am:true;
-            }
-
-            ListElement
-            {
-                clock:"11:21";
-                am:true;
-            }
-
-
-
         }
         delegate:
         Item
@@ -86,7 +61,9 @@ Item
                 {
                     setClock: clock;
                     setStatusAm: am;
-
+                    setAlarmName: name;
+                    statusSwitch: status;
+                    setWeekDays: days;
                     onSignalEditAlarm:
                     {
                         console.log("clicked on "+clock);

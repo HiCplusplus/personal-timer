@@ -1,5 +1,5 @@
 import QtQuick 2.15
-import "../theScripts/saveSettings.js" as SaveTheme
+import "../theScripts/theDataBaseSystem/saveLoadSettings.js" as SaveSettings
 
 Item
 {
@@ -31,7 +31,7 @@ Item
             cBG_Unknown= "transparent";
             cUnknown = "white";//o99AAB5k
             path_to_menuIcons= directory_Icons + direcotry_WhiteIcons;
-            SaveTheme.set("darkmode", 1);
+            SaveSettings.set("darkmode", 1);
 
         }
         else
@@ -51,7 +51,7 @@ Item
             cUnknown= "white";
             themeDarkMode = false;
             path_to_menuIcons= directory_Icons + direcotry_BlackIcons;
-            SaveTheme.set("darkmode", 0);
+            SaveSettings.set("darkmode", 0);
 
         }
 

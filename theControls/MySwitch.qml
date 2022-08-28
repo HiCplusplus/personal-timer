@@ -1,11 +1,26 @@
-import QtQuick 2.0
+import QtQuick 2.15
 
 Item
 {
     property int setSwitchWidth:parent.width;
     property int setAnimationDuration:150;
     property int setBorderWidth: 6;
-//    signal statusSwitch;
+//    signal updateSwitch;
+//    onUpdateSwitch:
+//    {
+//        if(setStatusSwitch<=0)
+//        {
+//            mySwitsch.color= cBG_button_deactivated;
+//            switchCircle.x= mySwitsch.width/8;
+//        }
+//        else
+//        {
+//            mySwitsch.color= cBG_button_activated;
+//            switchCircle.x= mySwitsch.width/1.90;
+//        }
+
+//    }
+
     property bool setStatusSwitch:false;
     property bool setStatusBorder:true;
     property double setSizeSwitchCircle: 3.80;
@@ -35,7 +50,7 @@ Item
             anchors.fill: parent;
             onClicked:
             {
-                if(switchCircle.x>mySwitsch.width/5)
+                if(switchCircle.x>mySwitsch.width/5) //setStatusSwitch)
                 {
                     animactionDeactive.running=true;
                     mySwitsch.color = cBG_button_deactivated;

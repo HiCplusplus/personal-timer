@@ -1,11 +1,12 @@
 import QtQuick 2.15
+import QtQuick.Controls 2.15
 
 Item
 {
     signal signalEditAlarm;
 
     property bool setStatusAm:true;//false means it's PM
-    property bool setStatusSwitch:false;
+    property bool statusSwitch:false;
     property string setClock: "00:00";
     property string setAlarmName: "Simple name";
     property string setWeekDays:"Mon";
@@ -157,15 +158,17 @@ Item
                 rightMargin:30;
             }
 
+
             MySwitch
             {
+                id:alarmStatus
                 setBorderWidth: 4;
-                setStatusSwitch:setStatusSwitch;
+                setStatusSwitch:statusSwitch;
                 setStatusBorder:false;
                 setSizeSwitchCircle: 2.80;
-//                onStatusSwitch:
+//                onSetStatusSwitchChanged:
 //                {
-//                    //HERE LEAVE NOTHING =-=================================================================================s
+//                    alarmStatus.updateSwitch();
 //                }
             }
         }//end ofswitch

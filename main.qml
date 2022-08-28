@@ -6,8 +6,7 @@ import "theControls"
 import "thePages"
 import QtQuick.Controls.Material 2.15
 import "thePages/theTimer"
-import "theScripts/saveSettings.js" as SaveTheme
-
+import "theScripts/theDataBaseSystem/saveLoadSettings.js" as LoadSettings
 
 Window
 {
@@ -63,7 +62,7 @@ Window
     //load theme Mode:
     Component.onCompleted:
     {
-        if(SaveTheme.get("darkmode", "Hello World")==='1' || SaveTheme.get("darkmode", "Hello World")=== 1)
+        if(LoadSettings.get("darkmode", "Hello World")==='1' || LoadSettings.get("darkmode", "Hello World")=== 1)
         {
             themeDarkMode = true;
             cTxt_normal = "black";
@@ -281,6 +280,7 @@ Window
                     id: alaramPage;
                     Alarm
                     {
+                        id:alarmPage;
                         onGoToAlarmSetPage:
                         {
 
@@ -451,12 +451,17 @@ Window
         AlarmSetPage
         {
             id:pageAlarmSet;
-            onButtonCancel:
+            onBtnCancel:
             {
                 baseAlarmSet.visible=false;
                 viewTimers.interactive=true;
                 viewTimers.visible=true;
             }
+            onUpdateAlarmListModel:
+            {
+                alarmPage.refreshListModel();
+            }
+
         }
     }
 
