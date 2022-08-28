@@ -130,3 +130,30 @@ function update(alarmName,fieldName,value)
    );
   return res;
 }
+
+
+
+function convertDaysToText(text)
+{
+    var res="";
+    const allValues = text.split(",");
+    if(allValues[0] === '1')
+        res += "Mon ";
+    if(allValues[1] === '1')
+        res += "Tue ";
+    if(allValues[2] === '1')
+        res += "Wed ";
+    if(allValues[3] === '1')
+        res += "Thu ";
+    if(allValues[4] === '1')
+        res += "Fri ";
+    if(allValues[5] === '1')
+        res += "Sat ";
+    if(allValues[6] === '1')
+        res += "Sun ";
+    if(res.length>=28)
+        res = "EveryDay";
+    if(res == "")
+        res = "NoRepeat";
+    return res;
+}

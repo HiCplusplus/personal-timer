@@ -20,13 +20,13 @@ Item
         {
             var tempMinute = (allObject.alarms[i].minute > 9) ? allObject.alarms[i].minute : "0"+allObject.alarms[i].minute; //because if use this condition inside the 'clock:' like hour it would not run this line of code
             var tempHour = (allObject.alarms[i].hour > 9 )? allObject.alarms[i].hour : "0"+allObject.alarms[i].hour;
-
+            var tempDays = SaveLoadAlarm.convertDaysToText(allObject.alarms[i].days);
             listModelMain.append({
                                      name:allObject.alarms[i].name,
                                      clock : tempHour + ":" + tempMinute,
                                      pm: (allObject.alarms[i].pm === '1') ? false : true,
                                      status: ((allObject.alarms[i].status==='1'||allObject.alarms[i].status === 1) ? true : false),
-                                     days:allObject.alarms[i].days,
+                                     days: tempDays,
                                  });
 //            if(allObject.alarms[i].status==='1')
 //            {
