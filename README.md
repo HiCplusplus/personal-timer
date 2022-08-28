@@ -17,11 +17,27 @@
  - 0.6.5 -> sportTimer soundEffects & soundSpeech Mute/Unmute
  - 0.6.6 -> Style sportTimer SetPage (Count Down Before Round Starts & Turn off/on SoundEffects & Turn off/on SoundSpeech) 
  - 0.6.7 -> Sound Effect/Speech pause & resume
- - 0.6.8 Dark/Light mode save on database.
+ - 0.6.8 -> Dark/Light mode save on database.
+ - 0.6.9 -> setup Database System + connect Alarm and Alarm-set-page with database + modify dark/light mode save on D.B (move into db system)<b>WORKING ON</b>
+
 
  
 ____________________________________
 
+ ## up comming  
+ - 0.7.0 -> Background application (just for now its ok it keep running whole application on background, not a service so it's not optimized maybe android close this in some situations)
+ -  settings page
+ -  multi timer
+ -  Calender PickDay (multi month day picks)
+ -  Calender (Shadow DayCircle) 
+ -  routine and tasks... 
+ - Alarm set page : Text alarm name when button save clicked disable/.. to avoid leave pointer text on all app
+- sportTime : SPEECH FIX say (READ, GO)
+- SportTimer : SounEffects selectable to pick SoundPack, SoundSpeech selectable to pick SpeechPack;
+- sportTimer : report with speeech remaining/left 
+
+
+___________________________________
 
 ![calendar](http://mewware.com/mewware/p-screenshots/0.6.3/photo_6035338519251107865_y.jpeg)
 ![alarmlist](http://mewware.com/mewware/p-screenshots/0.6.3/photo_6035338519251107863_y.jpeg)
@@ -30,21 +46,6 @@ ____________________________________
 ![singleTimer](http://mewware.com/mewware/p-screenshots/0.6.3/photo_6035338519251107859_y.jpeg)
 
 
-___________________________________
-
- ## up comming  
- - 0.6.9 -> connect Alarm and Alarm-set-page with database <b>WORKING ON</b>
- - 0.6.9 
- - 0.7.0 settings page
- - 0.8.0 multi timer
- - 0.9.0 Calender PickDay (multi month day picks)
- - 0.9.1 Calender (Shadow DayCircle) 
- - 0.10.0 routine and tasks...
- - 1.0.0 -> Background application 
- - Alarm set page : Text alarm name when button save clicked disable/.. to avoid leave pointer text on all app
-- sportTime : SPEECH FIX say (READ, GO)
-- SportTimer : SounEffects selectable to pick SoundPack, SoundSpeech selectable to pick SpeechPack;
-- sportTimer : report with speeech remaining/left 
 
 ____________________________________
 ## Thanks to :<br/>
