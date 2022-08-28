@@ -55,10 +55,8 @@ function get()
          var tableColumns = rs.rows.length;
          if (rs.rows.length > 0)
          {
-             console.log("len= "+tableColumns);
                  for(var x=0; x<tableColumns; x++)
                  {
-                     console.log("{")
                      result2 +=
                              '{ "name":"'+ rs.rows.item(x).a_name +
                              '", "status":"'+ rs.rows.item(x).a_status +
@@ -68,23 +66,20 @@ function get()
                              '", "sound":"'+ rs.rows.item(x).a_sound +
                              '", "volume":"'+ rs.rows.item(x).a_volume +
                              '", "days":"'+ rs.rows.item(x).a_days + '" }';
-                     console.log("}")
                      if(x<tableColumns-1)
                      {
-                         console.log(",");
                          result2 += ",";
                      }
 
                  }
              result2 += "]}";
-                 console.log("]}");
 
 
 
-                 var allObject = JSON.parse(result2);
-                console.log(allObject.alarms[1].name);
-                 console.log("-----------------------");
-                 console.log(JSON.stringify(allObject))
+//                 var allObject = JSON.parse(result2);
+//                console.log(allObject.alarms[1].name);
+//                 console.log("-----------------------");
+//                 console.log(JSON.stringify(allObject))
 
          }
 
