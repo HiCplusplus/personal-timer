@@ -9,6 +9,7 @@ Item
     signal refreshListModel;
     onRefreshListModel:
     {
+
         listModelMain.clear();
         var allObject = JSON.parse(LoadAlarm.get());
         for(var i=0; i<allObject.alarms.length; i++)

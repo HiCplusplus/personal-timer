@@ -75,7 +75,6 @@ function get()
              result2 += "]}";
 
 
-
 //                 var allObject = JSON.parse(result2);
 //                console.log(allObject.alarms[1].name);
 //                 console.log("-----------------------");
