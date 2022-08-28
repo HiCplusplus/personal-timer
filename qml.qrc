@@ -112,6 +112,14 @@
         <file>theSounds/sportTimer/sound-speech/sound-pack-male-joey/numbers/1.wav</file>
         <file>theControls/DrawCircle2.qml</file>
         <file>theScripts/saveSettings.js</file>
+        <file>android/gradle/wrapper/gradle-wrapper.jar</file>
+        <file>android/gradle/wrapper/gradle-wrapper.properties</file>
+        <file>android/res/values/libs.xml</file>
+        <file>android/AndroidManifest.xml</file>
+        <file>android/build.gradle</file>
+        <file>android/gradle.properties</file>
+        <file>android/gradlew</file>
+        <file>android/gradlew.bat</file>
     </qresource>
     <qresource prefix="/thePictures"/>
 </RCC>
