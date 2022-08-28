@@ -13,7 +13,6 @@ Window
 //    Material.theme:Material.Dark
 //    Material.accent: Material.LightBlue
 
-
     id: mainWindow;
 //    width: Screen.width;
 //    height: Screen.height;
