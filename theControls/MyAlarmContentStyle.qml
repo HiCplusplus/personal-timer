@@ -4,6 +4,14 @@ import QtQuick.Controls 2.15
 Item
 {
     signal signalEditAlarm;
+    signal switchStatusChanged;
+    onSwitchStatusChanged:
+    {
+        updateStatusSwitchByUserHand = alarmStatus.setStatusSwitch;
+    }
+
+    property bool updateStatusSwitchByUserHand: false;
+    property bool switchClicked:false;
 
     property bool setStatusAm:true;//false means it's PM
     property bool statusSwitch:false;
@@ -166,10 +174,11 @@ Item
                 setStatusSwitch:statusSwitch;
                 setStatusBorder:false;
                 setSizeSwitchCircle: 2.80;
-//                onSetStatusSwitchChanged:
-//                {
-//                    alarmStatus.updateSwitch();
-//                }
+                onSwitchSignalClicked:
+                {
+                        switchStatusChanged();
+                }
+
             }
         }//end ofswitch
 

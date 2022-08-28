@@ -51,7 +51,7 @@ function get()
        {
 
 //         var tableColumns2 = tx.executeSql('SELECT count(*) FROM information_schema.columns WHERE table_name ='+tableName+';');
-         var rs = tx.executeSql('SELECT * FROM '+tableName+';');
+         var rs = tx.executeSql('SELECT * FROM '+tableName+' ORDER BY a_status DESC;');
          var tableColumns = rs.rows.length;
          if (rs.rows.length > 0)
          {
@@ -99,3 +99,34 @@ function get()
    return result2;
 }
 
+
+
+
+
+
+
+
+
+
+function update(alarmName,fieldName,value)
+{
+   var db = DBC.getDatabase();
+   var res = "";
+   db.transaction
+   (
+       function(tx)
+       {
+                  var rs = tx.executeSql('UPDATE '+tableName+' SET '+ fieldName +' = '+ value +' WHERE a_name =?;',[alarmName]);
+                  if (rs.rowsAffected > 0)
+                  {
+                    res = "OK";
+                  }
+
+                  else
+                  {
+                    res = "Error";
+                  }
+      }
+   );
+  return res;
+}

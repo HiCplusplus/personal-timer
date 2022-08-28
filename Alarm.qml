@@ -1,7 +1,7 @@
 import QtQuick 2.0
 import "theControls"
 import "thePages"
-import "theScripts/theDataBaseSystem/saveLoadAlarm.js" as LoadAlarm
+import "theScripts/theDataBaseSystem/saveLoadAlarm.js" as SaveLoadAlarm
 import "theScripts/calculateDates.js" as CD
 Item
 {
@@ -15,7 +15,7 @@ Item
     onRefreshListModel:
     {
         listModelMain.clear();
-        var allObject = JSON.parse(LoadAlarm.get());
+        var allObject = JSON.parse(SaveLoadAlarm.get());
         for(var i=0; i<allObject.alarms.length; i++)
         {
             var tempMinute = (allObject.alarms[i].minute > 9) ? allObject.alarms[i].minute : "0"+allObject.alarms[i].minute; //because if use this condition inside the 'clock:' like hour it would not run this line of code
@@ -55,15 +55,12 @@ Item
 //            const weekday = CD.weekdayFromDate(currentDate.getFullYear(),currentDate.getMonth() + 1, '',currentDate.getDate());//year month output_type day
 //            for()
 //            {
-
 //            }
-
 //            const days= alarmWeekDays.split(",");
 //            switch(weekday) //0,1,2,3,4,5,6
 //            {
 //            case 0: checkWeekDayOn();
 //            }
-
 //            let cDay = currentDate.getDate();
 //            let cMonth = currentDate.getMonth();
 //            let cYear = currentDate.getFullYear();
@@ -105,6 +102,7 @@ Item
                 color:cBG;
                 MyAlarmContentStyle
                 {
+                    id:myAlarmContents;
                     setClock: clock;
                     setStatusAm: pm;
                     setAlarmName: name;
@@ -112,13 +110,14 @@ Item
                     setWeekDays: days;
                     onSignalEditAlarm:
                     {
-                        console.log("clicked on "+clock);
+                        console.log("clicked on "+name);
+                    }
+                    onSwitchStatusChanged:
+                    {
+                        SaveLoadAlarm.update(name,'a_status',myAlarmContents.updateStatusSwitchByUserHand);
                     }
                 }
             }
-
-
-
 
         }//end of item delegate
 

@@ -229,6 +229,7 @@ function weekdayFromDate(y,m,outputType,d=1) //outputType == 'text' -> e.g sunda
         dayy = [5,6,0,1,2,3,4];
 
 
+
     var mnDays =[0 ,31, 28, 31, 30, 31, 30,31, 31, 30, 31, 30, 31];
     var totaldays = (y*365)+d;
     for(var ki=1; ki<m; ki++)

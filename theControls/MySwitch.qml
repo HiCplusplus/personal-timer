@@ -5,6 +5,7 @@ Item
     property int setSwitchWidth:parent.width;
     property int setAnimationDuration:150;
     property int setBorderWidth: 6;
+    signal switchSignalClicked;
 //    signal updateSwitch;
 //    onUpdateSwitch:
 //    {
@@ -55,12 +56,14 @@ Item
                     animactionDeactive.running=true;
                     mySwitsch.color = cBG_button_deactivated;
                     setStatusSwitch=false;
+                    switchSignalClicked();
                 }
                 else
                 {
                     animationAcvite.running=true;
                     mySwitsch.color = cBG_button_activated;
                     setStatusSwitch=true;
+                    switchSignalClicked();
                 }
 
 
