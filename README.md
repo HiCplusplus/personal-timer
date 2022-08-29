@@ -40,7 +40,7 @@ ____________________________________
 - alarm: if alarm name is empty button save clicked show message must enter name for alarm.
 - MySwitch component: when theme switched between dark/light switch isnt change color correctly sometimes has bad color.
 - MySwitch component: when init switch turned on the button and backcolor isnt look good.
-
+- dismissPage: some erros show up + swipe somewhere in adnroid isnt work
 ___________________________________
 
 ![calendar](http://mewware.com/mewware/p-screenshots/0.6.3/photo_6035338519251107865_y.jpeg)
