@@ -29,7 +29,7 @@ function set(aname,astatus,ahour,aminute,apm,asound,avolume,adays)
 
                   else
                   {
-                    res = "Error";
+                    res = "Error (saveLoadAlarm.set)";
                   }
       }
    );
@@ -75,6 +75,7 @@ function get()
              result2 += "]}";
 
 
+// FOR TEST JSON
 //                 var allObject = JSON.parse(result2);
 //                console.log(allObject.alarms[1].name);
 //                 console.log("-----------------------");
@@ -92,18 +93,12 @@ function get()
 
    catch (err)
    {
-       console.log("Database (saveLoadAlarm): " + err);
+       console.log("Database (saveLoadAlarm.get): " + err);
 //       res = default_value;
    };
 //  return res;
    return result2;
 }
-
-
-
-
-
-
 
 
 
@@ -124,7 +119,7 @@ function update(alarmName,fieldName,value)
 
                   else
                   {
-                    res = "Error";
+                    res = "Error (from saveLoadAlarm.update)";
                   }
       }
    );

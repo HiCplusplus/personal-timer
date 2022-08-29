@@ -24,7 +24,7 @@ Item
             listModelMain.append({
                                      name:allObject.alarms[i].name,
                                      clock : tempHour + ":" + tempMinute,
-                                     pm: (allObject.alarms[i].pm === '1') ? false : true,
+                                     pm: (allObject.alarms[i].pm === '1') ? false : true, //true false reversed because of in first i tought and saved isAM in database but on runtime i gave problem so reversed this to IsPm
                                      status: ((allObject.alarms[i].status==='1'||allObject.alarms[i].status === 1) ? true : false),
                                      days: tempDays,
                                  });
