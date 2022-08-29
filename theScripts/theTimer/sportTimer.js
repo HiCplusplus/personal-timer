@@ -134,8 +134,3 @@ function timeSystem(h,m,s,_pastH,_pastM,_pastS,_mode) //mode 1 round , 0 break
 //                    console.log("\th=" +h + "\tm=" + m + "\ts=" + s + "\tph=" + _pastH+ "\tpm=" +_pastM + "\tps=" +_pastS);
 }
 
-
-function convertOneToMaxround(val)
-{
-//    switch
-}

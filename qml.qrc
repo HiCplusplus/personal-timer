@@ -122,6 +122,9 @@
         <file>theScripts/theDataBaseSystem/dataBaseCenter.js</file>
         <file>theScripts/theDataBaseSystem/saveLoadSettings.js</file>
         <file>theScripts/theDataBaseSystem/saveLoadAlarm.js</file>
+        <file>LogsPage.qml</file>
+        <file>theScripts/theDataBaseSystem/saveLoadLogs.js</file>
+        <file>thePages/LogSetPage.qml</file>
     </qresource>
     <qresource prefix="/thePictures"/>
 </RCC>

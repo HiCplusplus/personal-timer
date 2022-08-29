@@ -13,13 +13,6 @@ Item
     property int theSecond: 0;
     property int theLapIndex:0;
 
-//    property color colorButtons: "orange";
-//    property color colorButtonTexts: "white";
-
-//    property color setColorBG: "white";
-//    property color colorButtonSecond: "pink";
-//    property color  colorButtonSecondTexts: "black";
-
     anchors.fill: parent;
     Rectangle
     {
@@ -75,7 +68,6 @@ Item
         id:baseCountUp;
         width: root.width/1.2;
         height:root.height/5.5;
-//        anchors.verticalCenter: root.verticalCenter;
         anchors.top: root.top;
         anchors.topMargin: parent.height/2.7;
         anchors.horizontalCenter: root.horizontalCenter;
@@ -208,7 +200,6 @@ Item
                     id:some1;
                     width: laplabell.width;
                     height: laplabell.height;
-//                    anchors.left:laplabell.left;
                     color:cBG_Unknown;
                     Text
                     {
@@ -249,13 +240,7 @@ Item
 
             }
 
-//            Component.onCompleted:
-//            {
-//                listModelData.append({
-//                    timee: "1010",
-//                    lapId: 4
-//                });
-//            }
+
         }
 
     }
@@ -327,7 +312,7 @@ Item
                 ({
                     timee: temp_value,
                     lapId: ++theLapIndex
-                }); //error QML Rectangle: Cannot anchor to an item that isn't a parent or sibling.
+                });
             }
         }
     }

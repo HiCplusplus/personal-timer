@@ -5,6 +5,7 @@ import "../../theControls"
 Item
 {
     anchors.fill: parent;
+    clip:true;
     signal buttonStartClicked;
     property int selectHour;
     property int selectMinute;
@@ -49,13 +50,11 @@ Item
         {
             id: row;
             anchors.fill: parent;
-//            anchors.topMargin: 5;
             Tumbler
             {
                 id: hoursTumbler;
                 width: parent.width/3.15;
                 model: setHourValues;
-//                currentIndex: 1;
                 font.bold: true;
                 font.pointSize: 30;
                 visibleItemCount: 4;
@@ -106,7 +105,6 @@ Item
         width: root.width;
         height:root.height/10.5;
         setCenterButtonText: "Start";
-//        setCenterButtonCircleStyled:true;
         setLeftButtonText: "Reset";
         setRightButtonText: "";
         anchors

@@ -25,52 +25,6 @@ function translateMonthInputs(m) //m means month
 }
 
 
-/*
-function dayOfWeek(y,m,outputType,d=1) //outputType is a string: value 'text' or any
-{
-
-//    m = translateMonthInputs(m);
-    if(m>0)
-    {
-        let t = [ 0, 3, 2, 5, 0, 3, 5, 1, 4, 6, 2, 4 ];
-        y -= (m < 3) ? 1 : 0;
-        var result = parseInt (( y + y/4 - y/100 + y/400 + t[m-1] + d) % 7);
-        if(outputType==="text")
-        {
-            switch(result)
-            {
-                case 0 : return "Sunday";
-                case 1 : return "Monday";
-                case 2 : return "Tuesday";
-                case 3 : return "Wednesday";
-                case 4 : return "Thursday";
-                case 5 : return "Friday";
-                case 6 : return "Saturday";//+1
-                default : return -1; //means error :"error dayofweek (result>6 or result <0 from outputType text)";
-            }
-        }
-        else
-        {
-            switch(result)
-            {
-                case 0 : return 6; //su
-                case 1 : return 0; //mo
-                case 2 : return 1; //tu
-                case 3 : return 2; //we
-                case 4 : return 3; //thu
-                case 5 : return 4; //fri
-                case 6 : return 5; //sat
-                default : return -1; //means error: "error dayofweek (result>6 or result <0 from outputType non-text)";
-            }
-        }
-
-
-    }
-    else
-        return -1; //means error : "error dayofweek (m=0 or m<0)" or error isfrom translator bcz of invalid input;
-}
-*/
-
 
 
 function leapYear_monthDays(year)

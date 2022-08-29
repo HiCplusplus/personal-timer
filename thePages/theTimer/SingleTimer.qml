@@ -1,6 +1,5 @@
 import QtQuick 2.15
 import QtQuick.Controls 2.15
-//import "../../theControls/canvasDraws/"
 import "../../theControls/"
 import "../../theScripts/theTimer/sportTimer.js" as ST
 import "../../thePages"
@@ -141,6 +140,7 @@ Item
     {
         anchors.fill: parent;
         color:cBG;
+
         DrawCircle2
         {
             id:circleHour;
@@ -190,7 +190,6 @@ Item
         width: root.width;
         height:root.height/10.5;
         setCenterButtonText: "";
-//        setCenterButtonCircleStyled:true;
         setLeftButtonText: "Cancel";
         setRightButtonText: "Pause";
         onLeftButtonPressed:

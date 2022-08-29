@@ -6,21 +6,7 @@ Item
     property int setAnimationDuration:150;
     property int setBorderWidth: 6;
     signal switchSignalClicked;
-//    signal updateSwitch;
-//    onUpdateSwitch:
-//    {
-//        if(setStatusSwitch<=0)
-//        {
-//            mySwitsch.color= cBG_button_deactivated;
-//            switchCircle.x= mySwitsch.width/8;
-//        }
-//        else
-//        {
-//            mySwitsch.color= cBG_button_activated;
-//            switchCircle.x= mySwitsch.width/1.90;
-//        }
 
-//    }
 
     property bool setStatusSwitch:false;
     property bool setStatusBorder:true;

@@ -1,5 +1,5 @@
 .import "dataBaseCenter.js" as DBC
-const tableName = "alarms5";
+const tableName = "alarms2000";
 
 function set(aname,astatus,ahour,aminute,apm,asound,avolume,adays)
 {
@@ -87,6 +87,8 @@ function get()
          {
              res = "";
          }
+
+
        }
      )
    }

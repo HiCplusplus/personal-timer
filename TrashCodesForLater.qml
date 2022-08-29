@@ -4,6 +4,588 @@ Item {
 }
 
 
+
+
+
+
+
+//from MyeekDayPicker.qml
+//                    if(!setViewOnly)
+//                    {
+//                        if(setBPicked)
+//                            setBPicked=false;
+//                        else
+//                            if(setPickMode==2)
+//                                setBPicked=true;
+//                            else
+//                            {
+//                                setBPicked=true;
+//                                setAPicked=false;
+//                                setCPicked=false;
+//                                setDPicked=false;
+//                                setEPicked=false;
+//                                setFPicked=false;
+//                                setGPicked=false;
+//                            }
+//                    }
+
+//                    if(!setViewOnly)
+//                    {
+//                        if(setCPicked)
+//                            setCPicked=false;
+//                        else
+//                            if(setPickMode==2)
+//                                setCPicked=true;
+//                            else
+//                            {
+//                                setCPicked=true;
+//                                setBPicked=false;
+//                                setAPicked=false;
+//                                setDPicked=false;
+//                                setEPicked=false;
+//                                setFPicked=false;
+//                                setGPicked=false;
+//                            }
+//                    }
+
+//                    if(!setViewOnly)
+//                    {
+//                        if(setDPicked)
+//                            setDPicked=false;
+//                        else
+//                            if(setPickMode==2)
+//                                setDPicked=true;
+//                            else
+//                            {
+//                                setDPicked=true;
+//                                setBPicked=false;
+//                                setCPicked=false;
+//                                setAPicked=false;
+//                                setEPicked=false;
+//                                setFPicked=false;
+//                                setGPicked=false;
+//                            }
+//                    }
+
+//                    if(!setViewOnly)
+//                    {
+//                        if(setEPicked)
+//                            setEPicked=false;
+//                        else
+//                            if(setPickMode==2)
+//                                setEPicked=true;
+//                            else
+//                            {
+//                                setEPicked=true;
+//                                setBPicked=false;
+//                                setCPicked=false;
+//                                setDPicked=false;
+//                                setAPicked=false;
+//                                setFPicked=false;
+//                                setGPicked=false;
+//                            }
+//                    }
+
+//                    if(!setViewOnly)
+//                    {
+//                        if(setFPicked)
+//                            setFPicked=false;
+//                        else
+//                            if(setPickMode==2)
+//                                setFPicked=true;
+//                            else
+//                            {
+//                                setFPicked=true;
+//                                setBPicked=false;
+//                                setCPicked=false;
+//                                setDPicked=false;
+//                                setEPicked=false;
+//                                setAPicked=false;
+//                                setGPicked=false;
+//                            }
+//                    }
+
+//                    if(!setViewOnly)
+//                    {
+//                        if(setGPicked)
+//                            setGPicked=false;
+//                        else
+//                            if(setPickMode==2)
+//                                setGPicked=true;
+//                            else
+//                            {
+//                                setGPicked=true;
+//                                setBPicked=false;
+//                                setCPicked=false;
+//                                setDPicked=false;
+//                                setEPicked=false;
+//                                setFPicked=false;
+//                                setAPicked=false;
+//                            }
+//                    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+//from MyTrheepleTumbler
+//        anchors.verticalCenter: parent.verticalCenter;
+//            anchors.right: parent.right;
+//                anchors.rightMargin: parent.width/10;
+//                currentIndex: 1;
+//                        font.bold: true;
+
+/*
+    Rectangle
+    {
+        id:root;
+        anchors.fill: parent;
+        color:cBG;
+        Rectangle
+        {
+            id:titleTumblers;
+            width: parent.width;
+            height: 35;
+            color:cBG_Unknown;
+            anchors.top: root.top;
+//            anchors.horizontalCenter: parent.horizontalCenter;
+            Text
+            {
+                id: textTitle;
+                text: setTextTitle;
+                font.family: gFontFamily;
+                font.pointSize: 20;
+                font.bold: true;
+                color:cTxt_button;
+                anchors.verticalCenter: parent.verticalCenter;
+                anchors.left:parent.left;
+//                anchors.leftMargin: 15;
+            }
+
+        }
+
+
+        Rectangle
+        {
+            anchors.fill: parent;
+            anchors.top: titleTumblers.bottom;
+            anchors.topMargin: 35;
+//            border.width: 0.50;
+            color:cBG_Unknown;
+
+        }
+    }
+
+    */
+
+
+
+
+
+
+
+
+//from my ThreeBottomButtons
+//    property color colorButtons: "orange";
+//    property color colorButtonTexts: "white";
+//    property color colorButtonSecond: "pink";
+//    property color colorButtonSecondTexts: "black";
+//    property color setBackGroundColor: "transparent";
+
+
+
+
+
+
+
+//from Myswitch
+//    signal updateSwitch;
+//    onUpdateSwitch:
+//    {
+//        if(setStatusSwitch<=0)
+//        {
+//            mySwitsch.color= cBG_button_deactivated;
+//            switchCircle.x= mySwitsch.width/8;
+//        }
+//        else
+//        {
+//            mySwitsch.color= cBG_button_activated;
+//            switchCircle.x= mySwitsch.width/1.90;
+//        }
+//    }
+
+
+
+
+
+
+
+
+
+
+//from my Slider
+//    property color setColorSelected: "#B178FF";
+//    property color setColorNotSelected: "#EBDDFF";//
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//from SportTimerSetPage.qml
+//import "../../thePages"
+
+//    ScrollView
+//    {
+//        anchors.fill: parent;
+//        //        ScrollBar.horizontal.policy: ScrollBar.AlwaysOff
+//        //            ScrollBar.vertical.policy: ScrollBar.AlwaysOn
+//        //            contentHeight: parent.height
+//        ScrollBar.vertical.policy: ScrollBar.AlwaysOn
+////        property double valRecs : baseSetRound.height+baseSetBreak.height+emptyRec.height;
+//        contentHeight:valRecs
+//                        implicitHeight: height
+//        Row
+//        {
+//            id:rowdata;
+//            anchors.fill: parent;
+
+
+
+
+
+
+//            Rectangle
+//            {
+//                id:emptyRec
+//                width: parent.width;
+//                height:100;
+//                color:"blue"
+//    //            anchors.top: baseSetBreak.bottom;
+//            }
+
+//            Rectangle
+//            {
+//                id:baseSetBreak;
+//                width: parent.width/1.50;
+//                height:parent.height/3;
+////                anchors.horizontalCenter: parent.horizontalCenter;
+//                anchors
+//                {
+////                    top:baseSetRound.bottom;
+//                }
+
+//                color:"red";//cBG_Unknown;
+//                Row
+//                {
+//                    anchors.fill: parent;
+//                    Tumbler
+//                    {
+//                        width: parent.width/3.15;
+//                        model: setHourValues;
+//                        font.bold: true;
+//                        font.pointSize: 30;
+//                        visibleItemCount: 4;
+//                    }
+//                    Text
+//                    {
+//                        text: ":";
+//                        anchors.top:parent.top;
+//                        anchors.topMargin: parent.height/3
+//                        font.bold: true;
+//                        font.pointSize: 30;
+//                        color:cTxt_button;//themeDarkMode? "#353436": "black";
+//                    }
+//                    Tumbler
+//                    {
+//                        width: parent.width/3.15;
+//                        model: setSecond_MinutesValues;
+//                        font.bold: true;
+//                        font.pointSize: 30;
+//                        visibleItemCount: 4;
+
+//                    }
+//                    Text
+//                    {
+//                        text: ":";
+//                        anchors.top:parent.top;
+//                        anchors.topMargin: parent.height/3
+//                        font.bold: true;
+//                        font.pointSize: 30;
+//                        color:cTxt_button;//themeDarkMode? "#353436": "black";
+//                    }
+//                    Tumbler
+//                    {
+//                        width: parent.width/3.15;
+//                        model: setSecond_MinutesValues;
+//                        font.bold: true;
+//                        font.pointSize: 30;
+//                        visibleItemCount: 4;
+//                    }
+
+//                }
+//            }//end of set break
+
+
+//        }
+
+//    }
+
+
+
+
+
+
+
+//from SingleTimerSetpage.qml
+//            anchors.topMargin: 5;
+//                currentIndex: 1;
+//        setCenterButtonCircleStyled:true;
+
+
+
+
+
+
+//from SingleTimer.qml
+//import "../../theControls/canvasDraws/"
+//        setCenterButtonCircleStyled:true;
+
+
+
+
+
+
+//from AlarmSetPage.qml
+
+//                console.log("alarm hour = "+setHourValues[hoursTumbler.currentIndex]
+//                            + "\n alarm minute = " + minutesTumbler.currentIndex
+//                            + "\n alarm am/pm = "+ setAmPmValues[amPmTumbler.currentIndex]
+
+//                            + "\n alarm days \n"
+//                            + "= {" + weekdaysPick.textAPick + " = " + weekdaysPick.setAPicked
+//                            + "\t   " + weekdaysPick.textBPick + " = " + weekdaysPick.setBPicked
+//                            + "\t   " + weekdaysPick.textCPick + " = " + weekdaysPick.setCPicked
+//                            + "\t   " + weekdaysPick.textDPick + " = " + weekdaysPick.setDPicked
+//                            + "\t   " + weekdaysPick.textEPick + " = " + weekdaysPick.setEPicked
+//                            + "\t   " + weekdaysPick.textFPick + " = " + weekdaysPick.setFPicked
+//                            + "\t   " + weekdaysPick.textGPick + " = " + weekdaysPick.setGPicked
+//                            + "}\n"
+
+//                            + "\n alarm name = " + alarmName.text
+//                            + "\n alarm with vibration status = " + alarmStatusSwitch.setStatusSwitch
+//                            + "\n alarm sound effect = " + alarmSoundText.text //myCombobox.values[myCombobox.selectedIndex] this commandedpart has problem: if user leave the page but swiped the tumbler i will count that value inside output
+//                            + "\n alarm sound volume = " + soundVolume.outPutVolume);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//from saveLoadSettings.js
+
+////code from https://github.com/fecub/HelloQtLocalStorage
+//.import QtQuick.LocalStorage 2.0 as Storage
+
+//function getDatabase()
+//{
+//     return Storage.LocalStorage.openDatabaseSync("plarm", "0.1", "plarm database is localdatabse to save application data, later can fetch/send these data into API for backup/sync with other devices", 100);
+//}
+
+//function set(setting, value)
+//{
+//   var db = getDatabase();
+//   var res = "";
+//   db.transaction
+//   (
+//       function(tx)
+//       {
+//                  tx.executeSql('CREATE TABLE IF NOT EXISTS settings(setting TEXT UNIQUE, value INT)');
+//                  var rs = tx.executeSql('INSERT OR REPLACE INTO settings VALUES (?,?);', [setting,value]);
+//                  if (rs.rowsAffected > 0)
+//                  {
+//                    res = "OK";
+//                  }
+
+//                  else
+//                  {
+//                    res = "Error";
+//                  }
+//      }
+//   );
+//  return res;
+//}
+
+//function get(setting, default_value)
+//{
+//   var db = getDatabase();
+//   var res="";
+//   try
+//   {
+//     db.transaction
+//     (
+//       function(tx)
+//       {
+//         var rs = tx.executeSql('SELECT value FROM settings WHERE setting=?;', [setting]);
+//         if (rs.rows.length > 0)
+//         {
+//              res = rs.rows.item(0).value;
+//         }
+
+//         else
+//         {
+//             res = default_value;
+//         }
+//       }
+//     )
+//   }
+
+//   catch (err)
+//   {
+//       console.log("Database " + err);
+//       res = default_value;
+//   };
+//  return res;
+//}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//from sportTimer.js
+
+/*
+
+
+function convertOneToMaxround(val)
+{
+//    switch
+}
+
+
+  */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//from calculateDates.js
+
+/*
+function dayOfWeek(y,m,outputType,d=1) //outputType is a string: value 'text' or any
+{
+
+//    m = translateMonthInputs(m);
+    if(m>0)
+    {
+        let t = [ 0, 3, 2, 5, 0, 3, 5, 1, 4, 6, 2, 4 ];
+        y -= (m < 3) ? 1 : 0;
+        var result = parseInt (( y + y/4 - y/100 + y/400 + t[m-1] + d) % 7);
+        if(outputType==="text")
+        {
+            switch(result)
+            {
+                case 0 : return "Sunday";
+                case 1 : return "Monday";
+                case 2 : return "Tuesday";
+                case 3 : return "Wednesday";
+                case 4 : return "Thursday";
+                case 5 : return "Friday";
+                case 6 : return "Saturday";//+1
+                default : return -1; //means error :"error dayofweek (result>6 or result <0 from outputType text)";
+            }
+        }
+        else
+        {
+            switch(result)
+            {
+                case 0 : return 6; //su
+                case 1 : return 0; //mo
+                case 2 : return 1; //tu
+                case 3 : return 2; //we
+                case 4 : return 3; //thu
+                case 5 : return 4; //fri
+                case 6 : return 5; //sat
+                default : return -1; //means error: "error dayofweek (result>6 or result <0 from outputType non-text)";
+            }
+        }
+
+
+    }
+    else
+        return -1; //means error : "error dayofweek (m=0 or m<0)" or error isfrom translator bcz of invalid input;
+}
+*/
+
+
+
+
+
+
+
+//from stop watch
+
+//            Component.onCompleted:
+//            {
+//                listModelData.append({
+//                    timee: "1010",
+//                    lapId: 4
+//                });
+//            }
+
+
+
+
 /* My fav styles
 
 

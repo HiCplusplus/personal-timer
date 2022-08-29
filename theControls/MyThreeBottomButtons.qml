@@ -2,11 +2,7 @@ import QtQuick 2.15
 
 Item
 {
-//    property color colorButtons: "orange";
-//    property color colorButtonTexts: "white";
-//    property color colorButtonSecond: "pink";
-//    property color colorButtonSecondTexts: "black";
-//    property color setBackGroundColor: "transparent";
+
     property bool setCenterButtonCircleStyled: false;
     signal leftButtonPressed;
     signal centerButtonPressed;

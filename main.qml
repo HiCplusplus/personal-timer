@@ -36,7 +36,7 @@ Window
 
     property int iconWidthAndHeight: mainWindow.width<700? 40:50; //for button iconBackToHome &  iconSettings
     property int fontSizeTitles: mainWindow.width<700 ? 45:65;
-    property int swipeLunchIndex: 5;
+    property int swipeLunchIndex: 1;
 
 
     //- - - - - - - - - - - - - - - - - - - - - - set theme, default light mode colors
@@ -44,7 +44,6 @@ Window
     property color cTxt_normal : "black";
     property color cTxt_title : "#3E386C";
     property color cBG : "#dedede";//"#F6F6F6";
-//    property color cBG_menu : "#dedede"; //"#F6F6F6";
     property color cBG_element: "white";
     property color cTxt_button : "black";
     property color cBG_button : "#B178FF";
@@ -67,7 +66,6 @@ Window
             cTxt_normal = "black";
             cTxt_title = "#3E386C";
             cBG = "#23272A";//darked
-//            cBG_menu = "#23272A";//"#2C2F33";//darked bad
             cBG_element= "#565578";//darked
             cTxt_button = "white";//darked
             cBG_button = "#7289DA";//darked
@@ -84,7 +82,6 @@ Window
             cTxt_normal = "black";
             cTxt_title = "#3E386C";
             cBG = "#dedede";
-//            cBG_menu = "#dedede";
             cBG_element= "white";
             cTxt_button = "black";
             cBG_button = "#B178FF";
@@ -258,7 +255,6 @@ Window
             SwipeView
             {
                 id: viewTimers
-
                 currentIndex: swipeLunchIndex;//itemBaseViewTimers.swipeViewIndex;
                 width: baseTimers.width;
                 height:baseTimers.height/100*99;
@@ -266,6 +262,7 @@ Window
                 {
                     myIndicator.myIndicatorIndex = viewTimers.currentIndex;
                 }
+
                 Page
                 {
                     id:calenderPage;
@@ -274,6 +271,20 @@ Window
 
                     }
                 }
+                Page
+                {
+                    LogsPage
+                    {
+                        id: logsPage;
+                        onGoToLogSetPage:
+                        {
+                            baseLogSet.visible=true;
+                            viewTimers.interactive=false;
+                            viewTimers.visible=false;
+                        }
+                    }
+                }
+
                 Page
                 {
                     id: alaramPage;
@@ -289,14 +300,7 @@ Window
                         }
                     }
                 }
-                Page
-                {
-                    id: stopWatchPage;
-                    StopWatch
-                    {
 
-                    }
-                }
                 Page
                 {
                     id: singleTimerPage;
@@ -325,16 +329,6 @@ Window
                     }
 
                 }//end of page 3 , single timer.
-
-                Page
-                {
-                    id:multiTimerPage;
-                    Rectangle
-                    {
-                        anchors.fill: parent;
-                        color:"pink";
-                    }
-                }//end of page 4,
 
                 Page
                 {
@@ -391,7 +385,27 @@ Window
 
                         }
                     }
+                }//end of sportTimer page
+
+                Page
+                {
+                    id: stopWatchPage;
+                    StopWatch
+                    {
+
+                    }
                 }
+
+
+                Page
+                {
+                    id:multiTimerPage;
+                    Rectangle
+                    {
+                        anchors.fill: parent;
+                        color:"pink";
+                    }
+                }//end of page 4,
             }
         }
 
@@ -463,6 +477,33 @@ Window
 
         }
     }
+
+    Rectangle
+    {
+        id:baseLogSet;
+        anchors.fill: parent;
+        anchors.topMargin: menuBar.height;
+        color:cBG_Unknown;
+        visible: false;
+        z:4;
+        LogSetPage
+        {
+            id:pageLogSet;
+            onBtnCancel:
+            {
+                baseLogSet.visible=false;
+                viewTimers.interactive=true;
+                viewTimers.visible=true;
+            }
+            onUpdateLogsListModel:
+            {
+                logsPage.refreshListModel();
+            }
+
+        }
+    }
+
+
 
     SettingsPage
     {

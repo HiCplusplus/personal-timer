@@ -3,7 +3,6 @@ import QtQuick 2.15
 Item
 {
     signal statusDismiss;
-//    property bool statusValue:false;
     property int setAnimationDuration:100;
     anchors.fill: parent;
     Rectangle
@@ -50,7 +49,6 @@ Item
             color: cBG_button;
             radius: 100;
             Drag.active: dragArea.drag.active
-//            Drag.hotSpot.x: 10;Drag.hotSpot.y: 10;
             Text
             {
                 text: "x";//"✖";

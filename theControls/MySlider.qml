@@ -2,8 +2,7 @@ import QtQuick 2.0
 
 Item
 {
-//    property color setColorSelected: "#B178FF";
-//    property color setColorNotSelected: "#EBDDFF";//
+
     property int setMinValue: 5;
     property int setMaxValue: 100;
     property int setCurrentValue:50;

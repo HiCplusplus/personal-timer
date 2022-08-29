@@ -70,12 +70,10 @@ Item
         height:17;
         z:3;
         color:cBG_Unknown;
-//        anchors.verticalCenter: parent.verticalCenter;
         anchors.right:tabAlarmSetValue.right;
         anchors.top:textTitle.top;
         anchors.topMargin: setTextTitle.length > 6 ? 5 : 10;
-//            anchors.right: parent.right;
-//                anchors.rightMargin: parent.width/10;
+
         Image
         {
             anchors.fill:parent;
@@ -163,7 +161,6 @@ Item
                     id: hoursTumbler;
                     width: setSingleTumbler? parent.width: parent.width/3.15 ;
                     model: setSingleTumbler? (setShowSecondTitle ? setHourValues : setRepeatValues) : setHourValues;
-    //                currentIndex: 1;
                     font.bold: true;
                     font.pointSize: 30;
                     visibleItemCount:4;
@@ -246,7 +243,6 @@ Item
                     {
                         text: "Sec";
                         anchors.horizontalCenter: secondsTumbler.horizontalCenter;
-//                        font.bold: true;
                         visible: setSingleTumbler?false:true;
                         font.pointSize: 15;
                         font.family: gFontFamily;
@@ -274,46 +270,4 @@ Item
 
 
 
-/*
-    Rectangle
-    {
-        id:root;
-        anchors.fill: parent;
-        color:cBG;
-        Rectangle
-        {
-            id:titleTumblers;
-            width: parent.width;
-            height: 35;
-            color:cBG_Unknown;
-            anchors.top: root.top;
-//            anchors.horizontalCenter: parent.horizontalCenter;
-            Text
-            {
-                id: textTitle;
-                text: setTextTitle;
-                font.family: gFontFamily;
-                font.pointSize: 20;
-                font.bold: true;
-                color:cTxt_button;
-                anchors.verticalCenter: parent.verticalCenter;
-                anchors.left:parent.left;
-//                anchors.leftMargin: 15;
-            }
-
-        }
-
-
-        Rectangle
-        {
-            anchors.fill: parent;
-            anchors.top: titleTumblers.bottom;
-            anchors.topMargin: 35;
-//            border.width: 0.50;
-            color:cBG_Unknown;
-
-        }
-    }
-
-    */
 }
