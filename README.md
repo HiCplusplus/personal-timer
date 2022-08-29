@@ -25,17 +25,23 @@
 ____________________________________
 
  ## up comming  
+ -  logs <b>working on</b>
  -  settings page
  -  multi timer
  -  Calender PickDay (multi month day picks)
  -  Calender (Shadow DayCircle) 
  -  routine and tasks... 
- - Alarm set page : Text alarm name when button save clicked disable/.. to avoid leave pointer text on all app
-- sportTime : SPEECH FIX say (READ, GO)
-- SportTimer : SounEffects selectable to pick SoundPack, SoundSpeech selectable to pick SpeechPack;
-- sportTimer : report with speeech remaining/left 
-
-
+ 
+ ##problems i've seen
+ - Alarm set page : Text alarm name when button save clicked disable/.. to avoid leave pointer text on all app.
+- sportTime : SPEECH FIX say (READ, GO).
+- SportTimer : SounEffects selectable to pick SoundPack, SoundSpeech selectable to pick SpeechPack.
+- sportTimer : report with speeech remaining/left .
+- alarm: input name isnt valid check, must remove qouts ' or " or replace something with those.
+- alarm: if alarm name is empty button save clicked show message must enter name for alarm.
+- MySwitch component: when theme switched between dark/light switch isnt change color correctly sometimes has bad color.
+- MySwitch component: when init switch turned on the button and backcolor isnt look good.
+- dismissPage: some erros show up + swipe somewhere in adnroid isnt work
 ___________________________________
 
 ![calendar](http://mewware.com/mewware/p-screenshots/0.6.3/photo_6035338519251107865_y.jpeg)
