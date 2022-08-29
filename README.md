@@ -25,6 +25,7 @@
 ____________________________________
 
  ## up comming  
+ -  logs <b>working on</b>
  -  settings page
  -  multi timer
  -  Calender PickDay (multi month day picks)
