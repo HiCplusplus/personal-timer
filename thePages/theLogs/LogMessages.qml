@@ -8,6 +8,7 @@ Item
 //    signal changeStatusSwiperFromTimerDown;
     signal refreshListModel;
     property int setLogId: 0;
+    property string setLogName : "";
     property int setMaxCharLogText: 500;
     property int checkLengthText : 1;
     signal goToLogs;
@@ -22,7 +23,7 @@ Item
             {
                 listModelMain.append({
                                          id:allObject.logMessages[i].id,
-                                         logText: allObject.logMessages[i].text,
+                                         lmText: allObject.logMessages[i].text,
                                          date: allObject.logMessages[i].date,
                                      });
 
@@ -45,10 +46,56 @@ Item
         color:cBG;
     }//end of root
 
+
+    Rectangle
+    {
+        id:baseLocalMenuBar;
+        width: parent.width;
+        height: 45;
+        color:cBG;
+        Text
+        {
+            text: setLogName;
+            font.pointSize: 15;
+            font.family: gFontFamily;
+            font.bold: true;
+            anchors.centerIn: parent;
+            color: cTxt_button;
+        }
+
+        Rectangle
+        {
+            id:backToLogs;
+            anchors.left:baseLocalMenuBar.left;
+            width:45;
+            height:45;
+            color:cBG_Unknown;
+            Image
+            {
+                anchors.fill: parent;
+                source: "../../"+ path_to_menuIcons + fileIcon_BackNext;
+            }
+
+            MouseArea
+            {
+                anchors.fill:parent;
+                onClicked:
+                {
+                    goToLogs();
+                }
+            }
+        }
+    }
+
+
     ListView
     {
         id:listViewMain;
-        anchors.fill:parent;
+        anchors.top: baseLocalMenuBar.bottom;
+        anchors.left:parent.left;
+        anchors.right:parent.right;
+        anchors.bottom:parent.bottom;
+        anchors.topMargin: 35;
 
         clip:true;
         model:
@@ -65,29 +112,29 @@ Item
             {
                 anchors.fill: parent;
                 color:cBG;
-                Text
+                Rectangle
                 {
-                    id:namename;
-                    text: id;
-                    color:cTxt_button;
+                    width: parent.width/1.10;
+                    height: 50;
+                    color: cBG_element;
+                    radius:15;
                     anchors.horizontalCenter: parent.horizontalCenter;
 
+
+                    Text
+                    {
+                        text: lmText;
+                        color:cTxt_button;
+                        anchors.horizontalCenter: parent.horizontalCenter;
+                    }
+                    Text
+                    {
+                        text: date;
+                        color:cTxt_button;
+                        anchors.horizontalCenter: parent.horizontalCenter;
+                    }
                 }
-                Text
-                {
-                    id:tagtag;
-                    text: logText;
-                    color:cTxt_button;
-                    anchors.horizontalCenter: parent.horizontalCenter;
-                    anchors.top:namename.bottom;
-                }
-                Text
-                {
-                    text: date;
-                    color:cTxt_button;
-                    anchors.horizontalCenter: parent.horizontalCenter;
-                    anchors.top:tagtag.bottom;
-                }
+
             }
 
         }//end of item delegate
@@ -101,7 +148,7 @@ Item
         anchors.bottom: root.bottom;
         width:parent.width;
         height:45;
-        color:"red";
+        color:cBG_element;
         TextArea
         {
             id:logText;
@@ -113,16 +160,24 @@ Item
 
             color:cTxt_button;
             enabled: true;
+            padding: 10;
 
             Text
             {
                 text: "Enter text here...";
                 color: "#aaa";
                 visible: !logText.text;
+                anchors
+                {
+                    verticalCenter:parent.verticalCenter;
+                    left:parent.left;
+                    leftMargin: 30;
+                }
             }
             onTextChanged:
             {
 
+                //to avoid json erros
                 function removeThings(text)
                 {
                     text = text.replace("\t","");
@@ -131,10 +186,28 @@ Item
                 }
                 logText.text = removeThings(logText.text);
 
-                if(logText.length > logText.width/10-12 && logText.length < setMaxCharLogText)
-                    writeText.height += 0.85;
 
 
+                //text dynamic background
+                const iconboxWidth = 8;
+                const heightPerCharecter = 22.50;
+                var xyz = writeText.width/10;
+                xyz -= iconboxWidth;
+                var lc = logText.length/xyz;
+                lc+=1.50;
+                if(lc<=2.50)
+                    writeText.height = 45;
+                else if(lc<3.10)
+                    writeText.height = 60;
+                else
+                    writeText.height = lc * heightPerCharecter;
+
+
+
+
+
+
+                //max length
                 if(logText.length >= setMaxCharLogText)
                 {
                     logText.text = logText.text.slice(0,setMaxCharLogText);
@@ -149,10 +222,16 @@ Item
             id:iconSendOrSave;
             width:45;
             height:45;
-            color:"yellow";
+            color:cBG_Unknown;
             anchors.verticalCenter:writeText.verticalCenter;
             anchors.right:writeText.right;
-
+            Image
+            {
+                width:25;
+                height:25;
+                anchors.centerIn:parent;
+                source: "../../" + path_to_menuIcons + fileIcon_Send;
+            }
 
             MouseArea
             {
@@ -173,30 +252,7 @@ Item
     }
 
 
-    Rectangle
-    {
-        id:backToLogs;
-        anchors.left:root.left;
-        anchors.top:root.top;
-        width:45;
-        height:45;
-        color:cBG_Unknown;
-        Image
-        {
-            anchors.fill: parent;
-            source: "../../"+ path_to_menuIcons + fileIcon_BackNext;
-        }
 
-        MouseArea
-        {
-            anchors.fill:parent;
-            onClicked:
-            {
-                console.log("back to logs");
-                goToLogs();
-            }
-        }
-    }
 
 
 

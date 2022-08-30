@@ -1,4 +1,5 @@
 import QtQuick 2.15
+import QtQuick.Controls 2.15
 import "theControls"
 import "thePages"
 import "theScripts/theDataBaseSystem/saveLoadLogs.js" as SaveLoadLogs
@@ -10,6 +11,9 @@ Item
     signal refreshListModel;
     signal goToLogMessages;
     signal goBackToLogs;
+
+
+
     onGoBackToLogs:
     {
         logMessagesBase.visible=false;
@@ -63,10 +67,10 @@ Item
         {
             id:listViewMain;
             anchors.fill:parent;
-
+            anchors.topMargin:35;
             clip:true;
             model:
-                ListModel
+            ListModel
             {
                 id:listModelMain;
             }
@@ -74,46 +78,71 @@ Item
             Item
             {
                 width: listViewMain.width;
-                height: 160;
+                height: 70;
                 Rectangle
                 {
                     anchors.fill: parent;
                     color:cBG;
-                    Text
+                    Rectangle
                     {
-                        id:namename;
-                        text: name;
-                        color:cTxt_button;
+                        width: parent.width/1.10;
+                        height: 50;
+                        color: cBG_element;
+                        radius:15;
                         anchors.horizontalCenter: parent.horizontalCenter;
 
-                    }
-                    Text
-                    {
-                        id:tagtag;
-                        text: tag;
-                        color:cTxt_button;
-                        anchors.horizontalCenter: parent.horizontalCenter;
-                        anchors.top:namename.bottom;
-                    }
-                    Text
-                    {
-                        text: priority;
-                        color:cTxt_button;
-                        anchors.horizontalCenter: parent.horizontalCenter;
-                        anchors.top:tagtag.bottom;
-                    }
-
-                    MouseArea
-                    {
-                        anchors.fill:parent;
-                        onClicked:
+                        Text
                         {
-                            console.log("on log " + name + " id=" + id + " clicked.");
-                            logMessages.setLogId = id;
-                            logMessages.refreshListModel();
-                            goToLogMessages();
+                            text: name;
+//                            anchors.horizontalCenter: parent.horizontalCenter;
+//                            width:40;
+//                            height:parent.height;
+//                            wrapMode: Text.WrapAtWordBoundaryOrAnywhere;
+                            font.family: gFontFamily;
+                            color:cTxt_button;
+                            font.pointSize: 18;
+                            width:parent.width/3;
+                            clip:true;
+                            anchors
+                            {
+                                verticalCenter:parent.verticalCenter;
+                                left:parent.left;
+                                leftMargin: 30;
+                            }
+
+                        }
+                        Text
+                        {
+                            text: tag;
+                            font.family: gFontFamily;
+                            color:cTxt_button;
+                            font.pointSize: 12;
+                            width:parent.width/5;
+                            clip:true;
+                            anchors
+                            {
+                                verticalCenter:parent.verticalCenter;
+                                right:parent.right;
+                                rightMargin: 30;
+                            }
+                        }
+
+
+
+                        MouseArea
+                        {
+                            anchors.fill:parent;
+                            onClicked:
+                            {
+                                logMessages.setLogId = id;
+                                logMessages.setLogName = name;
+                                logMessages.refreshListModel();
+                                goToLogMessages();
+                            }
                         }
                     }
+
+
                 }
 
             }//end of item delegate

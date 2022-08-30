@@ -136,6 +136,9 @@ Window
     property string fileIcon_Reset: "icon-reset.png";
 
 
+    //Log Icons
+    property string fileIcon_Send: "icon-send.png";
+
     //- - - - - - - - - - - - - - - - - - - - - - sound effects
     //- - sportTimer:
     property string directory_Sounds: "../theSounds/";

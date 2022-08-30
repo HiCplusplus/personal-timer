@@ -127,6 +127,8 @@
         <file>thePages/theLogs/LogSetPage.qml</file>
         <file>thePages/theLogs/LogMessages.qml</file>
         <file>theScripts/theDataBaseSystem/saveLoadLogMessages.js</file>
+        <file>thePictures/white-25px/icon-send.png</file>
+        <file>thePictures/dark-25px/icon-send.png</file>
     </qresource>
     <qresource prefix="/thePictures"/>
 </RCC>
