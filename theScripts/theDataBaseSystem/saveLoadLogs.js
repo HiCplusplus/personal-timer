@@ -1,5 +1,5 @@
 .import "dataBaseCenter.js" as DBC
-const tableName = "logs2";
+const tableName = "logs2"; //NOTE: this name is used inside saveLoadLogMessages.js as refrence
 
 function set(groupName,groupPriority,groupTags)
 {
@@ -65,10 +65,10 @@ function get()
 
 
 // FOR TEST JSON
-                 var allObject = JSON.parse(result2);
+//                 var allObject = JSON.parse(result2);
 //                console.log(allObject.alarms[1].name);
-                 console.log("-----------------------");
-                 console.log(JSON.stringify(allObject))
+//                 console.log("-----------------------");
+//                 console.log(JSON.stringify(allObject))
 
          }
 
@@ -94,27 +94,27 @@ function get()
 
 
 
-function update(logId,fieldName,value)
-{
-   var db = DBC.getDatabase();
-   var res = "";
-   db.transaction
-   (
-       function(tx)
-       {
-                  var rs = tx.executeSql('UPDATE '+tableName+' SET '+ fieldName +' = '+ value +' WHERE l_id =?;',[logId]);
-                  if (rs.rowsAffected > 0)
-                  {
-                    res = "OK";
-                  }
+//function update(logId,fieldName,value)
+//{
+//   var db = DBC.getDatabase();
+//   var res = "";
+//   db.transaction
+//   (
+//       function(tx)
+//       {
+//                  var rs = tx.executeSql('UPDATE '+tableName+' SET '+ fieldName +' = '+ value +' WHERE l_id =?;',[logId]);
+//                  if (rs.rowsAffected > 0)
+//                  {
+//                    res = "OK";
+//                  }
 
-                  else
-                  {
-                    res = "Error (from saveLoadLogs.update)";
-                  }
-      }
-   );
-  return res;
-}
+//                  else
+//                  {
+//                    res = "Error (from saveLoadLogs.update)";
+//                  }
+//      }
+//   );
+//  return res;
+//}
 
 
