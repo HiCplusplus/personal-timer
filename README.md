@@ -42,6 +42,8 @@ ____________________________________
 - MySwitch component: when theme switched between dark/light switch isnt change color correctly sometimes has bad color.
 - MySwitch component: when init switch turned on the button and backcolor isnt look good.
 - dismissPage: some erros show up + swipe somewhere in adnroid isnt work
+- LogsPage,Alarm,LogMessages.qml : optimize and avoid to twice fetch from database + change name .js as SaveLoad into just load...
+
 ___________________________________
 
 ![calendar](http://mewware.com/mewware/p-screenshots/0.6.3/photo_6035338519251107865_y.jpeg)
