@@ -3,7 +3,6 @@ const tableName = "log_messages3";
 
 function set(logId,logMessageText)
 {
-    console.log("text rec="+logMessageText)
    var db = DBC.getDatabase();
    var res = "";
 
