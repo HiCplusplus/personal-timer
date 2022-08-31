@@ -19,13 +19,13 @@
  - 0.6.7 -> Sound Effect/Speech pause & resume
  - 0.6.8 -> Dark/Light mode save on database.
  - 0.6.9 -> setup Database System + connect Alarm and Alarm-set-page with database + modify dark/light mode save on D.B (move into db system)
- - 0.7.0 -> Background application (just for now its ok it keep running whole application on background, not a service so it's not optimized maybe android close this in some situations)
-
+ - 0.7.0 -> Background application (just for now its ok it keep running whole application on background, not a service so it's not optimized maybe android close this in some situations) + (i figuraout how to temperory fix this problem: on android settings select app -> battary usage -> optimize -> disable, and turn on allow-background-activities in same app settings page this works forever untill phone battary dies or less than ~~~ 10-5% the app will kill by O.S)
+ 
+ - 0.8.0 -> Logs (create new log , add message to log, view messages , view logs)
  
 ____________________________________
 
  ## up comming  
- -  logs <b>working on</b>
  -  settings page
  -  multi timer
  -  Calender PickDay (multi month day picks)
