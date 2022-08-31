@@ -22,6 +22,7 @@
  - 0.7.0 -> Background application (just for now its ok it keep running whole application on background, not a service so it's not optimized maybe android close this in some situations) + (i figuraout how to temperory fix this problem: on android settings select app -> battary usage -> optimize -> disable, and turn on allow-background-activities in same app settings page this works forever untill phone battary dies or less than ~~~ 10-5% the app will kill by O.S)
  
  - 0.8.0 -> Logs (create new log , add message to log, view messages , view logs)
+ - 0.8.1 -> logs & alarm setPage for android fixed autopopup keyboard.
  
 ____________________________________
 
