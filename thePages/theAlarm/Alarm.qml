@@ -1,7 +1,7 @@
 import QtQuick 2.15
-import "theControls"
-import "thePages"
-import "theScripts/theDataBaseSystem/saveLoadAlarm.js" as SaveLoadAlarm
+import "../../theControls"
+import "../../thePages"
+import "../../theScripts/theDataBaseSystem/saveLoadAlarm.js" as SaveLoadAlarm
 Item
 {
 //    signal changeStatusSwiperFromTimerDown;

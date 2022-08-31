@@ -1,8 +1,8 @@
 import QtQuick 2.15
-import "../theControls"
+import "../../theControls"
 //import QtQuick.Shapes
 import QtQuick.Controls 2.15
-import "../theScripts/theDataBaseSystem/saveLoadAlarm.js" as SaveAlarm
+import "../../theScripts/theDataBaseSystem/saveLoadAlarm.js" as SaveAlarm
 Item
 {
 
