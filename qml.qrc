@@ -7,14 +7,12 @@
         <file>theScripts/controllerSpingBoxCountDown.js</file>
         <file>theControls/MyThreeBottomButtons.qml</file>
         <file>theScripts/updateCountDown.js</file>
-        <file>Alarm.qml</file>
         <file>theControls/MyMenu.qml</file>
         <file>theControls/MySwitch.qml</file>
         <file>theSounds/mixkit-elevator-tone-2863.wav</file>
         <file>thePictures/icon-moon.png</file>
         <file>thePictures/icon-sun.png</file>
         <file>thePages/DismissPage.qml</file>
-        <file>thePages/AlarmSetPage.qml</file>
         <file>theControls/MyCancelSaveButton.qml</file>
         <file>theControls/MyWeekDayPicker.qml</file>
         <file>theControls/MySlider.qml</file>
@@ -30,7 +28,6 @@
         <file>thePictures/white-25px/icon-calender.png</file>
         <file>theControls/MyComboBox.qml</file>
         <file>theControls/MyShadowForFocus.qml</file>
-        <file>thePages/CalenderPage.qml</file>
         <file>theControls/MyCalender.qml</file>
         <file>thePictures/dark-25px/icon-back-next.png</file>
         <file>thePictures/white-25px/icon-back-next.png</file>
@@ -122,13 +119,21 @@
         <file>theScripts/theDataBaseSystem/dataBaseCenter.js</file>
         <file>theScripts/theDataBaseSystem/saveLoadSettings.js</file>
         <file>theScripts/theDataBaseSystem/saveLoadAlarm.js</file>
-        <file>LogsPage.qml</file>
         <file>theScripts/theDataBaseSystem/saveLoadLogs.js</file>
         <file>thePages/theLogs/LogSetPage.qml</file>
         <file>thePages/theLogs/LogMessages.qml</file>
         <file>theScripts/theDataBaseSystem/saveLoadLogMessages.js</file>
         <file>thePictures/white-25px/icon-send.png</file>
         <file>thePictures/dark-25px/icon-send.png</file>
+        <file>thePages/theCalender/CalenderPage.qml</file>
+        <file>thePages/theLogs/LogsPage.qml</file>
+        <file>thePages/theAlarm/Alarm.qml</file>
+        <file>thePages/theAlarm/AlarmSetPage.qml</file>
+        <file>thePages/theCalender/CalenderEventGroupList.qml</file>
+        <file>thePages/theCalender/CalenderEvents.qml</file>
+        <file>thePages/theCalender/CalenderEventGroupSetPage.qml</file>
+        <file>thePages/theCalender/CalenderEventSetPage.qml</file>
+        <file>thePages/theCalender/CalenderTodayEvents.qml</file>
     </qresource>
     <qresource prefix="/thePictures"/>
 </RCC>

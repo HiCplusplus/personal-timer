@@ -1,8 +1,8 @@
 import QtQuick 2.15
 //import QtGraphicalEffects 1.15
  import QtQuick.Controls 2.15
-import "../theControls"
-import "../theScripts/calculateDates.js" as CDJS
+import "../../theControls"
+import "../../theScripts/calculateDates.js" as CDJS
 Item
 {
     anchors.fill: parent;

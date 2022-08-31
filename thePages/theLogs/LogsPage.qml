@@ -1,9 +1,9 @@
 import QtQuick 2.15
 import QtQuick.Controls 2.15
-import "theControls"
-import "thePages"
-import "theScripts/theDataBaseSystem/saveLoadLogs.js" as SaveLoadLogs
-import "thePages/theLogs/"
+import "../../theControls"
+import "../../thePages"
+import "../../theScripts/theDataBaseSystem/saveLoadLogs.js" as SaveLoadLogs
+import "../../thePages/theLogs/"
 
 Item
 {

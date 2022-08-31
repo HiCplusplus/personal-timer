@@ -8,6 +8,9 @@ import QtQuick.Controls.Material 2.15
 import "thePages/theTimer"
 import "theScripts/theDataBaseSystem/saveLoadSettings.js" as LoadSettings
 import "thePages/theLogs"
+import "thePages/theCalender"
+import "thePages/theAlarm"
+
 Window
 {
 //    Material.theme:Material.Dark
