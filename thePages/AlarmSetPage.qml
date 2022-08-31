@@ -35,10 +35,7 @@ Item
     }
 
     signal updateAlarmListModel;
-    onUpdateAlarmListModel:
-    {
-        alarmName.enabled=false;
-    }
+
 
     property int setMaxCharAlarmName:25;
     property variant setHourValues :
@@ -76,6 +73,7 @@ Item
                                   alarmSoundText.text,
                                   soundVolume.outPutVolume,
                                   (weekdaysPick.setAPicked ? 1 : 0) +","+(weekdaysPick.setBPicked ? 1 : 0)+","+(weekdaysPick.setCPicked ? 1 : 0)+","+(weekdaysPick.setDPicked ? 1 : 0)+","+(weekdaysPick.setEPicked ? 1 : 0) +","+(weekdaysPick.setFPicked ? 1 : 0) +","+(weekdaysPick.setGPicked ? 1 : 0));
+                    alarmName.enabled=false;
                     updateAlarmListModel();
                     btnCancel();
                 }
