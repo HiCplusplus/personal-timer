@@ -13,12 +13,20 @@ Item
     property int checkLengthText : 1;
     property var tmp_Date: ["9999","99","99"];//year month day . for show the dates
     signal goToLogs;
+    onGoToLogs:
+    {
+        //on android i saw problem when user leaved the log messages keybaord still cuming up !! to avoid this
+//        logText.
+          logText.enabled=false;
+
+    }
 
     onRefreshListModel:
     {
         listModelMain.clear();
         //reset tmpDate for next refresh
          tmp_Date [0] = tmp_Date[1] = tmp_Date[2] = "9999";
+        logText.enabled=true;
 
         if(JSON.stringify(SaveLoadLogMessages.get(setLogId)).length > 24) //to avoid Syntax error Json.parse error showsup when table is clear
         {
@@ -239,7 +247,7 @@ Item
             wrapMode: TextEdit.WrapAtWordBoundaryOrAnywhere;
 
             color:cTxt_button;
-            enabled: true;
+//            enabled: true;
             padding: 10;
 
             Text

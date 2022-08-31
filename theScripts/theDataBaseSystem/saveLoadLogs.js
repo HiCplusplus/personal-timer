@@ -10,7 +10,7 @@ function set(groupName,groupPriority,groupTags)
    (
        function(tx)
        {
-                  tx.executeSql('CREATE TABLE IF NOT EXISTS '+tableName+' (l_id INTEGER PRIMARY KEY AUTOINCREMENT,l_name  TEXT, l_prioirty INT, l_tags TEXT)');
+                  tx.executeSql('CREATE TABLE IF NOT EXISTS '+tableName+' (l_id INTEGER PRIMARY KEY AUTOINCREMENT,l_name  TEXT, l_prioirty INT, l_tags TEXT) ON DELETE CASCADE');
                   var rs = tx.executeSql('INSERT OR REPLACE INTO '+tableName+' (l_name,l_prioirty,l_tags) VALUES (?,?,?);',
                                                                                                 [groupName,
                                                                                                 groupPriority,
