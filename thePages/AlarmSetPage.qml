@@ -23,17 +23,22 @@ Item
         weekdaysPick.setBPicked = false; weekdaysPick.setFPicked = false;
         weekdaysPick.setCPicked = false; weekdaysPick.setGPicked = false;
         weekdaysPick.setDPicked = false;
+
+        alarmName.enabled=true;
     }
 
 
     signal btnCancel;
     onBtnCancel:
     {
-        resetValues();
+//        resetValues();
     }
 
     signal updateAlarmListModel;
-
+    onUpdateAlarmListModel:
+    {
+        alarmName.enabled=false;
+    }
 
     property int setMaxCharAlarmName:25;
     property variant setHourValues :

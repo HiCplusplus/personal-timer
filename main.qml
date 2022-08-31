@@ -284,6 +284,7 @@ Window
                             baseLogSet.visible=true;
                             viewTimers.interactive=false;
                             viewTimers.visible=false;
+                            pageAlarmSet.resetValues();
                         }
                     }
                 }
@@ -300,6 +301,7 @@ Window
                                 baseAlarmSet.visible=true;
                                 viewTimers.interactive=false;
                                 viewTimers.visible=false;
+
                         }
                     }
                 }
@@ -476,6 +478,7 @@ Window
             onUpdateAlarmListModel:
             {
                 alarmPage.refreshListModel();
+
             }
 
         }

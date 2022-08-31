@@ -16,7 +16,6 @@ Item
     onGoToLogs:
     {
         //on android i saw problem when user leaved the log messages keybaord still cuming up !! to avoid this
-//        logText.
           logText.enabled=false;
 
     }
@@ -247,7 +246,6 @@ Item
             wrapMode: TextEdit.WrapAtWordBoundaryOrAnywhere;
 
             color:cTxt_button;
-//            enabled: true;
             padding: 10;
 
             Text
