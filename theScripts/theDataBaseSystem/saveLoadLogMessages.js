@@ -62,12 +62,6 @@ function get(logId)
              result2 += "]}";
 
 
-// FOR TEST JSON
-//                 var allObject = JSON.parse(result2);
-//                console.log(allObject.alarms[1].name);
-//                 console.log("-----------------------");
-//                 console.log(JSON.stringify(allObject))
-
          }
 
          else
