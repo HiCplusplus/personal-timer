@@ -29,16 +29,10 @@ Item
         {
             if(logName.text !== "")
             {
-                console.log(logName.text,setPriorityValues[priorityTumbler.currentIndex],logTag.text);
-
                 SaveLogs.set(logName.text,setPriorityValues[priorityTumbler.currentIndex],logTag.text);
                 updateLogsListModel();
                 btnCancel();
             }
-
-
-
-
         }
         onButtonCancelClicked: { btnCancel(); }
     }
@@ -47,27 +41,35 @@ Item
     Rectangle
     {
         id:baseLogName;
-        anchors.horizontalCenter: parent.horizontalCenter;
-        width:200;
-        height:40;
-        color:"red";
-        anchors.top:myCancelSaveButtons.bottom;
+        anchors
+        {
+            horizontalCenter: parent.horizontalCenter;
+            top:myCancelSaveButtons.bottom;
+            topMargin: 50;
+        }
+        width:parent.width/1.10;
+        height:50;
+        color:cBG_element;
+        radius: 15;
         TextEdit
         {
             id:logName;
-            width: parent.width;
-            height:parent.height/1.5;
+            anchors.fill:parent;
+            horizontalAlignment: TextInput.AlignHCenter;
+            verticalAlignment: TextInput.AlignVCenter;
             font.family: gFontFamily;
             font.pointSize: 12.50;
-
             color:cTxt_button;
             enabled: true;
+            clip:true;
+            wrapMode: Text.WrapAtWordBoundaryOrAnywhere;
 
             Text
             {
-                text: "Enter log name here...";
+                text: "Enter Log name here...";
                 color: "#aaa";
                 visible: !logName.text;
+                anchors.centerIn:parent;
             }
             onTextChanged:
             {
@@ -91,27 +93,35 @@ Item
     Rectangle
     {
         id:baseLogTag;
-        anchors.horizontalCenter: parent.horizontalCenter;
-        anchors.top:baseLogName.bottom;
-        width:200;
-        height:40;
-        color:"green";
+        anchors
+        {
+            horizontalCenter: parent.horizontalCenter;
+            top:baseLogName.bottom;
+            topMargin: 25;
+        }
+        width:parent.width/1.10;
+        height:50;
+        color:cBG_element;
+        radius: 15;
+
         TextEdit
         {
             id:logTag;
-            width: parent.width;
-            height:parent.height/1.5;
+            anchors.fill:parent;
+            horizontalAlignment: TextInput.AlignHCenter;
+            verticalAlignment: TextInput.AlignVCenter;
             font.family: gFontFamily;
             font.pointSize: 12.50;
-
             color:cTxt_button;
             enabled: true;
-
+            clip:true;
+            wrapMode: Text.WrapAtWordBoundaryOrAnywhere;
             Text
             {
                 text: "Enter log tags here...";
                 color: "#aaa";
                 visible: !logTag.text;
+                anchors.centerIn:parent;
             }
             onTextChanged:
             {
@@ -131,11 +141,17 @@ Item
     Rectangle
     {
         id:baseLogPriority;
-        anchors.horizontalCenter: parent.horizontalCenter;
-        width:200;
-        height:40;
-        color:"yellow";
-        anchors.top: baseLogTag.bottom;
+        anchors
+        {
+            horizontalCenter: parent.horizontalCenter;
+            top:baseLogTag.bottom;
+            topMargin: 25;
+        }
+        width:parent.width/1.10;
+        height:200;
+        color:cBG_element;
+        radius: 15;
+        clip:true;
         Tumbler
         {
             id: priorityTumbler;
@@ -145,6 +161,10 @@ Item
             font.bold: true;
             font.pointSize: 30;
             visibleItemCount: 4;
+            anchors
+            {
+                centerIn:parent;
+            }
         }
     }
 

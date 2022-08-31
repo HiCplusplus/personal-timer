@@ -10,7 +10,7 @@ function set(logId,logMessageText)
    (
        function(tx)
        {
-                  tx.executeSql('CREATE TABLE IF NOT EXISTS '+tableName+' (lm_id INTEGER PRIMARY KEY AUTOINCREMENT,log_id INT, lm_text TEXT, lm_date DATETIME DEFAULT CURRENT_TIMESTAMP, FOREIGN KEY(log_id) REFERENCES logs2(l_id));');
+                  tx.executeSql('CREATE TABLE IF NOT EXISTS '+tableName+' (lm_id INTEGER PRIMARY KEY AUTOINCREMENT,log_id INT, lm_text TEXT, lm_date DATETIME DEFAULT CURRENT_TIMESTAMP, FOREIGN KEY(log_id) REFERENCES logs2(l_id) ON DELETE CASCADE );');
                   var rs = tx.executeSql('INSERT OR REPLACE INTO '+tableName+' (log_id,lm_text) VALUES (?,?);',
                                                                                                 [logId,
                                                                                                 logMessageText]);
