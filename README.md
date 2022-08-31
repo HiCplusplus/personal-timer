@@ -23,12 +23,15 @@
  
  - 0.8.0 -> Logs (create new log , add message to log, view messages , view logs)
  - 0.8.1 -> logs & alarm setPage for android fixed autopopup keyboard.
+ - 0.8.2 -> Logs (logSetPage style fixed)
+ - 0.8.3 -> logs (database logMessage & logs fixed on delete Cascade)
  
 ____________________________________
 
  ## up comming  
  -  settings page
  -  multi timer
+ -  onWay Timer
  -  Calender PickDay (multi month day picks)
  -  Calender (Shadow DayCircle) 
  -  routine and tasks... 
