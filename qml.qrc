@@ -129,11 +129,6 @@
         <file>thePages/theLogs/LogsPage.qml</file>
         <file>thePages/theAlarm/Alarm.qml</file>
         <file>thePages/theAlarm/AlarmSetPage.qml</file>
-        <file>thePages/theCalender/CalenderEventGroupList.qml</file>
-        <file>thePages/theCalender/CalenderEvents.qml</file>
-        <file>thePages/theCalender/CalenderEventGroupSetPage.qml</file>
-        <file>thePages/theCalender/CalenderEventSetPage.qml</file>
-        <file>thePages/theCalender/CalenderTodayEvents.qml</file>
     </qresource>
     <qresource prefix="/thePictures"/>
 </RCC>
