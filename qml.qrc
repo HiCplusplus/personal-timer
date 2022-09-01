@@ -129,6 +129,12 @@
         <file>thePages/theLogs/LogsPage.qml</file>
         <file>thePages/theAlarm/Alarm.qml</file>
         <file>thePages/theAlarm/AlarmSetPage.qml</file>
+        <file>thePages/theCalender/EventGroupsPage.qml</file>
+        <file>thePages/theCalender/EventGroupSetPage.qml</file>
+        <file>thePages/theCalender/EventsPage.qml</file>
+        <file>thePages/theCalender/EventSetPage.qml</file>
+        <file>theScripts/theDataBaseSystem/saveLoadEventGroups.js</file>
+        <file>theScripts/theDataBaseSystem/saveLoadEvents.js</file>
     </qresource>
     <qresource prefix="/thePictures"/>
 </RCC>
