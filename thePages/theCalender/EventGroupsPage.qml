@@ -2,12 +2,12 @@ import QtQuick 2.15
 import QtQuick.Controls 2.15
 import "../../theControls"
 import "../../thePages"
-import "../../theScripts/theDataBaseSystem/saveLoadLogs.js" as SaveLoadLogs
+import "../../theScripts/theDataBaseSystem/saveLoadEventGroups.js" as SaveLoadEventGroups
 import "../../thePages/theLogs/"
 
 Item
 {
-    signal goToLogSetPage;
+    signal goToEventGroupSetPage;
     signal refreshListModel;
     signal goToLogMessages;
     signal goBackToLogs;
@@ -29,23 +29,23 @@ Item
     onRefreshListModel:
     {
         listModelMain.clear();
-        if(JSON.stringify(SaveLoadLogs.get()).length > 17) //to avoid Syntax error Json.parse error showsup when table is clear
+        if(JSON.stringify(SaveLoadEventGroups.get()).length > 24) //to avoid Syntax error Json.parse error showsup when table is clear
         {
-            var allObject = JSON.parse(SaveLoadLogs.get());
-            for(var i=0; i<allObject.logs.length; i++)
+            var allObject = JSON.parse(SaveLoadEventGroups.get());
+            for(var i=0; i<allObject.eventGroups.length; i++)
             {
                 listModelMain.append({
-                                         id: allObject.logs[i].id,
-                                         name:allObject.logs[i].name,
-                                         priority: allObject.logs[i].priority,
-                                         tag: allObject.logs[i].tags,
+                                         id: allObject.eventGroups[i].id,
+                                         name:allObject.eventGroups[i].name,
+                                         priority: allObject.eventGroups[i].priority,
+                                         tag: allObject.eventGroups[i].tags,
                                      });
 
             }
         }
         else //table is empty and json has error
         {
-            console.log("LOG NOT FOUND(logs are 0)/Table isnt exists");
+            console.log("Eventgourps NOT FOUND(logs are 0)/Table isnt exists");
         }
 
     }
@@ -170,7 +170,7 @@ Item
             }
             onCenterButtonPressed:
             {
-                goToLogSetPage();
+                goToEventGroupSetPage();
             }
         }
     }//end of root

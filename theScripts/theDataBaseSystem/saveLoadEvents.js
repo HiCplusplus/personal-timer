@@ -1,5 +1,5 @@
 .import "dataBaseCenter.js" as DBC
-const tableName = "events";
+const tableName = "events2";
 
 function set(logId,logMessageText)
 {
@@ -10,7 +10,22 @@ function set(logId,logMessageText)
    (
        function(tx)
        {
-                  tx.executeSql('CREATE TABLE IF NOT EXISTS '+tableName+' (e_id INTEGER PRIMARY KEY AUTOINCREMENT,eg_id INT, e_text TEXT, e_description TEXT, e_tag TEXT, e_priority INT , e_start DATETIME , e_duration TEXT , e_repeat TEXT , e_alert INT , , e_creation_date DATETIME DEFAULT CURRENT_TIMESTAMP, FOREIGN KEY(eg_id) REFERENCES eventGroups(eg_id) ON DELETE CASCADE );');
+                  tx.executeSql('CREATE TABLE IF NOT EXISTS '+tableName+' ( e_id INTEGER PRIMARY KEY AUTOINCREMENT,'+ //event id
+                                                                            'eg_id INT,'+ //group id
+                                                                            'e_text TEXT,'+ //name of event limited
+                                                                            'e_description TEXT,'+ //long text for user by user
+                                                                            'e_tag TEXT,'+ //for search and grouping/sorting
+                                                                            'e_priority INT,'+ //a number
+                                                                            'e_date DATETIME,'+ //start date
+                                                                            'e_duration TEXT,'+ //1hour 2day ...
+                                                                            'e_repeat TEXT,'+ //sun,mon,tue,... 21th,30th,   or long date like 21th jul 2022, 2hours and 29minutes
+                                                                            'e_'+
+                                                                            'e_alert INT,'+
+                                                                            'e_creation_date DATETIME DEFAULT CURRENT_TIMESTAMP,'+
+                                                                            'FOREIGN KEY(eg_id) REFERENCES eventGroups(eg_id) ON DELETE CASCADE );');
+
+
+
                   var rs = tx.executeSql('INSERT OR REPLACE INTO '+tableName+' (eg_id,e_text) VALUES (?,?);',
                                                                                                 [logId,
                                                                                                 logMessageText]);

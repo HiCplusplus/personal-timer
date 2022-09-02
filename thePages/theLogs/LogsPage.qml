@@ -40,7 +40,7 @@ Item
                                          priority: allObject.logs[i].priority,
                                          tag: allObject.logs[i].tags,
                                      });
-
+1
             }
         }
         else //table is empty and json has error

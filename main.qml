@@ -277,6 +277,23 @@ Window
 
                     }
                 }
+
+                Page
+                {
+                    EventGroupsPage
+                    {
+                        id: eventGroupPage;
+                        onGoToEventGroupSetPage:
+                        {
+                            baseEventGroupSet.visible=true;
+                            viewTimers.interactive=false;
+                            viewTimers.visible=false;
+//                            pageAlarmSet.resetValues();????????????????????????????????????????
+                        }
+                    }
+                }
+
+
                 Page
                 {
                     LogsPage
@@ -287,7 +304,7 @@ Window
                             baseLogSet.visible=true;
                             viewTimers.interactive=false;
                             viewTimers.visible=false;
-                            pageAlarmSet.resetValues();
+//                            pageAlarmSet.resetValues(); wTF IS THIS???????????????????????????????
                         }
                     }
                 }
@@ -507,6 +524,32 @@ Window
             onUpdateLogsListModel:
             {
                 logsPage.refreshListModel();
+            }
+
+        }
+    }
+
+
+    Rectangle
+    {
+        id:baseEventGroupSet;
+        anchors.fill: parent;
+        anchors.topMargin: menuBar.height;
+        color:cBG_Unknown;
+        visible: false;
+        z:4;
+        EventGroupSetPage
+        {
+            id:pageEventGroupSet;
+            onBtnCancel:
+            {
+                baseEventGroupSet.visible=false;
+                viewTimers.interactive=true;
+                viewTimers.visible=true;
+            }
+            onUpdateLogsListModel:
+            {
+                eventGroupPage.refreshListModel();
             }
 
         }
