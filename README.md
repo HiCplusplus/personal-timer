@@ -27,10 +27,14 @@
  - 0.8.3 -> logs (database logMessage & logs fixed on delete Cascade)
  - 0.9.0 -> eventGroups added.
  - 0.9.1 -> test on android.
+ - 0.9.2 -> titlebar each page (instead of pLarm static text switch text with page change).
+ - 0.9.3 -> Alarm text is disabled after first alarm creation, and cant create new one.
+
 ____________________________________
 
  ## up comming  
-  - 0.9.1 -> working on event
+ 
+  - 0.9.1 ->events
  -  settings page
  -  multi timer
  -  onWay Timer
