@@ -115,6 +115,7 @@ Item
         onCenterButtonPressed:
         {
             goToAlarmSetPage();
+
         }
     }
 
