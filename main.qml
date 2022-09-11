@@ -10,6 +10,7 @@ import "theScripts/theDataBaseSystem/saveLoadSettings.js" as LoadSettings
 import "thePages/theLogs"
 import "thePages/theCalender"
 import "thePages/theAlarm"
+import "theScripts/updateIndicator.js" as UpdateSwipeViewIndexesAsIndicator
 
 Window
 {
@@ -218,7 +219,7 @@ Window
        MyMenu
        {
             id:myMenu;
-            cBGMenu: viewTimers.currentIndex==0? cBG_button: cBG;
+            cBGMenu: viewTimers.currentIndex===0? cBG_button: cBG;
             colorTextMenu:cTxt_button;
             textTitleMenu:appTitle;
             onSignalOpenMenu:
@@ -267,6 +268,7 @@ Window
                 onCurrentIndexChanged:
                 {
                     myIndicator.myIndicatorIndex = viewTimers.currentIndex;
+                    UpdateSwipeViewIndexesAsIndicator.setIndexTitleBarFromSwipeView(currentIndex);
                 }
 
                 Page
@@ -498,7 +500,6 @@ Window
             onUpdateAlarmListModel:
             {
                 alarmPage.refreshListModel();
-
             }
 
         }
