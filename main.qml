@@ -11,6 +11,7 @@ import "thePages/theLogs"
 import "thePages/theCalender"
 import "thePages/theAlarm"
 import "theScripts/updateIndicator.js" as UpdateSwipeViewIndexesAsIndicator
+import "thePages/theEvents"
 
 Window
 {
