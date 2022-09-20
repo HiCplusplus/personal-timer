@@ -1,5 +1,5 @@
 .import "dataBaseCenter.js" as DBC
-const tableName = "eventGroups2"; //NOTE: this name is used inside ?????.js as refrence
+const tableName = "eventGroups2"; //NOTE: this name is used inside saveLoadEvents.js as refrence
 
 function set(groupName,groupPriority,groupTags)
 {
@@ -33,7 +33,7 @@ function set(groupName,groupPriority,groupTags)
 
 function get()
 {
-    console.log("GET STARTED........................")
+//    console.log("GET STARTED........................")
    var db = DBC.getDatabase();
    var res="";
     let result2 = '{ "eventGroups" : [';
@@ -68,8 +68,8 @@ function get()
              result2 += "]}";
 
 
-                 console.log("values stringfiy from saveloadeventgroup");
-                 console.log(JSON.stringify(result2));
+//                 console.log("values stringfiy from saveloadeventgroup");
+//                 console.log(JSON.stringify(result2));
 
          }
 
