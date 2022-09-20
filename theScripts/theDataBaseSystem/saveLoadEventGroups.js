@@ -90,3 +90,58 @@ function get()
    return result2;
 }
 
+
+
+
+
+
+/*
+  Event group:
+
+        title (primery, uniq)  [short text , limited i.g 32char]
+        tag [short text , limited i.g 32char]
+        priority [int] [def 50] //lower number = highest pririoty
+
+
+  Events:
+        id [int] autoincrease
+        title [short text , limited]
+        tag (icon/color) [short text , limited]
+        priority [int] //lower number = highest pririoty
+        description [long text , limited]
+        enable/active [int] default ture/1
+        start + clock [time/date] default timestamp
+        end + clock [time/date] defualt +1hour after start
+        location [short text, limited]
+        creation [timestamp]
+
+
+        -------------------------------------------------------- reminder: (number , minute/hour/day/week/AT-EVENT-TIME) [all is before starts]
+
+        repeat mode: [int]
+                            // 0->[0] repeate status
+                            // 1->[1] repeate status
+                            // 2->[2] repeate status
+                            // 3->[3] repeate status
+                            // 4->[4] repeate status
+                            // 5->[5] repeate status
+
+        repeat status are:  [short text]
+                            dont-repeat //
+                            every ? hour,minute,seconds,rounds
+                            every ? day //
+                            every ? weeks //
+                            every ? month //
+                            every ? year //
+
+
+
+    Complete/Repeat Events
+        id (auto_increase)
+        eventId (with eventRouind not repeated, primery , refrecned from Events)
+        eventRound (with eventID not repeated , primery , refrenced from Events)
+        complete status (default 0, timestamp)
+        removed (default 0, timestamp)
+
+
+  */
