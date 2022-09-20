@@ -291,7 +291,12 @@ Window
                             baseEventGroupSet.visible=true;
                             viewTimers.interactive=false;
                             viewTimers.visible=false;
-//                            pageAlarmSet.resetValues();????????????????????????????????????????
+                        }
+                        onGoToEventSetPage:
+                        {
+                            baseEventSet.visible=true;
+                            viewTimers.interactive=false;
+                            viewTimers.visible=false;
                         }
                     }
                 }
@@ -558,6 +563,30 @@ Window
     }
 
 
+    Rectangle
+    {
+        id:baseEventSet;
+        anchors.fill: parent;
+        anchors.topMargin: menuBar.height;
+        color:cBG_Unknown;
+        visible: false;
+        z:4;
+        EventSetPage
+        {
+            id:pageEventSet;
+            onBtnCancel:
+            {
+                baseEventSet.visible=false;
+                viewTimers.interactive=true;
+                viewTimers.visible=true;
+            }
+            onUpdateLogsListModel:
+            {
+                eventGroupPage.refreshListModel();
+            }
+
+        }
+    }
 
     SettingsPage
     {

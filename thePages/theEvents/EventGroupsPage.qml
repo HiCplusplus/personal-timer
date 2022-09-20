@@ -11,6 +11,7 @@ Item
     signal refreshListModel;
     signal goToLogMessages;
     signal goBackToLogs;
+    signal goToEventSetPage;
 
 
 
@@ -45,7 +46,7 @@ Item
         }
         else //table is empty and json has error
         {
-            console.log("Eventgourps NOT FOUND(logs are 0)/Table isnt exists");
+            console.log("Eventgourps NOT FOUND(eventGroups are 0)/Table isnt exists");
         }
 
     }
@@ -134,8 +135,7 @@ Item
                             anchors.fill:parent;
                             onClicked:
                             {
-                                logMessages.setLogId = id;
-                                logMessages.setLogName = name;
+                                logMessages.setEventGroupId = id;
                                 logMessages.refreshListModel();
                                 goToLogMessages();
                             }
@@ -180,13 +180,19 @@ Item
         id:logMessagesBase;
         anchors.fill:parent;
         visible:false;
-        LogMessages
+        EventsPage
         {
             id:logMessages;
-            onGoToLogs:
+            onGoBackToEventGroupsFromEvents:
             {
-                goBackToLogs();
+                logMessagesBase.visible=false;
+                root.visible=true;
             }
+
+//            onGoToLogs:
+//            {
+//                goBackToLogs();
+//            }
         }
     }
 }//end of item

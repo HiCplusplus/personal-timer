@@ -57,7 +57,7 @@ function get()
                              '", "name":"'+ rs.rows.item(x).eg_name +
                              '", "priority":"'+ rs.rows.item(x).eg_prioirty +
                              '", "tags":"'+ rs.rows.item(x).eg_tags + '" }';
-                     console.log("res=" + result2);
+//                     console.log("res=" + result2);
                      if(x<tableColumns-1)
                      {
                          result2 += ",";
@@ -116,32 +116,33 @@ function get()
         creation [timestamp]
 
 
-        -------------------------------------------------------- reminder: (number , minute/hour/day/week/AT-EVENT-TIME) [all is before starts]
-
-        repeat mode: [int]
-                            // 0->[0] repeate status
-                            // 1->[1] repeate status
-                            // 2->[2] repeate status
-                            // 3->[3] repeate status
-                            // 4->[4] repeate status
-                            // 5->[5] repeate status
-
-        repeat status are:  [short text]
-                            dont-repeat //
-                            every ? hour,minute,seconds,rounds
-                            every ? day //
-                            every ? weeks //
-                            every ? month //
-                            every ? year //
 
 
 
-    Complete/Repeat Events
+
+
+
+
+        repeat type:  [int]
+        repeat value: [text] for day,month,year is a number, for week and hmsr (hour,minute,seconds,rounds) is serial numbers
+
+
+
+   List of event repeats
         id (auto_increase)
         eventId (with eventRouind not repeated, primery , refrecned from Events)
-        eventRound (with eventID not repeated , primery , refrenced from Events)
-        complete status (default 0, timestamp)
-        removed (default 0, timestamp)
+        eventRound (with eventID not repeated , primery , refrenced from Events) default 0 or 1
+        date (date and time)
+        status [int] (incomplete, completed, disabled)
+        last modify [timestamp]
 
 
+
+
+   Event Remind
+        id
+        eventId
+        reminder type (int) [in app notification, in app alarm sound]
+        date (date and time)
+        status (int) (soon, dismissed, missed)
   */

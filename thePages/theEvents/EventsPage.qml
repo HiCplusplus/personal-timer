@@ -2,17 +2,17 @@ import QtQuick 2.15
 import QtQuick.Controls 2.15
 import "../../theControls"
 import "../../thePages"
-import "../../theScripts/theDataBaseSystem/saveLoadEvents.js" as SaveLoadEvent
+import "../../theScripts/theDataBaseSystem/saveLoadEvents.js" as SaveLoadEvents
 import "../../thePages/theLogs/"
 
 Item
 {
-    signal goToEventGroupSetPage;
+
     signal refreshListModel;
     signal goToLogMessages;
     signal goBackToLogs;
-
-
+    signal goBackToEventGroupsFromEvents;
+    property int setEventGroupId : 0;
 
     onGoBackToLogs:
     {
@@ -29,9 +29,13 @@ Item
     onRefreshListModel:
     {
         listModelMain.clear();
-        if(JSON.stringify(SaveLoadEvent.get()).length > 24) //to avoid Syntax error Json.parse error showsup when table is clear
+        if(setEventGroupId==0)
+            console.log("error from EventsPage.qml a property value is not fill complete.");
+
+
+        if(JSON.stringify(SaveLoadEvents.get(setEventGroupId)).length > 24) //to avoid Syntax error Json.parse error showsup when table is clear
         {
-            var allObject = JSON.parse(SaveLoadEvent.get());
+            var allObject = JSON.parse(SaveLoadEvents.get(setEventGroupId));
             for(var i=0; i<allObject.eventGroups.length; i++)
             {
                 listModelMain.append({
@@ -45,14 +49,14 @@ Item
         }
         else //table is empty and json has error
         {
-            console.log("events NOT FOUND(logs are 0)/Table isnt exists");
+            console.log("Events NOT FOUND(events are 0)/Table isnt exists");
         }
 
     }
 
     Component.onCompleted:
     {
-        refreshListModel();
+//        refreshListModel();
     }
 
 
@@ -62,6 +66,30 @@ Item
         id:root;
         anchors.fill: parent;
         color:cBG;
+        Rectangle
+        {
+            id:backToLogs;
+            anchors.left:root.left;
+            width:45;
+            height:45;
+            color:cBG_Unknown;
+            Image
+            {
+                anchors.fill: parent;
+                source: "../../"+ path_to_menuIcons + fileIcon_BackNext;
+            }
+
+            MouseArea
+            {
+                anchors.fill:parent;
+                onClicked:
+                {
+                    goBackToEventGroupsFromEvents();
+                }
+            }
+        }
+
+
 
         ListView
         {
@@ -94,10 +122,6 @@ Item
                         Text
                         {
                             text: name;
-//                            anchors.horizontalCenter: parent.horizontalCenter;
-//                            width:40;
-//                            height:parent.height;
-//                            wrapMode: Text.WrapAtWordBoundaryOrAnywhere;
                             font.family: gFontFamily;
                             color:cTxt_button;
                             font.pointSize: 18;
@@ -134,10 +158,10 @@ Item
                             anchors.fill:parent;
                             onClicked:
                             {
-                                logMessages.setLogId = id;
-                                logMessages.setLogName = name;
-                                logMessages.refreshListModel();
-                                goToLogMessages();
+//                                logMessages.setLogId = id;
+//                                logMessages.setLogName = name;
+//                                logMessages.refreshListModel();
+//                                goToLogMessages();
                             }
                         }
                     }
@@ -170,7 +194,7 @@ Item
             }
             onCenterButtonPressed:
             {
-                goToEventGroupSetPage();
+                goToEventSetPage();
             }
         }
     }//end of root
@@ -183,10 +207,10 @@ Item
         LogMessages
         {
             id:logMessages;
-            onGoToLogs:
-            {
-                goBackToLogs();
-            }
+//            onGoToLogs:
+//            {
+//                goBackToLogs();
+//            }
         }
     }
 }//end of item
