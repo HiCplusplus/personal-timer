@@ -135,6 +135,8 @@
         <file>thePages/theEvents/EventGroupsPage.qml</file>
         <file>thePages/theEvents/EventSetPage.qml</file>
         <file>thePages/theEvents/EventsPage.qml</file>
+        <file>thePages/thePrioritize/Prioritize.qml</file>
+        <file>thePages/thePrioritize/PrioritizeSetPage.qml</file>
     </qresource>
     <qresource prefix="/thePictures"/>
 </RCC>
