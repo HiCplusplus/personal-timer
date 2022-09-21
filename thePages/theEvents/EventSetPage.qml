@@ -38,9 +38,9 @@ Item
                 //(eventGroupId, eventTitle, eventDescription, eventTag,
                 //eventPriority, eventStart, eventEnd,
                 //eventActive, eventLocation)
-                SaveEvents.set(theEventGroupId,logName.text,"default description",logTag.text,
-                               setPriorityValues[priorityTumbler.currentIndex], "21sep2022-02:11","21sep2022-04:12",
-                               "1","location internet");
+                SaveEvents.set(theEventGroupId,logName.text,eventDescription.text,logTag.text,
+                               setPriorityValues[priorityTumbler.currentIndex], eventStart.text,eventEnd.text,
+                               eventActive.text,eventLocation.text);
                 updateLogsListModel();
                 btnCancel();
             }
@@ -53,134 +53,396 @@ Item
     }
 
 
-    Rectangle
+    ScrollView
     {
-        id:baseLogName;
+//        anchors.fill: parent
         anchors
         {
-            horizontalCenter: parent.horizontalCenter;
             top:myCancelSaveButtons.bottom;
-            topMargin: 50;
+            left:parent.left;
+            right:parent.right;
+            bottom:parent.bottom;
         }
-        width:parent.width/1.10;
-        height:50;
-        color:cBG_element;
-        radius: 15;
-        TextEdit
-        {
-            id:logName;
-            anchors.fill:parent;
-            horizontalAlignment: TextInput.AlignHCenter;
-            verticalAlignment: TextInput.AlignVCenter;
-            font.family: gFontFamily;
-            font.pointSize: 12.50;
-            color:cTxt_button;
-            enabled: true;
-            clip:true;
-            wrapMode: Text.WrapAtWordBoundaryOrAnywhere;
 
-            Text
+        clip: true
+        ScrollBar.vertical.policy: ScrollBar.AlwaysOn;
+        Item
+        {
+            id:rootItem;
+            width: parent.width;
+            height: 900;
+            implicitHeight: height;
+
+            Rectangle
             {
-                text: "Enter event title here...";
-                color: "#aaa";
-                visible: !logName.text;
-                anchors.centerIn:parent;
-            }
-            onTextChanged:
-            {
-                if(logName.length >= setMaxCharLogName)
+                id:baseLogName;
+                anchors
                 {
-                    logName.text = logName.text.slice(0,setMaxCharLogName);
-                    logName.cursorPosition=setMaxCharLogName;
+                    horizontalCenter: parent.horizontalCenter;
+                    top:parent.top
+                    topMargin: 50;
+                }
+                width:parent.width/1.10;
+                height:50;
+                color:cBG_element;
+                radius: 15;
+                TextEdit
+                {
+                    id:logName;
+                    anchors.fill:parent;
+                    horizontalAlignment: TextInput.AlignHCenter;
+                    verticalAlignment: TextInput.AlignVCenter;
+                    font.family: gFontFamily;
+                    font.pointSize: 12.50;
+                    color:cTxt_button;
+                    enabled: true;
+                    clip:true;
+                    wrapMode: Text.WrapAtWordBoundaryOrAnywhere;
+
+                    Text
+                    {
+                        text: "Enter event title here...";
+                        color: "#aaa";
+                        visible: !logName.text;
+                        anchors.centerIn:parent;
+                    }
+                    onTextChanged:
+                    {
+                        if(logName.length >= setMaxCharLogName)
+                        {
+                            logName.text = logName.text.slice(0,setMaxCharLogName);
+                            logName.cursorPosition=setMaxCharLogName;
+                        }
+                    }
+                }
+            }//end of log name base
+
+
+
+
+
+
+
+
+
+            Rectangle
+            {
+                id:baseLogTag;
+                anchors
+                {
+                    horizontalCenter: parent.horizontalCenter;
+                    top:baseLogName.bottom;
+                    topMargin: 25;
+                }
+                width:parent.width/1.10;
+                height:50;
+                color:cBG_element;
+                radius: 15;
+
+                TextEdit
+                {
+                    id:logTag;
+                    anchors.fill:parent;
+                    horizontalAlignment: TextInput.AlignHCenter;
+                    verticalAlignment: TextInput.AlignVCenter;
+                    font.family: gFontFamily;
+                    font.pointSize: 12.50;
+                    color:cTxt_button;
+                    enabled: true;
+                    clip:true;
+                    wrapMode: Text.WrapAtWordBoundaryOrAnywhere;
+                    Text
+                    {
+                        text: "Enter event tags here...";
+                        color: "#aaa";
+                        visible: !logTag.text;
+                        anchors.centerIn:parent;
+                    }
+                    onTextChanged:
+                    {
+                        if(logTag.length >= setMaxCharLogTag)
+                        {
+                            logTag.text = logTag.text.slice(0,setMaxCharLogTag);
+                            logTag.cursorPosition=setMaxCharLogTag;
+                        }
+                    }
+                }
+            }//end of log name base
+
+
+
+
+            Rectangle
+            {
+                id:baseEventLocation;
+                anchors
+                {
+                    horizontalCenter: parent.horizontalCenter;
+                    top:baseLogTag.bottom;
+                    topMargin: 25;
+                }
+                width:parent.width/1.10;
+                height:50;
+                color:cBG_element;
+                radius: 15;
+
+                TextEdit
+                {
+                    id:eventLocation;
+                    anchors.fill:parent;
+                    horizontalAlignment: TextInput.AlignHCenter;
+                    verticalAlignment: TextInput.AlignVCenter;
+                    font.family: gFontFamily;
+                    font.pointSize: 12.50;
+                    color:cTxt_button;
+                    enabled: true;
+                    clip:true;
+                    wrapMode: Text.WrapAtWordBoundaryOrAnywhere;
+                    Text
+                    {
+                        text: "Enter location here...";
+                        color: "#aaa";
+                        visible: !eventLocation.text;
+                        anchors.centerIn:parent;
+                    }
+                    onTextChanged:
+                    {
+                        if(eventLocation.length >= setMaxCharLogTag)
+                        {
+                            eventLocation.text = eventLocation.text.slice(0,setMaxCharLogTag);
+                            eventLocation.cursorPosition=setMaxCharLogTag;
+                        }
+                    }
+                }
+            }//end of log name base
+
+
+
+            Rectangle
+            {
+                id:baseEventDescription;
+                anchors
+                {
+                    horizontalCenter: parent.horizontalCenter;
+                    top:baseEventLocation.bottom;
+                    topMargin: 25;
+                }
+                width:parent.width/1.10;
+                height:50*3;
+                color:cBG_element;
+                radius: 15;
+
+                TextEdit
+                {
+                    id:eventDescription;
+                    anchors.fill:parent;
+                    horizontalAlignment: TextInput.AlignHCenter;
+                    verticalAlignment: TextInput.AlignVCenter;
+                    font.family: gFontFamily;
+                    font.pointSize: 12.50;
+                    color:cTxt_button;
+                    enabled: true;
+                    clip:true;
+                    wrapMode: Text.WrapAtWordBoundaryOrAnywhere;
+                    Text
+                    {
+                        text: "Enter description here...";
+                        color: "#aaa";
+                        visible: !eventDescription.text;
+                        anchors.centerIn:parent;
+                    }
+                    onTextChanged:
+                    {
+                        if(eventDescription.length >= setMaxCharLogTag*5)
+                        {
+                            eventDescription.text = eventDescription.text.slice(0,setMaxCharLogTag);
+                            eventDescription.cursorPosition=setMaxCharLogTag;
+                        }
+                    }
+                }
+            }//end of log name base
+
+
+
+
+
+
+
+            Rectangle
+            {
+                id:baseEventStart;
+                anchors
+                {
+                    horizontalCenter: parent.horizontalCenter;
+                    top:baseEventDescription.bottom;
+                    topMargin: 25;
+                }
+                width:parent.width/1.10;
+                height:50;
+                color:cBG_element;
+                radius: 15;
+
+                TextEdit
+                {
+                    id:eventStart;
+                    anchors.fill:parent;
+                    horizontalAlignment: TextInput.AlignHCenter;
+                    verticalAlignment: TextInput.AlignVCenter;
+                    font.family: gFontFamily;
+                    font.pointSize: 12.50;
+                    color:cTxt_button;
+                    enabled: true;
+                    clip:true;
+                    wrapMode: Text.WrapAtWordBoundaryOrAnywhere;
+                    Text
+                    {
+                        text: "Enter start date n time here...";
+                        color: "#aaa";
+                        visible: !eventStart.text;
+                        anchors.centerIn:parent;
+                    }
+                    onTextChanged:
+                    {
+                        if(eventStart.length >= setMaxCharLogTag)
+                        {
+                            eventStart.text = eventStart.text.slice(0,setMaxCharLogTag);
+                            eventStart.cursorPosition=setMaxCharLogTag;
+                        }
+                    }
+                }
+            }//end of log name base
+
+
+
+
+
+            Rectangle
+            {
+                id:baseEventEnd;
+                anchors
+                {
+                    horizontalCenter: parent.horizontalCenter;
+                    top:baseEventStart.bottom;
+                    topMargin: 25;
+                }
+                width:parent.width/1.10;
+                height:50;
+                color:cBG_element;
+                radius: 15;
+
+                TextEdit
+                {
+                    id:eventEnd;
+                    anchors.fill:parent;
+                    horizontalAlignment: TextInput.AlignHCenter;
+                    verticalAlignment: TextInput.AlignVCenter;
+                    font.family: gFontFamily;
+                    font.pointSize: 12.50;
+                    color:cTxt_button;
+                    enabled: true;
+                    clip:true;
+                    wrapMode: Text.WrapAtWordBoundaryOrAnywhere;
+                    Text
+                    {
+                        text: "Enter end date n time here...";
+                        color: "#aaa";
+                        visible: !eventEnd.text;
+                        anchors.centerIn:parent;
+                    }
+                    onTextChanged:
+                    {
+                        if(eventEnd.length >= setMaxCharLogTag)
+                        {
+                            eventEnd.text = eventEnd.text.slice(0,setMaxCharLogTag);
+                            eventEnd.cursorPosition=setMaxCharLogTag;
+                        }
+                    }
+                }
+            }//end of log name base
+
+
+
+
+            Rectangle
+            {
+                id:baseEventActiveStatus;
+                anchors
+                {
+                    horizontalCenter: parent.horizontalCenter;
+                    top:baseEventEnd.bottom;
+                    topMargin: 25;
+                }
+                width:parent.width/1.10;
+                height:50;
+                color:cBG_element;
+                radius: 15;
+
+                TextEdit
+                {
+                    id:eventActive;
+                    anchors.fill:parent;
+                    horizontalAlignment: TextInput.AlignHCenter;
+                    verticalAlignment: TextInput.AlignVCenter;
+                    font.family: gFontFamily;
+                    font.pointSize: 12.50;
+                    color:cTxt_button;
+                    enabled: true;
+                    clip:true;
+                    wrapMode: Text.WrapAtWordBoundaryOrAnywhere;
+                    Text
+                    {
+                        text: "Enter 0 / 1 as active here...";
+                        color: "#aaa";
+                        visible: !eventActive.text;
+                        anchors.centerIn:parent;
+                    }
+                    onTextChanged:
+                    {
+                        if(eventActive.length >= setMaxCharLogTag)
+                        {
+                            eventActive.text = eventActive.text.slice(0,setMaxCharLogTag);
+                            eventActive.cursorPosition=setMaxCharLogTag;
+                        }
+                    }
+                }
+            }//end of log name base
+
+
+
+
+            Rectangle
+            {
+                id:baseLogPriority;
+                anchors
+                {
+                    horizontalCenter: parent.horizontalCenter;
+                    top:baseEventActiveStatus.bottom;
+                    topMargin: 25;
+                }
+                width:parent.width/1.10;
+                height:200;
+                color:cBG_element;
+                radius: 15;
+                clip:true;
+                Tumbler
+                {
+                    id: priorityTumbler;
+                    width: parent.width/3;
+                    model:setPriorityValues;
+                    currentIndex: 1;
+                    font.bold: true;
+                    font.pointSize: 30;
+                    visibleItemCount: 4;
+                    anchors
+                    {
+                        centerIn:parent;
+                    }
                 }
             }
-        }
-    }//end of log name base
 
 
-
-
-
-
-
-
-
-    Rectangle
-    {
-        id:baseLogTag;
-        anchors
-        {
-            horizontalCenter: parent.horizontalCenter;
-            top:baseLogName.bottom;
-            topMargin: 25;
-        }
-        width:parent.width/1.10;
-        height:50;
-        color:cBG_element;
-        radius: 15;
-
-        TextEdit
-        {
-            id:logTag;
-            anchors.fill:parent;
-            horizontalAlignment: TextInput.AlignHCenter;
-            verticalAlignment: TextInput.AlignVCenter;
-            font.family: gFontFamily;
-            font.pointSize: 12.50;
-            color:cTxt_button;
-            enabled: true;
-            clip:true;
-            wrapMode: Text.WrapAtWordBoundaryOrAnywhere;
-            Text
-            {
-                text: "Enter event tags here...";
-                color: "#aaa";
-                visible: !logTag.text;
-                anchors.centerIn:parent;
-            }
-            onTextChanged:
-            {
-                if(logTag.length >= setMaxCharLogTag)
-                {
-                    logTag.text = logTag.text.slice(0,setMaxCharLogTag);
-                    logTag.cursorPosition=setMaxCharLogTag;
-                }
-            }
-        }
-    }//end of log name base
-
-
-
-
-
-    Rectangle
-    {
-        id:baseLogPriority;
-        anchors
-        {
-            horizontalCenter: parent.horizontalCenter;
-            top:baseLogTag.bottom;
-            topMargin: 25;
-        }
-        width:parent.width/1.10;
-        height:200;
-        color:cBG_element;
-        radius: 15;
-        clip:true;
-        Tumbler
-        {
-            id: priorityTumbler;
-            width: parent.width/3;
-            model:setPriorityValues;
-            currentIndex: 1;
-            font.bold: true;
-            font.pointSize: 30;
-            visibleItemCount: 4;
-            anchors
-            {
-                centerIn:parent;
-            }
         }
     }
+
 
 }
