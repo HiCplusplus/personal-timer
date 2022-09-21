@@ -81,8 +81,9 @@ function get(groupId)
                              '", "end":"'+ rs.rows.item(x).e_end +
                              '", "active":"'+ rs.rows.item(x).e_active +
                              '", "location":"'+ rs.rows.item(x).e_location +
+                             '", "description":"'+ rs.rows.item(x).e_description +
                              '", "tags":"'+ rs.rows.item(x).e_tag + '" }';
-                     console.log("res=" + result2);
+//                     console.log("res=" + result2);
                      if(x<tableColumns-1)
                      {
                          result2 += ",";
@@ -92,8 +93,8 @@ function get(groupId)
                  }
              result2 += "]}";
 
-                 console.log("values stringfiy from events.get");
-                 console.log(JSON.stringify(result2));
+//                 console.log("values stringfiy from events.get");
+//                 console.log(JSON.stringify(result2));
 
          }
 

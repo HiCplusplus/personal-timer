@@ -9,6 +9,12 @@ Item
 
     property int setMaxCharLogName:25;
     property int setMaxCharLogTag:25;
+    property int theEventGroupId:0;
+    onBtnCancel:
+    {
+        stack_event_titles = "EG/E";
+        appTitle = stack_event_titles;
+    }
 
 
     property variant setPriorityValues:
@@ -29,12 +35,21 @@ Item
         {
             if(logName.text !== "")
             {
-                SaveEvents.set(logName.text,setPriorityValues[priorityTumbler.currentIndex],logTag.text);
+                //(eventGroupId, eventTitle, eventDescription, eventTag,
+                //eventPriority, eventStart, eventEnd,
+                //eventActive, eventLocation)
+                SaveEvents.set(theEventGroupId,logName.text,"default description",logTag.text,
+                               setPriorityValues[priorityTumbler.currentIndex], "21sep2022-02:11","21sep2022-04:12",
+                               "1","location internet");
                 updateLogsListModel();
                 btnCancel();
             }
         }
-        onButtonCancelClicked: { btnCancel(); }
+        onButtonCancelClicked:
+        {
+            btnCancel();
+
+        }
     }
 
 
@@ -66,7 +81,7 @@ Item
 
             Text
             {
-                text: "Enter Log name here...";
+                text: "Enter event title here...";
                 color: "#aaa";
                 visible: !logName.text;
                 anchors.centerIn:parent;
@@ -118,7 +133,7 @@ Item
             wrapMode: Text.WrapAtWordBoundaryOrAnywhere;
             Text
             {
-                text: "Enter log tags here...";
+                text: "Enter event tags here...";
                 color: "#aaa";
                 visible: !logTag.text;
                 anchors.centerIn:parent;

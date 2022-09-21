@@ -6,6 +6,11 @@ Item
 {
     signal updateLogsListModel;
     signal btnCancel;
+    onBtnCancel:
+    {
+        stack_event_titles = "EventGroups";
+        appTitle = stack_event_titles;
+    }
 
     property int setMaxCharLogName:25;
     property int setMaxCharLogTag:25;

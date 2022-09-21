@@ -7,6 +7,11 @@ Item
     signal updateLogsListModel;
     signal btnCancel;
 
+    onBtnCancel:
+    {
+        appTitle = "Logs";
+    }
+
     property int setMaxCharLogName:25;
     property int setMaxCharLogTag:25;
 

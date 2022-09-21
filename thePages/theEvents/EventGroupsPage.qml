@@ -12,8 +12,14 @@ Item
     signal goToLogMessages;
     signal goBackToLogs;
     signal goToEventSetPage;
+    property int selectedEventGroupId:0;
+    signal refreshTheEventsPage;
 
-
+    onRefreshTheEventsPage:
+    {
+        console.log("refresh events page is on.");
+        logMessages.refreshListModel();
+    }
 
     onGoBackToLogs:
     {
@@ -136,8 +142,11 @@ Item
                             onClicked:
                             {
                                 logMessages.setEventGroupId = id;
+                                selectedEventGroupId = id;
                                 logMessages.refreshListModel();
                                 goToLogMessages();
+                                stack_event_titles = "EG/E";
+                                appTitle = stack_event_titles;
                             }
                         }
                     }
@@ -171,6 +180,8 @@ Item
             onCenterButtonPressed:
             {
                 goToEventGroupSetPage();
+                stack_event_titles = "EG/New";
+                appTitle = stack_event_titles;
             }
         }
     }//end of root

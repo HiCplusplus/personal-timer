@@ -171,6 +171,7 @@ Item
             onCenterButtonPressed:
             {
                 goToLogSetPage();
+                appTitle = "Logs/New";
             }
         }
     }//end of root

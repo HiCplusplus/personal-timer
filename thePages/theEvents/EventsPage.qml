@@ -36,13 +36,18 @@ Item
         if(JSON.stringify(SaveLoadEvents.get(setEventGroupId)).length > 24) //to avoid Syntax error Json.parse error showsup when table is clear
         {
             var allObject = JSON.parse(SaveLoadEvents.get(setEventGroupId));
-            for(var i=0; i<allObject.eventGroups.length; i++)
+            for(var i=0; i<allObject.events.length; i++)
             {
                 listModelMain.append({
-                                         id: allObject.eventGroups[i].id,
-                                         name:allObject.eventGroups[i].name,
-                                         priority: allObject.eventGroups[i].priority,
-                                         tag: allObject.eventGroups[i].tags,
+                                         id: allObject.events[i].id,
+                                         name:allObject.events[i].name,
+                                         priority: allObject.events[i].priority,
+                                         tag: allObject.events[i].tags,
+                                         estart: allObject.events[i].start,
+                                         eend: allObject.events[i].end,
+                                         eactive: allObject.events[i].active,
+                                         elocation: allObject.events[i].location,
+                                         edescription : allObject.events[i].description,
                                      });
 
             }
@@ -68,7 +73,7 @@ Item
         color:cBG;
         Rectangle
         {
-            id:backToLogs;
+            id:backToEventGroups;
             anchors.left:root.left;
             width:45;
             height:45;
@@ -85,6 +90,8 @@ Item
                 onClicked:
                 {
                     goBackToEventGroupsFromEvents();
+                    stack_event_titles = "EventGroups";
+                    appTitle = stack_event_titles;
                 }
             }
         }
@@ -95,7 +102,7 @@ Item
         {
             id:listViewMain;
             anchors.fill:parent;
-            anchors.topMargin:35;
+            anchors.topMargin:50; //35 to 45,50 for backbutton to eventgorups
             clip:true;
             model:
             ListModel
@@ -106,7 +113,7 @@ Item
             Item
             {
                 width: listViewMain.width;
-                height: 70;
+                height: 145;
                 Rectangle
                 {
                     anchors.fill: parent;
@@ -114,14 +121,14 @@ Item
                     Rectangle
                     {
                         width: parent.width/1.10;
-                        height: 50;
+                        height: 125;
                         color: cBG_element;
                         radius:15;
                         anchors.horizontalCenter: parent.horizontalCenter;
 
                         Text
                         {
-                            text: name;
+                            text: name + "\n" + estart + "\n" + eend + "\n" + eactive;
                             font.family: gFontFamily;
                             color:cTxt_button;
                             font.pointSize: 18;
@@ -137,7 +144,7 @@ Item
                         }
                         Text
                         {
-                            text: tag;
+                            text: tag + "\n" + priority + "\n" + elocation + "\n"+ edescription;
                             font.family: gFontFamily;
                             color:cTxt_button;
                             font.pointSize: 12;
@@ -158,6 +165,7 @@ Item
                             anchors.fill:parent;
                             onClicked:
                             {
+                                console.log("on eventid " + id + " clicked");
 //                                logMessages.setLogId = id;
 //                                logMessages.setLogName = name;
 //                                logMessages.refreshListModel();
@@ -195,6 +203,8 @@ Item
             onCenterButtonPressed:
             {
                 goToEventSetPage();
+                stack_event_titles = "EG/E/New";
+                appTitle = stack_event_titles;
             }
         }
     }//end of root

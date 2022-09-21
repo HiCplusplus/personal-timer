@@ -46,6 +46,7 @@ Window
 
     //- - - - - - - - - - - - - - - - - - - - - - set theme, default light mode colors
     property bool themeDarkMode:false;
+    property string stack_event_titles: "EventGroups";
     property color cTxt_normal : "black";
     property color cTxt_title : "#3E386C";
     property color cBG : "#dedede";//"#F6F6F6";
@@ -294,6 +295,7 @@ Window
                         }
                         onGoToEventSetPage:
                         {
+                            pageEventSet.theEventGroupId = selectedEventGroupId;
                             baseEventSet.visible=true;
                             viewTimers.interactive=false;
                             viewTimers.visible=false;
@@ -582,8 +584,9 @@ Window
             }
             onUpdateLogsListModel:
             {
-                eventGroupPage.refreshListModel();
+                eventGroupPage.refreshTheEventsPage();
             }
+
 
         }
     }
