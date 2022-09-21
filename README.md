@@ -29,7 +29,8 @@
  - 0.9.1 -> test on android.
  - 0.9.2 -> titlebar each page (instead of pLarm static text switch text with page change).
  - 0.9.3 -> Alarm text is disabled after first alarm creation, and cant create new one.
-
+ - 0.10.0 -> events + (event setPage) added.
+ 
 ____________________________________
 
  ## up comming  
