@@ -69,7 +69,7 @@ ____________________________________
 - MySwitch component: when init switch turned on the button and backcolor isnt look good.
 - dismissPage: some erros show up + swipe somewhere in adnroid isnt work
 - LogsPage,Alarm,LogMessages.qml : optimize and avoid to twice fetch from database + change name .js as SaveLoad into just load...
-
+- fix the menu
  ____________________________________
  
   - stopwatch -> save laps into/as logs
@@ -93,6 +93,7 @@ ____________________________________
 
 ____________________________________
 
+- sport timer cycle show isnt update correct.
  - sport timer -> custom effect sounds;
  - sport timer -> re-voice the 'set' to 'round';
  -- sport timer -> custom text/sound speech; i.g when rest came say break for me;
