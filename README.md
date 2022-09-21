@@ -34,26 +34,68 @@
 ____________________________________
 
  ## up comming  
- 
-  - 0.9.1 ->events
+ - prioritize system 
+ - prioritize setpage
+ - event system
+ - alarm system
+ - event setpage components and style -> pickup date and time; switch active; 
+ - event list -> fix style
+ - event list -> click action -> edit event;
+ - alarm list -> click action -> edit alarm;
+ - log list -> edit; delete logs;
+ - log message -> edit; delete; copy; messages;
+ - event group list -> edit; delete; group;
+ - events list -> move; modify; delete; event from Eventgroup;
+ - event; eventSetPage -> routine; reminder; repeats;
+ - all setPages; all textEdits; -> fix float text cursor when page is not on!
+ - all setPages; -> reset values for next time;
+ - dark/lightmode -> some buttons dont changecolor or isnt match with main color theme.
+ - qml contorls -> front color theme/style is work for android but for desktop not!
+ - single timer -> custom alarm sound;
+ - sport timer -> custom effect sounds;
+ - sport timer -> re-voice the 'set' to 'round';
+ -- sport timer -> custom text/sound speech; i.g when rest came say break for me;
+ - stopwatch -> show miliseconds (needed to font smaller);
+ - stopwatch -> lap -> overall time isnt work correct;
+ -- stopwatch -> lap list -> scroll list to latest/last/downest lap;
+ -- log messages -> message list -> scroll to latest/last/downest of list page/message;
+ - stopwatch -> save laps into/as logs
+ - stopwatch -> titling the laps
  -  settings page
  -  multi timer
- -  onWay Timer
+ -  onWay Timer ; onWay SetPage
  -  Calender PickDay (multi month day picks)
  -  Calender (Shadow DayCircle) 
  -  routine and tasks... 
+ - statics -> show stats from datas
+ - backbutton -> make stack for back and when stack is empty backbutton pressed show message do you want quit app? stack is usefull for when user is inner/downlevel of some pages like EG/E/New
+ - application lunch index (for swipeview) i.g when i open app show me first page the sport timer or last closed page (which index where on and then app closed)
+ - lunch/quit logs for app, i.g when app opend do some action like save data inside the logs 'app lunch' or 'app close' with date and time // its useful for later to do something like : if user opened the app save a log in wakeup in new day same for sleep time;
+ 
+ - message/error system: show something to user 
+ - confirmation system: for quit, delete, save, quit without saving make sure user is sure.
+ - backup data -> inside settings get backup file from database
+ - sync data with api
+ - custom api server url
+ - fetch/refresh data from api
+ - remove all data from local
+ - remove all data from api
+ - replace and fetch all data from api (remove local data then fetch data from api)
+ - replace and upload all data from api (femove api data then upload local into api) 
  
  ##problems i've seen
- - Alarm set page : Text alarm name when button save clicked disable/.. to avoid leave pointer text on all app.
 - sportTime : SPEECH FIX say (READ, GO).
 - SportTimer : SounEffects selectable to pick SoundPack, SoundSpeech selectable to pick SpeechPack.
 - sportTimer : report with speeech remaining/left .
+
 - alarm: input name isnt valid check, must remove qouts ' or " or replace something with those.
 - alarm: if alarm name is empty button save clicked show message must enter name for alarm.
 - MySwitch component: when theme switched between dark/light switch isnt change color correctly sometimes has bad color.
 - MySwitch component: when init switch turned on the button and backcolor isnt look good.
 - dismissPage: some erros show up + swipe somewhere in adnroid isnt work
 - LogsPage,Alarm,LogMessages.qml : optimize and avoid to twice fetch from database + change name .js as SaveLoad into just load...
+
+ - Alarm set page : Text alarm name when button save clicked disable/.. to avoid leave pointer text on all app.
 
 ___________________________________
 
