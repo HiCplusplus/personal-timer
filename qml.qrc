@@ -137,6 +137,7 @@
         <file>thePages/theEvents/EventsPage.qml</file>
         <file>thePages/thePrioritize/Prioritize.qml</file>
         <file>thePages/thePrioritize/PrioritizeSetPage.qml</file>
+        <file>theControls/PickDatePopup.qml</file>
     </qresource>
     <qresource prefix="/thePictures"/>
 </RCC>

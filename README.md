@@ -30,16 +30,16 @@
  - 0.9.2 -> titlebar each page (instead of pLarm static text switch text with page change).
  - 0.9.3 -> Alarm text is disabled after first alarm creation, and cant create new one.
  - 0.10.0 -> events + (event setPage) added.
- 
+ - 0.10.1 ->  event list -> fix style.
 ____________________________________
 
  ## up comming  
  - prioritize system 
  - prioritize setpage
  ____________________________________
-  - event system
+ - event system
  - event setpage components and style -> pickup date and time; switch active; 
- - event list -> fix style
+
  - event list -> click action -> edit event;
  - event group list -> edit; delete; group;
  - events list -> move; modify; delete; event from Eventgroup;
@@ -47,7 +47,7 @@ ____________________________________
 
 ____________________________________
  -  settings page
-  - all setPages; all textEdits; -> fix float text cursor when page is not on!
+ - all setPages; all textEdits; -> fix float text cursor when page is not on!
  - all setPages; -> reset values for next time;
  - dark/lightmode -> some buttons dont changecolor or isnt match with main color theme.
  - qml contorls -> front color theme/style is work for android but for desktop not! 
@@ -65,51 +65,51 @@ ____________________________________
  - remove all data from api
  - replace and fetch all data from api (remove local data then fetch data from api)
  - replace and upload all data from api (femove api data then upload local into api) 
-- MySwitch component: when theme switched between dark/light switch isnt change color correctly sometimes has bad color.
-- MySwitch component: when init switch turned on the button and backcolor isnt look good.
-- dismissPage: some erros show up + swipe somewhere in adnroid isnt work
-- LogsPage,Alarm,LogMessages.qml : optimize and avoid to twice fetch from database + change name .js as SaveLoad into just load...
-- fix the menu
+ - MySwitch component: when theme switched between dark/light switch isnt change color correctly sometimes has bad color.
+ - MySwitch component: when init switch turned on the button and backcolor isnt look good.
+ - dismissPage: some erros show up + swipe somewhere in adnroid isnt work
+ - LogsPage,Alarm,LogMessages.qml : optimize and avoid to twice fetch from database + change name .js as SaveLoad into just load...
+ - fix the menu
  ____________________________________
  
-  - stopwatch -> save laps into/as logs
+ - stopwatch -> save laps into/as logs
  - stopwatch -> titling the laps
  - stopwatch -> show miliseconds (needed to font smaller);
  - stopwatch -> lap -> overall time isnt work correct;
- -- stopwatch -> lap list -> scroll list to latest/last/downest lap;
+ - stopwatch -> lap list -> scroll list to latest/last/downest lap;
  
  ____________________________________
  
  - alarm system
-- alarm: input name isnt valid check, must remove qouts ' or " or replace something with those.
-- alarm: if alarm name is empty button save clicked show message must enter name for alarm.
+ - alarm: input name isnt valid check, must remove qouts ' or " or replace something with those.
+ - alarm: if alarm name is empty button save clicked show message must enter name for alarm.
  - Alarm set page : Text alarm name when button save clicked disable/.. to avoid leave pointer text on all app.
  - alarm list -> click action -> edit alarm;
 
 ____________________________________
 
--  Calender PickDay (multi month day picks)
+ -  Calender PickDay (multi month day picks)
  -  Calender (Shadow DayCircle) 
 
 ____________________________________
 
-- sport timer cycle show isnt update correct.
+ - sport timer cycle show isnt update correct.
  - sport timer -> custom effect sounds;
  - sport timer -> re-voice the 'set' to 'round';
- -- sport timer -> custom text/sound speech; i.g when rest came say break for me;
+ - sport timer -> custom text/sound speech; i.g when rest came say break for me;
  - sportTime : SPEECH FIX say (READ, GO).
-- SportTimer : SounEffects selectable to pick SoundPack, SoundSpeech selectable to pick SpeechPack.
-- sportTimer : report with speeech remaining/left .
+ - SportTimer : SounEffects selectable to pick SoundPack, SoundSpeech selectable to pick SpeechPack.
+ - sportTimer : report with speeech remaining/left .
  - single timer -> custom alarm sound;
- -  multi timer
- -  onWay Timer ; onWay SetPage
+ - multi timer
+ - onWay Timer ; onWay SetPage ; onWay list ; onWay Group?
  
 
 ____________________________________
 
- - log list -> edit; delete logs;
-  -- log messages -> message list -> scroll to latest/last/downest of list page/message;
- - log message -> edit; delete; copy; messages;
+  - log list -> edit; delete logs;
+  - log messages -> message list -> scroll to latest/last/downest of list page/message;
+  - log message -> edit; delete; copy; messages;
  
 ___________________________________
 

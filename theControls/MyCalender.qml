@@ -8,7 +8,7 @@ Item
     property int setFontSizeMonth: 25;
     property int setTopMarginMonth: 5;
     property int setLeftRightMarginNextBackMonth:5;
-
+    property variant give_OutputPickedDays;
 
 
 
@@ -351,6 +351,8 @@ Item
                 setMonth: setCurrentMonth;
                 pickMode: setpickmode;
                 setPickedDays: setCurrentDays;
+
+
             }
         }
 

@@ -2,6 +2,7 @@ import QtQuick 2.15
 import QtQuick.Controls 2.15
 import "../../theControls"
 import "../../theScripts/theDataBaseSystem/saveLoadEvents.js" as SaveEvents
+
 Item
 {
     signal updateLogsListModel;
@@ -41,6 +42,7 @@ Item
                 SaveEvents.set(theEventGroupId,logName.text,eventDescription.text,logTag.text,
                                setPriorityValues[priorityTumbler.currentIndex], eventStart.text,eventEnd.text,
                                eventActive.text,eventLocation.text);
+                console.log(startDaatePickerCalender.setCurrentDays);
                 updateLogsListModel();
                 btnCancel();
             }
@@ -70,7 +72,7 @@ Item
         {
             id:rootItem;
             width: parent.width;
-            height: 900;
+            height: 1500;
             implicitHeight: height;
 
             Rectangle
@@ -420,7 +422,7 @@ Item
                     topMargin: 25;
                 }
                 width:parent.width/1.10;
-                height:200;
+                height:255;
                 color:cBG_element;
                 radius: 15;
                 clip:true;
@@ -439,6 +441,12 @@ Item
                     }
                 }
             }
+
+
+
+            //calender
+
+
 
 
         }

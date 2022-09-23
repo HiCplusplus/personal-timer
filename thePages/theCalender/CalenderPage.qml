@@ -5,6 +5,11 @@ import "../../theControls"
 import "../../theScripts/calculateDates.js" as CDJS
 Item
 {
+    Component.onCompleted:
+    {
+        //here get current date and fill it to properties.
+    }
+
     anchors.fill: parent;
     property int c_day : 7;
     property int c_month: 8;
