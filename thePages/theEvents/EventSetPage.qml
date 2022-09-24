@@ -443,8 +443,66 @@ Item
             }
 
 
+            Rectangle
+            {
+                id:baseStartDate;
+                anchors
+                {
+                    horizontalCenter: parent.horizontalCenter;
+                    top:baseLogPriority.bottom;
+                    topMargin: 25;
+                }
+                width:parent.width/1.10;
+                height:50;
+                color:cBG_element;
+                radius: 15;
+                Text
+                {
+                    text:"Start Date:";
+                    anchors.left: parent.left;
+                    anchors.verticalCenter: parent.verticalCenter;
+                    color:cUnknown;
+                }
 
-            //calender
+                Rectangle
+                {
+                    id:baseSelectStartClock;
+                    anchors.verticalCenter: parent.verticalCenter;
+                    width:25;
+                    height:25;
+                    color:"red";
+                    anchors.right:parent.right;
+                    MouseArea
+                    {
+                        anchors.fill:parent;
+                        onClicked:
+                        {
+                            console.log("on set clock clicked");
+                        }
+                    }
+                }
+
+                Rectangle
+                {
+                    id:baseSelectStartDate;
+                    anchors.verticalCenter: parent.verticalCenter;
+                    width:25;
+                    height:25;
+                    color:"blue";
+                    anchors.right:baseSelectStartClock.left;
+                    MouseArea
+                    {
+                        anchors.fill:parent;
+                        onClicked:
+                        {
+                            pickdateId.visible=true;
+                        }
+                    }
+                }
+
+            }//end of log name base
+
+
 
 
 
@@ -452,5 +510,20 @@ Item
         }
     }
 
+
+    //calender
+    PickDatePopup
+    {
+        id:pickdateId;
+        z:6;
+
+        onBtnSave:
+        {
+            whatsOutput();
+            console.log(giveme_picked_days[0]);
+            console.log(giveme_picked_days[1]);
+
+        }
+    }
 
 }

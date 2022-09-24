@@ -3,43 +3,31 @@ import "../theControls"
 
 Item
 {
-    anchors.fill:parent;
-    property variant giveme_days;
+    id:root;
+    signal btnCancel;
+    signal btnSave;
 
-    MyShadowForFocus
+
+    visible:false;
+    onBtnCancel:
     {
-        id:myShadow;
-        z:5;
-        onRootclicked:
-        {
-            myCombobox.btnCancel();
-        }
+        root.visible = false;
+
     }
-    MyComboBox //#BUG
+    onBtnSave:
     {
-        id:myCombobox;
-        visible: false;
-        z:6;
-        setColor: cBG_element;
-        onBtnCancel:
-        {
-            myCombobox.visible=false;
-            myShadow.visible=false;
-        }
-        onBtnSave:
-        {
-            alarmSoundText.text = values[selectedIndex];
-            btnCancel();
-        }
+        root.visible = false;
     }
 
+    property variant giveme_picked_days;
+    signal whatsOutput;
+    onWhatsOutput:
+    {
+        startDaatePickerCalender.checkoutPuts();
+        giveme_picked_days = startDaatePickerCalender.give_OutputPickedDays;
+    }
 
-
-
-
-
-
-
+    anchors.fill: parent;
 
 
 
@@ -49,49 +37,84 @@ Item
 
     Rectangle
     {
-        id:baseCalenderStart;
-        width: parent.width/1.15;
-        height: 300;
-        color:cBG_element;
-        radius:15;
-        anchors
+        color: cBG_element;
+        radius:20;
+        anchors.centerIn:parent;
+        width: parent.width/1.20;
+        height:parent.height/2;
+        z:6;
+
+        MyCancelSaveButton
         {
-            top:parent.bottom;
-            horizontalCenter:parent.horizontalCenter;
-            topMargin:25;
-        }
-        MyCalender
-        {
-            id:startDaatePickerCalender;
-            setCurrentYear: 2022;
-            setCurrentMonth: 9;
-            setCurrentDays: [0];
-            setCalenderOnlyView: false;
-//                    setpickmode:2; //1 for solo pick change it later , but currently the solo pick isnt work.
+            id:myButtons;
+            onButtonCancelClicked:
+            {
+                btnCancel();
+            }
+            onButtonSaveClicked:
+            {
+                btnSave();
+            }
         }
         Rectangle
         {
-            id:buttonSavetheDateStart;
-            width: 70;
-            height:25;
-            color:cBG_button;
+            id:baseCalenderStart;
+            width: parent.width;
+            height: 300;
+            color:cBG_element;
+            radius:15;
             anchors
             {
-                top:parent.top;
-                right:parent.right;
-                topMargin:parent.height/10;
-                rightMargin: 10;
+                top:myButtons.bottom;
+                horizontalCenter:parent.horizontalCenter;
+                topMargin:25;
             }
-            Text
+            MyCalender
             {
-                anchors.centerIn:parent;
-                text: "Done";
-                color:cUnknown;
-                font.family: gFontFamily;
-                font.bold: true;
-                font.pointSize: 12;
+                id:startDaatePickerCalender;
+                setCurrentYear: 2022;
+                setCurrentMonth: 9;
+                setCurrentDays: [0];
+                setCalenderOnlyView: false;
+    //                    setpickmode:2; //1 for solo pick change it later , but currently the solo pick isnt work.
             }
+        }
 
+    }
+
+
+
+    MyShadowForFocus
+    {
+        id:myShadow;
+        visible:true;
+        onRootclicked:
+        {
+            myButtons.buttonCancelClicked();
         }
     }
+
+
+
+
+
+
+
 }
+//    MyComboBox //#BUG
+//    {
+//        id:myCombobox;
+//        visible: false;
+//        z:6;
+//        setColor: cBG_element;
+//        onBtnCancel:
+//        {
+//            myCombobox.visible=false;
+//            myShadow.visible=false;
+//        }
+//        onBtnSave:
+//        {
+//            alarmSoundText.text = values[selectedIndex];
+//            btnCancel();
+//        }
+//    }

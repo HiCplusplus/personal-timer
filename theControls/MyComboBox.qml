@@ -9,7 +9,7 @@ Item
     property color setColor: "black";
     property var values: ["default","beffegioermhgmerep","ding","dang"];
     property int selectedIndex: 0;
-    property string setTitle:"Alarm sound:";
+//    property string setTitle:"Alarm sound:";
     width: parent.width/1.20;
     height:parent.height/2;
     z:3;

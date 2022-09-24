@@ -27,7 +27,6 @@ Item
 
 
 
-
     id:root;
     anchors.fill: parent;
     property int pickMode: 2; // 1 -> only one pick          2 -> mutiple pick
@@ -48,12 +47,23 @@ Item
     property variant monthDays: CD.automaticMonth(setYear,setMonth);
     property int countColumns: CD.calculateColumns_of_MonthDays(monthDays.length);
     property variant monthDaysForShow: CD.automaticMonth(setYear,setMonth,true);//true parameter is for free spacer
+    property variant extractDaysVar;
 
 
-    onSetMonthChanged: //BUTTON SAVE CLICKED
+    signal goClearDays;
+    onGoClearDays:
     {
+        CD.resetAllSelectedElements(week1);
+        CD.resetAllSelectedElements(week2);
+        CD.resetAllSelectedElements(week3);
+        CD.resetAllSelectedElements(week4);
+        CD.resetAllSelectedElements(week5);
+        CD.resetAllSelectedElements(week6);
+    }
 
-
+    signal goUniqDays;
+    onGoUniqDays:
+    {
         //remove duplicated values
         week1.outputPickedDays = CD.uniqBy(week1.outputPickedDays,JSON.stringify);
         week2.outputPickedDays = CD.uniqBy(week2.outputPickedDays,JSON.stringify);
@@ -61,6 +71,14 @@ Item
         week4.outputPickedDays = CD.uniqBy(week4.outputPickedDays,JSON.stringify);
         week5.outputPickedDays = CD.uniqBy(week5.outputPickedDays,JSON.stringify);
         week6.outputPickedDays = CD.uniqBy(week6.outputPickedDays,JSON.stringify);
+
+        //LATER HERE REMOVE 0 numbers from ouputPickDAys LIKE UP CODE but with new function
+    }
+
+    signal goExtractDays;
+    onGoExtractDays:
+    {
+        goUniqDays();
 
         /*
             print values for check test (if needed copy these into somewhere before month/year going ++ or --
@@ -70,15 +88,25 @@ Item
             or user pressed next ++setyear/month.
         */
 //        console.log("month= "+ setMonth + "\t year= " + setYear +" \tweek1= "+week1.outputPickedDays+ "\t week2= "+week2.outputPickedDays + "\t week3= " + week3.outputPickedDays + "\t week4= "+week4.outputPickedDays+ "\t week5= "+week5.outputPickedDays+ "\t week6= " + week6.outputPickedDays);
+        extractDaysVar[0] = setYear;
+        extractDaysVar[1] = setMonth;
+        extractDaysVar[2] = week1.outputPickedDays;
+        extractDaysVar[3] = week2.outputPickedDays;
+        extractDaysVar[4] = week3.outputPickedDays;
+        extractDaysVar[5] = week4.outputPickedDays;
+        extractDaysVar[6] = week5.outputPickedDays;
+        extractDaysVar[7] = week6.outputPickedDays;
+
 
         //make clear values and backgrounds from calendar and make em ready for next month/year
         //if remove these bottom codes, the next month will be selected monthdays and user didnt select those
-        CD.resetAllSelectedElements(week1);
-        CD.resetAllSelectedElements(week2);
-        CD.resetAllSelectedElements(week3);
-        CD.resetAllSelectedElements(week4);
-        CD.resetAllSelectedElements(week5);
-        CD.resetAllSelectedElements(week6);
+        goClearDays();
+    }
+
+    onSetMonthChanged: //BUTTON SAVE CLICKED
+    {
+//        goExtractDays();
+        goClearDays();
     }
 
     Column

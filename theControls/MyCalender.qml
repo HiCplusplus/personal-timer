@@ -10,7 +10,11 @@ Item
     property int setLeftRightMarginNextBackMonth:5;
     property variant give_OutputPickedDays;
 
-
+    signal checkoutPuts;
+    onCheckoutPuts:
+    {
+        give_OutputPickedDays = mydPicker.extractDaysVar;
+    }
 
     property variant setTextMonth: ["","January","February","March","April","May","June"
                                     ,"July","August","September","October","November","December"];
