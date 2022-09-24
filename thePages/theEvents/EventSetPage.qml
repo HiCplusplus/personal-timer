@@ -11,6 +11,8 @@ Item
     property int setMaxCharLogName:25;
     property int setMaxCharLogTag:25;
     property int theEventGroupId:0;
+    property variant testvalues1: [1,3,6,9,11,13,15,17];
+    property variant testvaluse2;
     onBtnCancel:
     {
         stack_event_titles = "EG/E";
@@ -520,8 +522,16 @@ Item
         onBtnSave:
         {
             whatsOutput();
+
             console.log(giveme_picked_days[0]);
             console.log(giveme_picked_days[1]);
+            console.log(giveme_picked_days[2]);
+            console.log(giveme_picked_days[3]);
+            console.log(giveme_picked_days[4]);
+            console.log(giveme_picked_days[5]);
+            console.log(giveme_picked_days[6]);
+            console.log(giveme_picked_days[7]);
+
 
         }
     }

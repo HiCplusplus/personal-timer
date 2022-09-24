@@ -47,8 +47,7 @@ Item
     property variant monthDays: CD.automaticMonth(setYear,setMonth);
     property int countColumns: CD.calculateColumns_of_MonthDays(monthDays.length);
     property variant monthDaysForShow: CD.automaticMonth(setYear,setMonth,true);//true parameter is for free spacer
-    property variant extractDaysVar;
-
+    property variant extractDaysVar : [9999];
 
     signal goClearDays;
     onGoClearDays:
@@ -59,6 +58,9 @@ Item
         CD.resetAllSelectedElements(week4);
         CD.resetAllSelectedElements(week5);
         CD.resetAllSelectedElements(week6);
+//        monUnpicked(); tueUnpicked(); wedUnpicked();
+//        thuUnpicked(); friUnpicked(); satUnpicked(); sunUnpicked();
+
     }
 
     signal goUniqDays;
@@ -87,7 +89,7 @@ Item
             please move these codes into back/next month/year and when user press next --setyear/month
             or user pressed next ++setyear/month.
         */
-//        console.log("month= "+ setMonth + "\t year= " + setYear +" \tweek1= "+week1.outputPickedDays+ "\t week2= "+week2.outputPickedDays + "\t week3= " + week3.outputPickedDays + "\t week4= "+week4.outputPickedDays+ "\t week5= "+week5.outputPickedDays+ "\t week6= " + week6.outputPickedDays);
+        console.log("month= "+ setMonth + "\t year= " + setYear +" \tweek1= "+week1.outputPickedDays+ "\t week2= "+week2.outputPickedDays + "\t week3= " + week3.outputPickedDays + "\t week4= "+week4.outputPickedDays+ "\t week5= "+week5.outputPickedDays+ "\t week6= " + week6.outputPickedDays);
         extractDaysVar[0] = setYear;
         extractDaysVar[1] = setMonth;
         extractDaysVar[2] = week1.outputPickedDays;

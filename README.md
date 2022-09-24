@@ -44,6 +44,7 @@ ____________________________________
  - event group list -> edit; delete; group;
  - events list -> move; modify; delete; event from Eventgroup;
  - event; eventSetPage -> routine; reminder; repeats;
+ - envet day picker popup , when button save/cancel clicked it must clear all days , it does clear all days selected but title week isnt unselect its keep selected after reset
 
 ____________________________________
  -  settings page
@@ -90,7 +91,7 @@ ____________________________________
 
  -  Calender PickDay (multi month day picks)
  -  Calender (Shadow DayCircle) 
-
+ - Calender pick solo day mode
 ____________________________________
 
  - sport timer cycle show isnt update correct.

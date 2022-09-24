@@ -13,6 +13,7 @@ Item
     signal checkoutPuts;
     onCheckoutPuts:
     {
+        mydPicker.goExtractDays();
         give_OutputPickedDays = mydPicker.extractDaysVar;
     }
 
