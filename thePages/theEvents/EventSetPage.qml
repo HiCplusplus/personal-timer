@@ -522,7 +522,6 @@ Item
         onBtnSave:
         {
             whatsOutput();
-
             console.log(giveme_picked_days[0]);
             console.log(giveme_picked_days[1]);
             console.log(giveme_picked_days[2]);
@@ -531,8 +530,6 @@ Item
             console.log(giveme_picked_days[5]);
             console.log(giveme_picked_days[6]);
             console.log(giveme_picked_days[7]);
-
-
         }
     }
 

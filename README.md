@@ -92,6 +92,7 @@ ____________________________________
  -  Calender PickDay (multi month day picks)
  -  Calender (Shadow DayCircle) 
  - Calender pick solo day mode
+ - Calender output days push number zero into some variants, avoid this useless zero.
 ____________________________________
 
  - sport timer cycle show isnt update correct.

@@ -89,7 +89,7 @@ Item
             please move these codes into back/next month/year and when user press next --setyear/month
             or user pressed next ++setyear/month.
         */
-        console.log("month= "+ setMonth + "\t year= " + setYear +" \tweek1= "+week1.outputPickedDays+ "\t week2= "+week2.outputPickedDays + "\t week3= " + week3.outputPickedDays + "\t week4= "+week4.outputPickedDays+ "\t week5= "+week5.outputPickedDays+ "\t week6= " + week6.outputPickedDays);
+//        console.log("month= "+ setMonth + "\t year= " + setYear +" \tweek1= "+week1.outputPickedDays+ "\t week2= "+week2.outputPickedDays + "\t week3= " + week3.outputPickedDays + "\t week4= "+week4.outputPickedDays+ "\t week5= "+week5.outputPickedDays+ "\t week6= " + week6.outputPickedDays);
         extractDaysVar[0] = setYear;
         extractDaysVar[1] = setMonth;
         extractDaysVar[2] = week1.outputPickedDays;
