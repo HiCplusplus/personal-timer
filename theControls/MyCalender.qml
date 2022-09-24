@@ -165,13 +165,6 @@ Item
                     }//end of next month button
                 }
 
-
-
-
-
-
-
-
                 //-------------- month
                 Rectangle
                 {

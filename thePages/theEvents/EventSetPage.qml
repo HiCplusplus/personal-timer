@@ -510,7 +510,7 @@ Item
                         anchors.fill:parent;
                         onClicked:
                         {
-                            pickdateId.visible=true;
+                            pickStartdateId.visible=true;
                         }
                     }
                 }
@@ -522,6 +522,80 @@ Item
 
 
 
+
+
+            Rectangle
+            {
+                id:baseEndDate;
+                anchors
+                {
+                    horizontalCenter: parent.horizontalCenter;
+                    top:baseStartDate.bottom;
+                    topMargin: 25;
+                }
+                width:parent.width/1.10;
+                height:50;
+                color:cBG_element;
+                radius: 15;
+                Text
+                {
+                    id: labelEndDate;
+                    text:"End Date:";
+                    anchors.left: parent.left;
+                    anchors.verticalCenter: parent.verticalCenter;
+                    font.family:gFontFamily;
+
+                    color:cUnknown;
+                }
+                Text
+                {
+                    id: valueEndDate;
+                    text:"";
+                    anchors.left: labelEndDate.right;
+                    anchors.verticalCenter: parent.verticalCenter;
+                    font.family:gFontFamily;
+                    color:cUnknown;
+                }
+
+
+                Rectangle
+                {
+                    id:baseSelectEndClock;
+                    anchors.verticalCenter: parent.verticalCenter;
+                    width:25;
+                    height:25;
+                    color:"red";
+                    anchors.right:parent.right;
+                    MouseArea
+                    {
+                        anchors.fill:parent;
+                        onClicked:
+                        {
+                            console.log("on set clock clicked");
+                        }
+                    }
+                }
+
+                Rectangle
+                {
+                    id:baseSelectEndDate;
+                    anchors.verticalCenter: parent.verticalCenter;
+                    width:25;
+                    height:25;
+                    color:"blue";
+                    anchors.right:baseSelectEndClock.left;
+                    MouseArea
+                    {
+                        anchors.fill:parent;
+                        onClicked:
+                        {
+                            pickEnddateId.visible=true;
+                        }
+                    }
+                }
+
+            }//end of log name base
+
         }
     }
 
@@ -529,7 +603,7 @@ Item
     //calender
     PickDatePopup
     {
-        id:pickdateId;
+        id:pickStartdateId;
         z:6;
 
         onBtnSave:
@@ -546,7 +620,23 @@ Item
             valueStartDate.text= giveme_picked_days[0] + "/" +  giveme_picked_days[1]  + "/" +
                     giveme_picked_days[2] + giveme_picked_days[3] + giveme_picked_days[4] +
                     giveme_picked_days[5] + giveme_picked_days[6] + giveme_picked_days[7];
-            //here is bug the giveme picked days has some zero value and those make this output value bad.
+            //here is bug the giveme picked days has some zero value and those make this output value are bad for view.
+
+        }
+    }
+
+    PickDatePopup
+    {
+        id:pickEnddateId;
+        z:6;
+
+        onBtnSave:
+        {
+            whatsOutput();
+            valueEndDate.text= giveme_picked_days[0] + "/" +  giveme_picked_days[1]  + "/" +
+                    giveme_picked_days[2] + giveme_picked_days[3] + giveme_picked_days[4] +
+                    giveme_picked_days[5] + giveme_picked_days[6] + giveme_picked_days[7];
+            //here is bug the giveme picked days has some zero value and those make this output value are bad for view.
 
         }
     }

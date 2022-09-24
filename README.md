@@ -45,7 +45,7 @@ ____________________________________
  - events list -> move; modify; delete; event from Eventgroup;
  - event; eventSetPage -> routine; reminder; repeats;
  - envet day picker popup , when button save/cancel clicked it must clear all days , it does clear all days selected but title week isnt unselect its keep selected after reset
-
+ - event day picker popup , when button save/clear clicked it dont clear all days, for example in next year/months i saw some days picked !!!!!!!! how? idk
 ____________________________________
  -  settings page
  - all setPages; all textEdits; -> fix float text cursor when page is not on!
