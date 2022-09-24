@@ -299,6 +299,7 @@ Window
                             baseEventSet.visible=true;
                             viewTimers.interactive=false;
                             viewTimers.visible=false;
+                            myIndicator.visible=false;
                         }
                     }
                 }
@@ -581,6 +582,7 @@ Window
                 baseEventSet.visible=false;
                 viewTimers.interactive=true;
                 viewTimers.visible=true;
+                myIndicator.visible=true;
             }
             onUpdateLogsListModel:
             {

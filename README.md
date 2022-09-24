@@ -73,6 +73,8 @@ ____________________________________
  - dismissPage: some erros show up + swipe somewhere in adnroid isnt work
  - LogsPage,Alarm,LogMessages.qml : optimize and avoid to twice fetch from database + change name .js as SaveLoad into just load...
  - fix the menu
+ - componenet myswitch when status changed more than once the background is still old background color (active -> diactive ==> bgcolor active, active) bg needs update with status
+
  ____________________________________
  
  - stopwatch -> save laps into/as logs

@@ -17,6 +17,9 @@ Item
     {
         stack_event_titles = "EG/E";
         appTitle = stack_event_titles;
+        logName.text = eventDescription.text = logTag.text = valueStartDate.text = valueEndDate.text = eventLocation.text = "";
+//        eventStatusSwitch.setStatusSwitch = false; //has bug for background color ..
+        priorityTumbler.currentIndex = 0;
     }
 
 
@@ -43,7 +46,7 @@ Item
                 //eventActive, eventLocation)
                 SaveEvents.set(theEventGroupId,logName.text,eventDescription.text,logTag.text,
                                setPriorityValues[priorityTumbler.currentIndex], valueStartDate.text,valueEndDate.text,
-                               eventActive.text,eventLocation.text);
+                               eventStatusSwitch.setStatusSwitch,eventLocation.text);
                 updateLogsListModel();
                 btnCancel();
             }
@@ -281,35 +284,39 @@ Item
                 height:50;
                 color:cBG_element;
                 radius: 15;
-
-                TextEdit
+                Text
                 {
-                    id:eventActive;
-                    anchors.fill:parent;
-                    horizontalAlignment: TextInput.AlignHCenter;
-                    verticalAlignment: TextInput.AlignVCenter;
+                    text:"Event active";
                     font.family: gFontFamily;
-                    font.pointSize: 12.50;
+                    font.bold: true;
                     color:cTxt_button;
-                    enabled: true;
-                    clip:true;
-                    wrapMode: Text.WrapAtWordBoundaryOrAnywhere;
-                    Text
+                    anchors.verticalCenter: parent.verticalCenter;
+                    anchors.left: parent.left;
+                    anchors.leftMargin: 10;
+                }
+
+                Rectangle
+                {
+                    width: 50;
+                    height: width/2;
+                    color:cBG_Unknown;
+                    anchors
                     {
-                        text: "Enter 0 / 1 as active here...";
-                        color: "#aaa";
-                        visible: !eventActive.text;
-                        anchors.centerIn:parent;
+                        right:baseEventActiveStatus.right;
+                        rightMargin:10;
+                        verticalCenter:parent.verticalCenter;
                     }
-                    onTextChanged:
+
+                    MySwitch
                     {
-                        if(eventActive.length >= setMaxCharLogTag)
-                        {
-                            eventActive.text = eventActive.text.slice(0,setMaxCharLogTag);
-                            eventActive.cursorPosition=setMaxCharLogTag;
-                        }
+                        id:eventStatusSwitch;
+                        setBorderWidth: 4;
+                        setStatusSwitch:false;
+                        setStatusBorder:false;
+                        setSizeSwitchCircle: 2.80;
                     }
                 }
+//here
             }//end of log name base
 
 
@@ -363,16 +370,18 @@ Item
                 {
                     id: labelStartDate;
                     text:"Start Date:";
-                    anchors.left: parent.left;
-                    anchors.verticalCenter: parent.verticalCenter;
+                    font.bold: true;
                     font.family:gFontFamily;
-
-                    color:cUnknown;
+                    color:cTxt_button;
+                    anchors.verticalCenter: parent.verticalCenter;
+                    anchors.left: parent.left;
+                    anchors.leftMargin: 10;
                 }
                 Text
                 {
                     id: valueStartDate;
                     text:"";
+                    anchors.leftMargin: 10;
                     anchors.left: labelStartDate.right;
                     anchors.verticalCenter: parent.verticalCenter;
                     font.family:gFontFamily;
@@ -388,6 +397,7 @@ Item
                     height:25;
                     color:"red";
                     anchors.right:parent.right;
+                    anchors.rightMargin: 10;
                     MouseArea
                     {
                         anchors.fill:parent;
@@ -442,17 +452,19 @@ Item
                 {
                     id: labelEndDate;
                     text:"End Date:";
-                    anchors.left: parent.left;
-                    anchors.verticalCenter: parent.verticalCenter;
+                    font.bold: true;
                     font.family:gFontFamily;
-
-                    color:cUnknown;
+                    color:cTxt_button;
+                    anchors.verticalCenter: parent.verticalCenter;
+                    anchors.left: parent.left;
+                    anchors.leftMargin: 10;
                 }
                 Text
                 {
                     id: valueEndDate;
                     text:"";
                     anchors.left: labelEndDate.right;
+                    anchors.leftMargin: 10;
                     anchors.verticalCenter: parent.verticalCenter;
                     font.family:gFontFamily;
                     color:cUnknown;
@@ -467,6 +479,7 @@ Item
                     height:25;
                     color:"red";
                     anchors.right:parent.right;
+                    anchors.rightMargin: 10;
                     MouseArea
                     {
                         anchors.fill:parent;

@@ -98,6 +98,36 @@ Item {
 //            }//end of log name base
 
 
+//                TextEdit
+//                {
+//                    id:eventActive;
+//                    anchors.fill:parent;
+//                    horizontalAlignment: TextInput.AlignHCenter;
+//                    verticalAlignment: TextInput.AlignVCenter;
+//                    font.family: gFontFamily;
+//                    font.pointSize: 12.50;
+//                    color:cTxt_button;
+//                    enabled: true;
+//                    clip:true;
+//                    wrapMode: Text.WrapAtWordBoundaryOrAnywhere;
+//                    Text
+//                    {
+//                        text: "Enter 0 / 1 as active here...";
+//                        color: "#aaa";
+//                        visible: !eventActive.text;
+//                        anchors.centerIn:parent;
+//                    }
+//                    onTextChanged:
+//                    {
+//                        if(eventActive.length >= setMaxCharLogTag)
+//                        {
+//                            eventActive.text = eventActive.text.slice(0,setMaxCharLogTag);
+//                            eventActive.cursorPosition=setMaxCharLogTag;
+//                        }
+//                    }
+//                }
+
+
 
 
 
