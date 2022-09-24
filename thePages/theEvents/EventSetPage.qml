@@ -42,9 +42,8 @@ Item
                 //eventPriority, eventStart, eventEnd,
                 //eventActive, eventLocation)
                 SaveEvents.set(theEventGroupId,logName.text,eventDescription.text,logTag.text,
-                               setPriorityValues[priorityTumbler.currentIndex], eventStart.text,eventEnd.text,
+                               setPriorityValues[priorityTumbler.currentIndex], valueStartDate.text,valueEndDate.text,
                                eventActive.text,eventLocation.text);
-                console.log(startDaatePickerCalender.setCurrentDays);
                 updateLogsListModel();
                 btnCancel();
             }
@@ -269,111 +268,13 @@ Item
 
 
 
-
-
-
-            Rectangle
-            {
-                id:baseEventStart;
-                anchors
-                {
-                    horizontalCenter: parent.horizontalCenter;
-                    top:baseEventDescription.bottom;
-                    topMargin: 25;
-                }
-                width:parent.width/1.10;
-                height:50;
-                color:cBG_element;
-                radius: 15;
-
-                TextEdit
-                {
-                    id:eventStart;
-                    anchors.fill:parent;
-                    horizontalAlignment: TextInput.AlignHCenter;
-                    verticalAlignment: TextInput.AlignVCenter;
-                    font.family: gFontFamily;
-                    font.pointSize: 12.50;
-                    color:cTxt_button;
-                    enabled: true;
-                    clip:true;
-                    wrapMode: Text.WrapAtWordBoundaryOrAnywhere;
-                    Text
-                    {
-                        text: "Enter start date n time here...";
-                        color: "#aaa";
-                        visible: !eventStart.text;
-                        anchors.centerIn:parent;
-                    }
-                    onTextChanged:
-                    {
-                        if(eventStart.length >= setMaxCharLogTag)
-                        {
-                            eventStart.text = eventStart.text.slice(0,setMaxCharLogTag);
-                            eventStart.cursorPosition=setMaxCharLogTag;
-                        }
-                    }
-                }
-            }//end of log name base
-
-
-
-
-
-            Rectangle
-            {
-                id:baseEventEnd;
-                anchors
-                {
-                    horizontalCenter: parent.horizontalCenter;
-                    top:baseEventStart.bottom;
-                    topMargin: 25;
-                }
-                width:parent.width/1.10;
-                height:50;
-                color:cBG_element;
-                radius: 15;
-
-                TextEdit
-                {
-                    id:eventEnd;
-                    anchors.fill:parent;
-                    horizontalAlignment: TextInput.AlignHCenter;
-                    verticalAlignment: TextInput.AlignVCenter;
-                    font.family: gFontFamily;
-                    font.pointSize: 12.50;
-                    color:cTxt_button;
-                    enabled: true;
-                    clip:true;
-                    wrapMode: Text.WrapAtWordBoundaryOrAnywhere;
-                    Text
-                    {
-                        text: "Enter end date n time here...";
-                        color: "#aaa";
-                        visible: !eventEnd.text;
-                        anchors.centerIn:parent;
-                    }
-                    onTextChanged:
-                    {
-                        if(eventEnd.length >= setMaxCharLogTag)
-                        {
-                            eventEnd.text = eventEnd.text.slice(0,setMaxCharLogTag);
-                            eventEnd.cursorPosition=setMaxCharLogTag;
-                        }
-                    }
-                }
-            }//end of log name base
-
-
-
-
             Rectangle
             {
                 id:baseEventActiveStatus;
                 anchors
                 {
                     horizontalCenter: parent.horizontalCenter;
-                    top:baseEventEnd.bottom;
+                    top:baseEventDescription.bottom;
                     topMargin: 25;
                 }
                 width:parent.width/1.10;

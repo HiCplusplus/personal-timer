@@ -31,6 +31,8 @@
  - 0.9.3 -> Alarm text is disabled after first alarm creation, and cant create new one.
  - 0.10.0 -> events + (event setPage) added.
  - 0.10.1 ->  event list -> fix style.
+ - 0.10.2 -> event set page -> pick start/end date fixed (but needed to update style + some updates for calender).
+
 ____________________________________
 
  ## up comming  
