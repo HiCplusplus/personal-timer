@@ -227,9 +227,23 @@ Window
             onSignalOpenMenu:
             {
                 if(pageSettings.visible)
-                    pageSettings.visible=false;
+                {
+                    //invise all set pages becuase of : when app is in a setpage and button openMenu/settings clicked set page still open but upside of a list/or/etc/... so i decide to invise all setpages to avoid this
+                    baseAlarmSet.visible =  baseLogSet.visible = baseEventGroupSet.visible = baseEventSet.visible = pageSettings.visible=false;
+
+
+                    //and when app is in setpage setEventPage the Myindicator will invise so in this case after menu open&close the inidicator will keep inivse!
+                    myIndicator.visible=true;
+                    viewTimers.interactive=true;
+                    viewTimers.visible=true;
+
+                }
                 else
+                {
                     pageSettings.visible=true;
+                    viewTimers.interactive=false;
+                    viewTimers.visible=false;
+                }
             }
        }
 

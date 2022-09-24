@@ -13,6 +13,7 @@ Item
     signal goBackToLogs;
     signal goBackToEventGroupsFromEvents;
     property int setEventGroupId : 0;
+    property string setEventGroupName: "";
 
     onGoBackToLogs:
     {
@@ -73,28 +74,47 @@ Item
         color:cBG;
         Rectangle
         {
-            id:backToEventGroups;
-            anchors.left:root.left;
-            width:45;
-            height:45;
-            color:cBG_Unknown;
-            Image
+            id:baseLocalMenuBar;
+            width: parent.width;
+            height: 45;
+            color:cBG;
+            Text
             {
-                anchors.fill: parent;
-                source: "../../"+ path_to_menuIcons + fileIcon_BackNext;
+                text: setEventGroupName.length > 10 ? setEventGroupName.slice(0,9) + "..'s events" :  setEventGroupName + "'s events";
+                font.pointSize: 15;
+                font.family: gFontFamily;
+                font.bold: true;
+                anchors.centerIn: parent;
+                color: cTxt_button;
             }
 
-            MouseArea
+            Rectangle
             {
-                anchors.fill:parent;
-                onClicked:
+                id:backToEventGroups;
+                anchors.left:baseLocalMenuBar.left;
+                width:45;
+                height:45;
+                color:cBG_Unknown;
+
+                Image
                 {
-                    goBackToEventGroupsFromEvents();
-                    stack_event_titles = "EventGroups";
-                    appTitle = stack_event_titles;
+                    anchors.fill: parent;
+                    source: "../../"+ path_to_menuIcons + fileIcon_BackNext;
+                }
+
+                MouseArea
+                {
+                    anchors.fill:parent;
+                    onClicked:
+                    {
+                        goBackToEventGroupsFromEvents();
+                        stack_event_titles = "EventGroups";
+                        appTitle = stack_event_titles;
+                    }
                 }
             }
         }
+
 
 
 

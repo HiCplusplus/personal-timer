@@ -13,11 +13,12 @@ Item
     signal goBackToLogs;
     signal goToEventSetPage;
     property int selectedEventGroupId:0;
+//    property string selectedEventGroupTitle;
     signal refreshTheEventsPage;
 
     onRefreshTheEventsPage:
     {
-        console.log("refresh events page is on.");
+        //refresh events page is on.
         logMessages.refreshListModel();
     }
 
@@ -141,8 +142,11 @@ Item
                             anchors.fill:parent;
                             onClicked:
                             {
-                                logMessages.setEventGroupId = id;
                                 selectedEventGroupId = id;
+                                logMessages.setEventGroupId = id;
+//                                selectedEventGroupTitle = name;
+                                logMessages.setEventGroupName = name;
+
                                 logMessages.refreshListModel();
                                 goToLogMessages();
                                 stack_event_titles = "EG/E";
