@@ -41,9 +41,6 @@ Item
         {
             if(logName.text !== "")
             {
-                //(eventGroupId, eventTitle, eventDescription, eventTag,
-                //eventPriority, eventStart, eventEnd,
-                //eventActive, eventLocation)
                 SaveEvents.set(theEventGroupId,logName.text,eventDescription.text,logTag.text,
                                setPriorityValues[priorityTumbler.currentIndex], valueStartDate.text,valueEndDate.text,
                                eventStatusSwitch.setStatusSwitch,eventLocation.text);
@@ -316,7 +313,6 @@ Item
                         setSizeSwitchCircle: 2.80;
                     }
                 }
-//here
             }//end of log name base
 
 
