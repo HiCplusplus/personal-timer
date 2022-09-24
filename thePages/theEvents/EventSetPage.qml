@@ -460,11 +460,24 @@ Item
                 radius: 15;
                 Text
                 {
+                    id: labelStartDate;
                     text:"Start Date:";
                     anchors.left: parent.left;
                     anchors.verticalCenter: parent.verticalCenter;
+                    font.family:gFontFamily;
+
                     color:cUnknown;
                 }
+                Text
+                {
+                    id: valueStartDate;
+                    text:"";
+                    anchors.left: labelStartDate.right;
+                    anchors.verticalCenter: parent.verticalCenter;
+                    font.family:gFontFamily;
+                    color:cUnknown;
+                }
+
 
                 Rectangle
                 {
@@ -522,14 +535,19 @@ Item
         onBtnSave:
         {
             whatsOutput();
-            console.log(giveme_picked_days[0]);
-            console.log(giveme_picked_days[1]);
-            console.log(giveme_picked_days[2]);
-            console.log(giveme_picked_days[3]);
-            console.log(giveme_picked_days[4]);
-            console.log(giveme_picked_days[5]);
-            console.log(giveme_picked_days[6]);
-            console.log(giveme_picked_days[7]);
+//            console.log(giveme_picked_days[0]);
+//            console.log(giveme_picked_days[1]);
+//            console.log(giveme_picked_days[2]);
+//            console.log(giveme_picked_days[3]);
+//            console.log(giveme_picked_days[4]);
+//            console.log(giveme_picked_days[5]);
+//            console.log(giveme_picked_days[6]);
+//            console.log(giveme_picked_days[7]);
+            valueStartDate.text= giveme_picked_days[0] + "/" +  giveme_picked_days[1]  + "/" +
+                    giveme_picked_days[2] + giveme_picked_days[3] + giveme_picked_days[4] +
+                    giveme_picked_days[5] + giveme_picked_days[6] + giveme_picked_days[7];
+            //here is bug the giveme picked days has some zero value and those make this output value bad.
+
         }
     }
 
