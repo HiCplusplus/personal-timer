@@ -16,7 +16,7 @@ function setIndexTitleBarFromSwipeView(indexValue)
     {
         case 0: appTitle = "Calendar"; break;
         case 1: appTitle = stack_event_titles; break; //event group
-        case 2: appTitle = "Logs"; break;
+        case 2: appTitle = stack_log_titles; break;
         case 3: appTitle = "Alarms"; break;
         case 4: appTitle = "Timer"; break;
         case 5: appTitle = "SportTimer"; break;

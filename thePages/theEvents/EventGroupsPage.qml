@@ -149,7 +149,7 @@ Item
 
                                 logMessages.refreshListModel();
                                 goToLogMessages();
-                                stack_event_titles = "EG/E";
+                                stack_event_titles = "EG/Event";
                                 appTitle = stack_event_titles;
                             }
                         }

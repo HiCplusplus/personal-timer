@@ -32,6 +32,7 @@ Item
     onBtnCancel:
     {
         resetValues();
+        appTitle = "Alarms";
     }
 
     signal updateAlarmListModel;

@@ -137,6 +137,8 @@ Item
                                 logMessages.setLogId = id;
                                 logMessages.setLogName = name;
                                 logMessages.refreshListModel();
+                                stack_log_titles = "Logs/Message";
+                                appTitle = stack_log_titles;
                                 goToLogMessages();
                             }
                         }
@@ -171,7 +173,8 @@ Item
             onCenterButtonPressed:
             {
                 goToLogSetPage();
-                appTitle = "Logs/New";
+                stack_log_titles = "Logs/New";
+                appTitle = stack_log_titles;
             }
         }
     }//end of root

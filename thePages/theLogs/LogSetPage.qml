@@ -9,7 +9,8 @@ Item
 
     onBtnCancel:
     {
-        appTitle = "Logs";
+        stack_log_titles = "Logs";
+        appTitle = stack_log_titles;
     }
 
     property int setMaxCharLogName:25;

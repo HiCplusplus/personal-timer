@@ -71,7 +71,7 @@ Item
 
             Text
             {
-                text: "Enter Log name here...";
+                text: "Enter eventgroup title here...";
                 color: "#aaa";
                 visible: !logName.text;
                 anchors.centerIn:parent;
@@ -123,7 +123,7 @@ Item
             wrapMode: Text.WrapAtWordBoundaryOrAnywhere;
             Text
             {
-                text: "Enter log tags here...";
+                text: "Enter eventgroup tags here...";
                 color: "#aaa";
                 visible: !logTag.text;
                 anchors.centerIn:parent;

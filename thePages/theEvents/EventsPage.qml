@@ -14,7 +14,7 @@ Item
     signal goBackToEventGroupsFromEvents;
     property int setEventGroupId : 0;
     property string setEventGroupName: "";
-
+    property double setMarginUpOrDownItems: 10;
     onGoBackToLogs:
     {
         logMessagesBase.visible=false;
@@ -41,14 +41,14 @@ Item
             {
                 listModelMain.append({
                                          id: allObject.events[i].id,
-                                         name:allObject.events[i].name,
+                                         name: allObject.events[i].name.length > 15 ? allObject.events[i].name.slice(0,15) + ".." : allObject.events[i].name,
                                          priority: allObject.events[i].priority,
-                                         tag: allObject.events[i].tags,
+                                         tag: allObject.events[i].tags.length > 19 ? allObject.events[i].tags.slice(0,19) + ".." : allObject.events[i].tags,
                                          estart: allObject.events[i].start,
                                          eend: allObject.events[i].end,
                                          eactive: allObject.events[i].active,
-                                         elocation: allObject.events[i].location,
-                                         edescription : allObject.events[i].description,
+                                         elocation: allObject.events[i].location.length > 14 ? allObject.events[i].location.slice(0,14) + ".." : allObject.events[i].location,
+                                         edescription: allObject.events[i].description.length > 90 ? allObject.events[i].description.slice(0,89) + ".." : allObject.events[i].description,
                                      });
 
             }
@@ -133,7 +133,7 @@ Item
             Item
             {
                 width: listViewMain.width;
-                height: 145;
+                height: 300;//+20 for topmargin net item , old val = 145
                 Rectangle
                 {
                     anchors.fill: parent;
@@ -141,42 +141,120 @@ Item
                     Rectangle
                     {
                         width: parent.width/1.10;
-                        height: 125;
+                        height: 280;
                         color: cBG_element;
                         radius:15;
                         anchors.horizontalCenter: parent.horizontalCenter;
 
-                        Text
+                        Rectangle
                         {
-                            text: name + "\n" + estart + "\n" + eend + "\n" + eactive;
-                            font.family: gFontFamily;
-                            color:cTxt_button;
-                            font.pointSize: 18;
-                            width:parent.width/3;
-                            clip:true;
+                            id:eventActivityStauts;
+                            width:10;
+                            height:10;
+                            color: eactive === "1" ? "lime" : "red";
+                            radius:50;
                             anchors
                             {
-                                verticalCenter:parent.verticalCenter;
+                                top:parent.top;
                                 left:parent.left;
-                                leftMargin: 30;
+                                topMargin: 20;
+                                leftMargin:20;
                             }
-
                         }
                         Text
                         {
-                            text: tag + "\n" + priority + "\n" + elocation + "\n"+ edescription;
+                            id:labelPriority;
+                            text: "P: "+priority;
                             font.family: gFontFamily;
                             color:cTxt_button;
+                            font.bold : true;
+                            anchors.top:eventActivityStauts.top;
+                            anchors.topMargin: -2.50;
+                            anchors.right:parent.right;
+                            anchors.rightMargin:10;
                             font.pointSize: 12;
-                            width:parent.width/5;
-                            clip:true;
-                            anchors
-                            {
-                                verticalCenter:parent.verticalCenter;
-                                right:parent.right;
-                                rightMargin: 30;
-                            }
                         }
+                        Text
+                        {
+                            id:labelName;
+                            text: name; //long names are sliced from (listModel.append)
+                            font.family: gFontFamily;
+                            color:cTxt_button;
+                            anchors.top:parent.top;
+                            anchors.topMargin: 8.50;
+                            anchors.left:eventActivityStauts.right;
+                            anchors.leftMargin:5;
+                            font.bold:true;
+                            font.pointSize: 15;
+                        }
+                        Text
+                        {
+                            id:lableEndDate;
+                            text: "E: "+eend;
+                            font.family: gFontFamily;
+                            color:cTxt_button;
+                            anchors.bottom:parent.bottom;
+                            anchors.bottomMargin: setMarginUpOrDownItems;
+                            anchors.left:eventActivityStauts.left;
+                            anchors.leftMargin:2.50;
+                            font.pointSize: 12;
+                        }
+                        Text
+                        {
+                            id:lableStartDate;
+                            text: "S: "+estart;
+                            font.family: gFontFamily;
+                            font.bold : true;
+                            color:cTxt_button;
+                            anchors.bottom:lableEndDate.top;
+                            anchors.bottomMargin: setMarginUpOrDownItems;
+                            anchors.left:eventActivityStauts.left;
+                            anchors.leftMargin:2.50;
+                            font.pointSize: 12;
+                        }
+                        Text
+                        {
+                            id:lableTags;
+                            text: "Tag: "+tag; //long tags are sliced from (listModel.append)
+                            font.family: gFontFamily;
+                            color:cTxt_button;
+                            anchors.bottom:lableStartDate.top;
+                            anchors.bottomMargin: setMarginUpOrDownItems;
+                            anchors.left:eventActivityStauts.left;
+                            anchors.leftMargin:2.50;
+                            font.pointSize: 12;
+                        }
+                        Text
+                        {
+                            id:lableLocation;
+                            text: "Location: "+elocation; //long locations are sliced from (listModel.append)
+                            font.family: gFontFamily;
+                            color:cTxt_button;
+                            font.bold : true;
+                            anchors.bottom:lableTags.top;
+                            anchors.bottomMargin: setMarginUpOrDownItems;
+                            anchors.left:eventActivityStauts.left;
+                            anchors.leftMargin:2.50;
+                            font.pointSize: 12;
+                        }
+                        Text
+                        {
+                            id:lableDescription;
+                            text: "Description: "+edescription; //long Descriptions are sliced from (listModel.append)
+                            font.family: gFontFamily;
+                            color:cTxt_button;
+                            anchors.top:labelName.bottom;
+                            anchors.topMargin: setMarginUpOrDownItems;
+                            anchors.left:eventActivityStauts.left;
+                            anchors.leftMargin:2.50;
+                            anchors.bottom: lableLocation.top;
+                            anchors.bottomMargin: setMarginUpOrDownItems;
+                            anchors.right:labelPriority.right;
+                            font.pointSize: 12;
+                            wrapMode: Text.WrapAtWordBoundaryOrAnywhere;
+                            clip:true;
+                        }
+
 
 
 
