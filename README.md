@@ -32,7 +32,8 @@
  - 0.10.0 -> events + (event setPage) added.
  - 0.10.1 ->  event list -> fix style.
  - 0.10.2 -> event set page -> pick start/end date fixed (but needed to update style + some updates for calender).
- - 0.11.0 -> move the dark/light mode into settings, 
+ - 0.10-3 -> event setpage components and style -> pickup date and time; switch active; (pick clock inst include)
+ - 0. -> move the dark/light mode into settings, 
 ____________________________________
 
  ## up comming  
@@ -40,7 +41,7 @@ ____________________________________
  - prioritize setpage
  ____________________________________
  - event system
- - event setpage components and style -> pickup date and time; switch active; 
+
 
  - event list -> click action -> edit event;
  - event group list -> edit; delete; group;
@@ -93,8 +94,8 @@ ____________________________________
 
 ____________________________________
 
- -  Calender PickDay (multi month day picks)
- -  Calender (Shadow DayCircle) 
+ - Calender PickDay (multi month day picks)
+ - Calender (Shadow DayCircle) 
  - Calender pick solo day mode
  - Calender output days push number zero into some variants, avoid this useless zero.
 ____________________________________
