@@ -142,6 +142,9 @@ Window
     property string fileIcon_Settings: "icon-settings.png";
     property string fileIcon_Reset: "icon-reset.png";
 
+    //event icons
+    property string fileIcon_pickClock: "icon-clock.png";
+    property string fileIcon_pickDate: "icon-pickDate.png";
 
     //Log Icons
     property string fileIcon_Send: "icon-send.png";

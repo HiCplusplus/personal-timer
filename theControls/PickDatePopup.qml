@@ -12,7 +12,6 @@ Item
     onBtnCancel:
     {
         root.visible = false;
-
     }
     onBtnSave:
     {

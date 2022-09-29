@@ -138,6 +138,12 @@
         <file>thePages/thePrioritize/Prioritize.qml</file>
         <file>thePages/thePrioritize/PrioritizeSetPage.qml</file>
         <file>theControls/PickDatePopup.qml</file>
+        <file>thePictures/dark-25px/icon-clock.png</file>
+        <file>thePictures/dark-25px/icon-pickDate.png</file>
+        <file>thePictures/white-25px/icon-clock.png</file>
+        <file>thePictures/white-25px/icon-pickDate.png</file>
+        <file>theControls/MyCircleClockPicker.qml</file>
+        <file>theControls/PickClockPopup.qml</file>
     </qresource>
     <qresource prefix="/thePictures"/>
 </RCC>

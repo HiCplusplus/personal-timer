@@ -32,8 +32,9 @@
  - 0.10.0 -> events + (event setPage) added.
  - 0.10.1 ->  event list -> fix style.
  - 0.10.2 -> event set page -> pick start/end date fixed (but needed to update style + some updates for calender).
- - 0.10-3 -> event setpage components and style -> pickup date and time; switch active; (pick clock inst include)
- - 0. -> move the dark/light mode into settings, 
+ - 0.10.3 -> event setpage components and style -> pickup date and time; switch active; (pick clock inst include)
+ - 0.10.4 -> event setpoge component clock picker added.
+
 ____________________________________
 
  ## up comming  
@@ -49,8 +50,11 @@ ____________________________________
  - event; eventSetPage -> routine; reminder; repeats;
  - envet day picker popup , when button save/cancel clicked it must clear all days , it does clear all days selected but title week isnt unselect its keep selected after reset
  - event day picker popup , when button save/clear clicked it dont clear all days, for example in next year/months i saw some days picked !!!!!!!! how? idk
+ - clockpicker componenet has bug, (add reset value signal + minute picker isnt work when move the circle.)
 ____________________________________
  -  settings page
+ - move the dark/light mode into settings, 
+ - fileter inputs and show eror when some inputs are invalid or empty when user is in setpage.
  - all setPages; all textEdits; -> fix float text cursor when page is not on!
  - all setPages; -> reset values for next time;
  - dark/lightmode -> some buttons dont changecolor or isnt match with main color theme.

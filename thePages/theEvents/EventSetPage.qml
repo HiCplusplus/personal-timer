@@ -17,7 +17,7 @@ Item
     {
         stack_event_titles = "EG/Event";
         appTitle = stack_event_titles;
-        logName.text = eventDescription.text = logTag.text = valueStartDate.text = valueEndDate.text = eventLocation.text = "";
+        logName.text = eventDescription.text = logTag.text = valueStartDate.text = valueEndDate.text = eventLocation.text = valueEndClock.text = valueStartClock = "";
 //        eventStatusSwitch.setStatusSwitch = false; //has bug for background color ..
         priorityTumbler.currentIndex = 0;
     }
@@ -42,7 +42,7 @@ Item
             if(logName.text !== "")
             {
                 SaveEvents.set(theEventGroupId,logName.text,eventDescription.text,logTag.text,
-                               setPriorityValues[priorityTumbler.currentIndex], valueStartDate.text,valueEndDate.text,
+                               setPriorityValues[priorityTumbler.currentIndex], valueStartDate.text + " " + valueStartClock.text ,valueEndDate.text  + " " + valueEndClock.text,
                                eventStatusSwitch.setStatusSwitch,eventLocation.text);
                 updateLogsListModel();
                 btnCancel();
@@ -365,7 +365,7 @@ Item
                 Text
                 {
                     id: labelStartDate;
-                    text:"Start Date:";
+                    text:"Start:";
                     font.bold: true;
                     font.family:gFontFamily;
                     color:cTxt_button;
@@ -383,6 +383,16 @@ Item
                     font.family:gFontFamily;
                     color:cUnknown;
                 }
+                Text
+                {
+                    id: valueStartClock;
+                    text:"";
+                    anchors.leftMargin: 10;
+                    anchors.left: valueStartDate.right;
+                    anchors.verticalCenter: parent.verticalCenter;
+                    font.family:gFontFamily;
+                    color:cUnknown;
+                }
 
 
                 Rectangle
@@ -391,7 +401,7 @@ Item
                     anchors.verticalCenter: parent.verticalCenter;
                     width:25;
                     height:25;
-                    color:"red";
+                    color:cBG_Unknown;
                     anchors.right:parent.right;
                     anchors.rightMargin: 10;
                     MouseArea
@@ -399,8 +409,13 @@ Item
                         anchors.fill:parent;
                         onClicked:
                         {
-                            console.log("on set clock clicked");
+                            pickClockStartId.visible=true;
                         }
+                    }
+                    Image
+                    {
+                        anchors.fill: parent;
+                        source: "../../" +path_to_menuIcons + fileIcon_pickClock;
                     }
                 }
 
@@ -410,7 +425,7 @@ Item
                     anchors.verticalCenter: parent.verticalCenter;
                     width:25;
                     height:25;
-                    color:"blue";
+                    color:cBG_Unknown;
                     anchors.right:baseSelectStartClock.left;
                     MouseArea
                     {
@@ -419,6 +434,11 @@ Item
                         {
                             pickStartdateId.visible=true;
                         }
+                    }
+                    Image
+                    {
+                        anchors.fill: parent;
+                        source: "../../" +path_to_menuIcons + fileIcon_pickDate;
                     }
                 }
 
@@ -447,7 +467,7 @@ Item
                 Text
                 {
                     id: labelEndDate;
-                    text:"End Date:";
+                    text:"End:";
                     font.bold: true;
                     font.family:gFontFamily;
                     color:cTxt_button;
@@ -465,7 +485,16 @@ Item
                     font.family:gFontFamily;
                     color:cUnknown;
                 }
-
+                Text
+                {
+                    id: valueEndClock;
+                    text:"";
+                    anchors.left: valueEndDate.right;
+                    anchors.leftMargin: 10;
+                    anchors.verticalCenter: parent.verticalCenter;
+                    font.family:gFontFamily;
+                    color:cUnknown;
+                }
 
                 Rectangle
                 {
@@ -473,7 +502,7 @@ Item
                     anchors.verticalCenter: parent.verticalCenter;
                     width:25;
                     height:25;
-                    color:"red";
+                    color:cBG_Unknown;
                     anchors.right:parent.right;
                     anchors.rightMargin: 10;
                     MouseArea
@@ -481,8 +510,13 @@ Item
                         anchors.fill:parent;
                         onClicked:
                         {
-                            console.log("on set clock clicked");
+                            pickClockEndId.visible=true;
                         }
+                    }
+                    Image
+                    {
+                        anchors.fill: parent;
+                        source: "../../" +path_to_menuIcons + fileIcon_pickClock;
                     }
                 }
 
@@ -492,7 +526,7 @@ Item
                     anchors.verticalCenter: parent.verticalCenter;
                     width:25;
                     height:25;
-                    color:"blue";
+                    color:cBG_Unknown;
                     anchors.right:baseSelectEndClock.left;
                     MouseArea
                     {
@@ -501,6 +535,11 @@ Item
                         {
                             pickEnddateId.visible=true;
                         }
+                    }
+                    Image
+                    {
+                        anchors.fill: parent;
+                        source: "../../" +path_to_menuIcons + fileIcon_pickDate;
                     }
                 }
 
@@ -550,5 +589,31 @@ Item
 
         }
     }
+
+
+    PickClockPopup
+    {
+        id:pickClockStartId;
+        z:6;
+
+        onBtnSave:
+        {
+            valueStartClock.text= outputHour + ":" + outputMinute;
+        }
+    }
+
+
+    PickClockPopup
+    {
+        id:pickClockEndId;
+        z:6;
+
+        onBtnSave:
+        {
+            valueEndClock.text= outputHour + ":" + outputMinute;
+        }
+    }
+
+
 
 }
