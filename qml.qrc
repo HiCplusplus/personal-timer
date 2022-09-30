@@ -144,6 +144,15 @@
         <file>thePictures/white-25px/icon-pickDate.png</file>
         <file>theControls/MyCircleClockPicker.qml</file>
         <file>theControls/PickClockPopup.qml</file>
+        <file>theControls/MyNewIndicator.qml</file>
+        <file>thePictures/dark-25px/icon-event.png</file>
+        <file>thePictures/dark-25px/icon-log.png</file>
+        <file>thePictures/dark-25px/icon-multi-timer.png</file>
+        <file>thePictures/white-25px/icon-event.png</file>
+        <file>thePictures/white-25px/icon-log.png</file>
+        <file>thePictures/white-25px/icon-multi-timer.png</file>
+        <file>thePictures/dark-25px/icon-sport-timer.png</file>
+        <file>thePictures/white-25px/icon-sport-timer.png</file>
     </qresource>
     <qresource prefix="/thePictures"/>
 </RCC>

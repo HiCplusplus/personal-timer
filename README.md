@@ -34,7 +34,8 @@
  - 0.10.2 -> event set page -> pick start/end date fixed (but needed to update style + some updates for calender).
  - 0.10.3 -> event setpage components and style -> pickup date and time; switch active; (pick clock inst include)
  - 0.10.4 -> event setpoge component clock picker added.
-
+ - 0.10.5 -> the indicator updated.
+ - 0.10.6 -> swipeLunchIndex cleaned.
 ____________________________________
 
  ## up comming  
@@ -53,6 +54,7 @@ ____________________________________
  - clockpicker componenet has bug, (add reset value signal + minute picker isnt work when move the circle.)
 ____________________________________
  -  settings page
+ - myNewIndicator with swipeLunchIndex, indicator dont follow the sayCurrentindex correclty, it dont show the actived in center of page, index is setet but dont show in center of indicator!
  - move the dark/light mode into settings, 
  - fileter inputs and show eror when some inputs are invalid or empty when user is in setpage.
  - all setPages; all textEdits; -> fix float text cursor when page is not on!

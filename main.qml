@@ -41,7 +41,8 @@ Window
 
     property int iconWidthAndHeight: mainWindow.width<700? 40:50; //for button iconBackToHome &  iconSettings
     property int fontSizeTitles: mainWindow.width<700 ? 45:65;
-    property int swipeLunchIndex: 1;
+    property int swipeLunchIndex: 0; //BUG FOR MYNEWINDICATOR , the indicator dont current index DONT SHOWES current, its passive currentindex or hiddened.
+
 
 
     //- - - - - - - - - - - - - - - - - - - - - - set theme, default light mode colors
@@ -61,15 +62,22 @@ Window
     property color cUnknown: "white";
     Material.foreground: cTxt_button;
 
+    onThemeDarkModeChanged:
+    {
+        myIndicator.refreshIcons();
+    }
+
 
     // - - - component for save the themeDarkLight
 
     //load theme Mode:
     Component.onCompleted:
     {
+        console.log("lunch stats:\nswipeLunchIndex="+swipeLunchIndex + "\tcountIndexes=" + viewTimers.count);
+        viewTimers.setCurrentIndex(swipeLunchIndex);
+
         if(LoadSettings.get("darkmode", "Hello World")==='1' || LoadSettings.get("darkmode", "Hello World")=== 1)
         {
-            themeDarkMode = true;
             cTxt_normal = "black";
             cTxt_title = "#3E386C";
             cBG = "#23272A";//darked
@@ -82,10 +90,11 @@ Window
             cBG_Unknown= "transparent";
             cUnknown = "white";//o99AAB5k
             path_to_menuIcons= directory_Icons + direcotry_WhiteIcons;
+            themeDarkMode = true;
+//            myIndicator.refreshIcons();
         }
         else
         {
-            themeDarkMode = false;
             cTxt_normal = "black";
             cTxt_title = "#3E386C";
             cBG = "#dedede";
@@ -98,6 +107,8 @@ Window
             cBG_Unknown= "transparent";
             cUnknown= "white";
             path_to_menuIcons= directory_Icons + direcotry_BlackIcons;
+            themeDarkMode = false;
+
         }
     }
 
@@ -126,6 +137,10 @@ Window
     property string fileIcon_Countdown: "icon-countdown.png";
     property string fileIcon_Stopwatch: "icon-stopwatch.png";
     property string fileIcon_Calender: "icon-calender.png";
+    property string fileIcon_Event: "icon-event.png";
+    property string fileIcon_Log: "icon-log.png";
+    property string fileIcon_MultiTimer: "icon-multi-timer.png";
+    property string fileIcon_SportTimer: "icon-sport-timer.png";
 
     //calender icons
     property string fileIcon_BackNext: "icon-back-next.png";
@@ -236,8 +251,8 @@ Window
                     baseAlarmSet.visible =  baseLogSet.visible = baseEventGroupSet.visible = baseEventSet.visible = pageSettings.visible=false;
 
 
-                    //and when app is in setpage setEventPage the Myindicator will invise so in this case after menu open&close the inidicator will keep inivse!
-                    myIndicator.visible=true;
+                    //and when app is in setpage setEventPage the myIndicatorBase will invise so in this case after menu open&close the inidicator will keep inivse!
+                    myIndicatorBase.visible=true;
                     viewTimers.interactive=true;
                     viewTimers.visible=true;
 
@@ -265,31 +280,26 @@ Window
             top:menuBar.bottom;
             left:root.left;
             right:root.right;
-            bottom:myIndicator.top;
+            bottom:myIndicatorBase.top;
 //            bottomMargin: parent.height/15;
         }
 
         Item
         {
             id:itemBaseViewTimers
-            property int swipeViewIndex: 0;
-
-            onSwipeViewIndexChanged:
-            {
-                viewTimers.setCurrentIndex(swipeViewIndex);
-            }
 
             SwipeView
             {
                 id: viewTimers
-                currentIndex: swipeLunchIndex;//itemBaseViewTimers.swipeViewIndex;
+                currentIndex:0;//itemBaseViewTimers.swipeViewIndex;
                 width: baseTimers.width;
                 height:baseTimers.height/100*99;
                 onCurrentIndexChanged:
                 {
-                    myIndicator.myIndicatorIndex = viewTimers.currentIndex;
+                    myIndicator.sayCurrentIndex = viewTimers.currentIndex;
                     UpdateSwipeViewIndexesAsIndicator.setIndexTitleBarFromSwipeView(currentIndex);
                 }
+
 
                 Page
                 {
@@ -317,7 +327,7 @@ Window
                             baseEventSet.visible=true;
                             viewTimers.interactive=false;
                             viewTimers.visible=false;
-                            myIndicator.visible=false;
+                            myIndicatorBase.visible=false;
                         }
                     }
                 }
@@ -471,37 +481,55 @@ Window
 
 
     //timer indicator starts
-    MyTimerIndicator
+//    MyTimerIndicator
+//    {
+//        id:myIndicator;
+//        myIndicatorIndex: swipeLunchIndex;
+//        myIndicatorIndexAText: "Alarm";
+//        myIndicatorIndexBText: "StopWatch";
+//        myIndicatorIndexCText: "Timer";
+//        myIndicatorIndexDText: "Calendar";
+//        anchors.bottom:root.bottom;
+
+//        setIconIndexA: path_to_menuIcons + fileIcon_Alarm;
+//        setIconIndexB: path_to_menuIcons + fileIcon_Stopwatch;
+//        setIconIndexC: path_to_menuIcons + fileIcon_Countdown;
+//        setIconIndexD: path_to_menuIcons + fileIcon_Calender;
+
+//        onIndex_d_clicked:
+//        {
+//            viewTimers.setCurrentIndex(0);
+//        }
+//        onIndex_a_clicked:
+//        {
+//            viewTimers.setCurrentIndex(1);
+//        }
+//        onIndex_b_clicked:
+//        {
+//            viewTimers.setCurrentIndex(2);
+//        }
+
+//        onIndex_c_clicked:
+//        {
+//            viewTimers.setCurrentIndex(3);
+//        }
+//    }
+    Rectangle
     {
-        id:myIndicator;
-        myIndicatorIndex: swipeLunchIndex;
-        myIndicatorIndexAText: "Alarm";
-        myIndicatorIndexBText: "StopWatch";
-        myIndicatorIndexCText: "Timer";
-        myIndicatorIndexDText: "Calendar";
+        id:myIndicatorBase;
+        width:parent.width;
         anchors.bottom:root.bottom;
+        height:80;
+        color:cBG;
+        anchors.horizontalCenter: parent.horizontalCenter;
 
-        setIconIndexA: path_to_menuIcons + fileIcon_Alarm;
-        setIconIndexB: path_to_menuIcons + fileIcon_Stopwatch;
-        setIconIndexC: path_to_menuIcons + fileIcon_Countdown;
-        setIconIndexD: path_to_menuIcons + fileIcon_Calender;
-
-        onIndex_d_clicked:
+        MyNewIndicator
         {
-            viewTimers.setCurrentIndex(0);
-        }
-        onIndex_a_clicked:
-        {
-            viewTimers.setCurrentIndex(1);
-        }
-        onIndex_b_clicked:
-        {
-            viewTimers.setCurrentIndex(2);
-        }
-
-        onIndex_c_clicked:
-        {
-            viewTimers.setCurrentIndex(3);
+            id:myIndicator;
+            onSayCurrentIndexChanged:
+            {
+                viewTimers.currentIndex = sayCurrentIndex;
+            }
         }
     }
     //timer indicator ends
@@ -600,7 +628,7 @@ Window
                 baseEventSet.visible=false;
                 viewTimers.interactive=true;
                 viewTimers.visible=true;
-                myIndicator.visible=true;
+                myIndicatorBase.visible=true;
             }
             onUpdateLogsListModel:
             {
