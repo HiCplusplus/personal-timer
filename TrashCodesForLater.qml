@@ -4,6 +4,57 @@ Item {
 }
 
 
+//from LogMEssages
+//way 0
+//                const initer= `import QtQuick 2.0
+//                ListElement {`;
+//                const finisher= `}`;
+////                const id_er = `id:10;`;
+//                const text_er = `lmTextLength:100;lmDate:"22221";`;
+////                const date_er = `color:"red";`;
+////                const textlen_er = `lmTextLength:102;`;
+//                const newObject = Qt.createQmlObject(initer + text_er +`lmText:"helloworld2";` +finisher,
+//                    listModelMain,
+//                    "myDynamicSnippet"
+//                );
+
+
+
+/*
+
+const initer= `import QtQuick 2.0
+ListElement {`;
+const finisher= `}`;
+const id_er = `id:10;`;
+const text_er = `lmText:"hello test from js;"`;
+const date_er = `date:"dwddw-2022;"`;
+const textlen_er = `lmTextLength:102;`;
+const newObject = Qt.createQmlObject(initer + id_er + text_er + date_er + textlen_er +`mana:20;` +finisher,
+    listModelMain,
+    "myDynamicSnippet"
+);
+
+
+  */
+
+//way 1 testing
+//                const first =
+//                            `import QtQuick 2.15 ListElement{`;
+
+//                const closeall = `}`;
+//                const obj_id = `id:` + allObject.logMessages[i].id ;
+//                const obj_text = `lmText:` + allObject.logMessages[i].text ;
+//                const obj_date = `date:` + allObject.logMessages[i].date ;
+//                const obj_textLen = `lmTextLength:` + allObject.logMessages[i].text.length ;
+
+//                const newObject = Qt.createQmlObject(first + obj_id + obj_text + obj_date + obj_textLen +  closeall,
+//                    listModelMain,
+//                    "myDynamicSnippet"
+//                );
+
+
+
+
 
 
 
