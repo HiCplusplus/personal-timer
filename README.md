@@ -34,8 +34,10 @@
  - 0.10.2 -> event set page -> pick start/end date fixed (but needed to update style + some updates for calender).
  - 0.10.3 -> event setpage components and style -> pickup date and time; switch active; (pick clock inst include)
  - 0.10.4 -> event setpoge component clock picker added.
- - 0.10.5 -> the indicator updated.
- - 0.10.6 -> swipeLunchIndex cleaned.
+ - 0.10.5 -> the indicator from 4 Rectangle changed into PathView.
+ - 0.10.6 -> swipeLunchIndex cleaned (dirty variable and signals removed).
+ - 0.10.7 -> MyNewIndicator icon theme Fixed (when theme Changed the icons were not correct).
+
 ____________________________________
 
  ## up comming  

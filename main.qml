@@ -41,7 +41,7 @@ Window
 
     property int iconWidthAndHeight: mainWindow.width<700? 40:50; //for button iconBackToHome &  iconSettings
     property int fontSizeTitles: mainWindow.width<700 ? 45:65;
-    property int swipeLunchIndex: 0; //BUG FOR MYNEWINDICATOR , the indicator dont current index DONT SHOWES current, its passive currentindex or hiddened.
+    property int swipeLunchIndex: 0; //BUG FOR MYNEWINDICATOR , the indicator dont current index
 
 
 
@@ -64,6 +64,7 @@ Window
 
     onThemeDarkModeChanged:
     {
+        console.log("themedark Var cahnged");
         myIndicator.refreshIcons();
     }
 
@@ -78,6 +79,7 @@ Window
 
         if(LoadSettings.get("darkmode", "Hello World")==='1' || LoadSettings.get("darkmode", "Hello World")=== 1)
         {
+            themeDarkMode = true;
             cTxt_normal = "black";
             cTxt_title = "#3E386C";
             cBG = "#23272A";//darked
@@ -90,11 +92,10 @@ Window
             cBG_Unknown= "transparent";
             cUnknown = "white";//o99AAB5k
             path_to_menuIcons= directory_Icons + direcotry_WhiteIcons;
-            themeDarkMode = true;
-//            myIndicator.refreshIcons();
         }
         else
         {
+            themeDarkMode = false;
             cTxt_normal = "black";
             cTxt_title = "#3E386C";
             cBG = "#dedede";
@@ -107,8 +108,6 @@ Window
             cBG_Unknown= "transparent";
             cUnknown= "white";
             path_to_menuIcons= directory_Icons + direcotry_BlackIcons;
-            themeDarkMode = false;
-
         }
     }
 
