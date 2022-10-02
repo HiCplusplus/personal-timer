@@ -44,7 +44,7 @@ Item
             {
                 listModelMain.append({
                                          id: allObject.eventGroups[i].id,
-                                         name:allObject.eventGroups[i].name,
+                                         ename : allObject.eventGroups[i].name.length > 7 ? allObject.eventGroups[i].name.slice(0,6) + ".." :  allObject.eventGroups[i].name,
                                          priority: allObject.eventGroups[i].priority,
                                          tag: allObject.eventGroups[i].tags,
                                      });
@@ -101,7 +101,7 @@ Item
 
                         Text
                         {
-                            text: name;
+                            text: ename;
 //                            anchors.horizontalCenter: parent.horizontalCenter;
 //                            width:40;
 //                            height:parent.height;
@@ -144,8 +144,8 @@ Item
                             {
                                 selectedEventGroupId = id;
                                 logMessages.setEventGroupId = id;
-//                                selectedEventGroupTitle = name;
-                                logMessages.setEventGroupName = name;
+//                                selectedEventGroupTitle = ename;
+                                logMessages.setEventGroupName = ename;
 
                                 logMessages.refreshListModel();
                                 goToLogMessages();

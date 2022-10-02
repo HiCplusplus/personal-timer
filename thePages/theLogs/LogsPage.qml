@@ -36,11 +36,11 @@ Item
             {
                 listModelMain.append({
                                          id: allObject.logs[i].id,
-                                         name:allObject.logs[i].name,
+                                         name: allObject.logs[i].name.length > 7 ? allObject.logs[i].name.slice(0,6) + ".." :  allObject.logs[i].name,
                                          priority: allObject.logs[i].priority,
                                          tag: allObject.logs[i].tags,
                                      });
-1
+
             }
         }
         else //table is empty and json has error

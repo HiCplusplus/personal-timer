@@ -29,7 +29,11 @@ Window
     title: qsTr(appTitle);
     color:cBG;
 
-
+//    onClosing:
+//    {
+//        console.log("app ganna close i dont do that haha");
+//        close.accepted = false;
+//    }
 
     Rectangle
     {
@@ -38,13 +42,40 @@ Window
         color:cBG;
     }
 
-
     property int iconWidthAndHeight: mainWindow.width<700? 40:50; //for button iconBackToHome &  iconSettings
     property int fontSizeTitles: mainWindow.width<700 ? 45:65;
     property int swipeLunchIndex: 0; //BUG FOR MYNEWINDICATOR , the indicator dont current index
+    property variant global_errors; //error list. syntax : "error/warning id/number"
+
+    /*
+
+      Messages:
+
+                warning/notification
+                {
+                    work -> show warning
+                    close -> back button , shadow, ok OR x button
+                    title -> yes
+                    text -> yes
+                    icon -> yes
+                    id -> yes
+                    help/how to fix it/contact OR article OR support link -> yes
+                }
+                error
+                {
+                    work -> show error
+                    close -> back button, shadow , ok OR x button
+                    title -> yes
+                    text -> yes
+                    icon -> yes
+                    id -> yes
+                    help/how to fix it/contact OR article OR support link -> yes
+                }
 
 
 
+
+      */
     //- - - - - - - - - - - - - - - - - - - - - - set theme, default light mode colors
     property bool themeDarkMode:false;
     property string stack_event_titles: "EventGroups";
@@ -64,7 +95,6 @@ Window
 
     onThemeDarkModeChanged:
     {
-        console.log("themedark Var cahnged");
         myIndicator.refreshIcons();
     }
 
@@ -76,7 +106,9 @@ Window
     {
 
 
-        console.log("lunch stats:\nswipeLunchIndex="+swipeLunchIndex + "\tcountIndexes=" + viewTimers.count);
+        console.log("lunch stats: \n"
+                    +"swipeLunchIndex="+swipeLunchIndex
+                    +".");
         viewTimers.setCurrentIndex(swipeLunchIndex);
 
         if(LoadSettings.get("darkmode", "Hello World")==='1' || LoadSettings.get("darkmode", "Hello World")=== 1)
