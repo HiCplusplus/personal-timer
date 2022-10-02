@@ -5,8 +5,28 @@ import "../../theScripts/theDataBaseSystem/saveLoadEvents.js" as SaveEvents
 
 Item
 {
+    id:root;
     signal updateLogsListModel;
     signal btnCancel;
+    signal changeTextEditsEnableStatus;
+    onChangeTextEditsEnableStatus:
+    {
+        if(root.visible)
+        {
+            logName.enabled = true;
+            logTag.enabled = true;
+            eventLocation.enabled = true;
+            eventDescription.enabled = true;
+
+        }
+        else
+        {
+            logName.enabled = false;
+            logTag.enabled = false;
+            eventLocation.enabled = false;
+            eventDescription.enabled = false;
+        }
+    }
 
     property int setMaxCharLogName:25;
     property int setMaxCharLogTag:25;
@@ -17,7 +37,7 @@ Item
     {
         stack_event_titles = "EG/Event";
         appTitle = stack_event_titles;
-        logName.text = eventDescription.text = logTag.text = valueStartDate.text = valueEndDate.text = eventLocation.text = valueEndClock.text = valueStartClock = "";
+        logName.text = eventDescription.text = logTag.text = valueStartDate.text = valueEndDate.text = eventLocation.text = valueEndClock.text = valueStartClock.text = "";
 //        eventStatusSwitch.setStatusSwitch = false; //has bug for background color ..
         priorityTumbler.currentIndex = 0;
     }

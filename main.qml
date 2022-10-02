@@ -280,7 +280,6 @@ Window
             left:root.left;
             right:root.right;
             bottom:myIndicatorBase.top;
-//            bottomMargin: parent.height/15;
         }
 
         Item
@@ -290,7 +289,7 @@ Window
             SwipeView
             {
                 id: viewTimers
-                currentIndex:0;//itemBaseViewTimers.swipeViewIndex;
+                currentIndex:0;
                 width: baseTimers.width;
                 height:baseTimers.height/100*99;
                 onCurrentIndexChanged:
@@ -355,11 +354,9 @@ Window
                         id:alarmPage;
                         onGoToAlarmSetPage:
                         {
-
-                                baseAlarmSet.visible=true;
-                                viewTimers.interactive=false;
-                                viewTimers.visible=false;
-
+                            baseAlarmSet.visible=true;
+                            viewTimers.interactive=false;
+                            viewTimers.visible=false;
                         }
                     }
                 }
@@ -480,39 +477,6 @@ Window
 
 
     //timer indicator starts
-//    MyTimerIndicator
-//    {
-//        id:myIndicator;
-//        myIndicatorIndex: swipeLunchIndex;
-//        myIndicatorIndexAText: "Alarm";
-//        myIndicatorIndexBText: "StopWatch";
-//        myIndicatorIndexCText: "Timer";
-//        myIndicatorIndexDText: "Calendar";
-//        anchors.bottom:root.bottom;
-
-//        setIconIndexA: path_to_menuIcons + fileIcon_Alarm;
-//        setIconIndexB: path_to_menuIcons + fileIcon_Stopwatch;
-//        setIconIndexC: path_to_menuIcons + fileIcon_Countdown;
-//        setIconIndexD: path_to_menuIcons + fileIcon_Calender;
-
-//        onIndex_d_clicked:
-//        {
-//            viewTimers.setCurrentIndex(0);
-//        }
-//        onIndex_a_clicked:
-//        {
-//            viewTimers.setCurrentIndex(1);
-//        }
-//        onIndex_b_clicked:
-//        {
-//            viewTimers.setCurrentIndex(2);
-//        }
-
-//        onIndex_c_clicked:
-//        {
-//            viewTimers.setCurrentIndex(3);
-//        }
-//    }
     Rectangle
     {
         id:myIndicatorBase;
@@ -542,6 +506,8 @@ Window
         color:cBG_Unknown;
         visible: false;
         z:4;
+
+
         AlarmSetPage
         {
             id:pageAlarmSet;
@@ -555,7 +521,6 @@ Window
             {
                 alarmPage.refreshListModel();
             }
-
         }
     }
 

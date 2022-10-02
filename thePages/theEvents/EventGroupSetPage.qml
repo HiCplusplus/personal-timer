@@ -56,7 +56,7 @@ Item
         height:50;
         color:cBG_element;
         radius: 15;
-        TextEdit
+        TextArea//TextEdit
         {
             id:logName;
             anchors.fill:parent;
@@ -109,7 +109,7 @@ Item
         color:cBG_element;
         radius: 15;
 
-        TextEdit
+        TextArea//TextEdit
         {
             id:logTag;
             anchors.fill:parent;

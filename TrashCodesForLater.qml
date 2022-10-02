@@ -2,6 +2,41 @@ import QtQuick 2.15
 Item {
     id: name
 }
+//from main.qml
+//    MyTimerIndicator
+//    {
+//        id:myIndicator;
+//        myIndicatorIndex: swipeLunchIndex;
+//        myIndicatorIndexAText: "Alarm";
+//        myIndicatorIndexBText: "StopWatch";
+//        myIndicatorIndexCText: "Timer";
+//        myIndicatorIndexDText: "Calendar";
+//        anchors.bottom:root.bottom;
+
+//        setIconIndexA: path_to_menuIcons + fileIcon_Alarm;
+//        setIconIndexB: path_to_menuIcons + fileIcon_Stopwatch;
+//        setIconIndexC: path_to_menuIcons + fileIcon_Countdown;
+//        setIconIndexD: path_to_menuIcons + fileIcon_Calender;
+
+//        onIndex_d_clicked:
+//        {
+//            viewTimers.setCurrentIndex(0);
+//        }
+//        onIndex_a_clicked:
+//        {
+//            viewTimers.setCurrentIndex(1);
+//        }
+//        onIndex_b_clicked:
+//        {
+//            viewTimers.setCurrentIndex(2);
+//        }
+
+//        onIndex_c_clicked:
+//        {
+//            viewTimers.setCurrentIndex(3);
+//        }
+//    }
+
 
 //from evnetsetpage
 
