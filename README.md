@@ -37,6 +37,7 @@
  - 0.10.5 -> the indicator from 4 Rectangle changed into PathView.
  - 0.10.6 -> swipeLunchIndex cleaned (dirty variable and signals removed).
  - 0.10.7 -> MyNewIndicator icon theme Fixed (when theme Changed the icons were not correct).
+ - 0.10.8 -> logMEssages -> clock/time fixed.
 
 ____________________________________
 

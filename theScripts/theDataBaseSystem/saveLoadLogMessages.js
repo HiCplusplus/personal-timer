@@ -1,19 +1,24 @@
 .import "dataBaseCenter.js" as DBC
 const tableName = "log_messages3";
 
+
+
 function set(logId,logMessageText)
 {
    var db = DBC.getDatabase();
    var res = "";
 
+
+
    db.transaction
    (
        function(tx)
        {
-                  tx.executeSql('CREATE TABLE IF NOT EXISTS '+tableName+' (lm_id INTEGER PRIMARY KEY AUTOINCREMENT,log_id INT, lm_text TEXT, lm_date DATETIME DEFAULT CURRENT_TIMESTAMP, FOREIGN KEY(log_id) REFERENCES logs2(l_id) ON DELETE CASCADE );');
-                  var rs = tx.executeSql('INSERT OR REPLACE INTO '+tableName+' (log_id,lm_text) VALUES (?,?);',
+                  tx.executeSql('CREATE TABLE IF NOT EXISTS '+tableName+' (lm_id INTEGER PRIMARY KEY AUTOINCREMENT,log_id INT, lm_text TEXT, lm_date DATETIME, FOREIGN KEY(log_id) REFERENCES logs2(l_id) ON DELETE CASCADE );');
+                  var rs = tx.executeSql('INSERT OR REPLACE INTO '+tableName+' (log_id,lm_text,lm_date) VALUES (?,?,?);',
                                                                                                 [logId,
-                                                                                                logMessageText]);
+                                                                                                logMessageText,
+                                                                                                 DBC.getCurrentDateAndTime()]);
 
                   if (rs.rowsAffected > 0)
                   {

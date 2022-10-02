@@ -74,6 +74,8 @@ Window
     //load theme Mode:
     Component.onCompleted:
     {
+
+
         console.log("lunch stats:\nswipeLunchIndex="+swipeLunchIndex + "\tcountIndexes=" + viewTimers.count);
         viewTimers.setCurrentIndex(swipeLunchIndex);
 
