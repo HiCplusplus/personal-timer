@@ -39,6 +39,8 @@
  - 0.10.7 -> MyNewIndicator icon theme Fixed (when theme Changed the icons were not correct).
  - 0.10.8 -> logMEssages -> clock/time fixed.
  - 0.11.0 -> LogPage -> Delete.
+ - 0.11.1 -> LogMessages -> Delete.
+
 
 ____________________________________
 
@@ -47,8 +49,6 @@ ____________________________________
  - prioritize setpage
  ____________________________________
  - event system
-
-
  - event list -> click action -> edit event;
  - event group list -> edit; delete; group;
  - events list -> move; modify; delete; event from Eventgroup;
@@ -57,6 +57,7 @@ ____________________________________
  - event day picker popup , when button save/clear clicked it dont clear all days, for example in next year/months i saw some days picked !!!!!!!! how? idk
  - clockpicker componenet has bug, (add reset value signal + minute picker isnt work when move the circle.)
 ____________________________________
+ - LogMessages -> minimenu when wants find the y or center of element cant style good!
  - miniMenuEditAndDelete.qml -> when background element is listModel , it scroll down, the Y value is more than Root.height so this component going very down and its not possible to see that.
  -  settings page
  - myNewIndicator with swipeLunchIndex, indicator dont follow the sayCurrentindex correclty, it dont show the actived in center of page, index is setet but dont show in center of indicator!

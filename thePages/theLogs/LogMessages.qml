@@ -12,6 +12,15 @@ Item
     property int setMaxCharLogText: 500;
     property int checkLengthText : 1;
     property var tmp_Date: ["9999","99","99"];//year month day . for show the dates
+    signal resetValueMiniMenuEditDelete;
+    onResetValueMiniMenuEditDelete:
+    {
+        selectedElementToDeleteOrEdit=-1;
+        miniMenu_edit_delete.visible=false;
+    }
+
+    property int selectedElementToDeleteOrEdit:-1;
+
     signal goToLogs;
     onGoToLogs:
     {
@@ -182,6 +191,7 @@ Item
 
                 Rectangle
                 {
+                    id:itemmm2;
                     width: parent.width/1.10;
                     /*formula for hieght:
                       lmTextLen = text.length
@@ -221,6 +231,26 @@ Item
                         anchors.right:parent.right;
                         anchors.rightMargin: 15;
                         anchors.bottomMargin: 5;
+                    }
+                    MouseArea
+                    {
+                        anchors.fill:parent;
+                        onClicked:
+                        {
+                            miniMenu_edit_delete.visible=true;
+//                            if(itemmm2.height/2<15)
+                                console.log('(from LogMessages)  height== ' +itemmm2.height);
+                            const valY = itemmm2.y + itemmm2.height/2;
+                            if(valY >= root.height)
+                            {
+                                console.log("(from LogMessages) id & x & Y press and holded item id=" + id + "-x=" + itemmm2.x + "-y="+itemmm2.y);
+                                console.log('(from LogMessages) problem: the y is more than view os its going very down + 1 element isnt include (bcz of myIndicator Height)');
+                            }
+                            else
+                                miniMenu_edit_delete.posYselectedElement=valY;
+                            selectedElementToDeleteOrEdit=id;
+                        }
+
                     }
                 }
 
@@ -340,6 +370,36 @@ Item
 
 
 
+
+    MiniMenuEditAndDelete
+    {
+        id:miniMenu_edit_delete;
+        z:10;
+
+        onCancelButton:
+        {
+            resetValueMiniMenuEditDelete();
+        }
+
+        onRemoveAnElement:
+        {
+            if(selectedElementToDeleteOrEdit>0)
+            {
+                if(SaveLoadLogMessages.removeElement(selectedElementToDeleteOrEdit) === "OK")
+                {
+                    console.log("(from LogMessages) message success delete element.");
+                    refreshListModel();
+                    resetValueMiniMenuEditDelete();
+                }
+                else
+                    console.log("(from LogMessages) message failed to delete element.");
+            }
+            else
+            {
+                console.log("(from LogMessages) error, wrong element id="+selectedElementToDeleteOrEdit);
+            }
+        }
+    }
 
 
 
