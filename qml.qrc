@@ -153,6 +153,11 @@
         <file>thePictures/white-25px/icon-multi-timer.png</file>
         <file>thePictures/dark-25px/icon-sport-timer.png</file>
         <file>thePictures/white-25px/icon-sport-timer.png</file>
+        <file>theControls/MiniMenuEditAndDelete.qml</file>
+        <file>thePictures/dark-25px/icon-delete.png</file>
+        <file>thePictures/dark-25px/icon-edit.png</file>
+        <file>thePictures/white-25px/icon-delete.png</file>
+        <file>thePictures/white-25px/icon-edit.png</file>
     </qresource>
     <qresource prefix="/thePictures"/>
 </RCC>

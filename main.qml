@@ -197,6 +197,12 @@ Window
     //Log Icons
     property string fileIcon_Send: "icon-send.png";
 
+
+    //Modifing Icons
+    property string fileIcon_Delete: "icon-delete.png";
+    property string fileIcon_Edit: "icon-edit.png";
+
+
     //- - - - - - - - - - - - - - - - - - - - - - sound effects
     //- - sportTimer:
     property string directory_Sounds: "../theSounds/";

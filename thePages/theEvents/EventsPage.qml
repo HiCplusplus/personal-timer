@@ -39,7 +39,6 @@ Item
             var allObject = JSON.parse(SaveLoadEvents.get(setEventGroupId));
             for(var i=0; i<allObject.events.length; i++)
             {
-                console.log("end=" + allObject.events[i].end);
                 listModelMain.append({
                                          id: allObject.events[i].id,
                                          name: allObject.events[i].name.length > 15 ? allObject.events[i].name.slice(0,15) + ".." : allObject.events[i].name,

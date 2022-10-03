@@ -11,18 +11,27 @@ Item
     signal refreshListModel;
     signal goToLogMessages;
     signal goBackToLogs;
+    signal resetValueMiniMenuEditDelete;
+    onResetValueMiniMenuEditDelete:
+    {
+        selectedElementToDeleteOrEdit=-1;
+        miniMenu_edit_delete.visible=false;
+        shadowForminiMenu.visible=false;
+    }
 
-
+    property int selectedElementToDeleteOrEdit:-1;
 
     onGoBackToLogs:
     {
         logMessagesBase.visible=false;
+        resetValueMiniMenuEditDelete();
         root.visible=true;
     }
 
     onGoToLogMessages:
     {
         root.visible=false;
+        resetValueMiniMenuEditDelete();
         logMessagesBase.visible=true;
     }
 
@@ -77,6 +86,7 @@ Item
             delegate:
             Item
             {
+                id:itemmm2;
                 width: listViewMain.width;
                 height: 70;
                 Rectangle
@@ -141,6 +151,20 @@ Item
                                 appTitle = stack_log_titles;
                                 goToLogMessages();
                             }
+                            onPressAndHold:
+                            {
+                                miniMenu_edit_delete.visible=true;
+                                shadowForminiMenu.visible=true;
+                                const valY = itemmm2.y;
+                                if(valY >= root.height)
+                                {
+                                    console.log("id & x & Y press and holded item id=" + id + "-x=" + itemmm2.x + "-y="+itemmm2.y);
+                                    console.log('problem: the y is more than view os its going very down + 1 element isnt include (bcz of myIndicator Height)');
+                                }
+                                else
+                                    miniMenu_edit_delete.y=valY+25;
+                                selectedElementToDeleteOrEdit=id;
+                            }
                         }
                     }
 
@@ -175,6 +199,7 @@ Item
                 goToLogSetPage();
                 stack_log_titles = "Logs/New";
                 appTitle = stack_log_titles;
+                resetValueMiniMenuEditDelete();
             }
         }
     }//end of root
@@ -190,6 +215,41 @@ Item
             onGoToLogs:
             {
                 goBackToLogs();
+            }
+        }
+    }
+
+    MyShadowForFocus
+    {
+        id:shadowForminiMenu;
+        onRootclicked:
+        {
+            resetValueMiniMenuEditDelete();
+        }
+    }
+
+    MiniMenuEditAndDelete
+    {
+        id:miniMenu_edit_delete;
+        z:10;
+        anchors.left:parent.left;
+        anchors.leftMargin: 50;
+        onRemoveAnElement:
+        {
+            if(selectedElementToDeleteOrEdit>0)
+            {
+                if(SaveLoadLogs.removeElement(selectedElementToDeleteOrEdit) === "OK")
+                {
+                    console.log("(from LogsPage) message success delete element.");
+                    refreshListModel();
+                    resetValueMiniMenuEditDelete();
+                }
+                else
+                    console.log("(from LogsPage) message faile to delete element.");
+            }
+            else
+            {
+                console.log("(from LogsPage) error, wrong element id="+selectedElementToDeleteOrEdit);
             }
         }
     }
