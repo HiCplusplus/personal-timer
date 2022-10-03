@@ -1,7 +1,6 @@
 <RCC>
     <qresource prefix="/">
         <file>main.qml</file>
-        <file>theControls/MyTimerIndicator.qml</file>
         <file>StopWatch.qml</file>
         <file>theScripts/updateCountUp.js</file>
         <file>theScripts/controllerSpingBoxCountDown.js</file>

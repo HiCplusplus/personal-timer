@@ -20,7 +20,6 @@
  - 0.6.8 -> Dark/Light mode save on database.
  - 0.6.9 -> setup Database System + connect Alarm and Alarm-set-page with database + modify dark/light mode save on D.B (move into db system)
  - 0.7.0 -> Background application (just for now its ok it keep running whole application on background, not a service so it's not optimized maybe android close this in some situations) + (i figuraout how to temperory fix this problem: on android settings select app -> battary usage -> optimize -> disable, and turn on allow-background-activities in same app settings page this works forever untill phone battary dies or less than ~~~ 10-5% the app will kill by O.S)
- 
  - 0.8.0 -> Logs (create new log , add message to log, view messages , view logs)
  - 0.8.1 -> logs & alarm setPage for android fixed autopopup keyboard.
  - 0.8.2 -> Logs (logSetPage style fixed)
@@ -38,10 +37,10 @@
  - 0.10.6 -> swipeLunchIndex cleaned (dirty variable and signals removed).
  - 0.10.7 -> MyNewIndicator icon theme Fixed (when theme Changed the icons were not correct).
  - 0.10.8 -> logMEssages -> clock/time fixed.
- - 0.11.0 -> LogPage -> Delete.
+ - 0.11.0 -> LogPage -> Delete miniMenu.
  - 0.11.1 -> LogMessages -> Delete.
  - 0.11.2 -> EventGroupsPage -> Delete.
-
+ - 0.11.3 -> when themeSwitched swipe index gone into 0 bcz of refreshIcons for MyNewIndicator.
 ____________________________________
 
  ## up comming  
@@ -74,19 +73,10 @@ ____________________________________
  - lunch/quit logs for app, i.g when app opend do some action like save data inside the logs 'app lunch' or 'app close' with date and time // its useful for later to do something like : if user opened the app save a log in wakeup in new day same for sleep time;
  - message/error system: show something to user 
  - confirmation system: for quit, delete, save, quit without saving make sure user is sure.
- - backup data -> inside settings get backup file from database
- - sync data with api
- - custom api server url
- - fetch/refresh data from api
- - remove all data from local
- - remove all data from api
- - replace and fetch all data from api (remove local data then fetch data from api)
- - replace and upload all data from api (femove api data then upload local into api) 
  - MySwitch component: when theme switched between dark/light switch isnt change color correctly sometimes has bad color.
  - MySwitch component: when init switch turned on the button and backcolor isnt look good.
  - dismissPage: some erros show up + swipe somewhere in adnroid isnt work
  - LogsPage,Alarm,LogMessages.qml : optimize and avoid to twice fetch from database + change name .js as SaveLoad into just load...
- - fix the menu
  - componenet myswitch when status changed more than once the background is still old background color (active -> diactive ==> bgcolor active, active) bg needs update with status
 
  ____________________________________

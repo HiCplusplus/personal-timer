@@ -47,35 +47,6 @@ Window
     property int swipeLunchIndex: 0; //BUG FOR MYNEWINDICATOR , the indicator dont current index
     property variant global_errors; //error list. syntax : "error/warning id/number"
 
-    /*
-
-      Messages:
-
-                warning/notification
-                {
-                    work -> show warning
-                    close -> back button , shadow, ok OR x button
-                    title -> yes
-                    text -> yes
-                    icon -> yes
-                    id -> yes
-                    help/how to fix it/contact OR article OR support link -> yes
-                }
-                error
-                {
-                    work -> show error
-                    close -> back button, shadow , ok OR x button
-                    title -> yes
-                    text -> yes
-                    icon -> yes
-                    id -> yes
-                    help/how to fix it/contact OR article OR support link -> yes
-                }
-
-
-
-
-      */
     //- - - - - - - - - - - - - - - - - - - - - - set theme, default light mode colors
     property bool themeDarkMode:false;
     property string stack_event_titles: "EventGroups";
@@ -95,7 +66,9 @@ Window
 
     onThemeDarkModeChanged:
     {
+        const tempIndex = viewTimers.currentIndex; // to avoid when themeSwitched, the swipeIndex into 0
         myIndicator.refreshIcons();
+        myIndicator.sayCurrentIndex = tempIndex;
     }
 
 
