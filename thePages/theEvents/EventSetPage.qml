@@ -35,8 +35,7 @@ Item
     property variant testvaluse2;
     onBtnCancel:
     {
-        stack_event_titles = "EG/Event";
-        appTitle = stack_event_titles;
+        stack_event_titles = "EG/E/";
         logName.text = eventDescription.text = logTag.text = valueStartDate.text = valueEndDate.text = eventLocation.text = valueEndClock.text = valueStartClock.text = "";
 //        eventStatusSwitch.setStatusSwitch = false; //has bug for background color ..
         priorityTumbler.currentIndex = 0;

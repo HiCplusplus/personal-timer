@@ -1,5 +1,5 @@
 import QtQuick 2.15
-
+import "../theScripts/staticValues.js" as SVS
 Item
 {
     id:root;
@@ -9,7 +9,6 @@ Item
     signal refreshIcons;
     onRefreshIcons:
     {
-        console.log('onRefreshIcons runned');
         //when theme Changed the icons dont work good. white->white , dark->dark and i want whati -> dark , dark -> white
         //problem was using the main Var and this was change whole app into wrong icon colors, so i chnage this to a property and local by using localPathToMenuIcons i mean code was path_to_menuIcons = "../thePictures/dark-25px/";
         if(path_to_menuIcons === "../thePictures/white-25px/")
@@ -40,21 +39,10 @@ Item
                                localPathToMenuIcons + fileIcon_MultiTimer
 
                            ];
-            const listTitles =
-                             [
-                                 "Calender",
-                                 "Event",
-                                 "Log",
-                                 "Alarm",
-                                 "Timer",
-                                 "SportTimer",
-                                 "StopWatch",
-                                 "MultiTimer"
-                             ];
 
             listModelMain.append({
                                      theIndex: i,
-                                     theTitle: listTitles[i],
+                                     theTitle: SVS.listTitles[i],
                                      theIcon: listIcons[i],
                                  });
 

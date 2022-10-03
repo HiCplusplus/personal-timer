@@ -137,8 +137,7 @@ Item
                 onClicked:
                 {
                     goToLogs();
-                    stack_log_titles = "Logs";
-                    appTitle = stack_log_titles;
+                    stack_log_titles = "L/";
                 }
             }
         }

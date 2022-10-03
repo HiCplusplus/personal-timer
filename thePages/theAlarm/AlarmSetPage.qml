@@ -32,7 +32,7 @@ Item
     onBtnCancel:
     {
         resetValues();
-        appTitle = "Alarms";
+        stack_alarm_titles = "A/";
     }
 
     signal updateAlarmListModel;

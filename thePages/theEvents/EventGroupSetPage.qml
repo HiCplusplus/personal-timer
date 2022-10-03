@@ -8,8 +8,7 @@ Item
     signal btnCancel;
     onBtnCancel:
     {
-        stack_event_titles = "EventGroups";
-        appTitle = stack_event_titles;
+        stack_event_titles = "EG/";
     }
 
     property int setMaxCharLogName:25;

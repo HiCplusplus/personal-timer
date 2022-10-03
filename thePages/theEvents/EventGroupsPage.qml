@@ -162,8 +162,7 @@ Item
 
                                 logMessages.refreshListModel();
                                 goToLogMessages();
-                                stack_event_titles = "EG/Event";
-                                appTitle = stack_event_titles;
+                                stack_event_titles = "EG/E/";
                             }
                             onPressAndHold:
                             {
@@ -210,8 +209,7 @@ Item
             onCenterButtonPressed:
             {
                 goToEventGroupSetPage();
-                stack_event_titles = "EG/New";
-                appTitle = stack_event_titles;
+                stack_event_titles = "EG/N/";
                 resetValueMiniMenuEditDelete();
             }
         }

@@ -157,6 +157,7 @@
         <file>thePictures/dark-25px/icon-edit.png</file>
         <file>thePictures/white-25px/icon-delete.png</file>
         <file>thePictures/white-25px/icon-edit.png</file>
+        <file>theScripts/staticValues.js</file>
     </qresource>
     <qresource prefix="/thePictures"/>
 </RCC>

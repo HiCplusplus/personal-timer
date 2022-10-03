@@ -115,7 +115,7 @@ Item
         onCenterButtonPressed:
         {
             goToAlarmSetPage();
-            appTitle = "Alarms/New";
+            stack_alarm_titles = "A/N/";
         }
     }
 

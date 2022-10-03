@@ -142,8 +142,7 @@ Item
                                 logMessages.setLogId = id;
                                 logMessages.setLogName = name;
                                 logMessages.refreshListModel();
-                                stack_log_titles = "Logs/Message";
-                                appTitle = stack_log_titles;
+                                stack_log_titles = "L/M/";
                                 goToLogMessages();
                             }
                             onPressAndHold:
@@ -191,8 +190,7 @@ Item
             onCenterButtonPressed:
             {
                 goToLogSetPage();
-                stack_log_titles = "Logs/New";
-                appTitle = stack_log_titles;
+                stack_log_titles = "L/N/";
                 resetValueMiniMenuEditDelete();
             }
         }

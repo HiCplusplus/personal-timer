@@ -108,8 +108,7 @@ Item
                     onClicked:
                     {
                         goBackToEventGroupsFromEvents();
-                        stack_event_titles = "EventGroups";
-                        appTitle = stack_event_titles;
+                        stack_event_titles = "EG/";
                     }
                 }
             }
@@ -301,8 +300,7 @@ Item
             onCenterButtonPressed:
             {
                 goToEventSetPage();
-                stack_event_titles = "EG/E/New";
-                appTitle = stack_event_titles;
+                stack_event_titles = "EG/E/N/";
             }
         }
     }//end of root

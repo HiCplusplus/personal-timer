@@ -12,7 +12,7 @@ import "thePages/theCalender"
 import "thePages/theAlarm"
 import "theScripts/updateIndicator.js" as UpdateSwipeViewIndexesAsIndicator
 import "thePages/theEvents"
-
+import "theScripts/staticValues.js" as SVS
 Window
 {
 //    Material.theme:Material.Dark
@@ -24,16 +24,19 @@ Window
     width:720/2+10;
     height:1339/1.7;
     visible: true;
-    property string appTitle: "pLarm";
+    property string appTitle: SVS.listTitles[viewTimers.currentIndex];
 
     title: qsTr(appTitle);
     color:cBG;
 
-//    onClosing:
-//    {
-//        console.log("app ganna close i dont do that haha");
-//        close.accepted = false;
-//    }
+    onClosing:
+    {
+        console.log("app ganna close i dont do that haha");
+        close.accepted = false;
+        console.log("stack EVENT=" + stack_event_titles);
+        console.log("S Log="+stack_log_titles);
+        console.log("S ALARM="+stack_alarm_titles);
+    }
 
     Rectangle
     {
@@ -49,8 +52,16 @@ Window
 
     //- - - - - - - - - - - - - - - - - - - - - - set theme, default light mode colors
     property bool themeDarkMode:false;
-    property string stack_event_titles: "EventGroups";
-    property string stack_log_titles: "Logs";
+//    property string stack_calendar_titles: "Calendar";
+    property string stack_event_titles: "E/"; //keys = EG(evengroup) , E(event) , N(new)
+    property string stack_log_titles: "L/";// keys = L(log), M(Message), N(new)
+    property string stack_alarm_titles: "A/"; //A(alarm), N(new)
+//    property string stack_stopwatch_titles: "StopWatch";
+//    property string stack_timer_titles: "Timer";
+//    property string stack_sportTimer_titles:"SportTimer";
+//    property string stack_multiTimer_titles: "MultiTimer";
+
+
     property color cTxt_normal : "black";
     property color cTxt_title : "#3E386C";
     property color cBG : "#dedede";//"#F6F6F6";
@@ -77,8 +88,6 @@ Window
     //load theme Mode:
     Component.onCompleted:
     {
-
-
         console.log("lunch stats: \n"
                     +"swipeLunchIndex="+swipeLunchIndex
                     +".");
@@ -116,6 +125,7 @@ Window
             cUnknown= "white";
             path_to_menuIcons= directory_Icons + direcotry_BlackIcons;
         }
+        updateMenuColorDependWithSwipeIndex();
     }
 
 
@@ -240,6 +250,14 @@ Window
 
 
 
+    signal updateMenuColorDependWithSwipeIndex;
+    onUpdateMenuColorDependWithSwipeIndex:
+    {
+        if(viewTimers.currentIndex===0)
+            myMenu.cBGMenu = cBG_button;
+        else
+            myMenu.cBGMenu = cBG;
+    }
 
    Rectangle
    {
@@ -252,16 +270,17 @@ Window
        MyMenu
        {
             id:myMenu;
-            cBGMenu: viewTimers.currentIndex===0? cBG_button: cBG;
+            cBGMenu: cBG;
             colorTextMenu:cTxt_button;
             textTitleMenu:appTitle;
             onSignalOpenMenu:
             {
                 if(pageSettings.visible)
                 {
+                    UpdateSwipeViewIndexesAsIndicator.setIndexTitleBarFromSwipeView(viewTimers.currentIndex);
+                    updateMenuColorDependWithSwipeIndex();
                     //invise all set pages becuase of : when app is in a setpage and button openMenu/settings clicked set page still open but upside of a list/or/etc/... so i decide to invise all setpages to avoid this
                     baseAlarmSet.visible =  baseLogSet.visible = baseEventGroupSet.visible = baseEventSet.visible = pageSettings.visible=false;
-
 
                     //and when app is in setpage setEventPage the myIndicatorBase will invise so in this case after menu open&close the inidicator will keep inivse!
                     myIndicatorBase.visible=true;
@@ -271,6 +290,8 @@ Window
                 }
                 else
                 {
+                    appTitle = "Settings";
+                    myMenu.cBGMenu = cBG;
                     pageSettings.visible=true;
                     viewTimers.interactive=false;
                     viewTimers.visible=false;
@@ -309,6 +330,7 @@ Window
                 {
                     myIndicator.sayCurrentIndex = viewTimers.currentIndex;
                     UpdateSwipeViewIndexesAsIndicator.setIndexTitleBarFromSwipeView(currentIndex);
+                    updateMenuColorDependWithSwipeIndex();
                 }
 
 
