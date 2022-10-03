@@ -2,6 +2,14 @@ import QtQuick 2.15
 Item {
     id: name
 }
+
+
+//from logsPage
+//                            anchors.horizontalCenter: parent.horizontalCenter;
+//                            width:40;
+//                            height:parent.height;
+//                            wrapMode: Text.WrapAtWordBoundaryOrAnywhere;
+
 //from main.qml
 //    MyTimerIndicator
 //    {

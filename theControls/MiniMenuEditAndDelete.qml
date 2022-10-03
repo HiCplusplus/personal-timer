@@ -2,18 +2,40 @@ import QtQuick 2.15
 
 Item
 {
-    id:root;
-    width:parent.width/3;
-    height:75;
+//    id:root;
+    anchors.fill:parent;
     visible:false;
     signal removeAnElement;
     signal editAnElement;
+    signal cancelButton;
+    property int posYselectedElement:0;
+    onPosYselectedElementChanged:
+    {
+        baseButtons.y=posYselectedElement+25;
+    }
+
+//    property int setCountOfButtons: 2;
+
+    MyShadowForFocus
+    {
+        visible:true;
+        onRootclicked:
+        {
+            cancelButton();
+        }
+    }
+
+
 
     Rectangle
     {
-        anchors.fill:parent;
+        id:baseButtons;
+        width:parent.width/3;
+        height:75;
         color:cUnknown;
-        radius:50;
+        radius: 100;
+        anchors.left:parent.left;
+        anchors.leftMargin: 50;
         Rectangle
         {
             id:editButton;

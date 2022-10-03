@@ -16,7 +16,6 @@ Item
     {
         selectedElementToDeleteOrEdit=-1;
         miniMenu_edit_delete.visible=false;
-        shadowForminiMenu.visible=false;
     }
 
     property int selectedElementToDeleteOrEdit:-1;
@@ -54,7 +53,7 @@ Item
         }
         else //table is empty and json has error
         {
-            console.log("LOG NOT FOUND(logs are 0)/Table isnt exists");
+            console.log("(from LogsPage) LOG NOT FOUND(logs are 0)/Table isnt exists");
         }
 
     }
@@ -104,10 +103,6 @@ Item
                         Text
                         {
                             text: name;
-//                            anchors.horizontalCenter: parent.horizontalCenter;
-//                            width:40;
-//                            height:parent.height;
-//                            wrapMode: Text.WrapAtWordBoundaryOrAnywhere;
                             font.family: gFontFamily;
                             color:cTxt_button;
                             font.pointSize: 18;
@@ -154,15 +149,14 @@ Item
                             onPressAndHold:
                             {
                                 miniMenu_edit_delete.visible=true;
-                                shadowForminiMenu.visible=true;
                                 const valY = itemmm2.y;
                                 if(valY >= root.height)
                                 {
-                                    console.log("id & x & Y press and holded item id=" + id + "-x=" + itemmm2.x + "-y="+itemmm2.y);
-                                    console.log('problem: the y is more than view os its going very down + 1 element isnt include (bcz of myIndicator Height)');
+                                    console.log("(from LogsPage) id & x & Y press and holded item id=" + id + "-x=" + itemmm2.x + "-y="+itemmm2.y);
+                                    console.log('(from LogsPage) problem: the y is more than view os its going very down + 1 element isnt include (bcz of myIndicator Height)');
                                 }
                                 else
-                                    miniMenu_edit_delete.y=valY+25;
+                                    miniMenu_edit_delete.posYselectedElement=valY;
                                 selectedElementToDeleteOrEdit=id;
                             }
                         }
@@ -219,21 +213,17 @@ Item
         }
     }
 
-    MyShadowForFocus
-    {
-        id:shadowForminiMenu;
-        onRootclicked:
-        {
-            resetValueMiniMenuEditDelete();
-        }
-    }
 
     MiniMenuEditAndDelete
     {
         id:miniMenu_edit_delete;
         z:10;
-        anchors.left:parent.left;
-        anchors.leftMargin: 50;
+
+        onCancelButton:
+        {
+            resetValueMiniMenuEditDelete();
+        }
+
         onRemoveAnElement:
         {
             if(selectedElementToDeleteOrEdit>0)
