@@ -40,7 +40,7 @@
  - 0.10.8 -> logMEssages -> clock/time fixed.
  - 0.11.0 -> LogPage -> Delete.
  - 0.11.1 -> LogMessages -> Delete.
-
+ - 0.11.2 -> EventGroupsPage -> Delete.
 
 ____________________________________
 
@@ -57,6 +57,7 @@ ____________________________________
  - event day picker popup , when button save/clear clicked it dont clear all days, for example in next year/months i saw some days picked !!!!!!!! how? idk
  - clockpicker componenet has bug, (add reset value signal + minute picker isnt work when move the circle.)
 ____________________________________
+ - EventGroups -> minimenu isnt center Y!
  - LogMessages -> minimenu when wants find the y or center of element cant style good!
  - miniMenuEditAndDelete.qml -> when background element is listModel , it scroll down, the Y value is more than Root.height so this component going very down and its not possible to see that.
  -  settings page
@@ -129,7 +130,7 @@ ____________________________________
   - log list -> edit; delete logs;
   - log messages -> message list -> scroll to latest/last/downest of list page/message;
   - log message -> edit; delete; copy; messages;
- 
+  - log essage -> when box is empty it is posbile to send empty message !!!!!!!! its forbiden 
 ___________________________________
 
 ![screen-v-0-10-0](http://mewware.com/mewware/p-screenshots/v0.10.0/Screenshot%20from%202022-09-21%2003-04-43.png)

@@ -91,7 +91,30 @@ function get()
 }
 
 
+function removeElement(targetId)
+{
+   var db = DBC.getDatabase();
+   var res = "";
 
+   db.transaction
+   (
+       function(tx)
+       {
+                  var rs = tx.executeSql('DELETE FROM '+tableName+' WHERE eg_id=?;',[targetId]);
+
+                  if (rs.rowsAffected > 0)
+                  {
+                    res = "OK";
+                  }
+
+                  else
+                  {
+                    res = "Error (saveLoadLogMessages.removeElement)";
+                  }
+      }
+   );
+  return res;
+}
 
 
 

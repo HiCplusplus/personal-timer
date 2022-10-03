@@ -14,6 +14,17 @@ Item
     signal goToEventSetPage;
     property int selectedEventGroupId:0;
 //    property string selectedEventGroupTitle;
+
+
+    signal resetValueMiniMenuEditDelete;
+    onResetValueMiniMenuEditDelete:
+    {
+        selectedElementToDeleteOrEdit=-1;
+        miniMenu_edit_delete.visible=false;
+    }
+    property int selectedElementToDeleteOrEdit:-1;
+
+
     signal refreshTheEventsPage;
 
     onRefreshTheEventsPage:
@@ -32,6 +43,7 @@ Item
     {
         root.visible=false;
         logMessagesBase.visible=true;
+        resetValueMiniMenuEditDelete();
     }
 
     onRefreshListModel:
@@ -53,7 +65,7 @@ Item
         }
         else //table is empty and json has error
         {
-            console.log("Eventgourps NOT FOUND(eventGroups are 0)/Table isnt exists");
+            console.log("(from EventGroupsPage) Eventgourps NOT FOUND(eventGroups are 0)/Table isnt exists");
         }
 
     }
@@ -93,6 +105,7 @@ Item
                     color:cBG;
                     Rectangle
                     {
+                        id:itemmm2;
                         width: parent.width/1.10;
                         height: 50;
                         color: cBG_element;
@@ -152,6 +165,19 @@ Item
                                 stack_event_titles = "EG/Event";
                                 appTitle = stack_event_titles;
                             }
+                            onPressAndHold:
+                            {
+                                miniMenu_edit_delete.visible=true;
+                                const valY = itemmm2.y;
+                                if(valY >= root.height)
+                                {
+                                    console.log("(from EventGroupsPage) id & x & Y press and holded item id=" + id + "-x=" + itemmm2.x + "-y="+itemmm2.y);
+                                    console.log('(from EventGroupsPage) problem: the y is more than view os its going very down + 1 element isnt include (bcz of myIndicator Height)');
+                                }
+                                else
+                                    miniMenu_edit_delete.posYselectedElement=valY;
+                                selectedElementToDeleteOrEdit=id;
+                            }
                         }
                     }
 
@@ -186,6 +212,7 @@ Item
                 goToEventGroupSetPage();
                 stack_event_titles = "EG/New";
                 appTitle = stack_event_titles;
+                resetValueMiniMenuEditDelete();
             }
         }
     }//end of root
@@ -208,6 +235,36 @@ Item
 //            {
 //                goBackToLogs();
 //            }
+        }
+    }
+
+    MiniMenuEditAndDelete
+    {
+        id:miniMenu_edit_delete;
+        z:10;
+
+        onCancelButton:
+        {
+            resetValueMiniMenuEditDelete();
+        }
+
+        onRemoveAnElement:
+        {
+            if(selectedElementToDeleteOrEdit>0)
+            {
+                if(SaveLoadEventGroups.removeElement(selectedElementToDeleteOrEdit) === "OK")
+                {
+                    console.log("(from EventGroupsPage) message success delete element.");
+                    refreshListModel();
+                    resetValueMiniMenuEditDelete();
+                }
+                else
+                    console.log("(from EventGroupsPage) message faile to delete element.");
+            }
+            else
+            {
+                console.log("(from EventGroupsPage) error, wrong element id="+selectedElementToDeleteOrEdit);
+            }
         }
     }
 }//end of item
