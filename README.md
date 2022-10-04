@@ -43,6 +43,8 @@
  - 0.11.3 -> when themeSwitched swipe index gone into 0 bcz of refreshIcons for MyNewIndicator.
  - 0.11.4 -> customize component miniMenu and edit used this component codes.
  - 0.11.5 -> log Message -> copy text to clipboard
+ - 0.11.6 -> getCurrentDateAndTime updated -> if hour,minute,second were less than ten, e.g logMessages will have problem to sort from SQL as DATE AND TIME so zero added for less than ten values.
+
 ____________________________________
 
 

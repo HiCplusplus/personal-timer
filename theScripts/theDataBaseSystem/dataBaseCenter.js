@@ -12,10 +12,14 @@ function getCurrentDateAndTime()
     let cYear = currentDate.getFullYear();
     let cDay = currentDate.getDate();
     let cMonth = currentDate.getMonth() + 1;
+    let cHour = (currentDate.getHours()<10? "0"+currentDate.getHours() : currentDate.getHours());
+    let cMinute = (currentDate.getMinutes()<10? "0"+currentDate.getMinutes() : currentDate.getMinutes());
+    let cSecond = (currentDate.getSeconds()<10? "0"+currentDate.getSeconds() : currentDate.getSeconds());
+
     if(cDay <10)
         cDay = "0"+cDay;
     if(cMonth < 10)
         cMonth = "0"+cMonth;
 //    console.log(cYear + "-" + cMonth + "-" + cDay + " " +  currentDate.getHours() + ":" + currentDate.getMinutes() + ":" + currentDate.getSeconds());
-    return  cYear + "-" + cMonth + "-" + cDay + " " +  currentDate.getHours() + ":" + currentDate.getMinutes() + ":" + currentDate.getSeconds();
+    return  cYear + "-" + cMonth + "-" + cDay + " " + cHour  + ":" + cMinute + ":" + cSecond;
 }

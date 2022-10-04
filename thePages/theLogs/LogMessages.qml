@@ -362,7 +362,6 @@ Item
                     logText.text = "";
                     writeText.height = 45;
                     refreshListModel();
-
                     //code insert text
 
                 }
