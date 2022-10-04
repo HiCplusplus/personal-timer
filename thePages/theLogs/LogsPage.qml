@@ -221,8 +221,8 @@ Item
         {
             resetValueMiniMenuEditDelete();
         }
-
-        onRemoveAnElement:
+        //value text and icon default is for delete.
+        onButtonAClicked:
         {
             if(selectedElementToDeleteOrEdit>0)
             {

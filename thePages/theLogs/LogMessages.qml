@@ -238,7 +238,7 @@ Item
                         {
                             miniMenu_edit_delete.visible=true;
 //                            if(itemmm2.height/2<15)
-                                console.log('(from LogMessages)  height== ' +itemmm2.height);
+//                                console.log('(from LogMessages)  height== ' +itemmm2.height);
                             const valY = itemmm2.y + itemmm2.height/2;
                             if(valY >= root.height)
                             {
@@ -379,8 +379,8 @@ Item
         {
             resetValueMiniMenuEditDelete();
         }
-
-        onRemoveAnElement:
+        //value text and icon default is for delete.
+        onButtonAClicked:
         {
             if(selectedElementToDeleteOrEdit>0)
             {
