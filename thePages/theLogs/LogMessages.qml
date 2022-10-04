@@ -16,10 +16,12 @@ Item
     onResetValueMiniMenuEditDelete:
     {
         selectedElementToDeleteOrEdit=-1;
+        selectedElementCopyToClipboard:"";
         miniMenu_edit_delete.visible=false;
     }
 
     property int selectedElementToDeleteOrEdit:-1;
+    property string selectedElementCopyToClipboard:"";
 
     signal goToLogs;
     onGoToLogs:
@@ -68,15 +70,15 @@ Item
                 listModelMain.append({
                                          id:allObject.logMessages[i].id,
                                          lmId:allObject.logMessages[i].id,
-                                         lmText: allObject.logMessages[i].text,
+//                                         lmText: allObject.logMessages[i].text,
                                          lmText: allObject.logMessages[i].text,
                                          date: allObject.logMessages[i].date,
                                          lmClock: cclocks,
                                          lmDate: finalDate,
                                          lmDateLength: finalDate.length,
                                          lmTextLength: allObject.logMessages[i].text.length, //becuase of lenght isnt accessable in mql when wants get height to background rectangle
-                                         lmTextLength:
-                                         allObject.logMessages[i].text.length, //becuase of lenght isnt accessable in mql when wants get height to background rectangle
+//                                         lmTextLength:
+//                                         allObject.logMessages[i].text.length, //becuase of lenght isnt accessable in mql when wants get height to background rectangle
                                          });
 
 
@@ -248,6 +250,7 @@ Item
                             else
                                 miniMenu_edit_delete.posYselectedElement=valY;
                             selectedElementToDeleteOrEdit=id;
+                            selectedElementCopyToClipboard=lmText;
                         }
 
                     }
@@ -374,13 +377,26 @@ Item
     {
         id:miniMenu_edit_delete;
         z:10;
-
+        setTitlesAsArray:["Copy","Delete"];
+        setIconsAsArray:[path_to_menuIcons + fileIcon_Copy,path_to_menuIcons + fileIcon_Delete];
         onCancelButton:
         {
             resetValueMiniMenuEditDelete();
         }
-        //value text and icon default is for delete.
+
         onButtonAClicked:
+        {
+            if(selectedElementCopyToClipboard!=="")
+            {
+                textEditForCopyToClipboard.text = selectedElementCopyToClipboard;
+                textEditForCopyToClipboard.selectAll();
+                textEditForCopyToClipboard.copy();
+                resetValueMiniMenuEditDelete();
+                console.log("(from LogMessages) text copied to clipboarded.");
+            }
+        }
+
+        onButtonBClicked:
         {
             if(selectedElementToDeleteOrEdit>0)
             {
@@ -398,6 +414,13 @@ Item
                 console.log("(from LogMessages) error, wrong element id="+selectedElementToDeleteOrEdit);
             }
         }
+    }
+    TextEdit
+    {
+        id:textEditForCopyToClipboard;
+        width:1;
+        height:1;
+        visible:false;
     }
 
 

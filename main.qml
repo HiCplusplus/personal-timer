@@ -201,6 +201,8 @@ Window
     property string fileIcon_Delete: "icon-delete.png";
     property string fileIcon_Edit: "icon-edit.png";
 
+    //MimiMenu
+    property string fileIcon_Copy: "icon-copy.png";
 
     //- - - - - - - - - - - - - - - - - - - - - - sound effects
     //- - sportTimer:
