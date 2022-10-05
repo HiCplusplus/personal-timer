@@ -160,6 +160,7 @@
         <file>theScripts/staticValues.js</file>
         <file>thePictures/dark-25px/icon-copy.png</file>
         <file>thePictures/white-25px/icon-copy.png</file>
+        <file>theControls/ConfirmationMessage.qml</file>
     </qresource>
     <qresource prefix="/thePictures"/>
 </RCC>
