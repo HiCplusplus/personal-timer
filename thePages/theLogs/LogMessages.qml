@@ -266,6 +266,49 @@ Item
 
     }//end of list view
 
+    Rectangle
+    {
+        id:statusEditingOrNOt;
+        visible: flag_editMessage? true: false;
+        width: parent.width;
+        height:25;
+        color:cBG_button_deactivated;
+        anchors.bottom:writeText.top;
+        clip: true;
+        Image
+        {
+            id:iconCancelEditing;
+            width:25;
+            height:25;
+            anchors.left:parent.left;
+            anchors.leftMargin: 5;
+            anchors.verticalCenter: parent.verticalCenter;
+            source: "../../" + path_to_menuIcons + fileIcon_Cancel;
+        }
+        Text
+        {
+            text:"Editing: " + selectedElementText;
+            anchors.centerIn:parent;
+            color:cTxt_button;
+            font.family: gFontFamily;
+            font.bold:true;
+        }
+        MouseArea
+        {
+            anchors.fill: parent;
+            onClicked:
+            {
+                flag_editMessage=0;
+                logText.text= "";
+                writeText.height = 45;
+                resetValueMiniMenuEditDelete();
+                console.log("mesage editing cancelded");
+            }
+
+
+        }
+
+    }
 
     Rectangle
     {

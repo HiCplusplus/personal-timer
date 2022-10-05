@@ -45,8 +45,8 @@ Item
         id:baseButtons;
         width:parent.width/2.50;
         height:setTitlesAsArray.length*heightButtonsAre;
-        color:cUnknown;
-        radius: 100;
+        color:cBG_button_deactivated;
+        radius: 50;
         anchors.left:parent.left;
         anchors.leftMargin: 50;
         Rectangle
