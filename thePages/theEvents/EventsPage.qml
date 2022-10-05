@@ -80,7 +80,8 @@ Item
             color:cBG;
             Text
             {
-                text: setEventGroupName.length > 10 ? setEventGroupName.slice(0,9) + "..'s events" :  setEventGroupName + "'s events";
+                //text: setEventGroupName.length > 10 ? setEventGroupName.slice(0,9) + "..'s events" :  setEventGroupName + "'s events";
+                text: setEventGroupName;
                 font.pointSize: 15;
                 font.family: gFontFamily;
                 font.bold: true;

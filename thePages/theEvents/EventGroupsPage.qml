@@ -58,6 +58,7 @@ Item
                 listModelMain.append({
                                          id: allObject.eventGroups[i].id,
                                          ename : allObject.eventGroups[i].name.length > 7 ? allObject.eventGroups[i].name.slice(0,6) + ".." :  allObject.eventGroups[i].name,
+                                         fullename: allObject.eventGroups[i].name,
                                          priority: allObject.eventGroups[i].priority,
                                          tag: allObject.eventGroups[i].tags,
                                      });
@@ -159,7 +160,8 @@ Item
                                 selectedEventGroupId = id;
                                 logMessages.setEventGroupId = id;
 //                                selectedEventGroupTitle = ename;
-                                logMessages.setEventGroupName = ename;
+//                                logMessages.setEventGroupName = ename;
+                                logMessages.setEventGroupName = fullename;
 
                                 logMessages.refreshListModel();
                                 goToLogMessages();
