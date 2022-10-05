@@ -9,6 +9,8 @@ Item
     onBtnCancel:
     {
         stack_event_titles = "EG/";
+        logName.text = logTag.text = "";
+        priorityTumbler.currentIndex = 0;
     }
 
     property int setMaxCharLogName:25;

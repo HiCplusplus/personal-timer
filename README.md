@@ -47,7 +47,7 @@
  - 0.11.7 -> page stacks are updated.
  - 0.11.8 -> groupEvent, Logs -> child -> title -> limited and sliced are removed.
  - 0.11.9 -> logs -> mesage -> miniMenu -> edit message added.
-
+ - 0.11.10 -> eventGroup setpage clean inputs when button cancel/save clicked.
 ____________________________________
 
 
