@@ -161,6 +161,14 @@
         <file>thePictures/dark-25px/icon-copy.png</file>
         <file>thePictures/white-25px/icon-copy.png</file>
         <file>theControls/ConfirmationMessage.qml</file>
+        <file>thePictures/dark-25px/icon-italic.png</file>
+        <file>thePictures/dark-25px/icon-strikeout.png</file>
+        <file>thePictures/dark-25px/icon-underline.png</file>
+        <file>thePictures/white-25px/icon-italic.png</file>
+        <file>thePictures/white-25px/icon-strikeout.png</file>
+        <file>thePictures/white-25px/icon-underline.png</file>
+        <file>thePictures/dark-25px/icon-bold.png</file>
+        <file>thePictures/white-25px/icon-bold.png</file>
     </qresource>
     <qresource prefix="/thePictures"/>
 </RCC>

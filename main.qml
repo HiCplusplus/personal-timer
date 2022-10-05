@@ -205,6 +205,11 @@ Window
 
     //MimiMenu
     property string fileIcon_Copy: "icon-copy.png";
+    property string fileIcon_Bold: "icon-bold.png";
+    property string fileIcon_Italic: "icon-italic.png";
+    property string fileIcon_Underline: "icon-underline.png";
+    property string fileIcon_Strikeout: "icon-strikeout.png";
+    property string fileIcon_Checked: "icon-checked.png";
 
     //- - - - - - - - - - - - - - - - - - - - - - sound effects
     //- - sportTimer:

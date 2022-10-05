@@ -46,6 +46,7 @@
  - 0.11.6 -> getCurrentDateAndTime updated -> if hour,minute,second were less than ten, e.g logMessages will have problem to sort from SQL as DATE AND TIME so zero added for less than ten values.
  - 0.11.7 -> page stacks are updated.
  - 0.11.8 -> groupEvent, Logs -> child -> title -> limited and sliced are removed.
+ - 0.11.9 -> logs -> mesage -> miniMenu -> edit message added.
 
 ____________________________________
 

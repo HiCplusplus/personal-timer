@@ -16,13 +16,15 @@ Item
     onResetValueMiniMenuEditDelete:
     {
         selectedElementToDeleteOrEdit=-1;
-        selectedElementCopyToClipboard:"";
+        selectedElementText:"";
+        flag_editMessage=0;
         miniMenu_edit_delete.visible=false;
         stack_log_titles = "L/M/";
     }
 
     property int selectedElementToDeleteOrEdit:-1;
-    property string selectedElementCopyToClipboard:"";
+    property string selectedElementText:"";
+    property int flag_editMessage: 0;
 
     signal goToLogs;
     onGoToLogs:
@@ -251,7 +253,7 @@ Item
                             else
                                 miniMenu_edit_delete.posYselectedElement=valY;
                             selectedElementToDeleteOrEdit=id;
-                            selectedElementCopyToClipboard=lmText;
+                            selectedElementText=lmText;
                             stack_log_titles += "E/";
                         }
 
@@ -360,11 +362,38 @@ Item
                 anchors.fill:parent;
                 onClicked:
                 {
-                    SaveLoadLogMessages.set(setLogId,logText.text);
-                    logText.text = "";
-                    writeText.height = 45;
-                    refreshListModel();
-                    //code insert text
+                    if(flag_editMessage)
+                    {
+                        if(SaveLoadLogMessages.editMessage(setLogId,selectedElementToDeleteOrEdit,logText.text) === "OK")//log id, editiing message id, new text.
+                        {
+                            console.log("(from LogMessages) message succesfully updated.");
+                            flag_editMessage=0;
+                            logText.text = "";
+                            writeText.height = 45;
+                            resetValueMiniMenuEditDelete();
+                            refreshListModel();
+                        }
+                        else
+                            console.log("(from LogMessages) message failed to update");
+
+
+                    }
+                    else
+                    {
+                        if(SaveLoadLogMessages.set(setLogId,logText.text)==="OK")
+                        {
+                            console.log("(from LogMessages) message succesfully sent.");
+                            logText.text = "";
+                            writeText.height = 45;
+                            refreshListModel();
+                        }
+                        else
+                            console.log("(from LogMessages) message failed to sent");
+
+                    }
+
+
+
 
                 }
             }
@@ -378,8 +407,11 @@ Item
     {
         id:miniMenu_edit_delete;
         z:10;
-        setTitlesAsArray:["Copy","Delete"];
-        setIconsAsArray:[path_to_menuIcons + fileIcon_Copy,path_to_menuIcons + fileIcon_Delete];
+        setTitlesAsArray:["Edit","Copy","Delete"];
+        setIconsAsArray:[
+            path_to_menuIcons + fileIcon_Edit,
+            path_to_menuIcons + fileIcon_Copy,
+            path_to_menuIcons + fileIcon_Delete];
         onCancelButton:
         {
             resetValueMiniMenuEditDelete();
@@ -387,9 +419,24 @@ Item
 
         onButtonAClicked:
         {
-            if(selectedElementCopyToClipboard!=="")
+            if(selectedElementToDeleteOrEdit>0)
             {
-                textEditForCopyToClipboard.text = selectedElementCopyToClipboard;
+                //get copy from text. maybe there is text.
+//                textEditForCopyToClipboard.text = selectedElementText;
+//                textEditForCopyToClipboard.selectAll();
+//                textEditForCopyToClipboard.copy();
+                logText.text = selectedElementText;
+                flag_editMessage=1;
+                miniMenu_edit_delete.visible=false;
+                stack_log_titles = "L/M/";
+            }
+        }
+
+        onButtonBClicked:
+        {
+            if(selectedElementText!=="")
+            {
+                textEditForCopyToClipboard.text = selectedElementText;
                 textEditForCopyToClipboard.selectAll();
                 textEditForCopyToClipboard.copy();
                 resetValueMiniMenuEditDelete();
@@ -397,7 +444,7 @@ Item
             }
         }
 
-        onButtonBClicked:
+        onButtonCClicked:
         {
             if(selectedElementToDeleteOrEdit>0)
             {

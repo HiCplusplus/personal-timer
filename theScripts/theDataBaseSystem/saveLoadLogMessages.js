@@ -114,3 +114,30 @@ function removeElement(targetId)
   return res;
 }
 
+
+function editMessage(logid,messageid,newtext)
+{
+   var db = DBC.getDatabase();
+   var res = "";
+
+   db.transaction
+   (
+       function(tx)
+       {
+                  var rs = tx.executeSql('UPDATE '+tableName+' SET lm_text = ? WHERE lm_id= ? ;',[newtext,messageid]);
+
+                  if (rs.rowsAffected > 0)
+                  {
+                    res = "OK";
+                  }
+
+                  else
+                  {
+                    res = "Error (saveLoadLogMessages.editMessage)";
+                  }
+      }
+   );
+  return res;
+}
+
+
