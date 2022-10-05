@@ -429,6 +429,7 @@ Item
                         onClicked:
                         {
                             pickClockStartId.visible=true;
+                            stack_event_titles += "CS/";
                         }
                     }
                     Image
@@ -452,6 +453,7 @@ Item
                         onClicked:
                         {
                             pickStartdateId.visible=true;
+                            stack_event_titles += "DS/";
                         }
                     }
                     Image
@@ -530,6 +532,7 @@ Item
                         onClicked:
                         {
                             pickClockEndId.visible=true;
+                            stack_event_titles += "CE/";
                         }
                     }
                     Image
@@ -553,6 +556,7 @@ Item
                         onClicked:
                         {
                             pickEnddateId.visible=true;
+                            stack_event_titles += "DE/";
                         }
                     }
                     Image
@@ -591,6 +595,10 @@ Item
             //here is bug the giveme picked days has some zero value and those make this output value are bad for view.
 
         }
+        onBtnCancel:
+        {
+            stack_event_titles = "EG/E/N/";
+        }
     }
 
     PickDatePopup
@@ -607,6 +615,10 @@ Item
             //here is bug the giveme picked days has some zero value and those make this output value are bad for view.
 
         }
+        onBtnCancel:
+        {
+            stack_event_titles = "EG/E/N/";
+        }
     }
 
 
@@ -619,6 +631,10 @@ Item
         {
             valueStartClock.text= outputHour + ":" + outputMinute;
         }
+        onBtnCancel:
+        {
+            stack_event_titles = "EG/E/N/";
+        }
     }
 
 
@@ -630,6 +646,10 @@ Item
         onBtnSave:
         {
             valueEndClock.text= outputHour + ":" + outputMinute;
+        }
+        onBtnCancel:
+        {
+            stack_event_titles = "EG/E/N/";
         }
     }
 

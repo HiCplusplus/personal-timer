@@ -20,9 +20,10 @@ Item
     }
     onBtnSave:
     {
-        root.visible = false;
+//        root.visible = false;
         outputHour = hourPicker.theSelectedNumberIndex;
         outputMinute = minutePicker.theSelectedNumberIndex;
+        btnCancel();
     }
 
 

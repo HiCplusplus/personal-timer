@@ -21,6 +21,7 @@ Item
     {
         selectedElementToDeleteOrEdit=-1;
         miniMenu_edit_delete.visible=false;
+        stack_event_titles = "EG/";
     }
     property int selectedElementToDeleteOrEdit:-1;
 
@@ -176,6 +177,7 @@ Item
                                 else
                                     miniMenu_edit_delete.posYselectedElement=valY;
                                 selectedElementToDeleteOrEdit=id;
+                                stack_event_titles += "M/";
                             }
                         }
                     }
@@ -209,8 +211,8 @@ Item
             onCenterButtonPressed:
             {
                 goToEventGroupSetPage();
-                stack_event_titles = "EG/N/";
                 resetValueMiniMenuEditDelete();
+                stack_event_titles = "EG/N/";
             }
         }
     }//end of root

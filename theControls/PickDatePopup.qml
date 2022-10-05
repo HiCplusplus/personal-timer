@@ -15,7 +15,8 @@ Item
     }
     onBtnSave:
     {
-        root.visible = false;
+        btnCancel();
+//        root.visible = false;
     }
 
     property variant giveme_picked_days;

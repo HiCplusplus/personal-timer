@@ -332,6 +332,7 @@ Item
                 {
                     myCombobox.visible=true;
                     myShadow.visible=true;
+                    stack_alarm_titles  = "A/N/C/";
                 }
             }
 
@@ -436,6 +437,7 @@ Item
             {
                 myCombobox.visible=false;
                 myShadow.visible=false;
+                stack_alarm_titles = "A/N/";
             }
             onBtnSave:
             {

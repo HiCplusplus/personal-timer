@@ -60,6 +60,7 @@ Window
         console.log("Log="+stack_log_titles);
         console.log("ALARM="+stack_alarm_titles);
         console.log("SETINGS="+stack_setting_titles);
+        console.log("--------------------------------------\n\n");
     }
 
     Rectangle
@@ -76,10 +77,11 @@ Window
 
     //- - - - - - - - - - - - - - - - - - - - - - set theme, default light mode colors
     property bool themeDarkMode:false;
-    property string stack_event_titles: "E/"; //keys = EG(evengroup) , E(event) , N(new)
-    property string stack_log_titles: "L/";// keys = L(log), M(Message), N(new)
-    property string stack_alarm_titles: "A/"; //A(alarm), N(new)
+    property string stack_event_titles: "EG/"; //keys = EG(evengroup) , E(event) , N(new), M(minimenu), DS(start date picker), CS(start clcok picker), DE(end date picker), CE(end clock picker)
+    property string stack_log_titles: "L/";// keys = L(log), M(Message), N(new), E(element selected (miniMenu)),
+    property string stack_alarm_titles: "A/"; //A(alarm), N(new) , C(combobox),
     property string stack_setting_titles: ""; //key= S(setting)
+
 //    property string stack_calendar_titles: "Calendar";
 //    property string stack_timer_titles: "Timer";
 //    property string stack_multiTimer_titles: "MultiTimer";

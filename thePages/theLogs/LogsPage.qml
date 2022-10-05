@@ -16,6 +16,7 @@ Item
     {
         selectedElementToDeleteOrEdit=-1;
         miniMenu_edit_delete.visible=false;
+        stack_log_titles = "L/";
     }
 
     property int selectedElementToDeleteOrEdit:-1;
@@ -32,6 +33,7 @@ Item
         root.visible=false;
         resetValueMiniMenuEditDelete();
         logMessagesBase.visible=true;
+        stack_log_titles = "L/M/";
     }
 
     onRefreshListModel:
@@ -142,7 +144,7 @@ Item
                                 logMessages.setLogId = id;
                                 logMessages.setLogName = name;
                                 logMessages.refreshListModel();
-                                stack_log_titles = "L/M/";
+
                                 goToLogMessages();
                             }
                             onPressAndHold:
@@ -157,6 +159,7 @@ Item
                                 else
                                     miniMenu_edit_delete.posYselectedElement=valY;
                                 selectedElementToDeleteOrEdit=id;
+                                stack_log_titles = "L/E/";
                             }
                         }
                     }
@@ -190,8 +193,8 @@ Item
             onCenterButtonPressed:
             {
                 goToLogSetPage();
-                stack_log_titles = "L/N/";
                 resetValueMiniMenuEditDelete();
+                stack_log_titles = "L/N/";
             }
         }
     }//end of root

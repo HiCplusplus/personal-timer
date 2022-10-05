@@ -18,6 +18,7 @@ Item
         selectedElementToDeleteOrEdit=-1;
         selectedElementCopyToClipboard:"";
         miniMenu_edit_delete.visible=false;
+        stack_log_titles = "L/M/";
     }
 
     property int selectedElementToDeleteOrEdit:-1;
@@ -251,6 +252,7 @@ Item
                                 miniMenu_edit_delete.posYselectedElement=valY;
                             selectedElementToDeleteOrEdit=id;
                             selectedElementCopyToClipboard=lmText;
+                            stack_log_titles += "E/";
                         }
 
                     }
