@@ -77,7 +77,7 @@ Window
 
     //- - - - - - - - - - - - - - - - - - - - - - set theme, default light mode colors
     property bool themeDarkMode:false;
-    property string stack_event_titles: "EG/"; //keys = EG(evengroup) , E(event) , N(new), M(minimenu), DS(start date picker), CS(start clcok picker), DE(end date picker), CE(end clock picker)
+    property string stack_event_titles: "EG/"; //keys = EG(evengroup) , E(event) , N(new), M(minimenu), DS(start date picker), CS(start clcok picker), DE(end date picker), CE(end clock picker), NE(new from as Edit)
     property string stack_log_titles: "L/";// keys = L(log), M(Message), N(new), E(element selected (miniMenu)),
     property string stack_alarm_titles: "A/"; //A(alarm), N(new) , C(combobox),
     property string stack_setting_titles: ""; //key= S(setting)
@@ -364,6 +364,15 @@ Window
                         id: eventGroupPage;
                         onGoToEventGroupSetPage:
                         {
+                            if(eventGroupPage.flag_editElement>0)
+                            {
+                                pageEventGroupSet.updateModeData = eventGroupPage.selectedItemData;
+                                console.log("data to update form = "+pageEventGroupSet);
+                                flag_editElement=0;
+                                resetValueMiniMenuEditDelete();
+                                pageEventGroupSet.updateModeEnabledActions();
+                            }
+
                             baseEventGroupSet.visible=true;
                             viewTimers.interactive=false;
                             viewTimers.visible=false;

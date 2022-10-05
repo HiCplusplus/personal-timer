@@ -109,7 +109,34 @@ function removeElement(targetId)
 
                   else
                   {
-                    res = "Error (saveLoadLogMessages.removeElement)";
+                    res = "Error (saveLoadEventGroups.removeElement)";
+                  }
+      }
+   );
+  return res;
+}
+
+
+function updateElement(targetId,newname,newtag,newpriority)
+{
+   var db = DBC.getDatabase();
+   var res = "";
+    newpriority = parseInt(newpriority,10);
+
+   db.transaction
+   (
+       function(tx)
+       {
+                  var rs = tx.executeSql('UPDATE '+tableName+' SET eg_name = ? , eg_tags = ?, eg_prioirty = ? WHERE eg_id=?;',[newname,newtag,newpriority,targetId]);
+
+                  if (rs.rowsAffected > 0)
+                  {
+                    res = "OK";
+                  }
+
+                  else
+                  {
+                    res = "Error (saveLoadEventGroups.updateElement)";
                   }
       }
    );

@@ -4,6 +4,25 @@ import "../../theControls"
 import "../../theScripts/theDataBaseSystem/saveLoadEventGroups.js" as SaveEventGroups
 Item
 {
+    property variant updateModeData: [-1,"","",0]; //id , name , tag , priority.
+    signal updateModeEnabledActions;
+
+    onUpdateModeEnabledActions:
+    {
+        if(updateModeData[0] === -1)
+            console.log("(from EventgroupSetPage) updateModeData invalid id.");
+        else
+        {
+            logName.text = updateModeData[1];//name
+            logTag.text = updateModeData[2];//tag
+            priorityTumbler.currentIndex = updateModeData[3];//priorty
+//            myCancelSaveButtons.setTextButtonSave = "Update";
+            console.log("(from EventgroupSetPage) updateModeData succsufully data filled.");
+        }
+    }
+
+
+
     signal updateLogsListModel;
     signal btnCancel;
     onBtnCancel:
@@ -11,6 +30,7 @@ Item
         stack_event_titles = "EG/";
         logName.text = logTag.text = "";
         priorityTumbler.currentIndex = 0;
+        updateModeData= [-1,"","",0];
     }
 
     property int setMaxCharLogName:25;
@@ -31,13 +51,32 @@ Item
     MyCancelSaveButton
     {
         id:myCancelSaveButtons; //here used as SAVE
+        setTextButtonSave: updateModeData[0]===-1? "Save":"Update";
         onButtonSaveClicked:
         {
-            if(logName.text !== "")
+            if(logName.text !== "" &&  updateModeData[0]===-1)
             {
-                SaveEventGroups.set(logName.text,setPriorityValues[priorityTumbler.currentIndex],logTag.text);
-                updateLogsListModel();
-                btnCancel();
+                if(SaveEventGroups.set(logName.text,setPriorityValues[priorityTumbler.currentIndex],logTag.text)==="OK")
+                {
+                    console.log("(from EventgroupSetPage) eventgroup succesfully created.");
+                    updateLogsListModel();
+                    btnCancel();
+                }
+                else
+                    console.log("(from EventgroupSetPage) eventgroup failed to create.");
+
+            }
+            else
+            {
+
+                if(SaveEventGroups.updateElement(updateModeData[0],logName.text,logTag.text,priorityTumbler.currentIndex) === "OK")
+                {
+                    console.log("(from EventgroupSetPage) eventgroup succesfully updated.");
+                    updateLogsListModel();
+                    btnCancel();
+                }
+                else
+                    console.log("(from EventgroupSetPage) eventgroup failed to update.");
             }
         }
         onButtonCancelClicked: { btnCancel(); }
