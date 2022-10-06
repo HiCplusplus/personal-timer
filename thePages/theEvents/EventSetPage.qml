@@ -17,7 +17,6 @@ Item
             logTag.enabled = true;
             eventLocation.enabled = true;
             eventDescription.enabled = true;
-
         }
         else
         {
@@ -31,8 +30,7 @@ Item
     property int setMaxCharLogName:25;
     property int setMaxCharLogTag:25;
     property int theEventGroupId:0;
-    property variant testvalues1: [1,3,6,9,11,13,15,17];
-    property variant testvaluse2;
+
     onBtnCancel:
     {
         stack_event_titles = "EG/E/";

@@ -10,13 +10,12 @@ Item
     onUpdateModeEnabledActions:
     {
         if(updateModeData[0] === -1)
-            console.log("(from EventgroupSetPage) updateModeData invalid id.");
+            console.log("(from EventgroupSetPage) updateModeData for update_action invalid id.");
         else
         {
             logName.text = updateModeData[1];//name
             logTag.text = updateModeData[2];//tag
             priorityTumbler.currentIndex = updateModeData[3];//priorty
-//            myCancelSaveButtons.setTextButtonSave = "Update";
             console.log("(from EventgroupSetPage) updateModeData succsufully data filled.");
         }
     }

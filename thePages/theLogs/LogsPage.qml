@@ -11,15 +11,25 @@ Item
     signal refreshListModel;
     signal goToLogMessages;
     signal goBackToLogs;
+
+
+    property variant selectedItemData : [-1,"","",0]; //id, name, tag, priority
+    property int flag_editElement : 0;
+
+
     signal resetValueMiniMenuEditDelete;
     onResetValueMiniMenuEditDelete:
     {
-        selectedElementToDeleteOrEdit=-1;
+        if(flag_editElement<1)
+        {
+            selectedItemData=[-1,"","",0];
+        }
+
         miniMenu_edit_delete.visible=false;
         stack_log_titles = "L/";
     }
 
-    property int selectedElementToDeleteOrEdit:-1;
+//    property int selectedElementToDeleteOrEdit:-1;
 
     onGoBackToLogs:
     {
@@ -159,7 +169,10 @@ Item
                                 }
                                 else
                                     miniMenu_edit_delete.posYselectedElement=valY;
-                                selectedElementToDeleteOrEdit=id;
+                                selectedItemData[0]=id;
+                                selectedItemData[1]=name;
+                                selectedItemData[2]=tag;
+                                selectedItemData[3]=priority;
                                 stack_log_titles = "L/E/";
                             }
                         }
@@ -225,12 +238,40 @@ Item
         {
             resetValueMiniMenuEditDelete();
         }
-        //value text and icon default is for delete.
+
+        setTitlesAsArray : ["Archive","Edit","Delete"];
+        setIconsAsArray:
+        [
+            path_to_menuIcons + fileIcon_Archive,
+            path_to_menuIcons + fileIcon_Edit,
+            path_to_menuIcons + fileIcon_Delete
+        ];
+
+
         onButtonAClicked:
         {
-            if(selectedElementToDeleteOrEdit>0)
+            console.log("archive clicked");
+        }
+        onButtonBClicked:
+        {
+            console.log("edit clicked");
+            if(selectedItemData[0]>0)
             {
-                if(SaveLoadLogs.removeElement(selectedElementToDeleteOrEdit) === "OK")
+                flag_editElement=1;
+                goToLogSetPage();
+                resetValueMiniMenuEditDelete();
+                stack_log_titles = "L/NE/";
+            }
+            else
+                console.log("(from LogsPage) message failed to edit because of invaild id="+selectedItemData[0]);
+        }
+
+
+        onButtonCClicked:
+        {
+            if(selectedItemData[0]>0)
+            {
+                if(SaveLoadLogs.removeElement(selectedItemData[0]) === "OK")
                 {
                     console.log("(from LogsPage) message success delete element.");
                     refreshListModel();
@@ -241,7 +282,7 @@ Item
             }
             else
             {
-                console.log("(from LogsPage) error, wrong element id="+selectedElementToDeleteOrEdit);
+                console.log("(from LogsPage) error, wrong element id="+selectedItemData[0]);
             }
         }
     }

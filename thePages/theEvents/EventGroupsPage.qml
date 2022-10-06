@@ -27,7 +27,6 @@ Item
         miniMenu_edit_delete.visible=false;
         stack_event_titles = "EG/";
     }
-//    property int selectedElementToDeleteOrEdit:-1;
 
 
     signal refreshTheEventsPage;
@@ -260,7 +259,7 @@ Item
         setTitlesAsArray : ["Archive","Edit","Delete"];
         setIconsAsArray:
         [
-            path_to_menuIcons + fileIcon_Bold,
+            path_to_menuIcons + fileIcon_Archive,
             path_to_menuIcons + fileIcon_Edit,
             path_to_menuIcons + fileIcon_Delete
         ];

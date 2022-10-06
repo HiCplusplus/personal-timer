@@ -111,6 +111,32 @@ function removeElement(targetId)
   return res;
 }
 
+function updateElement(targetId,newname,newtag,newpriority)
+{
+   var db = DBC.getDatabase();
+   var res = "";
+    newpriority = parseInt(newpriority,10);
+
+   db.transaction
+   (
+       function(tx)
+       {
+                  var rs = tx.executeSql('UPDATE '+tableName+' SET l_name = ? , l_tags = ?, l_prioirty = ? WHERE l_id=?;',[newname,newtag,newpriority,targetId]);
+
+                  if (rs.rowsAffected > 0)
+                  {
+                    res = "OK";
+                  }
+
+                  else
+                  {
+                    res = "Error (saveLoadLogs.updateElement)";
+                  }
+      }
+   );
+  return res;
+}
+
 //function update(logId,fieldName,value)
 //{
 //   var db = DBC.getDatabase();

@@ -31,7 +31,11 @@ Item
     {
         //on android i saw problem when user leaved the log messages keybaord still cuming up !! to avoid this
           logText.enabled=false;
-
+          if(flag_editMessage)
+          {
+              flag_editMessage=0;
+              logText.text="";
+          }
     }
 
     onRefreshListModel:
@@ -302,6 +306,7 @@ Item
                 logText.text= "";
                 writeText.height = 45;
                 resetValueMiniMenuEditDelete();
+                stack_log_titles = "L/M/";
                 console.log("mesage editing cancelded");
             }
 
@@ -471,7 +476,7 @@ Item
                 logText.text = selectedElementText;
                 flag_editMessage=1;
                 miniMenu_edit_delete.visible=false;
-                stack_log_titles = "L/M/";
+                stack_log_titles = "L/M/EM/";
             }
         }
 

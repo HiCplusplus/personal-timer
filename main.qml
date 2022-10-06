@@ -77,8 +77,8 @@ Window
 
     //- - - - - - - - - - - - - - - - - - - - - - set theme, default light mode colors
     property bool themeDarkMode:false;
-    property string stack_event_titles: "EG/"; //keys = EG(evengroup) , E(event) , N(new), M(minimenu), DS(start date picker), CS(start clcok picker), DE(end date picker), CE(end clock picker), NE(new from as Edit)
-    property string stack_log_titles: "L/";// keys = L(log), M(Message), N(new), E(element selected (miniMenu)),
+    property string stack_event_titles: "EG/"; //keys = EG(evengroup) , E(event) , N(new), M(minimenu), DS(start date picker), CS(start clcok picker), DE(end date picker), CE(end clock picker), NE(new form as Edit)
+    property string stack_log_titles: "L/";// keys = L(log), M(Message), N(new), E(element selected (miniMenu)), NE(new form as Edit), EM(edit message)
     property string stack_alarm_titles: "A/"; //A(alarm), N(new) , C(combobox),
     property string stack_setting_titles: ""; //key= S(setting)
 
@@ -210,6 +210,7 @@ Window
     property string fileIcon_Underline: "icon-underline.png";
     property string fileIcon_Strikeout: "icon-strikeout.png";
     property string fileIcon_Checked: "icon-checked.png";
+    property string fileIcon_Archive: "icon-archive.png";
 
     //- - - - - - - - - - - - - - - - - - - - - - sound effects
     //- - sportTimer:
@@ -367,7 +368,6 @@ Window
                             if(eventGroupPage.flag_editElement>0)
                             {
                                 pageEventGroupSet.updateModeData = eventGroupPage.selectedItemData;
-                                console.log("data to update form = "+pageEventGroupSet);
                                 flag_editElement=0;
                                 resetValueMiniMenuEditDelete();
                                 pageEventGroupSet.updateModeEnabledActions();
@@ -376,6 +376,7 @@ Window
                             baseEventGroupSet.visible=true;
                             viewTimers.interactive=false;
                             viewTimers.visible=false;
+                            myIndicatorBase.visible=false;
                         }
                         onGoToEventSetPage:
                         {
@@ -396,9 +397,18 @@ Window
                         id: logsPage;
                         onGoToLogSetPage:
                         {
+                            if(logsPage.flag_editElement>0)
+                            {
+                                pageLogSet.updateModeData = logsPage.selectedItemData;
+                                flag_editElement=0;
+                                resetValueMiniMenuEditDelete();
+                                pageLogSet.updateModeEnabledActions();
+                            }
+
                             baseLogSet.visible=true;
                             viewTimers.interactive=false;
                             viewTimers.visible=false;
+                            myIndicatorBase.visible=false;
 //                            pageAlarmSet.resetValues(); wTF IS THIS???????????????????????????????
                         }
                     }
@@ -598,6 +608,7 @@ Window
                 baseLogSet.visible=false;
                 viewTimers.interactive=true;
                 viewTimers.visible=true;
+                myIndicatorBase.visible=true;
             }
             onUpdateLogsListModel:
             {
@@ -624,6 +635,7 @@ Window
                 baseEventGroupSet.visible=false;
                 viewTimers.interactive=true;
                 viewTimers.visible=true;
+                myIndicatorBase.visible=true;
             }
             onUpdateLogsListModel:
             {

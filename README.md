@@ -49,6 +49,10 @@
  - 0.11.9 -> logs -> mesage -> miniMenu -> edit message added.
  - 0.11.10 -> eventGroup setpage clean inputs when button cancel/save clicked.
  - 0.11.11 -> eventgroup -> miniMenu -> update selected element.
+ - 0.11.12 -> loglist -> miniMenu -> update selected element.
+ - 0.11.13 -> logSetPage -> clear data when button cancel/save clicked.
+ - 0.11.14 -> log -> log Message -> edit message -> when back button clicked change flag editing_Message and clear text also stackLog.
+
 ____________________________________
 
 

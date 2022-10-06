@@ -146,6 +146,9 @@ function updateElement(targetId,newname,newtag,newpriority)
 
 
 /*
+  DATABASE STRUCTURE:
+
+
   Event group:
 
         title (primery, uniq)  [short text , limited i.g 32char]

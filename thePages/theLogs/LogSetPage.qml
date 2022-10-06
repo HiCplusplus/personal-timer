@@ -4,12 +4,31 @@ import "../../theControls"
 import "../../theScripts/theDataBaseSystem/saveLoadLogs.js" as SaveLogs
 Item
 {
+    property variant updateModeData: [-1,"","",0]; //id , name , tag , priority.
+    signal updateModeEnabledActions;
+
+    onUpdateModeEnabledActions:
+    {
+        if(updateModeData[0] === -1)
+            console.log("(from LogSetPage) updateModeData for update_action invalid id.");
+        else
+        {
+            logName.text = updateModeData[1];//name
+            logTag.text = updateModeData[2];//tag
+            priorityTumbler.currentIndex = updateModeData[3];//priorty
+            console.log("(from LogSetPage) updateModeData succsufully data filled.");
+        }
+    }
+
     signal updateLogsListModel;
     signal btnCancel;
 
     onBtnCancel:
     {
         stack_log_titles = "L/";
+        logName.text = logTag.text = "";
+        priorityTumbler.currentIndex = 0;
+        updateModeData= [-1,"","",0];
     }
 
     property int setMaxCharLogName:25;
@@ -30,14 +49,35 @@ Item
     MyCancelSaveButton
     {
         id:myCancelSaveButtons; //here used as SAVE
+        setTextButtonSave: updateModeData[0]===-1? "Save":"Update";
         onButtonSaveClicked:
         {
-            if(logName.text !== "")
+
+            if(logName.text !== "" &&  updateModeData[0]===-1)
             {
-                SaveLogs.set(logName.text,setPriorityValues[priorityTumbler.currentIndex],logTag.text);
-                updateLogsListModel();
-                btnCancel();
+                if(SaveLogs.set(logName.text,setPriorityValues[priorityTumbler.currentIndex],logTag.text)==="OK")
+                {
+                    console.log("(from LogSetPage) log succesfully created.");
+                    updateLogsListModel();
+                    btnCancel();
+                }
+                else
+                    console.log("(from LogSetPage) log failed to create.");
+
             }
+            else
+            {
+
+                if(SaveLogs.updateElement(updateModeData[0],logName.text,logTag.text,priorityTumbler.currentIndex) === "OK")
+                {
+                    console.log("(from LogSetPage) log succesfully updated.");
+                    updateLogsListModel();
+                    btnCancel();
+                }
+                else
+                    console.log("(from LogSetPage) log failed to update.");
+            }
+
         }
         onButtonCancelClicked: { btnCancel(); }
     }
