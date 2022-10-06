@@ -27,4 +27,3 @@ function updateCountUp(d,h,m,s)
     }
     return '{"d":'+d+',"h":'+h+',"m":'+m+',"s":'+s+'}';
 }
-

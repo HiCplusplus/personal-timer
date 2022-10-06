@@ -52,7 +52,7 @@
  - 0.11.12 -> loglist -> miniMenu -> update selected element.
  - 0.11.13 -> logSetPage -> clear data when button cancel/save clicked.
  - 0.11.14 -> log -> log Message -> edit message -> when back button clicked change flag editing_Message and clear text also stackLog.
-
+ - 0.11.15 -> stopWatch -> centerButton -> when resume color->normal , when paused bcolor = red.
 ____________________________________
 
 
@@ -61,13 +61,12 @@ ____________________________________
  - prioritize setpage
  ____________________________________
  - event system
- - event list -> click action -> edit event;
- - event group list -> edit; delete; group;
- - events list -> move; modify; delete; event from Eventgroup;
+ - events list -> move; modify, delete , event from Eventgroup;
  - event; eventSetPage -> routine; reminder; repeats;
  - envet day picker popup , when button save/cancel clicked it must clear all days , it does clear all days selected but title week isnt unselect its keep selected after reset
  - event day picker popup , when button save/clear clicked it dont clear all days, for example in next year/months i saw some days picked !!!!!!!! how? idk
  - clockpicker componenet has bug, (add reset value signal + minute picker isnt work when move the circle.)
+ - event group list -> group;
 ____________________________________
  - EventGroups -> minimenu isnt center Y!
  - LogMessages -> minimenu when wants find the y or center of element cant style good!
@@ -77,10 +76,8 @@ ____________________________________
  - move the dark/light mode into settings, 
  - fileter inputs and show eror when some inputs are invalid or empty when user is in setpage.
  - all setPages; all textEdits; -> fix float text cursor when page is not on!
- - all setPages; -> reset values for next time;
  - dark/lightmode -> some buttons dont changecolor or isnt match with main color theme.
  - qml contorls -> front color theme/style is work for android but for desktop not! 
- - statics -> show stats from datas
  - backbutton -> make stack for back and when stack is empty backbutton pressed show message do you want quit app? stack is usefull for when user is inner/downlevel of some pages like EG/E/New
  - application lunch index (for swipeview) i.g when i open app show me first page the sport timer or last closed page (which index where on and then app closed)
  - lunch/quit logs for app, i.g when app opend do some action like save data inside the logs 'app lunch' or 'app close' with date and time // its useful for later to do something like : if user opened the app save a log in wakeup in new day same for sleep time;
@@ -97,9 +94,8 @@ ____________________________________
  - stopwatch -> save laps into/as logs
  - stopwatch -> titling the laps
  - stopwatch -> show miliseconds (needed to font smaller);
- - stopwatch -> lap -> overall time isnt work correct;
  - stopwatch -> lap list -> scroll list to latest/last/downest lap;
- 
+ - stopwatch -> lap -> overall time fixed.
  ____________________________________
  
  - alarm system

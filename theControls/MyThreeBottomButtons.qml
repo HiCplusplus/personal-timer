@@ -9,6 +9,7 @@ Item
     signal rightButtonPressed;
 
 
+    property string setCenterButtonBG: cBG_button;
     property string setLeftButtonText:"Left";
     property string setCenterButtonText: "center";
     property string setRightButtonText: "right";
@@ -35,7 +36,7 @@ Item
                 horizontalCenter:parent.horizontalCenter;
                 verticalCenter:parent.verticalCenter;
             }
-            color:cBG_button;
+            color:setCenterButtonBG;
             radius:50;
             Text
             {

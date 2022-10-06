@@ -12,6 +12,7 @@ Item
     property int theMinute: 0;
     property int theSecond: 0;
     property int theLapIndex:0;
+    property variant lastLap: [0,0,0,0];//d,h,m,s
 
     anchors.fill: parent;
     Rectangle
@@ -210,7 +211,7 @@ Item
                 }
                 Rectangle
                 {
-                    id:some2;
+                    id:some2; //round time
                     width: some1.width;
                     height: laplabell.height;
                     anchors.left:some1.right;
@@ -218,13 +219,13 @@ Item
                     Text
                     {
                         anchors.centerIn: some2;
-                        text:timee;
+                        text:roundtimee;
                         color:cTxt_button;
                     }
                 }
                 Rectangle
                 {
-                    id:some3;
+                    id:some3; //overall
                     width: some2.width;
                     height: laplabell.height;
                     anchors.left:some2.right;
@@ -267,10 +268,12 @@ Item
             {
                 theCountUpTimer.start();
                 setCenterButtonText= "Pause";
+                setCenterButtonBG= "red";
             }
             else
             {
                 setCenterButtonText= "Resume";
+                setCenterButtonBG = cBG_button;
                 theCountUpTimer.stop();
             }
         }
@@ -282,6 +285,7 @@ Item
             setCenterButtonText= "Start";
             theDay = theHour = theMinute = theSecond = 0;
             txtNumbers.text = "00:00:00:00";
+            setCenterButtonBG = cBG_button;
             baseCountUp.anchors.topMargin= parent.height/2.7;
             if(baseLapList.visible)
                 baseLapList.visible=false;
@@ -299,7 +303,8 @@ Item
             {
                 baseCountUp.anchors.topMargin = parent.height/8;
                 baseLapList.visible=true;
-                var temp_value;
+                var temp_value=0;
+                var roundtimeValue=0;
                 if(theDay<=0 && theHour<=0)
                      temp_value = txtNumbers.text.slice(6);
                 else if(theDay<=0)
@@ -308,9 +313,42 @@ Item
                     temp_value = txtNumbers.text;
 
 
-                listModelData.append
+                if((lastLap[0] === lastLap[1]) && (lastLap[2] === lastLap[3]) && (lastLap[3]===0))
+                {
+                    lastLap[0] = theDay;
+                    lastLap[1] = theHour;
+                    lastLap[2] = theMinute;
+                    lastLap[3] = theSecond;
+                    roundtimeValue = temp_value;
+                }
+                else
+                {
+                    var rday,rhour,rminute,rsecond;
+
+                    rday = theDay - lastLap[0];
+                    rhour = theHour - lastLap[1];
+                    rminute = theMinute - lastLap[2];
+                    rsecond = theSecond - lastLap[3];
+                    if(rday<0)
+                        rday=0;
+                    if(rhour<0)
+                        rhour=0;
+                    if(rminute<0)
+                        rminute=0;
+                    if(rsecond<0)
+                        rsecond=0;
+
+                    lastLap[0] = theDay;
+                    lastLap[1] = theHour;
+                    lastLap[2] = theMinute;
+                    lastLap[3] = theSecond;
+                    roundtimeValue = rday + ":" + rhour + ":" + rminute + ":" + rsecond;
+                }
+
+                    listModelData.append
                 ({
                     timee: temp_value,
+                    roundtimee: roundtimeValue,
                     lapId: ++theLapIndex
                 });
             }
