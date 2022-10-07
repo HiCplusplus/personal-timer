@@ -8,6 +8,61 @@ Item
 
     id:mainItem;
     anchors.fill: parent;
+    property variant updateModeData : ["","","","","","","",""]; //name, hour, minute , pm, status, days, volume, sound
+    signal updateModeEnabledActions;
+
+    onUpdateModeEnabledActions:
+    {
+        alarmName.enabled=false;//because of database design in the edit cant update name. so i disale that for now.
+
+        if(updateModeData[0] === "")
+            console.log("(from AlarmSetPage) updateModeData for update_action invalid AlarmName =" + updateModeData[0] + "~");
+        else
+        {
+            alarmName.text = updateModeData[0];
+
+            hoursTumbler.currentIndex = Number(updateModeData[1])-1;
+
+            minutesTumbler.currentIndex = Number(updateModeData[2]);
+
+            amPmTumbler.currentIndex = Number(updateModeData[3]);
+
+            alarmStatusSwitch.setStatusSwitch = updateModeData[4];
+
+            //days
+            const pickedDaysAre = updateModeData[5].split(",");
+            for(var ii=0; ii<pickedDaysAre.length; ii++)
+            {
+                if(Number(pickedDaysAre[ii]))
+                {
+                    switch(ii)
+                    {
+                        case 0: weekdaysPick.setAPicked=true; break;
+                        case 1: weekdaysPick.setBPicked=true; break;
+                        case 2: weekdaysPick.setCPicked=true; break;
+                        case 3: weekdaysPick.setDPicked=true; break;
+                        case 4: weekdaysPick.setEPicked=true; break;
+                        case 5: weekdaysPick.setFPicked=true; break;
+                        case 6: weekdaysPick.setGPicked=true; break;
+                        default: console.log("from AlarmSetPage inside switch, problem to undrestand index.");break;
+                    }
+                }
+            }
+
+
+
+            //weekdaysPick.a
+
+            soundVolume.setCurrentValue = Number(updateModeData[6]);;
+
+            alarmSoundText.text = myCombobox.values[Number(updateModeData[7])];
+            myCombobox.selectedIndex = Number(updateModeData[7]);
+
+
+            console.log("(from AlarmSetPage) updateModeData succsufully data filled."+Number(updateModeData[7]));
+        }
+    }
+
     signal resetValues;
     onResetValues:
     {
@@ -23,6 +78,7 @@ Item
         weekdaysPick.setBPicked = false; weekdaysPick.setFPicked = false;
         weekdaysPick.setCPicked = false; weekdaysPick.setGPicked = false;
         weekdaysPick.setDPicked = false;
+        updateModeData = ["","","","","","","",""];
 
         alarmName.enabled=true;
     }
@@ -62,21 +118,48 @@ Item
         MyCancelSaveButton
         {
             id:myCancelSaveButtons; //here used as SAVE
+            setTextButtonSave: updateModeData[0]===""? "Save":"Update";
             onButtonSaveClicked:
             {
-                if(alarmName.text !== "")
+                if(alarmName.text !== "" && setTextButtonSave == "Save")
                 {
-                    SaveAlarm.set(alarmName.text,
+                    if(SaveAlarm.set(alarmName.text,
                                   alarmStatusSwitch.setStatusSwitch,
                                   setHourValues[hoursTumbler.currentIndex],
                                   setMinuteValues[minutesTumbler.currentIndex],
                                   amPmTumbler.currentIndex,
-                                  alarmSoundText.text,
+                                  myCombobox.selectedIndex,//alarm sound
+                                  //alarmSoundText.text,
                                   soundVolume.outPutVolume,
-                                  (weekdaysPick.setAPicked ? 1 : 0) +","+(weekdaysPick.setBPicked ? 1 : 0)+","+(weekdaysPick.setCPicked ? 1 : 0)+","+(weekdaysPick.setDPicked ? 1 : 0)+","+(weekdaysPick.setEPicked ? 1 : 0) +","+(weekdaysPick.setFPicked ? 1 : 0) +","+(weekdaysPick.setGPicked ? 1 : 0));
-//                    alarmName.enabled=false;
-                    updateAlarmListModel();
-                    btnCancel();
+                                  (weekdaysPick.setAPicked ? 1 : 0) +","+(weekdaysPick.setBPicked ? 1 : 0)+","+(weekdaysPick.setCPicked ? 1 : 0)+","+(weekdaysPick.setDPicked ? 1 : 0)+","+(weekdaysPick.setEPicked ? 1 : 0) +","+(weekdaysPick.setFPicked ? 1 : 0) +","+(weekdaysPick.setGPicked ? 1 : 0)) === "OK")
+                    {
+                        console.log("from AlarmSetPage , Alarm succesfuyll created.");
+                        updateAlarmListModel();
+                        btnCancel();
+                    }
+                    else
+                        console.log("from alarmSetPage, Alarm failed to create.");
+
+
+                }
+                else
+                {
+                    if(SaveAlarm.editElement(alarmName.text,
+                                          alarmStatusSwitch.setStatusSwitch,
+                                          setHourValues[hoursTumbler.currentIndex],
+                                          setMinuteValues[minutesTumbler.currentIndex],
+                                          amPmTumbler.currentIndex,
+                                          myCombobox.selectedIndex,//alarm sound
+                                          //alarmSoundText.text,
+                                          soundVolume.outPutVolume,
+                                          (weekdaysPick.setAPicked ? 1 : 0) +","+(weekdaysPick.setBPicked ? 1 : 0)+","+(weekdaysPick.setCPicked ? 1 : 0)+","+(weekdaysPick.setDPicked ? 1 : 0)+","+(weekdaysPick.setEPicked ? 1 : 0) +","+(weekdaysPick.setFPicked ? 1 : 0) +","+(weekdaysPick.setGPicked ? 1 : 0)) === "OK")
+                    {
+                        console.log("from AlarmSetPage , Alarm succesfuyll updated.");
+                        updateAlarmListModel();
+                        btnCancel();
+                    }
+                    else
+                        console.log("from alarmSetPage, Alarm failed to update.");
                 }
 
 
@@ -245,6 +328,7 @@ Item
                 textEPick: "Friday";
                 textFPick: "Saturday";
                 textGPick: "Sunday";
+
             }
         }
         Rectangle
@@ -438,6 +522,9 @@ Item
                 myCombobox.visible=false;
                 myShadow.visible=false;
                 stack_alarm_titles = "A/N/";
+
+                //when value changed and not saved the combo still have wrong value in next openup.
+//                myCombobox.selectedIndex = selectedIndex;
             }
             onBtnSave:
             {

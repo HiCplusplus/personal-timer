@@ -105,7 +105,7 @@ function get()
 
 
 
-function update(alarmName,fieldName,value)
+function update(alarmName,fieldName,value) //only for update status.
 {
    var db = DBC.getDatabase();
    var res = "";
@@ -153,4 +153,37 @@ function convertDaysToText(text)
     if(res == "")
         res = "NoRepeat";
     return res;
+}
+
+function editElement(nname,nstatus,nhour,nminute,npm,nsound,nvolume,ndays)
+{
+   var db = DBC.getDatabase();
+   var res = "";
+
+   db.transaction
+   (
+       function(tx)
+       {
+                   var rs = tx.executeSql('UPDATE '+tableName+' SET a_hour = ? , a_minute = ? , a_pm = ? , a_status = ? , a_days = ? , a_volume = ? , a_sound = ?  WHERE a_name= ? ;',
+                                         [nhour,
+                                          nminute,
+                                          npm,
+                                          nstatus,
+                                          ndays,
+                                          nvolume,
+                                          nsound,
+                                          nname]);
+
+                  if (rs.rowsAffected > 0)
+                  {
+                    res = "OK";
+                  }
+
+                  else
+                  {
+                    res = "Error (saveLoadAlarm.editElement)";
+                  }
+      }
+   );
+  return res;
 }

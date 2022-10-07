@@ -53,6 +53,7 @@
  - 0.11.13 -> logSetPage -> clear data when button cancel/save clicked.
  - 0.11.14 -> log -> log Message -> edit message -> when back button clicked change flag editing_Message and clear text also stackLog.
  - 0.11.15 -> stopWatch -> centerButton -> when resume color->normal , when paused bcolor = red.
+ - 0.11.16 -> alarm list -> click action -> edit alarm.
 ____________________________________
 
 
@@ -88,6 +89,7 @@ ____________________________________
  - dismissPage: some erros show up + swipe somewhere in adnroid isnt work
  - LogsPage,Alarm,LogMessages.qml : optimize and avoid to twice fetch from database + change name .js as SaveLoad into just load...
  - componenet myswitch when status changed more than once the background is still old background color (active -> diactive ==> bgcolor active, active) bg needs update with status
+ - Alarm -> componenet myCombo -> //when value changed and not saved the combo still have wrong value in next openup.
 
  ____________________________________
  
@@ -102,7 +104,7 @@ ____________________________________
  - alarm: input name isnt valid check, must remove qouts ' or " or replace something with those.
  - alarm: if alarm name is empty button save clicked show message must enter name for alarm.
  - Alarm set page : Text alarm name when button save clicked disable/.. to avoid leave pointer text on all app.
- - alarm list -> click action -> edit alarm;
+
 
 ____________________________________
 

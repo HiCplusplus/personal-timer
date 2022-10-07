@@ -79,7 +79,7 @@ Window
     property bool themeDarkMode:false;
     property string stack_event_titles: "EG/"; //keys = EG(evengroup) , E(event) , N(new), M(minimenu), DS(start date picker), CS(start clcok picker), DE(end date picker), CE(end clock picker), NE(new form as Edit)
     property string stack_log_titles: "L/";// keys = L(log), M(Message), N(new), E(element selected (miniMenu)), NE(new form as Edit), EM(edit message)
-    property string stack_alarm_titles: "A/"; //A(alarm), N(new) , C(combobox),
+    property string stack_alarm_titles: "A/"; //A(alarm), N(new) , C(combobox), E(editing alarm)
     property string stack_setting_titles: ""; //key= S(setting)
 
 //    property string stack_calendar_titles: "Calendar";
@@ -416,12 +416,18 @@ Window
 
                 Page
                 {
-                    id: alaramPage;
                     Alarm
                     {
                         id:alarmPage;
                         onGoToAlarmSetPage:
                         {
+                            if(alarmPage.flag_editElement>0)
+                            {
+                                pageAlarmSet.updateModeData = alarmPage.selectedItemData;
+                                flag_editElement=0;
+//                                resetValueMiniMenuEditDelete();
+                                pageAlarmSet.updateModeEnabledActions();
+                            }
                             baseAlarmSet.visible=true;
                             viewTimers.interactive=false;
                             viewTimers.visible=false;

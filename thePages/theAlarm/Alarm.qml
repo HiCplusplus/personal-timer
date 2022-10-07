@@ -7,6 +7,8 @@ Item
 //    signal changeStatusSwiperFromTimerDown;
     signal goToAlarmSetPage;
     signal refreshListModel;
+    property variant selectedItemData : ["","","","","","","",""]; //name, hour, minute , pm, status, days, volume, sound
+    property int flag_editElement : 0;
 
     onRefreshListModel:
     {
@@ -25,6 +27,13 @@ Item
                                          pm: (allObject.alarms[i].pm === '1') ? false : true, //true false reversed because of in first i tought and saved isAM in database but on runtime i gave problem so reversed this to IsPm
                                          status: ((allObject.alarms[i].status==='1'||allObject.alarms[i].status === 1) ? true : false),
                                          days: tempDays,
+                                         daysForEditing: allObject.alarms[i].days,
+                                         hourForEditing: tempHour,
+                                         minuteForEditing: tempMinute,
+                                         pmForEditing:allObject.alarms[i].pm,
+                                         volumeForEditing: allObject.alarms[i].volume,
+                                         soundForEditing: allObject.alarms[i].sound,
+
                                      });
 
             }
@@ -81,6 +90,11 @@ Item
                     onSignalEditAlarm:
                     {
                         console.log("clicked on "+name);
+                        flag_editElement=1;
+                        //name, hour, minute , pm, status, days, volume, sound
+                        selectedItemData = [name,hourForEditing,minuteForEditing,pmForEditing,status,daysForEditing,volumeForEditing,soundForEditing];
+                        stack_alarm_titles = "A/E/";
+                        goToAlarmSetPage();
                     }
                     onSwitchStatusChanged:
                     {
