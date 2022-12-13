@@ -13,6 +13,8 @@ import "thePages/theAlarm"
 import "theScripts/updateIndicator.js" as UpdateSwipeViewIndexesAsIndicator
 import "thePages/theEvents"
 import "theScripts/staticValues.js" as SVS
+import "theScripts/theAPI_v1/syncSettings.js" as SyncSettings
+
 Window
 {
 //    Material.theme:Material.Dark
@@ -69,6 +71,11 @@ Window
         anchors.fill: parent;
         color:cBG;
     }
+
+    //sync and api things.
+    property string accessKey_api_v1: "c329e3fecf44130943a9e8adf1ae7872f3e909ec6672501472aa415da23cc509NEIN";
+    property string private_url_api: "http://www.mewware.com/timer1-api-v1/v1-private/";
+
 
     property int iconWidthAndHeight: mainWindow.width<700? 40:50; //for button iconBackToHome &  iconSettings
     property int fontSizeTitles: mainWindow.width<700 ? 45:65;
@@ -152,6 +159,9 @@ Window
             cUnknown= "white";
             path_to_menuIcons= directory_Icons + direcotry_BlackIcons;
         }
+
+        //sync settings with api
+        SyncSettings.insertOrUpdate(private_url_api+"saveSettings.php","darkmode",LoadSettings.get("darkmode"),accessKey_api_v1);
     }
 
 

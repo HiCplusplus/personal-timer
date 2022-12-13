@@ -1,5 +1,7 @@
 import QtQuick 2.15
 import "../theScripts/theDataBaseSystem/saveLoadSettings.js" as SaveSettings
+import "../theScripts/theAPI_v1/syncSettings.js" as SyncSettings
+
 
 Item
 {
@@ -31,7 +33,7 @@ Item
             cUnknown = "white";//o99AAB5k
             path_to_menuIcons= directory_Icons + direcotry_WhiteIcons;
             SaveSettings.set("darkmode", 1);
-
+            SyncSettings.insertOrUpdate(private_url_api+"saveSettings.php","darkmode",SaveSettings.get("darkmode"),accessKey_api_v1);
         }
         else
         {
@@ -50,6 +52,7 @@ Item
             themeDarkMode = false;
             path_to_menuIcons= directory_Icons + direcotry_BlackIcons;
             SaveSettings.set("darkmode", 0);
+            SyncSettings.insertOrUpdate(private_url_api+"saveSettings.php","darkmode",SaveSettings.get("darkmode"),accessKey_api_v1);
 
         }
 

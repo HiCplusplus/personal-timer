@@ -4,6 +4,33 @@ Item {
 }
 
 
+//        LoadSettings.get_all();
+//        SyncSettings.sync_settings(private_url_api+"saveSettings.php","darkmode",LoadSettings.get("darkmode"),accessKey_api_v1);
+//            SyncSettings.sendData(private_url_api+"saveSettings.php","darkmode",LoadSettings.get("darkmode"),accessKey_api_v1);
+//        SyncSettings.getData();
+
+        //blow works fine.
+//        var myvalueVALUE= LoadSettings.get("darkmode");
+//        console.log("darkmode inside var value = "+myvalueVALUE);
+//        var req = new XMLHttpRequest();
+//        req.open("POST", "http://www.mewware.com/timer1-api-v1/v1-private/savemy.php");
+//        req.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+//        req.onreadystatechange = function() {
+//          if (req.readyState === XMLHttpRequest.DONE) {
+//              console.log("successfuyl updateinserted data setting state="+ req.readyState + " sta=" +req.status + " res=" + req.responseText);
+//            // what you want to be done when request is successfull
+//          }
+//        }
+//        req.onerror = function(){
+//          // what you want to be done when request failed
+//            console.log("failed to updateinserted data setting");
+//        }
+//        req.send("my=90&value="+myvalueVALUE);
+
+
+
+
+
 //from updateIndicator.js
 /*
 
