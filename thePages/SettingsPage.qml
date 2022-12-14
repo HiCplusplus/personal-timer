@@ -1,6 +1,7 @@
 import QtQuick 2.15
 import QtQuick.Controls 2.15
 import "../theControls"
+import "theSettings"
 
 Item
 {
@@ -14,78 +15,41 @@ Item
         console.log(stack.index + " [] " + stack.currentItem + " [] "+ stack.depth)
     }
 
-    ScrollView
+    Button
+    {
+        anchors.left:parent.left;
+        anchors.top:parent.top;
+        text: "back";
+        onClicked: anBackPage()
+    }
+
+    Rectangle
     {
         anchors
         {
             top:parent.top;
-            topMargin:100;
-            left:parent.left
-            right:parent.right
+            topMargin:65;
+            left:parent.left;
+            right:parent.right;
             bottom:parent.bottom;
         }
-        Column
-        {
-            width:parent.width;
-            height:300;
-            anchors
-            {
-                top:parent.top;
-                topMargin:100;
-            }
+        color:cBG;
 
-            spacing:10;
-            Rectangle
+
+        StackView
+        {
+            id: stack;
+            initialItem: themainpage;
+            anchors.fill: parent;
+        }
+        TheMainPage
+        {
+            id:themainpage
+            onGotoBackupConfigurationPage:
             {
-                width:parent.width;
-                height:70;
-                color:"red";
-            }
-            Rectangle
-            {
-                width:parent.width;
-                height:70
-                color:"yellow";
-            }
-            Rectangle
-            {
-                width:parent.width;
-                height:70
-                color:"green";
+                stack.push("./theSettings/BackupConfiguration.qml");
+                console.log("backupConf.qml pushed")
             }
         }
-    }
-
-
-
-    StackView
-    {
-        id: stack;
-        initialItem: "thePageA.qml";
-        anchors.fill: parent;
-        visible:false;
-//        Row
-//        {
-//            anchors.bottom:parent.bottom;
-//            spacing: 10
-//            Button {
-//                text: "Push"
-//                onClicked: stack.push("thePageB.qml");
-//            }
-//            Button {
-//                text: "Pop"
-////                enabled: stack.depth > 1
-//                onClicked: stack.push("thePageC.qml")
-//            }
-//            Button {
-//                text: "Pop"
-////                enabled: stack.depth > 1
-//                onClicked: stack.push("thePageC.qml")
-//            }
-//            Text
-//            {
-//                text: stack.depth
-//            }
-//        }
     }
 }
