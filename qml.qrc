@@ -173,7 +173,7 @@
         <file>thePictures/dark-25px/icon-archive.png</file>
         <file>theScripts/theAPI_v1/syncSettings.js</file>
         <file>thePages/theSettings/TheMainPage.qml</file>
-        <file>thePages/theSettings/BackupConfiguration.qml</file>
+        <file>thePages/theSettings/DataAndBackupConfiguration.qml</file>
     </qresource>
     <qresource prefix="/thePictures"/>
 </RCC>

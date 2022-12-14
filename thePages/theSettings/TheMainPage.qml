@@ -35,19 +35,6 @@ Item
                     }
                 }
             }
-            Rectangle
-            {
-                width:parent.width;
-                height:70
-                color:"yellow";
-            }
-            Rectangle
-            {
-                width:parent.width;
-                height:70
-                color:"green";
-            }
-
         }
     }
 }
