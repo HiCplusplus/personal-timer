@@ -63,6 +63,7 @@ Window
         console.log("ALARM="+stack_alarm_titles);
         console.log("SETINGS="+stack_setting_titles);
         console.log("--------------------------------------\n\n");
+        pageSettings.anBackPage();
     }
 
     Rectangle
@@ -152,11 +153,11 @@ Window
             cBG_element= "white";
             cTxt_button = "black";
             cBG_button = "#B178FF";
-            cBG_button_activated= "#B178FF";
-            cBG_button_deactivated= "#dcd3e8";
-            gFontFamily="Courier";
-            cBG_Unknown= "transparent";
-            cUnknown= "white";
+            cBG_button_activated = "#B178FF";
+            cBG_button_deactivated = "#dcd3e8";
+            gFontFamily ="Courier";
+            cBG_Unknown = "transparent";
+            cUnknown = "white";
             path_to_menuIcons= directory_Icons + direcotry_BlackIcons;
         }
 

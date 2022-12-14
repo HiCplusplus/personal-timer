@@ -172,6 +172,9 @@
         <file>thePictures/white-25px/icon-archive.png</file>
         <file>thePictures/dark-25px/icon-archive.png</file>
         <file>theScripts/theAPI_v1/syncSettings.js</file>
+        <file>thePages/thePageA.qml</file>
+        <file>thePages/thePageB.qml</file>
+        <file>thePages/thePageC.qml</file>
     </qresource>
     <qresource prefix="/thePictures"/>
 </RCC>
