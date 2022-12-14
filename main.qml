@@ -160,9 +160,6 @@ Window
             cUnknown = "white";
             path_to_menuIcons= directory_Icons + direcotry_BlackIcons;
         }
-
-        //sync settings with api
-        SyncSettings.insertOrUpdate(private_url_api+"saveSettings.php","darkmode",LoadSettings.get("darkmode"),accessKey_api_v1);
     }
 
 
