@@ -174,6 +174,9 @@
         <file>theScripts/theAPI_v1/syncSettings.js</file>
         <file>thePages/theSettings/TheMainPage.qml</file>
         <file>thePages/theSettings/DataAndBackupConfiguration.qml</file>
+        <file>theScripts/theAPI_v1/syncLogs.js</file>
+        <file>theScripts/theAPI_v1/syncLogMessages.js</file>
+        <file>theScripts/theAPI_v1/connectionInfo.js</file>
     </qresource>
     <qresource prefix="/thePictures"/>
 </RCC>

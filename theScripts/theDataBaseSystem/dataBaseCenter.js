@@ -23,3 +23,5 @@ function getCurrentDateAndTime()
 //    console.log(cYear + "-" + cMonth + "-" + cDay + " " +  currentDate.getHours() + ":" + currentDate.getMinutes() + ":" + currentDate.getSeconds());
     return  cYear + "-" + cMonth + "-" + cDay + " " + cHour  + ":" + cMinute + ":" + cSecond;
 }
+
+

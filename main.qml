@@ -14,6 +14,7 @@ import "theScripts/updateIndicator.js" as UpdateSwipeViewIndexesAsIndicator
 import "thePages/theEvents"
 import "theScripts/staticValues.js" as SVS
 import "theScripts/theAPI_v1/syncSettings.js" as SyncSettings
+import "theScripts/theAPI_v1/connectionInfo.js" as GetApiInfo //get url and accesskey
 
 Window
 {
@@ -74,8 +75,8 @@ Window
     }
 
     //sync and api things.
-    property string accessKey_api_v1: "c329e3fecf44130943a9e8adf1ae7872f3e909ec6672501472aa415da23cc509NEIN";
-    property string private_url_api: "http://www.mewware.com/timer1-api-v1/v1-private/";
+//    property string accessKey_api_v1: GetApiInfo.get_AccessKey_Api_v1();//"c329e3fecf44130943a9e8adf1ae7872f3e909ec6672501472aa415da23cc509NEIN";
+//    property string private_url_api: GetApiInfo.get_api_url();//"http://www.mewware.com/timer1-api-v1/v1-private/";
 
 
     property int iconWidthAndHeight: mainWindow.width<700? 40:50; //for button iconBackToHome &  iconSettings
