@@ -1,14 +1,14 @@
 
-function insertOrUpdate(_url,_id,_name,_priority,_tag,_ukey)
+function insertOrUpdate(_url,_data)//_id,_name,_priority,_tag,_ukey)
 {
     var req = new XMLHttpRequest();
     req.open("POST", _url);
     req.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     req.onreadystatechange = function()
     {
-        if (this.readyState === 4 && this.status === 200)
+        if (req.readyState === 4 && req.status === 200)
         {
-            switch(this.responseText)
+            switch(req.responseText)
             {
                   case "0":
                   {
@@ -56,6 +56,7 @@ function insertOrUpdate(_url,_id,_name,_priority,_tag,_ukey)
         }
     }
 
-    var mydata = "id="+_id+"&name="+_name+"&priority="+_priority+"&tag="+_tag+"&ukey="+_ukey;
-    req.send(mydata);
+//    var mydata = "id="+_id+"&name="+_name+"&priority="+_priority+"&tag="+_tag+"&ukey="+_ukey;
+//    req.send(mydata);
+    req.send(_data);
 }

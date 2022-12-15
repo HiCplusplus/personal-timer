@@ -100,43 +100,50 @@ function insertOrUpdate(_url,_setting,_value,_ukey)
     req.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     req.onreadystatechange = function()
     {
-        if (this.readyState === 4 && this.status === 200)
+        if (req.readyState === 4 && req.status === 200)
         {
-            switch(this.responseText)
+            switch(req.responseText)
             {
                   case "0":
                   {
                       console.log("sync_settings error: 0 -> database connection error.");
-                  }break;
+                      return -1;
+                  }
 
                   case "1":
                   {
                       console.log("sync_settings error: 1 -> invalid setting parameter (setting field is empty).");
-                  }break;
+                      return -1;
+                  }
 
                   case "2":
                   {
                       console.log("sync_settings: 2 -> successfuly inserted.");
-                  }break;
+                      return 0;
+                  }
 
                   case "3":
                   {
                       console.log("sync_settings: 3 -> successfuly updated.");
-                  }break;
+                      return 0;
+                  }
 
                   case "4":
                   {
                       console.log("sync_settings error: 4 -> query update failed.");
-                  }break;
+                      return -1;
+                  }
 
                   case "5":
                   {
                       console.log("sync_settings error: 5 -> invaild ukey (access denied).");
-                  }break;
+                      return -1;
+                  }
 
                   default:
                       console.log("sync_settings error: unknown error.");
-                      break;
+                      return -1;
+
             }
         }
     }

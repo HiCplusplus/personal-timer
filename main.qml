@@ -13,7 +13,7 @@ import "thePages/theAlarm"
 import "theScripts/updateIndicator.js" as UpdateSwipeViewIndexesAsIndicator
 import "thePages/theEvents"
 import "theScripts/staticValues.js" as SVS
-import "theScripts/theAPI_v1/syncSettings.js" as SyncSettings
+//import "theScripts/theAPI_v1/syncSettings.js" as SyncSettings
 import "theScripts/theAPI_v1/connectionInfo.js" as GetApiInfo //get url and accesskey
 
 Window

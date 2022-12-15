@@ -8,10 +8,9 @@ function insertOrUpdate(_url,_data)
     req.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     req.onreadystatechange = function()
     {
-        console.log("readystate="+this.readyState + "\t"+this.status);
-        if (this.readyState === 4 && this.status === 200)
+        if (req.readyState === 4 && req.status === 200)
         {
-            switch(this.responseText)
+            switch(req.responseText)
             {
                   case "0":
                   {
@@ -59,6 +58,6 @@ function insertOrUpdate(_url,_data)
         }
     }
 //    var mydata = "id="+_id+"&name="+_name+"&priority="+_priority+"&tag="+_tag+"&ukey="+_ukey;
-    var mydata = "id=1&name=2&priority=3&tag=4&ukey=dwdw";
-    req.send(mydata);//mydata);
+//    req.send(mydata);//mydata);
+    req.send(_data);
 }
