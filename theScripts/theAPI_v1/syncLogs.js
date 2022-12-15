@@ -2,7 +2,6 @@
 //function insertOrUpdate(_url,_id,_name,_priority,_tag,_ukey)
 function insertOrUpdate(_url,_data)
 {
-    console.log("im in sync log inserupdate func start;");
     var req = new XMLHttpRequest();
     req.open("POST", _url);
     req.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
@@ -26,21 +25,16 @@ function insertOrUpdate(_url,_data)
 
                   case "2":
                   {
-                      console.log("sync_logs: 2 -> successfuly inserted.");
+                      console.log("sync_logs: 2 -> successfuly inserted. data="+_data);
                       return 0;
                   }
 
                   case "3":
                   {
-                      console.log("sync_logs: 3 -> successfuly updated.");
-                      return 0;
+                      console.log("sync_logs: 3 -> failed. data="+_data);
+                      return 1;
                   }
 
-                  case "4":
-                  {
-                      console.log("sync_logs error: 4 -> query update failed.");
-                      return -1;
-                  }
 
                   case "5":
                   {
@@ -50,7 +44,7 @@ function insertOrUpdate(_url,_data)
 
                   default:
                   {
-                      console.log("sync_logs error: unknown error.");
+                      console.log("sync_logs error: unknown error. response="+req.responseText+"\tdata="+_data);
                       return -1;
                   }
 

@@ -78,6 +78,7 @@ Item
                         if(JSON.stringify(SaveLoadLogs.get()).length > 17) //to avoid Syntax error Json.parse error showsup when table is clear
                         {
                             var allObject = JSON.parse(SaveLoadLogs.get());
+                            console.log(allObject.logs[0]+"\t"+allObject.logs[1]+"\t"+allObject.logs[2]+"\n\n\n\n");
                             for(var i=0; i<allObject.logs.length; i++)
                             {
                                 mydata[i] = "id="+allObject.logs[i].id+"&name="+ allObject.logs[i].name+"&priority="+allObject.logs[i].priority+"&tag="+allObject.logs[i].tags+"&ukey="+userAccessKey;
@@ -87,13 +88,14 @@ Item
                                 console.log(SyncLogs.insertOrUpdate(userApiURL+"saveLog.php",mydata[i]))
 
                                 //do that log id , backup messages
-                                if(JSON.stringify(SaveLoadLogMessages.get(i)).length > 24) //to avoid Syntax error Json.parse error showsup when table is clear
+                                if(JSON.stringify(SaveLoadLogMessages.get(allObject.logs[i].id)).length > 24) //to avoid Syntax error Json.parse error showsup when table is clear
                                 {
-                                    var allObject_logMessage = JSON.parse(SaveLoadLogMessages.get(i));
+                                    var allObject_logMessage = JSON.parse(SaveLoadLogMessages.get(allObject.logs[i].id));
                                     for(var x=0; x<allObject_logMessage.logMessages.length; x++)
                                     {
-                                        const logMessage_data = "id="+allObject_logMessage.logMessages[x].id+"&lid="+i+"&text="+allObject_logMessage.logMessages[x].text+"&date="+allObject_logMessage.logMessages[x].date+"&ukey="+userAccessKey;
-                                        SyncLogMessage.insertOrUpdate(userApiURL,logMessage_data);
+                                        const logMessage_data = "id="+allObject_logMessage.logMessages[x].id+"&lid="+allObject.logs[i].id+"&text="+allObject_logMessage.logMessages[x].text+"&date="+allObject_logMessage.logMessages[x].date+"&ukey="+userAccessKey;
+                                        console.log("\nmessagedata="+logMessage_data+"\n");
+                                        SyncLogMessage.insertOrUpdate(userApiURL+"saveLogMessage.php",logMessage_data);
                                     }
 
                                 }

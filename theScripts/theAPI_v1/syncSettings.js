@@ -100,6 +100,7 @@ function insertOrUpdate(_url,_setting,_value,_ukey)
     req.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     req.onreadystatechange = function()
     {
+        console.log("readystate="+req.readyState + "\t"+req.status+"\t"+req.responseText);
         if (req.readyState === 4 && req.status === 200)
         {
             switch(req.responseText)
