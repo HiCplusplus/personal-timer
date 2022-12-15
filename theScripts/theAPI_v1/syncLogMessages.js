@@ -24,7 +24,7 @@ function insertOrUpdate(_url,_data)//_id,_name,_priority,_tag,_ukey)
 
                   case "2":
                   {
-                      console.log("sync_logMessage: 2 -> successfuly inserted. data="+_data);
+                      console.log("sync_logMessage: 2 -> successfuly inserted.");// data="+_data);
                       return 1;
                   }
 

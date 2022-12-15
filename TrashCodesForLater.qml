@@ -3,6 +3,9 @@ Item {
     id: name
 }
 
+//                                if(SyncLogs.insertOrUpdate(userApiURL+"saveLog.php",mydata[i])<0)
+//                                    console.log("DataAndBackup.qml -> syncLogs -> insert/update index " + i + " failed, data= "+mydata[i]);
+
 
 //        LoadSettings.get_all();
 //        SyncSettings.sync_settings(private_url_api+"saveSettings.php","darkmode",LoadSettings.get("darkmode"),accessKey_api_v1);
