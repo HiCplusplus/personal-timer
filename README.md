@@ -3,6 +3,14 @@
 ![screen-from-sportTimer](http://mewware.com/mewware/p-screenshots/v0.6.7/Screenshot%20from%202022-08-15%2003-28-39.png)
 ![screen-from-sportTimer](http://mewware.com/mewware/p-screenshots/v0.6.7/Screenshot%20from%202022-08-15%2003-26-39.png)
 
+![screen-v-0-10-0](http://mewware.com/mewware/p-screenshots/v0.10.0/Screenshot%20from%202022-09-21%2003-04-43.png)
+![screen-v-0-10-0](http://mewware.com/mewware/p-screenshots/v0.10.0/Screenshot%20from%202022-09-21%2003-05-51.png)
+![screen-v-0-10-0](http://mewware.com/mewware/p-screenshots/v0.10.0/Screenshot%20from%202022-09-21%2003-08-40.png)
+![screen-v-0-10-0](http://mewware.com/mewware/p-screenshots/v0.10.0/Screenshot%20from%202022-09-21%2003-09-43.png)
+![screen-v-0-10-0](http://mewware.com/mewware/p-screenshots/v0.10.0/ss5-Screenshot%20from%202022-09-21%2003-17-16.png)
+
+
+
 ## Features Log since July 20, 2022.
  - 0.1.0 -> StopWatch
  - 0.2.0 -> Dark/Light Mode
@@ -132,13 +140,7 @@ ____________________________________
   - log messages -> message list -> scroll to latest/last/downest of list page/message;
   - log message -> edit; delete; copy; messages;
   - log essage -> when box is empty it is posbile to send empty message !!!!!!!! its forbiden 
-___________________________________
 
-![screen-v-0-10-0](http://mewware.com/mewware/p-screenshots/v0.10.0/Screenshot%20from%202022-09-21%2003-04-43.png)
-![screen-v-0-10-0](http://mewware.com/mewware/p-screenshots/v0.10.0/Screenshot%20from%202022-09-21%2003-05-51.png)
-![screen-v-0-10-0](http://mewware.com/mewware/p-screenshots/v0.10.0/Screenshot%20from%202022-09-21%2003-08-40.png)
-![screen-v-0-10-0](http://mewware.com/mewware/p-screenshots/v0.10.0/Screenshot%20from%202022-09-21%2003-09-43.png)
-![screen-v-0-10-0](http://mewware.com/mewware/p-screenshots/v0.10.0/ss5-Screenshot%20from%202022-09-21%2003-17-16.png)
 
 ____________________________________
 ## Thanks to :<br/>
