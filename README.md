@@ -1,13 +1,13 @@
 # pLarm
 
-![screen-from-sportTimer](http://mewware.com/mewware/p-screenshots/v0.6.7/Screenshot%20from%202022-08-15%2003-28-39.png)
-![screen-from-sportTimer](http://mewware.com/mewware/p-screenshots/v0.6.7/Screenshot%20from%202022-08-15%2003-26-39.png)
+![screen-from-sportTimer](http://senioradministrator.com/mewware/p-screenshots/v0.6.7/Screenshot%20from%202022-08-15%2003-28-39.png)
+![screen-from-sportTimer](http://senioradministrator.com/mewware/p-screenshots/v0.6.7/Screenshot%20from%202022-08-15%2003-26-39.png)
 
-![screen-v-0-10-0](http://mewware.com/mewware/p-screenshots/v0.10.0/Screenshot%20from%202022-09-21%2003-04-43.png)
-![screen-v-0-10-0](http://mewware.com/mewware/p-screenshots/v0.10.0/Screenshot%20from%202022-09-21%2003-05-51.png)
-![screen-v-0-10-0](http://mewware.com/mewware/p-screenshots/v0.10.0/Screenshot%20from%202022-09-21%2003-08-40.png)
-![screen-v-0-10-0](http://mewware.com/mewware/p-screenshots/v0.10.0/Screenshot%20from%202022-09-21%2003-09-43.png)
-![screen-v-0-10-0](http://mewware.com/mewware/p-screenshots/v0.10.0/ss5-Screenshot%20from%202022-09-21%2003-17-16.png)
+![screen-v-0-10-0](http://senioradministrator.com/mewware/p-screenshots/v0.10.0/Screenshot%20from%202022-09-21%2003-04-43.png)
+![screen-v-0-10-0](http://senioradministrator.com/mewware/p-screenshots/v0.10.0/Screenshot%20from%202022-09-21%2003-05-51.png)
+![screen-v-0-10-0](http://senioradministrator.com/mewware/p-screenshots/v0.10.0/Screenshot%20from%202022-09-21%2003-08-40.png)
+![screen-v-0-10-0](http://senioradministrator.com/mewware/p-screenshots/v0.10.0/Screenshot%20from%202022-09-21%2003-09-43.png)
+![screen-v-0-10-0](http://senioradministrator.com/mewware/p-screenshots/v0.10.0/ss5-Screenshot%20from%202022-09-21%2003-17-16.png)
 
 
 
